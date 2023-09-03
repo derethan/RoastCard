@@ -5,47 +5,93 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Vina+Sans">
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
 
-    <title>Roast Logger App</title>
+    <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>  
+
+    <title>Roast Card</title>
 
 </head>
+
 <body>
+
     <header>
-        <h1>Roast Card</h1>
-        <h4><i>Create a Custom Roast Logger</i></h4>
+        <div class="logo">
+            <a href="index.html"><img src="img/logo.png" alt="Roast Card Logo"></a> 
+        
+            <div class="logo-text">
+                <h1>Roast Card</h1>
+                <h4>Create a Custom Roast Logger</h4>
+            </div>
+
+        </div>
     </header>
     
-    <nav>
-        <ul>
-            <li><a href="#">Save</a></li>
-            <li><a href="#">Print</a></li>
-            <li><a href="#">Reset</a></li>
-        </ul>
+    <nav id="nav" style="display: none;">
+        <div class="logo2">
+            <a href="index.html"><img src="img/logo.png" alt="Roast Card Logo"></a> 
+            <h3>Roast Card</h3>
+        </div>
+
+        <div class="menu">
+            <ul>
+                <li><a href="#">Save</a></li>
+                <li><a href="#">Print</a></li>
+                <li><a href="#">Reset</a></li>
+            </ul>
+        </div>
     </nav>
 
 
     <main>
+        <!-- Contains a Container for the Menu Bar-->
+        <div class="menu-bar" id="menu-bar" style="display: block;">
 
-        <div class="center-container">
-            <div class="border-container">
+            <!--Title Element-->
+            <div class="draggable origin-element title-element" id="title-element"> <!-- Add the "draggable" and "label-element" classes -->        
+                    <h1>Title</h1>
+            </div>
+
+            <!--Date Element-->
+            <div class="draggable origin-element date-element" id="date-element"> <!-- Add the "draggable" and "label-element" classes -->        
+                    <h3>Date</h3>
+            </div>
+            
+        </div>
+
+        
+        <!-- Contains a Container to center page contents, 
+            also adds the border effect with 2 overlapping containers. -->
+        <div class="center-container" id="center-container">
+
+            <div class="border-container resizable">
                 <div class="border"></div>
                 
-                <div class="start-container">
+                <!-- Contains a Container for the Welcome Page-->
+                <div class="start-container" id="start-container" style="display: none;">
                 <h1>Welcome to the RoastCard App.</h1>
                 <p>RoastCard allowes you to create a custom Coffee Bean roasting log. 
                     <br /><br /> To get started select the Create a New Card Button Below.</p>
                 <button class="new-card-button" id="new-card">Create a New Card</button>
                 </div>
-                   
+
+                <!-- Contains a Container for the Roast Card Canvas, Enables when user clicks the new-card button.-->
+                <div class="canvas-container" id="canvas-container" style="display: block;">
+
+                </div>
+                
             </div>
-        </div>
-          
-          
+        </div>         
     </main>
 
     
     <footer>
-        <p>&copy; 2023 RoastCard, Roast From The Coast. Website Designed and developed by BATech.</p>
+        <p>&copy; 2023 RoastCard, Roast From The Coast. Developed by Andrew Patterson @ BATech.</p>
     </footer>
+
+    <script src="js/fitty.min.js"></script>
+    <script src="js/change_container.js"></script>
+    <script src="js/drag_data.js"></script>
+
 </body>
 </html>
