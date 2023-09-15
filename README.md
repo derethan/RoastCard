@@ -21,4 +21,11 @@ Customizable Roast Card (AKA Logger) Application.
 </ul>
 
 
-<h1>Future Goals</h1>
+<h1>Future Goals:</h1>
+<ul>
+  <li>Account creation and login</li>
+  <li>Easily save and retrieve Cards from your account page</li>
+  <li>Upload RoastCards (Logs) from previous Roasts to a database.</li>
+  <li>Search, compare and use existing roast data from user uploads to gain insights into roasting methods for specific beans, and roasting equipment. (Example - John is roasting a Brazilian Santos Bean. He can then search the roast database for existing roasts of this bean to help determine a roast profile that meets his needs.)</li>
+  <li>More to come...</li>
+</ul>
