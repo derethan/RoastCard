@@ -6,6 +6,8 @@
  * 
 **/
 
+    // Create an object to store position information for each element
+    const elementPositions = {};
 
 // Make the Origin-element draggable:
 interact('.origin-element')
@@ -22,8 +24,6 @@ interact('.origin-element')
     })
     
 
-    // Create an object to store position information for each element
-    const elementPositions = {};
 
     // Initialize the behavior for the canvas elements
     interact('.canvas-element')
@@ -120,7 +120,6 @@ interact('.canvas-container')
     accept: '.draggable', // Accept any draggable element, Require element overlap for a drop to be possible
     overlap: 0.75,
     
-    // listen for drop related events:
     ondropactivate: function (event) {
         const draggableElement = event.relatedTarget;
         const dropzoneElement = event.target;

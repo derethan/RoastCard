@@ -45,7 +45,7 @@
 
     <main>
         <!-- Contains a Container for the Menu Bar-->
-        <div class="menu-bar" id="menu-bar" style="display: block;">
+        <div class="menu-bar" id="menu-bar" style="display: none;">
 
             <!--Title Element-->
             <div class="draggable origin-element title-element" id="title-element"> <!-- Add the "draggable" and "label-element" classes -->        
@@ -64,29 +64,35 @@
             also adds the border effect with 2 overlapping containers. -->
         <div class="center-container" id="center-container">
 
-            <div class="border-container resizable">
+            <div class="border-container" id="main-container">
                 <div class="border"></div>
                 
                 <!-- Contains a Container for the Welcome Page-->
-                <div class="start-container" id="start-container" style="display: none;">
-                <h1>Welcome to the RoastCard App.</h1>
-                <p>RoastCard allowes you to create a custom Coffee Bean roasting log. 
-                    <br /><br /> To get started select the Create a New Card Button Below.</p>
-                <button class="new-card-button" id="new-card">Create a New Card</button>
+                <div class="start-container" id="start-container" style="display: block;">
+                <h1>Welcome to Roast Card.</h1>
+                <p>With RoastCard you can create a custom roast logging card to suit your needs. 
+                    <br /><br /> To get started select an option below.</p>
+                <button class="new-card-button" id="new-card">Build your own Card</button>
+                <button class="new-card-button" id="template-card">Use a template</button>
+
                 </div>
 
                 <!-- Contains a Container for the Roast Card Canvas, Enables when user clicks the new-card button.-->
-                <div class="canvas-container" id="canvas-container" style="display: block;">
-
-                </div>
+                <div class="canvas-container" id="canvas-container" style="display: none;"></div>
                 
             </div>
+
         </div>         
     </main>
 
     
     <footer>
-        <p>&copy; 2023 RoastCard, Roast From The Coast. Developed by Andrew Patterson @ BATech.</p>
+        <div class="footer-container">
+
+                <div class="footer-about">
+                    <p>&copy; 2023 RoastCard, Roast From The Coast. Developed by Andrew Patterson.</p>
+                </div>                
+        </div>
     </footer>
 
     <script src="js/fitty.min.js"></script>

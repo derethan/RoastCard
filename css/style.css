@@ -10,13 +10,14 @@ body, h1, h2, h3, p, ul, li {
     margin: 0;
     padding: 0;
 }
-
+* {
+    box-sizing: border-box;
+  }
 /* Basic styling */
 body {
     font-family: Arial, sans-serif;
     background-color: #f2f2f2;
     overflow-x: hidden; /* Disable horizontal scroll */
-
 }
 
 header {
@@ -100,30 +101,25 @@ h1 {
 }
 
 
-main {
-    width: 100%;
-    margin: 0 auto;
-    color: #6f4e37;
-    background-color: #f2f2f2;
-
-    height: 100vh;
-    overflow-y: auto; /* Enable vertical scrolling when content overflows */
-}
 /* Styling for the menu bar */
 .menu-bar {
-  position: absolute;
+  position: fixed;
   left: 0;
   width: 120px;
   height: 100%;
   background-color: #f2f2f2;
   border-right: 1px solid #ddd;
+
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  z-index: 2;
+  z-index: 1;
 
 }
+
+
+
 .draggable {
   position: relative;
 
@@ -134,12 +130,14 @@ main {
 }
 
 .origin-element {
- display: inline-block;
- max-width: 100%;
- max-height: 100px;
+  display: inline-block;
+  max-width: 100%;
+  max-height: 100px;
 
-margin: 5px;
-padding: 5px;
+  margin: 5px;
+  padding: 5px;
+
+  z-index: 1;
 }
 .canvas-element {
   display: inline-block;
@@ -165,16 +163,25 @@ padding: 5px;
   padding: 5px;
 }
 
+main {
+  width: 100%;
+  margin: 0 auto;
+  color: #6f4e37;
+  background-color: #f2f2f2;
+
+  min-height: 80vh;
+  overflow-y: auto; /* Enable vertical scrolling when content overflows */
+}
+
 .center-container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: auto; /* Center vertically within the viewport */
+    
     padding-top: 40px; /* Add some padding to separate content from header/nav */
     padding-bottom: 40px;
-    padding-left: 125px;
-
-    box-sizing: border-box; /* Include padding in the element's total height */
+    /*     padding-left: 125px; */
   }
 .border-container {
     position: relative;
@@ -189,7 +196,6 @@ padding: 5px;
 
     min-height: 40vh;
 
-    box-sizing: border-box; /* Include padding in the element's total height */
   }
   
   .border {
@@ -206,6 +212,7 @@ padding: 5px;
   .start-container {
     position: relative;
     z-index: 1;
+    text-align: center;
   }
   .canvas-container {
     z-index: 1;
@@ -218,6 +225,8 @@ padding: 5px;
     background-color: #f2f2f2;
     transition: background-color 0.3s;
   }
+
+
   .drop-active {
     background-color: rgb(255, 102, 102);
     opacity: 0.1;
@@ -256,14 +265,17 @@ padding: 5px;
       transition: opacity 1s ease-in-out;
   }
 
-footer {
+.footer-container {
+    position: fixed;
+    bottom: 0;
+
     text-align: center;
     padding: 10px 0;
     background-color: #333;
     color: white;
-    position: fixed;
-    bottom: 0;
+    
     width: 100%;
+    max-height: 50px;
     z-index: 2;
 }
 

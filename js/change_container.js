@@ -9,40 +9,69 @@
 // Path: js\change_container.js
 
 document.addEventListener('DOMContentLoaded', function () {
-    const newCardButton = document.getElementById('new-card');
     const startContainer = document.getElementById('start-container');
     const canvasContainer = document.getElementById('canvas-container');
+    const mainContainer = document.getElementById('main-container');
     const menu = document.getElementById('menu-bar');
 
-    const mainContent = document.querySelector('main');
+    const newCardButton = document.getElementById('new-card');
+    const templateCardButton = document.getElementById('template-card');
+
     const header = document.querySelector('header');
     const body = document.querySelector('body');
-    const nav = document.getElementById('nav');
+    const nav = document.querySelector('nav');
+    const mainContent = document.querySelector('main');
+
+
+    /********************************************************************************
+     *  Events related to the newCard button:
+     * - Make the main container resizable
+     * - Hide the start container
+     * - Show the canvas container
+     * - Hide the header
+     * - Show the navigation bar
+     * - Show the menu bar
+     * - Move the main content up
+    *********************************************************************************/
 
     newCardButton.addEventListener('click', function () {
-       
+       //Make the main container resizable
+        mainContainer.classList.add('resizable');
 
-        //add event listener to wait for the animation to end
+        //add event listener to wait for the fade-out animation to end
         startContainer.classList.add('fade-out');
         startContainer.addEventListener('transitionend', function () {
 
+            //Hide the start container
             startContainer.style.display = 'none';
             startContainer.classList.remove('fade-out');    
-            
-            canvasContainer.style.display = 'block';
-            body.style.backgroundColor = '#333';
+            //Show the canvas container
+            canvasContainer.style.display = 'flex';
 
-
+        //add event listener to wait for the hide-header animation to end
             header.classList.add('hide-header');
             header.addEventListener('transitionend', function () {
+                //Show the navigation bar
                 nav.style.display = 'flex';
                 nav.classList.add('sticky-nav');
+                //Move the main content up
                 mainContent.classList.add('move-content-up'); 
-                menu.style.paddingTop = '40px';               
+                //Show the menu bar
+                menu.style.paddingTop = '40px';     
+                menu.style.display = 'flex';
+                menu.classList.add('sticky-menu');
+          
             }, {once: true});
+
         
         }, {once: true}); 
-
-
     });
+
+    /********************************************************************************
+     *  Events related to the template-card Button
+    *********************************************************************************/
+
+    templateCardButton.addEventListener('click', function () {
+    });
+
 });
