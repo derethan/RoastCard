@@ -6,52 +6,61 @@ Created By: Andrew Patterson For Roast From the Coast - get Coding Course Applic
 */
 
 /* Reset some default styles */
-body, h1, h2, h3, p, ul, li {
-    margin: 0;
-    padding: 0;
-}
 * {
-    box-sizing: border-box;
-  }
-/* Basic styling */
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f2f2f2;
     overflow-x: hidden; /* Disable horizontal scroll */
 }
 
+h1 {
+  margin-bottom: 10px;
+  font-style: bold;
+  font-family: Vina Sans;
+  letter-spacing: 5px;
+}
+
 header {
     background-color: #333;
     color: white;
-    padding: 10px 0;
-    position: relative;
-    transition: transform 0.5s ease-in-out;
+    transition: transform 0.5s ease-in-out; /**IMPORTANT - removes header on-click, JS event attached**/
 }
 
-.logo {
+.header-container {
   display:flex;
   align-items: center;
   justify-content: center;
+  gap: 10px;
+  padding: 10px;
+
 }
-.logo img {
+.header-img, .header-img img {
 max-height: 100px;
 max-width: 100px;
+border: 1px solid #212121; /* debug */
+
 }
-.logo h1 {
+.header-container h1, h4 {
   margin: 0; /* Remove default margins to ensure consistent spacing */
 }
-
-.logo h4 {
-  margin: 0; /* Remove default margins */
+.header-container h4 {
   font-style: italic; /* Apply italic font style */
 }
-/* Position the text to the right of the logo image */
-.logo-text {
+
+.header-text {
   display: flex;
   flex-direction: column;
+
+  border: 1px solid #212121; /* debug */
 }
 
-
+                  /* TODO: remake the nav center with proper flex box containers and elements*/
 nav {
     display: flex;
     align-items: center;
@@ -92,13 +101,10 @@ margin: 0 auto;
   font-size: 16px;
 }
 
-h1 {
-    margin-bottom: 10px;
-    font-style: bold;
-    font-family: Vina Sans;
-    letter-spacing: 5px;
-    
-}
+                                  /*  nav bar section ends here*/
+
+
+
 
 
 /* Styling for the menu bar */
@@ -117,7 +123,6 @@ h1 {
   z-index: 1;
 
 }
-
 
 
 .draggable {
