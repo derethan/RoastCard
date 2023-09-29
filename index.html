@@ -7,14 +7,13 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Vina+Sans">
     <link rel="icon" type="image/x-icon" href="img/favicon.ico">
 
-    <!--<script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>  -->
+    <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
 
     <title>Roast Card</title>
 
 </head>
 
 <body>
-
     <header>
         <div class="header-container">
             
@@ -28,63 +27,75 @@
         </div>
     </header>
     
-    <nav id="nav" style="display: none;">
-        
-        <div class="logo2">
-            <a href="index.html"><img src="img/logo.png" alt="Roast Card Logo"></a> 
-            <h3>Roast Card</h3>
-        </div>
+    <nav>
+        <div class="menubar-container sticky-nav" id="menu-bar" style="display: none;">
+            <div class="menubar-logo">
+                <a href="index.html"><img src="img/logo.png" alt="Roast Card Logo"></a> 
+                <h2>Roast Card</h2>
+            </div>
 
-        <div class="menu">
-            <ul>
-                <li><a href="#">Save</a></li>
-                <li><a href="#">Print</a></li>
-                <li><a href="#">Reset</a></li>
-            </ul>
+            <div class="menu">
+                <div class="menu-item"><a href="#">Save</a></div>
+                <div class="menu-item"><a href="#">Print</a></div>
+                <div class="menu-item"><a href="#">Reset</a></div>
+            </div>
         </div>
     </nav>
 
 
     <main>
-        <!-- Contains a Container for the Menu Bar-->
-        <div class="menu-bar" id="menu-bar" style="display: none;">
 
-            <!--Title Element-->
-            <div class="draggable origin-element title-element" id="title-element"> <!-- Add the "draggable" and "label-element" classes -->        
-                    <h1>Title</h1>
-            </div>
+        <div class="content-container" id="content-container">
 
-            <!--Date Element-->
-            <div class="draggable origin-element date-element" id="date-element"> <!-- Add the "draggable" and "label-element" classes -->        
-                    <h3>Date</h3>
-            </div>
-            
-        </div>
+            <!-- Contains a Container for the Origin Element Bar-->
+            <div class="element-bar" id="element-bar" style="display: none;">
 
-        
-        <!-- Contains a Container to center page contents, 
-            also adds the border effect with 2 overlapping containers. -->
-        <div class="center-container" id="center-container">
-
-            <div class="border-container" id="main-container">
-                <div class="border"></div>
-                
-                <!-- Contains a Container for the Welcome Page-->
-                <div class="start-container" id="start-container" style="display: block;">
-                <h1>Welcome to Roast Card.</h1>
-                <p>With RoastCard you can create a custom roast logging card to suit your needs. 
-                    <br /><br /> To get started select an option below.</p>
-                <button class="new-card-button" id="new-card">Build your own Card</button>
-                <button class="new-card-button" id="template-card">Use a template</button>
-
+                <!--Title Element-->
+                <div class="draggable origin-element title-element" id="title-element"> <!-- Add the "draggable" and "label-element" classes -->        
+                        <h1>Title</h1>
                 </div>
 
-                <!-- Contains a Container for the Roast Card Canvas, Enables when user clicks the new-card button.-->
-                <div class="canvas-container" id="canvas-container" style="display: none;"></div>
+                <!--Date Element-->
+                <div class="draggable origin-element date-element" id="date-element"> <!-- Add the "draggable" and "label-element" classes -->        
+                        <h3>Date</h3>
+                </div>
                 
             </div>
 
-        </div>         
+                        <!-- Contains a Container to center page contents, 
+                also adds the border effect with 2 overlapping containers. -->
+            <div class="canvas-area" id="canvas-area">
+
+                <div class="resizable-container" id="resizable-container">
+                    <div class="border"></div>
+                    
+                    <!-- Contains a Container for the Welcome Page-->
+                    <div class="start-container" id="start-container">
+
+                        <div class="start-title">                        
+                            <h1>Welcome to Roast Card.</h1>
+                        </div>
+
+                        <div class="start-text">                        
+                            <p>With RoastCard you can create a custom roast logging card to suit your needs. 
+                            <br /><br /> To get started select an option below.</p>
+                        </div>
+
+                        <div class="button-container">
+                            <button class="new-card-button" id="new-card">Build your own Card</button>
+                            <button class="new-card-button" id="template-card">Use a template</button>
+                        </div>
+                    </div>
+
+                    <!-- Contains a Container for the Roast Card Canvas, Enables when user clicks the new-card button.-->
+                    <div class="canvas-container" id="canvas-container" style="display: none;"></div>
+                    
+                </div>
+
+            </div>
+
+        </div>
+
     </main>
 
     
@@ -98,9 +109,12 @@
     </footer>
 
     <script src="js/change_container.js"></script>
+    <script src="js/drag_listener.js"></script>
+    <script src="js/canvas_resize.js"></script>
+
+
 
     <!--<script src="js/fitty.min.js"></script>-->
-    <!--<script src="js/drag_data.js"></script>-->
     
 
 </body>

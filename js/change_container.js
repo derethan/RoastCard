@@ -9,18 +9,40 @@
 // Path: js\change_container.js
 
 document.addEventListener('DOMContentLoaded', function () {
+    const mainContent = document.getElementById('content-container');
+    const mainContainer = document.getElementById('resizable-container');
+    const canvasArea = document.getElementById('canvas-area')
+
     const startContainer = document.getElementById('start-container');
     const canvasContainer = document.getElementById('canvas-container');
-    const mainContainer = document.getElementById('main-container');
-    const menu = document.getElementById('menu-bar');
+
+    const menuBar = document.getElementById ('menu-bar');
+    const elementMenu = document.getElementById('element-bar');
 
     const newCardButton = document.getElementById('new-card');
     const templateCardButton = document.getElementById('template-card');
 
     const header = document.querySelector('header');
-    const body = document.querySelector('body');
-    const nav = document.querySelector('nav');
-    const mainContent = document.querySelector('main');
+
+
+
+    const debug = 0; //Enable Debug Mode
+
+    if (debug == 1){
+        startContainer.style.display = 'none';
+        canvasContainer.style.display = 'flex';
+        
+        header.style.display = 'none'
+               //Show the navigation bar
+               menuBar.style.display = 'flex';
+               menuBar.classList.add('sticky-nav');
+               
+               //Move the main content up
+               mainContent.classList.add('move-content-up'); 
+
+               //Show the menu bar
+               elementMenu.style.display = 'flex';
+    }
 
 
     /********************************************************************************
@@ -36,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     newCardButton.addEventListener('click', function () {
        //Make the main container resizable
-        mainContainer.classList.add('resizable');
+        //mainContainer.classList.add('resizable');
 
         //add event listener to wait for the fade-out animation to end
         startContainer.classList.add('fade-out');
@@ -45,21 +67,25 @@ document.addEventListener('DOMContentLoaded', function () {
             //Hide the start container
             startContainer.style.display = 'none';
             startContainer.classList.remove('fade-out');    
+
             //Show the canvas container
+            canvasArea.style.width = '90%';
             canvasContainer.style.display = 'flex';
 
         //add event listener to wait for the hide-header animation to end
             header.classList.add('hide-header');
             header.addEventListener('transitionend', function () {
+
+                header.style.display = 'none';
+                
                 //Show the navigation bar
-                nav.style.display = 'flex';
-                nav.classList.add('sticky-nav');
+                menuBar.style.display = 'flex';
+                
                 //Move the main content up
-                mainContent.classList.add('move-content-up'); 
+                mainContent.classList.add('move-content'); 
+
                 //Show the menu bar
-                menu.style.paddingTop = '40px';     
-                menu.style.display = 'flex';
-                menu.classList.add('sticky-menu');
+                elementMenu.style.display = 'flex';
           
             }, {once: true});
 
