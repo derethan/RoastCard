@@ -1,32 +1,26 @@
 /**
  * 
- *  This file is used to controll the resizable canvas / elements
+ *  This file is used to controll the resizable canvas
  * 
  * 
 **/
 
 
-// Make the Containers for the Canvas Resizable
-interact('.resizable-container')
+// Make the Container for the Canvas Resizable
+interact('.resizeCanvas')
   .resizable({
     // resize from all edges and corners
     edges: { left: true, right: true, bottom: true, top: false },
 
     listeners: {
       move (event) {
-        var target = event.target
-        var x = (parseFloat(target.getAttribute('data-x')) || 0)
-        var y = (parseFloat(target.getAttribute('data-y')) || 0)
+        let target = event.target;
+        const canvasArea = document.getElementById('canvas-area');
 
         // update the element's style
-        target.style.width = event.rect.width + 'px'
-        target.style.height = event.rect.height + 'px'
-
-        // translate when resizing from top or left edges
-        x += event.deltaRect.left
-        y += event.deltaRect.top
-
-        target.style.transform = 'translate(' + x + 'px,' + y + 'px)'
+        target.style.width = event.rect.width + 'px';
+        target.style.height = event.rect.height + 'px';
+        canvasArea.style.height = event.rect.height + 50 + 'px';
       }
     },
     modifiers: [
@@ -37,12 +31,10 @@ interact('.resizable-container')
 
       // minimum size
       interact.modifiers.restrictSize({
-        min: { width: 100, height: 50 }
+        min: { width: 300, height: 300 }
       })
     ],
     inertia: true
   })
 
-// this function is used in the resizing
-window.dragMoveListener = dragMoveListener
 

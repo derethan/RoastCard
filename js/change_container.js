@@ -10,7 +10,7 @@
 
 document.addEventListener('DOMContentLoaded', function () {
     const mainContent = document.getElementById('content-container');
-    const mainContainer = document.getElementById('resizable-container');
+    const resizableContainer = document.getElementById('resizable-container');
     const canvasArea = document.getElementById('canvas-area')
 
     const startContainer = document.getElementById('start-container');
@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     newCardButton.addEventListener('click', function () {
        //Make the main container resizable
-        //mainContainer.classList.add('resizable');
+       resizableContainer.classList.add('resizeCanvas');
 
         //add event listener to wait for the fade-out animation to end
         startContainer.classList.add('fade-out');
@@ -83,6 +83,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 
                 //Move the main content up
                 mainContent.classList.add('move-content'); 
+                mainContent.style.paddingBottom = '200px';
 
                 //Show the menu bar
                 elementMenu.style.display = 'flex';

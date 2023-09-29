@@ -9,20 +9,7 @@
     // Create an object to store position information for each element
     const elementPositions = {};
 
-// Make the Origin-element draggable:
-interact('.origin-element')
-    .draggable({
-        inertia: true,
-        modifiers: [
-            interact.modifiers.restrictRect({
-                restriction: 'document',
-                endOnly: true
-            })
-        ],
-        autoScroll: true,
-        listeners: { move: dragMoveListener }
-    })
-    
+
 
 
     // Initialize the behavior for the canvas elements
@@ -212,27 +199,6 @@ interact('.canvas-container')
         // remove active dropzone feedback
         event.target.classList.remove('drop-active');
         event.target.classList.remove('drop-target');
-    }
-});
-
-// Additionally, handle dropping the element outside any dropzone
-interact('body').dropzone({
-
-    // only accept elements matching this CSS selector
-    accept: '.origin-element', // Accept any draggable element    // Require element overlap for a drop to be possible
-
-    ondrop: function (event) {
-        const draggableElement = event.relatedTarget;
-        const initialX = parseFloat(draggableElement.getAttribute('data-initial-x'));
-        const initialY = parseFloat(draggableElement.getAttribute('data-initial-y'));
-
-        // Reset the element's position to the initial position
-        draggableElement.style.transform = `translate(${initialX}px, ${initialY}px)`;
-        draggableElement.setAttribute('data-x', initialX);
-        draggableElement.setAttribute('data-y', initialY);
-
-        // Clean up the classes used for feedback
-        draggableElement.classList.remove('can-drop');
     }
 });
 
