@@ -104,8 +104,8 @@
 interact('.canvas-container')
     .dropzone({
     // only accept elements matching this CSS selector
-    accept: '.draggable', // Accept any draggable element, Require element overlap for a drop to be possible
-    overlap: 0.75,
+    accept: '.draggable', // Accept any draggable element, 
+    overlap: 0.75,  //Require element overlap for a drop to be possible
     
     ondropactivate: function (event) {
         const draggableElement = event.relatedTarget;

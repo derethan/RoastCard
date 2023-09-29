@@ -8,7 +8,7 @@ interact('.origin-element')
         inertia: true,
         modifiers: [
             interact.modifiers.restrictRect({
-                restriction: 'document',
+                restriction: '.content-container',
                 endOnly: true
             })
         ],
