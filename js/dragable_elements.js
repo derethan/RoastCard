@@ -16,3 +16,29 @@ interact('.origin-element')
         listeners: { move: dragMoveListener }
     })
     
+        // Create an object to store position information for each element
+        const elementPositions = {};
+
+    interact('.canvas-element')
+    .draggable({
+        inertia: true,
+        modifiers: [
+            interact.modifiers.restrict({
+                restriction: 'parent',
+                elementRect: { top: 0, left: 0, bottom: 1, right: 1 }, //cover entire element
+                endOnly: true
+              }),
+
+            interact.modifiers.snap({
+                targets: [
+                interact.snappers.grid({ x: 30, y: 30 }) // Snap to a 30x30 grid
+                ],
+                range: Infinity,
+                relativePoints: [ { x: 0, y: 0 } ] // Snap relative to the top-left of the element
+            })
+
+        ],
+        autoScroll: true,
+        listeners: { move: dragMoveListener }
+      })
+      

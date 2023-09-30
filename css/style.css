@@ -143,7 +143,8 @@ main {
   position: fixed;
   left: 0;
   
-  width: 10%;
+  min-width: 15%;
+  max-width: 20%;
   height: 90vh;
 
   background-color: #f2f2f2;
@@ -160,6 +161,7 @@ main {
 
   padding-left: 10px;
   padding-right: 10px;
+  
   border: 1px solid #ef0808;
 }
 .resizable-container {
@@ -170,9 +172,9 @@ main {
 
   min-width: 400px;
   max-width: 100%;
-
   min-height: 300px;
   height: 300px;
+
   z-index: 0;
 }
 .border {
@@ -188,33 +190,23 @@ main {
 .start-container {
   display: flex;
   flex-direction: column;
-
   justify-content: space-evenly;
   align-items: center;
 
-  border: 1px solid #000;
   z-index: 1;
 }
 .start-title {
   text-align: center;
   width: 90%;
-
-  border: 1px solid #000;
-
 }
 .start-text {
   text-align: center;
   width: 90%;
-  border: 1px solid #000;
-
 }
 .button-container {
   display: flex;
   justify-content: center;
   width: 90%;
-
-  border: 1px solid #000;
-
 }
 
 .canvas-container {
@@ -227,7 +219,6 @@ main {
   
   background-color: #f2f2f2;
   transition: background-color 0.3s;
-  border: 1px solid #000;
   z-index: 1;
 
 }
@@ -266,7 +257,7 @@ main {
   align-items: center;
 
   max-width: 100%;
-  max-height: 100px;
+  height: 50px;
 
   margin: 5px;
 }
@@ -276,10 +267,10 @@ main {
   justify-content: center;
   align-items: center;
 
-  max-width: 100%;
-  max-height: 100px;
-
   margin: 5px;
+
+  min-width: 100px;
+  min-height: 100px;
 
   position: absolute;
   top: 30px;

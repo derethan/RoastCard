@@ -102,7 +102,7 @@ function cloneElement (element, dropZone){
   
     //store element id in variable
     let elementID = element.getAttribute('id');
-    const searchString = elementID;
+    let searchString = elementID;
 
     //Get the number of canvas elements
     const allElements = document.querySelectorAll('.canvas-element');
@@ -118,6 +118,7 @@ function cloneElement (element, dropZone){
     if (elementId && elementId.includes(searchString)) {canvasElementsLength++;}
     }
 
+    //store the updated Element ID
     let canvasElementID = elementID + '-' + canvasElementsLength;
   
     //Set the ID of the clone
@@ -126,6 +127,6 @@ function cloneElement (element, dropZone){
     //Append the clone to the canvas
     dropZone.appendChild(clone);
 
-    console.log(clone);
+    console.log(clone); // DEBUG
 
   }
