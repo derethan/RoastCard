@@ -1,0 +1,3 @@
+ToDo List:
+
+Figure out why the Border sits ontop of the elements

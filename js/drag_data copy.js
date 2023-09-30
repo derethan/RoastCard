@@ -100,105 +100,61 @@
        })
 
 
-//enable draggables to be dropped into the dropzone
-interact('.canvas-container')
-    .dropzone({
-    // only accept elements matching this CSS selector
-    accept: '.draggable', // Accept any draggable element, 
-    overlap: 0.75,  //Require element overlap for a drop to be possible
-    
-    ondropactivate: function (event) {
-        const draggableElement = event.relatedTarget;
-        const dropzoneElement = event.target;
-        // add active dropzone feedback
-        if (draggableElement.classList.contains('origin-element')) {
-            dropzoneElement.classList.add('drop-active');
-        }
-        
-    },
-    ondragenter: function (event) {
-        const draggableElement = event.relatedTarget;
-        const dropzoneElement = event.target;
-        // add active dropzone feedback
-        if (draggableElement.classList.contains('origin-element')) {
-            dropzoneElement.classList.add('drop-target');
-        }
-    },
-    ondragleave: function (event) {
-        // remove the drop feedback style
-        event.target.classList.remove('drop-target');
-    },
-    ondrop: function (event) {
-        const draggableElement = event.relatedTarget;
-        const dropzoneElement = event.target;
-
-        //Check to see if the element is an origin element if so
-        //reset to the initial position
-        if(draggableElement.classList.contains('origin-element')){
-
-        // Get the initial position of the dropped element 
-        const initialX = parseFloat(draggableElement.getAttribute('data-initial-x'));
-        const initialY = parseFloat(draggableElement.getAttribute('data-initial-y'));
-
-        // Reset the element's position to the initial position
-        draggableElement.style.transform = `translate(${initialX}px, ${initialY}px)`;
-        draggableElement.setAttribute('data-x', initialX);
-        draggableElement.setAttribute('data-y', initialY);
-        
-        // Clean up the classes used for feedback
-        dropzoneElement.classList.remove('drop-target');
-
-            // Clone the origin element
-            const clone = draggableElement.cloneNode(true);
-            clone.classList.remove('origin-element');
-            clone.classList.add('canvas-element');
 
 
-            //Create unique ID For Clone
 
-            //store element id in variable
-            var elementID = draggableElement.getAttribute('id');
-            const searchString = elementID;
 
-            //Get the number of canvas elements
-            const allElements = document.querySelectorAll('.canvas-element');
-            // Initialize a counter to keep track of matching elements
-            let canvasElementsLength = 0;
 
-            //search through all the canvas elements for the elementID
-            for (const element of allElements) {
-                const elementId = element.id;
-                
-                // Check if the element's ID contains the desired string
-                if (elementId && elementId.includes(searchString)) {
-                    canvasElementsLength++;
-                }
-            }
+          
+          
+          // Clean up the classes used for feedback
+          dropzoneElement.classList.remove('drop-target');
+  
+              // Clone the origin element
+              const clone = draggableElement.cloneNode(true);
+              clone.classList.remove('origin-element');
+              clone.classList.add('canvas-element');
+  
+  
+              //Create unique ID For Clone
+  
+              //store element id in variable
+              var elementID = draggableElement.getAttribute('id');
+              const searchString = elementID;
+  
+              //Get the number of canvas elements
+              const allElements = document.querySelectorAll('.canvas-element');
+              // Initialize a counter to keep track of matching elements
+              let canvasElementsLength = 0;
+  
+              //search through all the canvas elements for the elementID
+              for (const element of allElements) {
+                  const elementId = element.id;
+                  
+                  // Check if the element's ID contains the desired string
+                  if (elementId && elementId.includes(searchString)) {
+                      canvasElementsLength++;
+                  }
+              }
+  
+              var canvasElementID = elementID + '-' + canvasElementsLength;
+  
+              //Set the ID of the clone
+              clone.setAttribute('id', canvasElementID);
+  
+              //Append the clone to the canvas
+              dropzoneElement.appendChild(clone);
+  
+              if (draggableElement.classList.contains('title-element')) {
+              fitty('#' + canvasElementID + ' h1');
+              } else if (draggableElement.classList.contains('date-element')) {
+              fitty('#' + canvasElementID + ' h3');
+              } else if (draggableElement.classList.contains('text-element')) {
+              fitty('#' + canvasElementID + ' p');
+              }
+              
+              console.log(clone);     
+          }
 
-            var canvasElementID = elementID + '-' + canvasElementsLength;
 
-            //Set the ID of the clone
-            clone.setAttribute('id', canvasElementID);
-
-            //Append the clone to the canvas
-            dropzoneElement.appendChild(clone);
-
-            if (draggableElement.classList.contains('title-element')) {
-            fitty('#' + canvasElementID + ' h1');
-            } else if (draggableElement.classList.contains('date-element')) {
-            fitty('#' + canvasElementID + ' h3');
-            } else if (draggableElement.classList.contains('text-element')) {
-            fitty('#' + canvasElementID + ' p');
-            }
-            
-            console.log(clone);     
-        }
-    },
-    ondropdeactivate: function (event) {
-
-        // remove active dropzone feedback
-        event.target.classList.remove('drop-active');
-        event.target.classList.remove('drop-target');
-    }
-});
 
