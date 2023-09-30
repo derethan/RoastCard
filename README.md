@@ -6,7 +6,7 @@ Customizable Roast Card (AKA Logger) Application.
 
 
 <h1>Who is it for?</h1>
-<p>Roast Card was designed with Craft coffee roasters in mind, but can easily be used by anyone. If your interested in coffee roasting but dont know where to begin you can check out a vaiety of online resources (such as those foud at www.roastfromthecoast.com) to get you started.</p>
+<p>Roast Card was designed with Craft coffee roasters in mind, but can easily be used by anyone. If your interested in coffee roasting but dont know where to begin you can check out a vaiety of online resources (such as those found at www.roastfromthecoast.com) to get you started.</p>
 
 <h1>Features</h1>
 <p>The RoastCard site and application features a simple but sleek and easy to use interface</p>
