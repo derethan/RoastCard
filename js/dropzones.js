@@ -6,16 +6,6 @@
  *              event.target = Drop Location (dropZone)
  *              event.relatedTarget = Item being dropped (draggableElement)
 ******************************************************/
-function resetElement (element){
-    const initialX = parseFloat(element.getAttribute('data-initial-x'));
-    const initialY = parseFloat(element.getAttribute('data-initial-y'));
-
-    // Reset the element's position to the initial position
-    element.style.transform = `translate(${initialX}px, ${initialY}px)`;
-    element.setAttribute('data-x', initialX);
-    element.setAttribute('data-y', initialY);
-
-}
 
 // Handle Behaviour for the Canvas-container Drop Zone
 interact('.canvas-container')
@@ -69,13 +59,10 @@ interact('.canvas-container')
         //If element is an origin element, reset to the initial position
         if(draggableElement.classList.contains('origin-element')){
             resetElement (draggableElement);
+            cloneElement (draggableElement, dropzoneElement);
         }
     }
-
-    
 });
-
-
 
 //  Handle dropping the element outside the dropzone, 
 //  retuns the element to its original position on the Element Panel
@@ -90,9 +77,55 @@ interact('.content-container').dropzone({
         const draggableElement = event.relatedTarget; 
         
         resetElement (draggableElement);
-
-        // Clean up the classes used for feedback
-        draggableElement.classList.remove('can-drop');
     }
 });
 
+function resetElement (element){
+    const initialX = parseFloat(element.getAttribute('data-initial-x'));
+    const initialY = parseFloat(element.getAttribute('data-initial-y'));
+
+    // Reset the element's position to the initial position
+    element.style.transform = `translate(${initialX}px, ${initialY}px)`;
+    element.setAttribute('data-x', initialX);
+    element.setAttribute('data-y', initialY);
+
+}
+
+function cloneElement (element, dropZone){
+    const clone = element.cloneNode(true);
+
+    // Set the cloned Element to a Canvas Element
+    clone.classList.remove('origin-element');
+    clone.classList.add('canvas-element');
+
+    //Create unique ID For Clone
+  
+    //store element id in variable
+    let elementID = element.getAttribute('id');
+    const searchString = elementID;
+
+    //Get the number of canvas elements
+    const allElements = document.querySelectorAll('.canvas-element');
+
+    // Initialize a counter to keep track of matching elements
+    let canvasElementsLength = 0;
+
+    //search through all the canvas elements for the elementID
+    for (const element of allElements) {
+    const elementId = element.id;
+    
+    // Check if the element's ID contains the desired string
+    if (elementId && elementId.includes(searchString)) {canvasElementsLength++;}
+    }
+
+    let canvasElementID = elementID + '-' + canvasElementsLength;
+  
+    //Set the ID of the clone
+    clone.setAttribute('id', canvasElementID);
+
+    //Append the clone to the canvas
+    dropZone.appendChild(clone);
+
+    console.log(clone);
+
+  }

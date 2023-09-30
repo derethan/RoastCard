@@ -102,48 +102,15 @@
 
 
 
+  
 
+  
+  
+              
+  
 
+  /*
 
-          
-          
-          // Clean up the classes used for feedback
-          dropzoneElement.classList.remove('drop-target');
-  
-              // Clone the origin element
-              const clone = draggableElement.cloneNode(true);
-              clone.classList.remove('origin-element');
-              clone.classList.add('canvas-element');
-  
-  
-              //Create unique ID For Clone
-  
-              //store element id in variable
-              var elementID = draggableElement.getAttribute('id');
-              const searchString = elementID;
-  
-              //Get the number of canvas elements
-              const allElements = document.querySelectorAll('.canvas-element');
-              // Initialize a counter to keep track of matching elements
-              let canvasElementsLength = 0;
-  
-              //search through all the canvas elements for the elementID
-              for (const element of allElements) {
-                  const elementId = element.id;
-                  
-                  // Check if the element's ID contains the desired string
-                  if (elementId && elementId.includes(searchString)) {
-                      canvasElementsLength++;
-                  }
-              }
-  
-              var canvasElementID = elementID + '-' + canvasElementsLength;
-  
-              //Set the ID of the clone
-              clone.setAttribute('id', canvasElementID);
-  
-              //Append the clone to the canvas
-              dropzoneElement.appendChild(clone);
   
               if (draggableElement.classList.contains('title-element')) {
               fitty('#' + canvasElementID + ' h1');
@@ -152,9 +119,6 @@
               } else if (draggableElement.classList.contains('text-element')) {
               fitty('#' + canvasElementID + ' p');
               }
-              
-              console.log(clone);     
-          }
+           
 
-
-
+*/
