@@ -16,8 +16,6 @@ interact('.origin-element')
         listeners: { move: dragMoveListener }
     })
     
-        // Create an object to store position information for each element
-        const elementPositions = {};
 
     interact('.canvas-element')
     .draggable({

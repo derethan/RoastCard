@@ -1,3 +1,2 @@
 ToDo List:
-
-Figure out why the Border sits ontop of the elements
+make the resizable feature for canvas elements specific to certain elements

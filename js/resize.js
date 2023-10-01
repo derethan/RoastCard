@@ -37,7 +37,7 @@ interact('.resizeCanvas')
     inertia: true
   })
 
-
+/*
     // Initialize the behavior for the canvas elements
     interact('.canvas-element')
     .resizable({
@@ -51,9 +51,6 @@ interact('.resizeCanvas')
           move (event) {
             const draggableElement = event.target
 
-            var x = (parseFloat(draggableElement.getAttribute('data-x')) || 0)
-            var y = (parseFloat(draggableElement.getAttribute('data-y')) || 0)
-    
             // update the element's style
             draggableElement.style.width = event.rect.width + 'px'
             draggableElement.style.height = event.rect.height + 'px'
@@ -71,4 +68,4 @@ interact('.resizeCanvas')
           })
         ],
         inertia: true
-      })
+      })*/

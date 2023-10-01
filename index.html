@@ -35,9 +35,9 @@
             </div>
 
             <div class="menu">
-                <div class="menu-item"><a href="#">Save</a></div>
-                <div class="menu-item"><a href="#">Print</a></div>
-                <div class="menu-item"><a href="#">Reset</a></div>
+                <div><button class="menu-button" id="save-button">Save</button></div>
+                <div><input type="button" class="menu-button" id="print-button" onclick="printCanvas ('canvas-container')" value="Print"></div>
+                <div><input type="button" class="menu-button" id="reset-button" onclick="resetCanvas ()" value="Reset"></div>
             </div>
         </div>
     </nav>
@@ -51,12 +51,12 @@
             <div class="element-bar" id="element-bar" style="display: none;">
 
                 <!--Title Element-->
-                <div class="draggable origin-element title-element" id="title-element">         
+                <div class="origin-element title-element resizable" id="title-element">         
                         <h1>Title</h1>
                 </div>
 
                 <!--Date Element-->
-                <div class="draggable origin-element date-element" id="date-element">         
+                <div class="origin-element date-element" id="date-element">         
                         <h3>Date</h3>
                 </div>
                 
@@ -110,11 +110,10 @@
 
     <script src="js/change_container.js"></script>
     <script src="js/drag_listener.js"></script>
-    <script src="js/dragable_elements.js"></script>
+    <script src="js/dragable_elements.js"></script> 
     <script src="js/resize.js"></script>
     <script src="js/dropzones.js"></script>
-
-
+    <script src="js/clear_canvas.js"></script>
 
     <!--<script src="js/fitty.min.js"></script>-->
     
