@@ -1,4 +1,7 @@
 
+    // Create an object to store position informion
+    let elementPositions = {};
+
 function dragMoveListener(event) {
     // Update the element's position during dragging
     const target = event.target;
@@ -12,6 +15,8 @@ function dragMoveListener(event) {
     // keep the dragged position in the data-x/data-y attributes
     const x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx;
     const y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
+
+    elementPositions = { x: x, y: y };
 
      // translate the element
     target.style.transform = `translate(${x}px, ${y}px)`;

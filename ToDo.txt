@@ -1,2 +1,4 @@
 ToDo List:
-make the resizable feature for canvas elements specific to certain elements
+    -   make the resizable feature for canvas elements specific to certain elements
+    -   Adjust elements to keep them aligned with bottom and right pages when page size is changed 
+        (-300px if position is bigger then canvas height?)

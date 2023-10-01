@@ -21,7 +21,10 @@ interact('.resizeCanvas')
         canvas.style.width = event.rect.width + 'px';
         canvas.style.height = event.rect.height + 'px';
         canvasArea.style.height = event.rect.height + 50 + 'px';
+
+        console.log (canvas.style.height);
       }
+      
     },
     modifiers: [
       // keep the edges inside the parent
@@ -37,6 +40,7 @@ interact('.resizeCanvas')
     inertia: true
   })
 
+  
 /*
     // Initialize the behavior for the canvas elements
     interact('.canvas-element')

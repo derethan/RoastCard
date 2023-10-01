@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function () {
             startContainer.classList.remove('fade-out');    
 
             //Show the canvas container
-            canvasArea.style.width = '90%';
+            canvasArea.style.width = '85%';
             canvasContainer.style.display = 'flex';
 
         //add event listener to wait for the hide-header animation to end

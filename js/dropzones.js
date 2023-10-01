@@ -127,6 +127,7 @@ function cloneElement (element, dropZone){
     //Append the clone to the canvas
     dropZone.appendChild(clone);
 
+
     console.log(clone); // DEBUG
 
   }
