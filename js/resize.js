@@ -21,8 +21,6 @@ interact('.resizeCanvas')
         canvas.style.width = event.rect.width + 'px';
         canvas.style.height = event.rect.height + 'px';
         canvasArea.style.height = event.rect.height + 50 + 'px';
-
-        console.log (canvas.style.height);
       }
       
     },

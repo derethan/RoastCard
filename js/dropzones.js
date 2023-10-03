@@ -123,6 +123,7 @@ function cloneElement (element, dropZone){
   
     //Set the ID of the clone
     clone.setAttribute('id', canvasElementID);
+    clone.setAttribute('ondblclick','editElement(`' + canvasElementID + '`)')
 
     //Append the clone to the canvas
     dropZone.appendChild(clone);

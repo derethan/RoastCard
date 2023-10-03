@@ -51,12 +51,12 @@
             <div class="element-bar" id="element-bar" style="display: none;">
 
                 <!--Title Element-->
-                <div class="origin-element title-element resizable" id="title-element">         
+                <div class="origin-element title-element draggable" id="title-element">         
                         <h1>Title</h1>
                 </div>
 
                 <!--Date Element-->
-                <div class="origin-element date-element" id="date-element">         
+                <div class="origin-element date-element draggable" id="date-element">         
                         <h3>Date</h3>
                 </div>
                 
@@ -98,6 +98,17 @@
 
     </main>
 
+ <!-- The Modal -->
+ <div id="editElement" class="modal">
+ 
+   <!-- Modal content -->
+   <div class="modal-content">
+     <span class="close">&times;</span>
+     <p>Some text in the Modal..</p>
+   </div>
+ 
+ </div> 
+  </div> 
     
     <footer>
         <div class="footer-container">
@@ -114,9 +125,7 @@
     <script src="js/resize.js"></script>
     <script src="js/dropzones.js"></script>
     <script src="js/menu_buttons.js"></script>
-
-    <!--<script src="js/fitty.min.js"></script>-->
-    
+    <script src="js/edit_element.js"></script>    
 
 </body>
 </html>
