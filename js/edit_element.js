@@ -1,29 +1,31 @@
 function editElement (canvasElementID, elementType){
 
-  //Determine what element is being edited
-
-    // Get the Modal Window
-    const modalWindow = document.getElementById ("editElement");
-
-    // Get the <span> element that closes the modal
-    var closeWindow = document.getElementsByClassName("close")[0];
-
-    modalWindow.style.display = "block";
-
+    //debug
     console.log('Edit Element window Open for Element: ' + canvasElementID);
     console.log('Element Type: ' + elementType);
 
-    // When the user clicks on <span> (x), close the modal
-closeWindow.onclick = function() {
-    modalWindow.style.display = "none";
-}
+    const originElements = document.querySelectorAll ('.origin-element')
+    //let originElementsLength = originElements.length;
+
+
+    for (element of originElements)
+    { 
+      if (elementType === element.id)
+      {
+      let modalName = 'edit-' + elementType
+      var modalWindow = document.getElementById (modalName);
+      modalWindow.style.display = "block";
+
+      }
+    }
+
 
 // When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modalWindow) {
-    modalWindow.style.display = "none";
-  }
-} 
+    window.onclick = function(event) {
+      if (event.target == modalWindow) {
+        modalWindow.style.display = "none";
+      }
+    } 
 }
 
 
