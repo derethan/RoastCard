@@ -100,17 +100,47 @@
 
     <!-- Modal for Title Element -->
     <div id="edit-title-element" class="modal">
-    <!-- Modal content -->
-    <div class="modal-content">
-        <p>Edit your Canvas Item Below.</p>
-    </div>
+        <!-- Modal content container-->
+        <div class="modal-content">
+            <div class="modal-header"><p>Select an option below</p></div>
+                <div class="modal-body">
+             
+                </div>
+            <div class="modal-footer">
+                <input type="button" class="modal-buttons" id="" value="Close">
+                <input type="button" class="modal-buttons" id="" value="Apply">
+            </div>
+        </div>
     </div> 
         
     <!-- Modal for Date Element -->
-    <div id="edit-date-element" class="modal">
-        <!-- Modal content -->
+    <div id="edit-date-element" class="modal" style="display: none;">
+        <!-- Modal content container-->
         <div class="modal-content">
-        <p>Select a date below</p>
+            <div class="modal-header"><p>Select an option below</p></div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-option">
+                        <input type="radio" id="defaultDate" name="dateOptions" value="defaultDate" onclick="selectedDateItem()">
+                        <label for="defaultDate">Roast Date:</label>
+                    </div>
+
+                    <div class="form-option">
+                            <input type="radio" id="currentDate" name="dateOptions" value="currentDate">
+                            <label for="currentDate" id="currentDateLabel">Current Date Placeholder</label>
+                    </div>
+
+                    <div class="form-option">
+                        <input type="radio" id="customDate" name="dateOptions" value="customDate">
+                        <label for="customDate">Custom Date Placeholder</label>
+                    </div>
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <input type="button" class="modal-buttons" id="closeButton" value="Close">
+                <input type="button" class="modal-buttons" id="applyButton" value="Apply" onclick="selectedDateItem ()">
+            </div>
         </div>
     </div> 
     

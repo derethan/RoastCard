@@ -5,9 +5,8 @@ function editElement (canvasElementID, elementType){
     console.log('Element Type: ' + elementType);
 
     const originElements = document.querySelectorAll ('.origin-element')
-    //let originElementsLength = originElements.length;
 
-
+    //Determine what Modal Window to display
     for (element of originElements)
     { 
       if (elementType === element.id)
@@ -15,9 +14,11 @@ function editElement (canvasElementID, elementType){
       let modalName = 'edit-' + elementType
       var modalWindow = document.getElementById (modalName);
       modalWindow.style.display = "block";
-
       }
+
+      if (elementType === 'date-element'){setCurrentDate ()}
     }
+
 
 
 // When the user clicks anywhere outside of the modal, close it
@@ -28,6 +29,39 @@ function editElement (canvasElementID, elementType){
     } 
 }
 
+
+function updateDateElement () {
+
+
+}
+
+function selectedDateItem () {
+
+// Get all the radio buttons with name 'dateOptions'
+let radios = document.getElementsByName('dateOptions');
+
+// Function to get the selected radio button value
+function getSelectedValue() {
+    for(let i = 0; i < radios.length; i++) {
+        if(radios[i].checked) {
+            return radios[i].value; // return the value of the selected radio button
+        }
+    }
+}
+
+// Store the selected value into a variable
+let selectedValue = getSelectedValue();
+console.log(selectedValue); // log the selected value
+} 
+
+function setCurrentDate(){
+  let currentDate = new Date();
+  let dateString = currentDate.toDateString ();
+
+  const dateLabel = document.getElementById ('currentDateLabel');
+
+  dateLabel.textContent = dateString;
+}
 
 /***********
  * 
