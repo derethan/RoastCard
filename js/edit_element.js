@@ -20,27 +20,48 @@ function editElement (canvasElementID, elementType){
       {
       let modalName = 'edit-' + elementType
       var modalWindow = document.getElementById (modalName);
-
       modalWindow.style.display = "block";
+      setModalData ();
       }
 
-      if (elementType === 'date-element'){setCurrentDate ()}
     }
-
-
-  // When the user clicks anywhere outside of the modal, close it
-  window.onclick = function(event) {
-    if (event.target == modalWindow) {
-      modalWindow.style.display = "none";
-    }
-  } 
-
 }
 
 function closeModal (id) {
   let modalWindow = document.getElementById (id);
   modalWindow.style.display = "none";
 }
+
+function setModalData (){
+
+  //get Session Data
+  let selectedElement = sessionStorage.getItem ('selectedElement');
+  let elementType = sessionStorage.getItem ('elementType');
+
+  if (elementType === 'title-element'){
+    let title = document.getElementById(selectedElement).getElementsByTagName('h1')[0].innerHTML;
+    document.getElementById('new-title').value = title;
+
+  }
+  else if (elementType === 'date-element'){
+    setCurrentDate ();
+  }
+
+
+}
+
+// This function is called when the user clicks the Apply Button
+function updateTitle () {
+  // Get the text from the text box in your modal
+  let newText = document.getElementById('new-title').value;
+
+  // Get the id of the element that was double clicked
+  let selectedElement = sessionStorage.getItem('selectedElement');
+
+  // Update the text of the selected element
+  document.getElementById(selectedElement).getElementsByTagName('h1')[0].innerHTML = newText;
+}
+
 
 function selectedDateItem () {
 
@@ -100,14 +121,4 @@ Close Modal: Close Modal when Close button is click (Remove close when clicking 
 */
 
 
-// This function is called when the user submits the form in the modal
-function updateTitle () {
-  // Get the text from the text box in your modal
-  var newText = document.getElementById('new-title').value;
 
-  // Get the id of the element that was double clicked
-  var selectedElement = sessionStorage.getItem('selectedElement');
-
-  // Update the text of the selected element
-  document.getElementById(selectedElement).getElementsByTagName('h1')[0].innerHTML = newText;
-}
