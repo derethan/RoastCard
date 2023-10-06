@@ -99,16 +99,25 @@
     </main>
 
     <!-- Modal for Title Element -->
-    <div id="edit-title-element" class="modal">
+    <div id="edit-title-element" class="modal" style="display: none;">
         <!-- Modal content container-->
         <div class="modal-content">
-            <div class="modal-header"><p>Select an option below</p></div>
+            <div class="modal-header"><p> Change your text below</p></div>
                 <div class="modal-body">
-             
+                    <div class="modal-title-content">
+
+                    <div> 
+                        <label for="new-title">Enter your title Here:</label>
+                        <input type="text" id="new-title" name="title"> 
+                    </div>
+
+                    <div>Font Size</div>
+                    <div>Color</div>
+                    </div>
                 </div>
             <div class="modal-footer">
-                <input type="button" class="modal-buttons" id="" value="Close">
-                <input type="button" class="modal-buttons" id="" value="Apply">
+                <input type="button" class="modal-buttons" id="closeButton" value="Close" onclick="closeModal ('edit-title-element')">
+                <input type="button" class="modal-buttons" id="applyButton" value="Apply" onclick="updateTitle ()">
             </div>
         </div>
     </div> 
@@ -126,20 +135,20 @@
                     </div>
 
                     <div class="form-option">
-                            <input type="radio" id="currentDate" name="dateOptions" value="currentDate">
+                            <input type="radio" id="currentDate" name="dateOptions" value="currentDate" onclick="selectedDateItem ()">
                             <label for="currentDate" id="currentDateLabel">Current Date Placeholder</label>
                     </div>
 
                     <div class="form-option">
-                        <input type="radio" id="customDate" name="dateOptions" value="customDate">
+                        <input type="radio" id="customDate" name="dateOptions" value="customDate" onclick="selectedDateItem ()">
                         <label for="customDate">Custom Date Placeholder</label>
                     </div>
                 </form>
 
             </div>
             <div class="modal-footer">
-                <input type="button" class="modal-buttons" id="closeButton" value="Close">
-                <input type="button" class="modal-buttons" id="applyButton" value="Apply" onclick="selectedDateItem ()">
+                <input type="button" class="modal-buttons" id="closeButton" value="Close" onclick="closeModal ()">
+                <input type="button" class="modal-buttons" id="applyButton" value="Apply">
             </div>
         </div>
     </div> 

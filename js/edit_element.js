@@ -1,18 +1,26 @@
 function editElement (canvasElementID, elementType){
 
+    // Store the type and id of the element that was double clicked
+    sessionStorage.setItem('selectedElement', canvasElementID);
+    sessionStorage.setItem('elementType', elementType);
+
     //debug
     console.log('Edit Element window Open for Element: ' + canvasElementID);
     console.log('Element Type: ' + elementType);
 
-    const originElements = document.querySelectorAll ('.origin-element')
+
+
 
     //Determine what Modal Window to display
+    const originElements = document.querySelectorAll ('.origin-element')
+
     for (element of originElements)
     { 
       if (elementType === element.id)
       {
       let modalName = 'edit-' + elementType
       var modalWindow = document.getElementById (modalName);
+
       modalWindow.style.display = "block";
       }
 
@@ -20,19 +28,18 @@ function editElement (canvasElementID, elementType){
     }
 
 
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+    if (event.target == modalWindow) {
+      modalWindow.style.display = "none";
+    }
+  } 
 
-// When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
-      if (event.target == modalWindow) {
-        modalWindow.style.display = "none";
-      }
-    } 
 }
 
-
-function updateDateElement () {
-
-
+function closeModal (id) {
+  let modalWindow = document.getElementById (id);
+  modalWindow.style.display = "none";
 }
 
 function selectedDateItem () {
@@ -53,6 +60,8 @@ function getSelectedValue() {
 let selectedValue = getSelectedValue();
 console.log(selectedValue); // log the selected value
 } 
+
+
 
 function setCurrentDate(){
   let currentDate = new Date();
@@ -76,16 +85,29 @@ function setCurrentDate(){
  *    - Update Canvas Element Data with Stored Information based on the element being edited
  
 
-Event Listener: Attach a ‘dblclick’ event listener to the div elements that you want to make editable. This event listener should trigger a function that opens the modal box.
+Working: Event Listener: Attach a ‘dblclick’ event listener to the div elements that you want to make editable. This event listener should trigger a function that opens the modal box.
 
-Modal Box: The modal box should contain a form with input fields corresponding to the editable content in the div. For example, if you want to allow users to edit text and font color, you could have a text input field and a color picker input field.
+Working: Modal Box: The modal box should contain a form with input fields corresponding to the editable content in the div. For example, if you want to allow users to edit text and font color, you could have a text input field and a color picker input field.
 
-Populate Modal: When the modal box opens, populate the input fields with the current values from the div that was double-clicked. You can store a reference to this div in a variable for later use.
+ALPHA: Populate Modal: When the modal box opens, populate the input fields with the current values from the div that was double-clicked. You can store a reference to this div in a variable for later use.
 
 Save Changes: Attach an ‘onclick’ event listener to the save button in the modal box. This event listener should trigger a function that updates the content of the div using the values from the input fields in the modal box.
 
 Update Div: In the function triggered by the save button, update the content and style of the div referenced earlier with the new values from the input fields.
 
-Close Modal: After updating the div, close the modal box.
+Close Modal: Close Modal when Close button is click (Remove close when clicking outside box)
 
 */
+
+
+// This function is called when the user submits the form in the modal
+function updateTitle () {
+  // Get the text from the text box in your modal
+  var newText = document.getElementById('new-title').value;
+
+  // Get the id of the element that was double clicked
+  var selectedElement = sessionStorage.getItem('selectedElement');
+
+  // Update the text of the selected element
+  document.getElementById(selectedElement).getElementsByTagName('h1')[0].innerHTML = newText;
+}
