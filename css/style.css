@@ -35,6 +35,9 @@ h1 {
   touch-action: none;
   user-select: none;
 }
+.centerContent {
+  text-align: center;
+}
 /*****************************************************************
   - Header Section
 ******************************************************************/
@@ -170,10 +173,12 @@ main {
 
   padding: 30px;
 
+  height: 300px;
+  min-height: 300px;
+
+
   min-width: 500px;
   max-width: 1150px;
-  min-height: 300px;
-  height: 300px;
 
   z-index: 0;
 }
@@ -267,10 +272,7 @@ main {
   justify-content: center;
   align-items: center;
 
-  margin: 5px;
-
   min-width: 100px;
-  min-height: 100px;
 
   position: absolute;
   top: 30px;
@@ -279,8 +281,6 @@ main {
 
 .title-element {
   color: #212121;
-  background-color: #ad9191;
-
   padding: 5px;
 }
 .date-element {
@@ -419,6 +419,17 @@ main {
     font-size: 18px;
     cursor: pointer;
   }
-.text-box {
-  
-}
+  .input-box {
+    height: 36px;
+    background-color: #f8f8f8;
+    border: 1px solid #f8f8f8;
+    border-bottom: 4px solid #6f4e37;
+    margin: 5px;
+    font-size: 18px;
+  }
+  .input-box option {
+  color: #6f4e37;
+  }
+  .input-label{
+    padding: 5px;
+  }

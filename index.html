@@ -99,34 +99,35 @@
     </main>
 
     <!-- Modal for Title Element -->
-    <div id="edit-title-element" class="modal" style="display: flex;">
+    <div id="edit-title-element" class="modal" style="display: none;">
         <!-- Modal content container-->
         <div class="modal-content">
             <div class="modal-header"><p> Change your text below</p></div>
                 <div class="modal-body">
                     <div class="modal-title-content">
 
-                    <div class="text-box"> 
-                        <label for="new-title">Enter your title Here:</label><br />
-                        <input type="text" id="new-title" name="title"> 
+                    <div> 
+                        <label for="new-title" class="input-label">Enter your title Here:</label><br />
+                        <input type="text" id="new-title" name="title"  class="input-box"> 
                     </div>
 
-                    <div>
-                        <label for="font-size">Select a Text Size</label> <br />
-                        <select id="font-size" name="font-size">
+                    <div class="centerContent">
+                        <label for="font-size" class="input-label">Select a Text Size</label> <br />
+                        <select id="font-size" name="font-size" class="input-box">
                             <option value="small">Small</option>
-                            <option value="medium">medium</option>
-                            <option value="large">large</option>
+                            <option value="medium">Medium</option>
+                            <option value="large">Large</option>
                         </select>
                     </div>
-                    <div>
-                        <label for="text-color">Select a text color</label><br />
-                        <input type="color" id="text-color" name="text-color">
+                    <div class="centerContent">
+                        <label for="font-color" class="input-label">Select a text color</label><br />
+                        <input type="color" id="font-color" name="font-color" class="input-box">
                     </div>
                     </div>
                 </div>
+                
             <div class="modal-footer">
-                <input type="button" class="modal-buttons" id="closeButton" value="Close" onclick="closeModal ('edit-title-element')">
+                <input type="button" class="modal-buttons" id="closeButton" value="Close" onclick="closeModal ()">
                 <input type="button" class="modal-buttons" id="applyButton" value="Apply" onclick="updateTitle ()">
             </div>
         </div>
@@ -158,7 +159,7 @@
 
             </div>
             <div class="modal-footer">
-                <input type="button" class="modal-buttons" id="closeButton" value="Close" onclick="closeModal ('edit-date-element')">
+                <input type="button" class="modal-buttons" id="closeButton" value="Close" onclick="closeModal ()">
                 <input type="button" class="modal-buttons" id="applyButton" value="Apply">
             </div>
         </div>

@@ -19,16 +19,20 @@ function editElement (canvasElementID, elementType){
       if (elementType === element.id)
       {
       let modalName = 'edit-' + elementType
-      var modalWindow = document.getElementById (modalName);
+      let modalWindow = document.getElementById (modalName);
+      sessionStorage.setItem ('modalWindow', modalName);
+
       modalWindow.style.display = "block";
+
+
       setModalData ();
       }
 
     }
 }
 
-function closeModal (id) {
-  let modalWindow = document.getElementById (id);
+function closeModal () {
+  let modalWindow = document.getElementById(sessionStorage.getItem ('modalWindow'));
   modalWindow.style.display = "none";
 }
 
@@ -52,15 +56,29 @@ function setModalData (){
 
 // This function is called when the user clicks the Apply Button
 function updateTitle () {
-  // Get the text from the text box in your modal
-  let newText = document.getElementById('new-title').value;
 
   // Get the id of the element that was double clicked
   let selectedElement = sessionStorage.getItem('selectedElement');
+  let canvasElement = document.getElementById(selectedElement);
+
+  // Get the text from the text box in your modal
+  let newText = document.getElementById('new-title').value;
+  let fontSize = document.getElementById('font-size').value;
+  let fontColor = document.getElementById('font-color').value;
 
   // Update the text of the selected element
-  document.getElementById(selectedElement).getElementsByTagName('h1')[0].innerHTML = newText;
+  canvasElement.getElementsByTagName('h1')[0].innerHTML = newText;
+  canvasElement.getElementsByTagName('h1')[0].style.color = fontColor;
+
+  switch (fontSize) {
+    case 'small': canvasElement.getElementsByTagName('h1')[0].style.fontSize = '18px'
+    break;
+    case 'medium': canvasElement.getElementsByTagName('h1')[0].style.fontSize = '24px'
+    break;
+    case "large": canvasElement.getElementsByTagName('h1')[0].style.fontSize = '36px'
+  }
 }
+
 
 
 function selectedDateItem () {
