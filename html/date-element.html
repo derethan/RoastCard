@@ -1,0 +1,27 @@
+        <!-- Modal content container-->
+        <div class="modal-content">
+            <div class="modal-header"><p>Select an option below</p></div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-option">
+                        <input type="radio" id="defaultDate" name="dateOptions" value="defaultDate">
+                        <label for="defaultDate">Roast Date:</label>
+                    </div>
+
+                    <div class="form-option">
+                            <input type="radio" id="currentDate" name="dateOptions" value="currentDate">
+                            <label for="currentDate" id="currentDateLabel">Current Date Placeholder</label>
+                    </div>
+
+                    <div class="form-option">
+                        <input type="radio" id="customDate" name="dateOptions" value="customDate">
+                        <input type="date" id="date" name="date">
+                    </div>
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <input type="button" class="modal-buttons" id="closeButton" value="Close" onclick="closeModal ()">
+                <input type="button" class="modal-buttons" id="applyButton" value="Apply" onclick="updateDateElement ()">
+            </div>
+        </div>

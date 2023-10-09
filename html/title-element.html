@@ -1,0 +1,31 @@
+<!-- Modal content container-->
+<div class="modal-content">
+    <div class="modal-header"><p> Change your text below</p></div>
+        <div class="modal-body">
+            <div class="modal-title-content">
+
+            <div> 
+                <label for="new-title" class="input-label">Enter your title Here:</label><br />
+                <input type="text" id="new-title" name="title"  class="input-box"> 
+            </div>
+
+            <div class="centerContent">
+                <label for="font-size" class="input-label">Select a Text Size</label> <br />
+                <select id="font-size" name="font-size" class="input-box">
+                    <option value="small">Small</option>
+                    <option value="medium">Medium</option>
+                    <option value="large">Large</option>
+                </select>
+            </div>
+            <div class="centerContent">
+                <label for="font-color" class="input-label">Select a text color</label><br />
+                <input type="color" id="font-color" name="font-color" class="input-box">
+            </div>
+            </div>
+        </div>
+        
+    <div class="modal-footer">
+        <input type="button" class="modal-buttons" id="closeButton" value="Close" onclick="closeModal ()">
+        <input type="button" class="modal-buttons" id="applyButton" value="Apply" onclick="updateTitle ()">
+    </div>
+</div>

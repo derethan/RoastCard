@@ -1,3 +1,10 @@
+    /********************************************************************************
+     *  Source: ../JS/edit_element.js
+     * 
+     *        CONTROLLS THE EDITING AND UPDATING OF THE CANVAS ELEMENTS
+     *          - Main Modal window for Updating
+    *********************************************************************************/
+
 function editElement (canvasElementID, elementType){
 
     // Store the type and id of the element that was double clicked
@@ -7,9 +14,6 @@ function editElement (canvasElementID, elementType){
     //debug
     console.log('Edit Element window Open for Element: ' + canvasElementID);
     console.log('Element Type: ' + elementType);
-
-
-
 
     //Determine what Modal Window to display
     const originElements = document.querySelectorAll ('.origin-element')
@@ -22,20 +26,29 @@ function editElement (canvasElementID, elementType){
       let modalWindow = document.getElementById (modalName);
       sessionStorage.setItem ('modalWindow', modalName);
 
-      modalWindow.style.display = "block";
-
-
       setModalData ();
+      modalWindow.style.display = "block";
       }
-
     }
 }
 
+
+  /********************************************************************************
+  *   Function to Close the modal Window
+  *********************************************************************************/
 function closeModal () {
+  //get Session Data
   let modalWindow = document.getElementById(sessionStorage.getItem ('modalWindow'));
   modalWindow.style.display = "none";
 }
 
+
+
+  /********************************************************************************
+  *   Updated the Modal window content when the Modal is opened
+  *     - Updated Elements that are populated with Javascript
+  *     - Updated Selections with Current Element Info (Existing title's added to textfields, etc)
+  *********************************************************************************/
 function setModalData (){
 
   //get Session Data
@@ -45,19 +58,48 @@ function setModalData (){
   if (elementType === 'title-element'){
     let title = document.getElementById(selectedElement).getElementsByTagName('h1')[0].innerHTML;
     document.getElementById('new-title').value = title;
-
   }
   else if (elementType === 'date-element'){
-    setCurrentDate ();
+    const dateLabel = document.getElementById ('currentDateLabel');
+    dateLabel.textContent = getCurrentDate ();
+  }
+}
+
+
+
+  /********************************************************************************
+  * Function to get the selected date item
+  *********************************************************************************/
+function selectedDateItem () {
+  // Get all the radio buttons with name 'dateOptions'
+  let radios = document.getElementsByName('dateOptions');
+  
+      for(let i = 0; i < radios.length; i++) {
+          if(radios[i].checked) {
+              return radios[i].value; // return the value of the selected radio button
+          }
+      }
+
+  } 
+  
+  
+  /********************************************************************************
+  *   Function to Set the current date for the Edit Date element Modal
+  *********************************************************************************/
+  function getCurrentDate(){
+    let currentDate = new Date();
+    let dateString = currentDate.toDateString ();
+    return dateString;
   }
 
-
-}
+  /********************************************************************************
+  *             Functions for Updating Each element are Below
+  *********************************************************************************/
 
 // This function is called when the user clicks the Apply Button
 function updateTitle () {
 
-  // Get the id of the element that was double clicked
+  //get Session Data
   let selectedElement = sessionStorage.getItem('selectedElement');
   let canvasElement = document.getElementById(selectedElement);
 
@@ -71,45 +113,33 @@ function updateTitle () {
   canvasElement.getElementsByTagName('h1')[0].style.color = fontColor;
 
   switch (fontSize) {
-    case 'small': canvasElement.getElementsByTagName('h1')[0].style.fontSize = '18px'
+    case 'small': canvasElement.getElementsByTagName('h1')[0].style.fontSize = '24px'
     break;
-    case 'medium': canvasElement.getElementsByTagName('h1')[0].style.fontSize = '24px'
+    case 'medium': canvasElement.getElementsByTagName('h1')[0].style.fontSize = '32px'
     break;
-    case "large": canvasElement.getElementsByTagName('h1')[0].style.fontSize = '36px'
+    case "large": canvasElement.getElementsByTagName('h1')[0].style.fontSize = '38px'
   }
 }
 
 
+function updateDate (){
 
-function selectedDateItem () {
+  //get Session Data
+  let selectedElement = sessionStorage.getItem('selectedElement');
+  let canvasElement = document.getElementById(selectedElement);
+  let selectedOption = selectedDateItem ();
+  let selectedDate = document.getElementById ('dateSelector').value;
 
-// Get all the radio buttons with name 'dateOptions'
-let radios = document.getElementsByName('dateOptions');
-
-// Function to get the selected radio button value
-function getSelectedValue() {
-    for(let i = 0; i < radios.length; i++) {
-        if(radios[i].checked) {
-            return radios[i].value; // return the value of the selected radio button
-        }
-    }
+  switch (selectedOption) {
+    case 'defaultDate': canvasElement.getElementsByTagName('h3')[0].innerHTML = 'Roast Date:';
+    break;
+    case 'currentDate': canvasElement.getElementsByTagName('h3')[0].innerHTML = 'Roast Date: '+ getCurrentDate ();
+    break;
+    case 'customDate': canvasElement.getElementsByTagName('h3')[0].innerHTML = 'Roast Date: '+ selectedDate;
+      
+  }
 }
 
-// Store the selected value into a variable
-let selectedValue = getSelectedValue();
-console.log(selectedValue); // log the selected value
-} 
-
-
-
-function setCurrentDate(){
-  let currentDate = new Date();
-  let dateString = currentDate.toDateString ();
-
-  const dateLabel = document.getElementById ('currentDateLabel');
-
-  dateLabel.textContent = dateString;
-}
 
 /***********
  * 
@@ -117,25 +147,24 @@ function setCurrentDate(){
  * 
  *    - DBL Click element to open edit window modal 
  *      - TODO: (Add isEditable tag to Origin Elements and only open edit window accordingly)
- *    - Pass Element ID to the Modal Window
+ *    - Pass Element ID & Type to the Modal Window
  *    - Determine What Element window to display
  *      - Search element ID, if ID contains element X then display info in editWindow accordingly
  *    - Store information from user input fields (Text, Font size, number of columns, etc)
  *    - Update Canvas Element Data with Stored Information based on the element being edited
- 
 
-Working: Event Listener: Attach a ‘dblclick’ event listener to the div elements that you want to make editable. This event listener should trigger a function that opens the modal box.
+ToDo: (Blocked Locally with CORS 
+  - Will Impliment for final release to clean up HTML Content
+  - Replace the Each Modal window with a single edit-Element Modal.
+  - Load the file containing the corresponding modal content to the selected element)
 
-Working: Modal Box: The modal box should contain a form with input fields corresponding to the editable content in the div. For example, if you want to allow users to edit text and font color, you could have a text input field and a color picker input field.
+Example:
 
-ALPHA: Populate Modal: When the modal box opens, populate the input fields with the current values from the div that was double-clicked. You can store a reference to this div in a variable for later use.
-
-Save Changes: Attach an ‘onclick’ event listener to the save button in the modal box. This event listener should trigger a function that updates the content of the div using the values from the input fields in the modal box.
-
-Update Div: In the function triggered by the save button, update the content and style of the div referenced earlier with the new values from the input fields.
-
-Close Modal: Close Modal when Close button is click (Remove close when clicking outside box)
-
+async function getHTML(path) {
+  let response = await fetch(path);
+  let data = await response.text();
+  document.getElementById("edit-element").innerHTML = data;
+}
 */
 
 

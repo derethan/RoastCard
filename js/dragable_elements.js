@@ -29,7 +29,7 @@ interact('.origin-element')
 
             interact.modifiers.snap({
                 targets: [
-                interact.snappers.grid({ x: 30, y: 30 }) // Snap to a 30x30 grid
+                interact.snappers.grid({ x: 15, y: 15 }) // Snap to size
                 ],
                 range: Infinity,
                 relativePoints: [ { x: 0, y: 0 } ] // Snap relative to the top-left of the element

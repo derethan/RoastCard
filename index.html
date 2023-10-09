@@ -141,26 +141,25 @@
             <div class="modal-body">
                 <form>
                     <div class="form-option">
-                        <input type="radio" id="defaultDate" name="dateOptions" value="defaultDate" onclick="selectedDateItem()">
+                        <input type="radio" id="defaultDate" name="dateOptions" value="defaultDate">
                         <label for="defaultDate">Roast Date:</label>
                     </div>
 
                     <div class="form-option">
-                            <input type="radio" id="currentDate" name="dateOptions" value="currentDate" onclick="selectedDateItem ()">
+                            <input type="radio" id="currentDate" name="dateOptions" value="currentDate">
                             <label for="currentDate" id="currentDateLabel">Current Date Placeholder</label>
                     </div>
 
                     <div class="form-option">
-                        <input type="radio" id="customDate" name="dateOptions" value="customDate" onclick="selectedDateItem ()">
-                        <label for="customDate">Custom Date Placeholder</label>
-                        <input type="date" id="date" name="date">
+                        <input type="radio" id="customDate" name="dateOptions" value="customDate">
+                        <input type="date" id="dateSelector" name="dateOptions">
                     </div>
                 </form>
 
             </div>
             <div class="modal-footer">
                 <input type="button" class="modal-buttons" id="closeButton" value="Close" onclick="closeModal ()">
-                <input type="button" class="modal-buttons" id="applyButton" value="Apply">
+                <input type="button" class="modal-buttons" id="applyButton" value="Apply" onclick="updateDate ()">
             </div>
         </div>
     </div> 
