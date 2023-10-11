@@ -140,7 +140,74 @@ function updateDate (){
   }
 }
 
+function updateRoastChart () {
 
+
+  
+}
+
+// ToDo: Add Functionality to update the headings based on the user input
+//      Update the Time cells (first cell of each column), 
+//      should be a timestamp  based on the user set time intervals (30s, 1min, etc)
+
+function addColumn () {
+
+//Stores the Table Element
+let logTable = document.getElementById ('log-table');
+
+//Stores the number of columns in the table
+let columnCount = logTable.rows[0].cells.length;
+
+//If number of columns is not greater then X, add a column
+if (columnCount < 8) {
+
+  for (let i = 0; i < logTable.rows.length; i++) {
+
+    //if its the first row add a table Header
+    if (i === 0) {
+      const header = document.createElement('th');
+      header.innerHTML = "New Header";
+      logTable.rows[i].appendChild(header);
+    }
+    else {
+    const cell = logTable.rows[i].insertCell(-1); 
+    cell.innerHTML = "New Cell";
+    }
+  }
+}
+
+}
+
+function removeColumn () {
+  //Remove the last column from the table
+  let logTable = document.getElementById ('log-table');
+  let columnCount = logTable.rows[0].cells.length;
+
+  if (columnCount > 2) {
+    for (let i = 0; i < logTable.rows.length; i++) {
+      logTable.rows[i].deleteCell(-1); 
+    }
+  }
+
+}
+
+function addRow() {
+  let table = document.getElementById("log-table");
+  let row = table.insertRow(-1);
+
+  // Loop through each column and add a new cell
+  for (let i = 0; i < table.rows[0].cells.length; i++) {
+    const cell = row.insertCell(-1); 
+    cell.innerHTML = "New Cell";
+  }
+}
+function removeRow () {
+  let table = document.getElementById("log-table");
+
+  if (table.rows.length > 2) {
+    table.deleteRow(-1);
+  }  
+}
 /***********
  * 
  *  Edit Element Process

@@ -59,6 +59,12 @@
                 <div class="origin-element date-element draggable" id="date-element">         
                         <h3>Date</h3>
                 </div>
+
+                <!--log Element-->
+                <div class="origin-element log-element draggable" id="log-element">         
+                    <p>Placeholder</p> <br />
+                    
+                </div>
                 
             </div>
 
@@ -164,6 +170,55 @@
         </div>
     </div> 
     
+    <div id="edit-log-element" class="modal" style="display: block;">
+        <!-- Modal content container-->
+        <div class="modal-content">
+            <div class="modal-header"><p>Setup your Log Chart Below</p></div>
+            <div class="modal-body">
+
+    <div class="log-container">
+
+        <div class="log">
+            <table id="log-table">
+                <tr>
+                    <th>Time</th>
+                    <th>Temperature</th>
+                    <th>Notes</th>
+                </tr>
+                <tr>
+                    <td>00:00</td>
+                    <td>000</td>
+                    <td>Notes</td>
+                </tr>
+
+            </table>
+
+            <div class="plus-munis-bttn">
+                <button class="minus-button" id="minus-button" onclick="removeColumn ()">-</button>
+                <button class="plus-button" id="plus-button" onclick="addColumn ()">+</button>
+            </div>
+        </div>
+
+            <div class="plus-munis-bttn">
+                <button class="minus-button" id="minus-button" onclick="removeRow ()">-</button>
+                <button class="plus-button" id="plus-button" onclick="addRow ()">+</button>
+            </div>
+        </div>
+    </div>
+
+            <div class="modal-footer">
+                <input type="button" class="menu-buttons" id="closeButton" value="Close" onclick="closeModal ()">
+                <input type="button" class="menu-buttons" id="applyButton" value="Apply" onclick="updateRoastChart ()">
+            </div>
+        </div>
+    </div> 
+
+
+
+
+
+
+
     <footer>
         <div class="footer-container">
 

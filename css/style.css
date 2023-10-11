@@ -2,6 +2,9 @@
 This file is used to style the Roast Card Website.
   - index.html
 ******************************************************************/
+:root {
+  --coffee: #6f4e37;
+}
 
 /* Reset some default styles */
 * {
@@ -110,11 +113,17 @@ max-width: 100px;
   width: 100%;
   z-index: 2;
 }
-
 .move-content {
   margin-top: 80px; /* Adjust the Location of the content to account for the header */
 }
-
+.menu-button {
+  background-color: #333;
+  color: white;
+  border: none;
+  text-decoration: none;
+  font-size: 18px;
+  cursor: pointer;
+}
 
 
 /*****************************************************************
@@ -175,10 +184,13 @@ main {
 
   height: 300px;
   min-height: 300px;
+  max-height: 10.5in; /* Standard Paper size */
 
 
   min-width: 500px;
-  max-width: 1150px;
+  max-width: 9in; /* Standard Paper size */
+
+/*  max-width: 1150px; */
 
   z-index: 0;
 }
@@ -285,7 +297,10 @@ main {
 }
 .date-element {
   color: #212121;
-    
+  padding: 5px;
+}
+.log-element {
+  color: blue;
   padding: 5px;
 }
 
@@ -329,7 +344,8 @@ main {
   background-color: #fefefe;
   margin: 15% auto; /* 15% from the top and centered */
   border: 1px solid #888;
-  width: 30%; /* Could be more or less, depending on screen size */
+  min-width: 30%; /* Could be more or less, depending on screen size */
+  max-width: 80%;
 }
 .modal-header {
   display: flex;
@@ -392,10 +408,10 @@ main {
 }
 
 /*****************************************************************
-  - Other Styles
+  - Buttons
 ******************************************************************/
   .new-card-button {
-    background-color: #6f4e37;
+    background-color: var(--coffee);
     border: none;
     color: white;
     padding: 15px 32px;
@@ -411,25 +427,91 @@ main {
   .new-card-button:hover {
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
   }
-  .menu-button {
-    background-color: #333;
-    color: white;
-    border: none;
-    text-decoration: none;
-    font-size: 18px;
-    cursor: pointer;
+  .plus-munis-bttn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
+  .plus-button, .minus-button {
+    display: inline-block;
+    background-color: var(--coffee);
+    color: white;
+
+    border: none;
+    border-radius: 30%;
+
+    padding: 5px 10px;
+    margin: 5px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 12px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+    
+  }
+  .plus-button:hover, .minus-button:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+  }
+
+
+/*****************************************************************
+  - Other Styles
+******************************************************************/
+
   .input-box {
     height: 36px;
     background-color: #f8f8f8;
     border: 1px solid #f8f8f8;
-    border-bottom: 4px solid #6f4e37;
+    border-bottom: 4px solid var(--coffee);
     margin: 5px;
     font-size: 18px;
   }
   .input-box option {
-  color: #6f4e37;
+  color: var(--coffee);
   }
   .input-label{
     padding: 5px;
   }
+
+  .log-container {
+    display: flex;
+    flex-direction: column;
+    
+    height: 100%;
+    padding: 10px;
+
+    border: 1px solid #000000;
+  }
+  .log {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    border: 1px solid #000000;
+  }
+  .plus-munis-bttn {
+    display: flex;
+    justify-content: center;
+  }
+
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  th {
+    background-color: var(--coffee);
+    color: white
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+
