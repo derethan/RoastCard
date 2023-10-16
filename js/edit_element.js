@@ -5,6 +5,32 @@
      *          - Main Modal window for Updating
     *********************************************************************************/
 
+    //preload HTML Content for faster response time
+    let htmlContent = {};
+    let sourcePath = 'https://raw.githubusercontent.com/derethan/RoastCard/main/html/';
+
+    function preloadHTMLContent() {
+
+      const originElements = document.querySelectorAll ('.origin-element')
+      const elementTypes =[]; // Array of element types to preload
+      for (element of originElements)
+      { 
+        elementTypes.push(element.id);   
+      }
+
+      elementTypes.forEach((elementType) => {
+        fetch(sourcePath + `${elementType}.html`)
+          .then(response => response.text())
+          .then(data => {
+            htmlContent[elementType] = data;
+          });
+      });
+    }
+
+    // Call preloadHTMLContent() when the page loads
+    window.addEventListener('load', preloadHTMLContent);
+
+
 function editElement (canvasElementID, elementType){
 
     // Store the type and id of the element that was double clicked
@@ -17,34 +43,28 @@ function editElement (canvasElementID, elementType){
 
     //Determine what Modal Window to display
     const originElements = document.querySelectorAll ('.origin-element')
-
-
     for (element of originElements)
     { 
       if (elementType === element.id)
       {
-      //let modalName = 'edit-' + elementType
-      let modalName = 'edit-element'
+      let modalWindow = document.getElementById ('edit-element');
+      sessionStorage.setItem ('modalWindow', 'edit-element');
 
-      let modalWindow = document.getElementById (modalName);
-      sessionStorage.setItem ('modalWindow', modalName);
-
-      getHTML ('https://raw.githubusercontent.com/derethan/RoastCard/main/html/' + elementType + '.html');
-
-
+      loadModal (elementType);
       modalWindow.style.display = "block";
       }
     }
 }
 
-async function getHTML(path) {
-  let response = await fetch(path);
-  let data = await response.text();
+async function loadModal(elementType) {
+  let data = await htmlContent[elementType];
   document.getElementById("edit-element").innerHTML = data;
 
   setModalData ();
 
 }
+
+
   /********************************************************************************
   *   Updated the Modal window content when the Modal is opened
   *     - Updated Elements that are populated with Javascript
@@ -293,21 +313,7 @@ function removeRow () {
  *    - Store information from user input fields (Text, Font size, number of columns, etc)
  *    - Update Canvas Element Data with Stored Information based on the element being edited
 
-ToDo: (Blocked Locally with CORS 
-  - Will Impliment for final release to clean up HTML Content
-  - Replace the Each Modal window with a single edit-Element Modal.
-  - Load the file containing the corresponding modal content to the selected element)
-
-
  ToDo: Local Storage for Elements and location to keep data if browser is refreshed
-
-Example:
-
-async function getHTML(path) {
-  let response = await fetch(path);
-  let data = await response.text();
-  document.getElementById("edit-element").innerHTML = data;
-}
 */
 
 
