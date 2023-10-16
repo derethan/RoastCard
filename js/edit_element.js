@@ -18,20 +18,33 @@ function editElement (canvasElementID, elementType){
     //Determine what Modal Window to display
     const originElements = document.querySelectorAll ('.origin-element')
 
+
     for (element of originElements)
     { 
       if (elementType === element.id)
       {
-      let modalName = 'edit-' + elementType
+      //let modalName = 'edit-' + elementType
+      let modalName = 'edit-element'
+
       let modalWindow = document.getElementById (modalName);
       sessionStorage.setItem ('modalWindow', modalName);
 
-      setModalData ();
+      getHTML ('https://raw.githubusercontent.com/derethan/RoastCard/main/html/' + elementType + '.html');
+
+
       modalWindow.style.display = "block";
       }
     }
 }
 
+async function getHTML(path) {
+  let response = await fetch(path);
+  let data = await response.text();
+  document.getElementById("edit-element").innerHTML = data;
+
+  setModalData ();
+
+}
   /********************************************************************************
   *   Updated the Modal window content when the Modal is opened
   *     - Updated Elements that are populated with Javascript
@@ -49,6 +62,7 @@ function setModalData (){
   }
   else if (elementType === 'date-element'){
     const dateLabel = document.getElementById ('currentDateLabel');
+    console.log(dateLabel);
     dateLabel.textContent = getCurrentDate ();
   }
   else if (elementType === 'log-element'){

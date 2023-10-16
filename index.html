@@ -106,10 +106,7 @@
                     </div>
 
                     <!-- Contains a Container for the Roast Card Canvas, Enables when user clicks the new-card button.-->
-                    <div class="canvas-container" id="canvas-container" style="display: none;">
-                    
-                    
-                </div>
+                    <div class="canvas-container" id="canvas-container" style="display: none;"></div>
 
             </div>
 
@@ -117,108 +114,11 @@
 
     </main>
 
-    <!-- Modal for Title Element -->
-    <div id="edit-title-element" class="modal" style="display: none;">
-        <!-- Modal content container-->
-        <div class="modal-content">
-            <div class="modal-header"><p> Change your text below</p></div>
-                <div class="modal-body">
-                    <div class="modal-title-content">
-
-                    <div> 
-                        <label for="new-title" class="input-label">Enter your title Here:</label><br />
-                        <input type="text" id="new-title" name="title"  class="input-box"> 
-                    </div>
-
-                    <div class="centerContent">
-                        <label for="font-size" class="input-label">Select a Text Size</label> <br />
-                        <select id="font-size" name="font-size" class="input-box">
-                            <option value="small">Small</option>
-                            <option value="medium">Medium</option>
-                            <option value="large">Large</option>
-                        </select>
-                    </div>
-                    <div class="centerContent">
-                        <label for="font-color" class="input-label">Select a text color</label><br />
-                        <input type="color" id="font-color" name="font-color" class="input-box">
-                    </div>
-                    </div>
-                </div>
-                
-            <div class="modal-footer">
-                <input type="button" class="modal-buttons" id="closeButton" value="Close" onclick="closeModal ()">
-                <input type="button" class="modal-buttons" id="applyButton" value="Apply" onclick="updateTitle ()">
-            </div>
-        </div>
-    </div> 
-        
-    <!-- Modal for Date Element -->
-    <div id="edit-date-element" class="modal" style="display: none;">
-        <!-- Modal content container-->
-        <div class="modal-content">
-            <div class="modal-header"><p>Select an option below</p></div>
-            <div class="modal-body">
-                <form>
-                    <div class="form-option">
-                        <input type="radio" id="defaultDate" name="dateOptions" value="defaultDate">
-                        <label for="defaultDate">Roast Date:</label>
-                    </div>
-
-                    <div class="form-option">
-                            <input type="radio" id="currentDate" name="dateOptions" value="currentDate">
-                            <label for="currentDate" id="currentDateLabel">Current Date Placeholder</label>
-                    </div>
-
-                    <div class="form-option">
-                        <input type="radio" id="customDate" name="dateOptions" value="customDate">
-                        <input type="date" id="dateSelector" name="dateOptions">
-                    </div>
-                </form>
-
-            </div>
-            <div class="modal-footer">
-                <input type="button" class="modal-buttons" id="closeButton" value="Close" onclick="closeModal ()">
-                <input type="button" class="modal-buttons" id="applyButton" value="Apply" onclick="updateDate ()">
-            </div>
-        </div>
-    </div> 
-    
-    <div id="edit-log-element" class="modal" style="display: none;">
-        <!-- Modal content container-->
-        <div class="modal-content">
-            <div class="modal-header"><p>Setup your Log Chart Below</p></div>
-            <div class="modal-body">
-
-    <div class="log-container">
-
-        <div class="log">
-            <table class="modal-log-table" id="log-table"></table>
-
-            <div class="plus-munis-bttn">
-                <button class="minus-button" id="minus-button" onclick="removeColumn ()">-</button>
-                <button class="plus-button" id="plus-button" onclick="addColumn ()">+</button>
-            </div>
-        </div>
-
-            <div class="plus-munis-bttn">
-                <button class="minus-button" id="minus-button" onclick="removeRow ()">-</button>
-                <button class="plus-button" id="plus-button" onclick="addRow ()">+</button>
-            </div>
-        </div>
-    </div>
-
-            <div class="modal-footer">
-                <input type="button" class="menu-buttons" id="closeButton" value="Close" onclick="closeModal ()">
-                <input type="button" class="menu-buttons" id="applyButton" value="Apply" onclick="updateRoastChart ()">
-            </div>
-        </div>
-    </div> 
-
-
+        <!-- Modal for Editing Element -->
+        <div id="edit-element" class="modal" style="display: none;"></div> 
 
     <footer>
         <div class="footer-container">
-
                 <div class="footer-about">
                     <p>&copy; 2023 RoastCard, Roast From The Coast. Developed by Andrew Patterson.</p>
                 </div>                
