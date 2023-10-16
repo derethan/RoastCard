@@ -25,6 +25,7 @@ body {
 h1 {
   margin-bottom: 10px;
   letter-spacing: 5px;
+  text-wrap: wrap;
 }
 .fade-out {
   opacity: 0;
@@ -186,11 +187,8 @@ main {
   min-height: 300px;
   max-height: 10.5in; /* Standard Paper size */
 
-
-  min-width: 500px;
+  min-width: 9in; /* Standard Paper size */
   max-width: 9in; /* Standard Paper size */
-
-/*  max-width: 1150px; */
 
   z-index: 0;
 }
@@ -302,9 +300,37 @@ main {
 .log-element {
   color: blue;
   padding: 5px;
+
+}
+.log-table {
+  display: none;
+  height: 100%;
+  table-layout: fixed;
+}
+.log-table th,
+.log-table td,
+.log-table tr,
+.modal-log-table th,
+.modal-log-table td,
+.modal-log-table tr {
+  text-align: left;
+  padding: 5px;
+  border: 1px solid black;
+
+  min-width: 75px;
+  height: 32px;
 }
 
+input[type=text] {
+  background-color: var(--coffee);
+  color: #f2f2f2;
 
+  width: 100%;
+  padding: 0px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: none;
+}
 /*****************************************************************
   - DropZone Styles
 ******************************************************************/
@@ -491,6 +517,7 @@ main {
 
     border: 1px solid #000000;
   }
+
   .plus-munis-bttn {
     display: flex;
     justify-content: center;

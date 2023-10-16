@@ -62,8 +62,20 @@
 
                 <!--log Element-->
                 <div class="origin-element log-element draggable" id="log-element">         
-                    <p>Placeholder</p> <br />
-                    
+                    <p class="element-title">Log Chart</p>
+                    <table class="log-table">
+                        <tr>
+                            <th>Time</th>
+                            <th>Temperature</th>
+                            <th>Notes</th>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+        
+                    </table>
                 </div>
                 
             </div>
@@ -94,7 +106,8 @@
                     </div>
 
                     <!-- Contains a Container for the Roast Card Canvas, Enables when user clicks the new-card button.-->
-                    <div class="canvas-container" id="canvas-container" style="display: none;"></div>
+                    <div class="canvas-container" id="canvas-container" style="display: none;">
+                    
                     
                 </div>
 
@@ -170,7 +183,7 @@
         </div>
     </div> 
     
-    <div id="edit-log-element" class="modal" style="display: block;">
+    <div id="edit-log-element" class="modal" style="display: none;">
         <!-- Modal content container-->
         <div class="modal-content">
             <div class="modal-header"><p>Setup your Log Chart Below</p></div>
@@ -179,19 +192,7 @@
     <div class="log-container">
 
         <div class="log">
-            <table id="log-table">
-                <tr>
-                    <th>Time</th>
-                    <th>Temperature</th>
-                    <th>Notes</th>
-                </tr>
-                <tr>
-                    <td>00:00</td>
-                    <td>000</td>
-                    <td>Notes</td>
-                </tr>
-
-            </table>
+            <table class="modal-log-table" id="log-table"></table>
 
             <div class="plus-munis-bttn">
                 <button class="minus-button" id="minus-button" onclick="removeColumn ()">-</button>
@@ -212,10 +213,6 @@
             </div>
         </div>
     </div> 
-
-
-
-
 
 
 

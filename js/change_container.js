@@ -8,6 +8,9 @@
 
 // Path: js\change_container.js
 
+const debug = 1; //Enable Debug Mode
+
+
 document.addEventListener('DOMContentLoaded', function () {
     const mainContent = document.getElementById('content-container');
     const resizableContainer = document.getElementById('resizable-container');
@@ -24,24 +27,29 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const header = document.querySelector('header');
 
-
-
-    const debug = 0; //Enable Debug Mode
-
+    // Enable Debug Mode - Hide Initial Start Page
     if (debug == 1){
         startContainer.style.display = 'none';
+        //Show the canvas container
+        canvasArea.style.width = '85%';
         canvasContainer.style.display = 'flex';
+        resizableContainer.classList.add('resizeCanvas');
         
-        header.style.display = 'none'
-               //Show the navigation bar
-               menuBar.style.display = 'flex';
-               menuBar.classList.add('sticky-nav');
-               
-               //Move the main content up
-               mainContent.classList.add('move-content-up'); 
+        //Show the navigation bar
+        menuBar.style.display = 'flex';
+        menuBar.classList.add('sticky-nav');
+        
+        header.style.display = 'none';
+        
+        //Show the navigation bar
+        menuBar.style.display = 'flex';
+        
+        //Move the main content up
+        mainContent.classList.add('move-content'); 
+        mainContent.style.paddingBottom = '200px';
 
-               //Show the menu bar
-               elementMenu.style.display = 'flex';
+        //Show the menu bar
+        elementMenu.style.display = 'flex';
     }
 
 

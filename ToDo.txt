@@ -2,3 +2,13 @@ ToDo List:
     -   make the resizable feature for canvas elements specific to certain elements
     -   Adjust elements to keep them aligned with bottom and right pages when page size is changed 
         (-300px if position is bigger then canvas height?)
+
+
+
+
+        Log Element:
+
+        - Display Element from Placeholder as default when item it first placed
+        
+         - Load Table section/info into Modal window when editing
+         - When saved insert Table info from modal back into the Selected element

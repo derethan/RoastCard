@@ -98,6 +98,10 @@ function cloneElement (element, dropZone){
     clone.classList.remove('origin-element');
     clone.classList.add('canvas-element');
 
+    // Customize the Element
+    customizeElement (clone);
+
+
     //Create unique ID For Clone
   
     //store element id in variable
@@ -130,5 +134,22 @@ function cloneElement (element, dropZone){
 
 
     console.log(clone); // DEBUG
+
+  }
+
+
+  function customizeElement (clone){
+
+    if (clone.classList.contains('log-element')) {
+
+        //remove element-title from the element
+        elementTitle = clone.querySelector('.element-title');
+        elementTitle.remove();
+
+        //display the log Table
+        logTable = clone.querySelector('.log-table');
+        logTable.style.display = 'block';
+        
+    }
 
   }

@@ -32,18 +32,6 @@ function editElement (canvasElementID, elementType){
     }
 }
 
-
-  /********************************************************************************
-  *   Function to Close the modal Window
-  *********************************************************************************/
-function closeModal () {
-  //get Session Data
-  let modalWindow = document.getElementById(sessionStorage.getItem ('modalWindow'));
-  modalWindow.style.display = "none";
-}
-
-
-
   /********************************************************************************
   *   Updated the Modal window content when the Modal is opened
   *     - Updated Elements that are populated with Javascript
@@ -63,9 +51,21 @@ function setModalData (){
     const dateLabel = document.getElementById ('currentDateLabel');
     dateLabel.textContent = getCurrentDate ();
   }
+  else if (elementType === 'log-element'){
+    getLogTableData ();
+
+  }
 }
 
-
+  /********************************************************************************
+  *   Function to Close the modal Window
+  *********************************************************************************/
+  function closeModal () {
+    //get Session Data
+    let modalWindow = document.getElementById(sessionStorage.getItem ('modalWindow'));
+    modalWindow.style.display = "none";
+  }
+  
 
   /********************************************************************************
   * Function to get the selected date item
@@ -79,7 +79,6 @@ function selectedDateItem () {
               return radios[i].value; // return the value of the selected radio button
           }
       }
-
   } 
   
   
@@ -91,6 +90,42 @@ function selectedDateItem () {
     let dateString = currentDate.toDateString ();
     return dateString;
   }
+
+  /********************************************************************************
+  *   Function to get the log table data from the selected element and append it to the modal window
+  *********************************************************************************/
+  function getLogTableData () {
+    //get Session Data
+    let selectedElement = sessionStorage.getItem('selectedElement');
+    let canvasElement = document.getElementById(selectedElement);
+    
+    // Load Table from the selectedElement
+    let logTable = canvasElement.querySelector('.log-table');
+
+    // Insert logTable into the modal window
+    let modalTable = document.getElementById('log-table');
+    modalTable.innerHTML = logTable.innerHTML;
+    
+
+    // Get the number of TH elements in the table
+    let columnCount = modalTable.rows[0].cells.length;
+
+    // for each TH Element, store the text of the TH
+    let columnHeaders = [];
+    for (let i = 0; i < columnCount; i++) {
+      columnHeaders.push(modalTable.rows[0].cells[i].innerHTML); //store the text of the TH
+    }
+
+    //replace the text of the TH with an input field
+    for (let i = 0; i < columnCount; i++) {
+      modalTable.rows[0].cells[i].innerHTML = '<input type="text" value="'+ columnHeaders[i] +'" maxlength="10">';
+    }
+
+  }
+
+
+
+
 
   /********************************************************************************
   *             Functions for Updating Each element are Below
@@ -142,13 +177,33 @@ function updateDate (){
 
 function updateRoastChart () {
 
+  //get Session Data
+  let selectedElement = sessionStorage.getItem('selectedElement');
+  let canvasElement = document.getElementById(selectedElement);
 
+  // Get the log-Table from the modal window
+  let modalTable = document.getElementById('log-table');
+
+  canvasElement.querySelector('.log-table').innerHTML = modalTable.innerHTML;  
+
+  // Get the number of TH elements in the table
+  let columnCount = modalTable.rows[0].cells.length;
+
+  // for each TH Element, store the content of the TH input field
+  let columnHeaders = [];
+  for (let i = 0; i < columnCount; i++) {
+    columnHeaders.push(modalTable.rows[0].cells[i].getElementsByTagName('input')[0].value); //store the text of the TH
+    canvasElement.querySelector('.log-table').rows[0].cells[i].innerHTML = columnHeaders[i];
+  }
   
 }
 
 // ToDo: Add Functionality to update the headings based on the user input
 //      Update the Time cells (first cell of each column), 
 //      should be a timestamp  based on the user set time intervals (30s, 1min, etc)
+
+
+
 
 function addColumn () {
 
@@ -166,12 +221,16 @@ if (columnCount < 8) {
     //if its the first row add a table Header
     if (i === 0) {
       const header = document.createElement('th');
-      header.innerHTML = "New Header";
+      const input = document.createElement('input');
+      input.type = 'text';
+      input.maxLength = '10';
+      input.placeholder = 'New Header';
+      header.appendChild(input);
       logTable.rows[i].appendChild(header);
     }
     else {
     const cell = logTable.rows[i].insertCell(-1); 
-    cell.innerHTML = "New Cell";
+    cell.innerHTML = " ";
     }
   }
 }
@@ -198,7 +257,7 @@ function addRow() {
   // Loop through each column and add a new cell
   for (let i = 0; i < table.rows[0].cells.length; i++) {
     const cell = row.insertCell(-1); 
-    cell.innerHTML = "New Cell";
+    cell.innerHTML = " ";
   }
 }
 function removeRow () {
@@ -224,6 +283,9 @@ ToDo: (Blocked Locally with CORS
   - Will Impliment for final release to clean up HTML Content
   - Replace the Each Modal window with a single edit-Element Modal.
   - Load the file containing the corresponding modal content to the selected element)
+
+
+ ToDo: Local Storage for Elements and location to keep data if browser is refreshed
 
 Example:
 
