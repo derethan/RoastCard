@@ -51,7 +51,7 @@ function editElement (canvasElementID, elementType){
       sessionStorage.setItem ('modalWindow', 'edit-element');
 
       loadModal (elementType);
-      modalWindow.style.display = "block";
+      modalWindow.style.display = "flex";
       }
     }
 }
