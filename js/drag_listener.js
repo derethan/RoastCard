@@ -1,7 +1,12 @@
+/******************************************************
+ *  This file contains the drag listener functions
+ *  - dragMoveListener(event) - This function is called when an element is dragged
+ *  - positionElement(element) - This function is called to position an element to the mouse position
+******************************************************/
 
-    // Create an object to store position informion
-    let elementPositions = {};
-    let mousePositions = {};
+// Create an object to store position informion
+let elementPositions = {};
+let mousePositions = {};
 
 
 function dragMoveListener(event) {
@@ -37,10 +42,14 @@ function dragMoveListener(event) {
     target.setAttribute('data-y', y);
 }
 
-// this function is used in the resizing
+// this function is used to enable the resizing
 window.dragMoveListener = dragMoveListener
 
 
+/******************************************************
+ *  Positions the canvas element to the mouse position
+ *  - Accounts for the size of the element
+******************************************************/
 
 function positionElement (element){
 
@@ -52,12 +61,12 @@ function positionElement (element){
     let elementWidth = element.offsetWidth;
     let elementHeight = element.offsetHeight;
 
+    //center the element on the mouse position
     x = x - (elementWidth/2);
     y = y - (elementHeight/2);
-    
-     // translate the element
+
+     // translate and update the element position
      element.style.transform = `translate(${x}px, ${y}px)`;
-     // update the position attributes
      element.setAttribute('data-x', x);
      element.setAttribute('data-y', y);
 
