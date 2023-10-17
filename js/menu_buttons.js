@@ -39,10 +39,10 @@ function saveCanvas () {
     let saveContents = canvasContainer.innerHTML;
 
     //prompt the user to enter a file name
-    var fileName = prompt("Please enter a file name", "RoastCard");
+    let fileName = prompt("Please enter a file name", "RoastCard");
     
     //save the contents of saveContent to a file
-    var blob = new Blob([saveContents], {type: "text/plain;charset=utf-8"});
+    let blob = new Blob([saveContents], {type: "text/plain;charset=utf-8"});
 
     // Prompt the user before downloading the file
     if (confirm("Do you want to download the RoastCard file?")) {

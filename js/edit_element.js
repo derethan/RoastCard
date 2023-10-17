@@ -304,16 +304,6 @@ function removeRow () {
 }
 /***********
  * 
- *  Edit Element Process
- * 
- *    - DBL Click element to open edit window modal 
- *      - TODO: (Add isEditable tag to Origin Elements and only open edit window accordingly)
- *    - Pass Element ID & Type to the Modal Window
- *    - Determine What Element window to display
- *      - Search element ID, if ID contains element X then display info in editWindow accordingly
- *    - Store information from user input fields (Text, Font size, number of columns, etc)
- *    - Update Canvas Element Data with Stored Information based on the element being edited
-
  ToDo: Local Storage for Elements and location to keep data if browser is refreshed
 */
 

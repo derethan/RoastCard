@@ -23,6 +23,7 @@ interact('.canvas-container')
 
         if (draggableElement.classList.contains('origin-element')) {
             dropzoneElement.classList.add('drop-active-noDrop');
+
         }},
     ondragenter: function (event) {
         const draggableElement = event.relatedTarget;
@@ -129,11 +130,14 @@ function cloneElement (element, dropZone){
     clone.setAttribute('id', canvasElementID);
     clone.setAttribute('ondblclick','editElement(`' + canvasElementID + '`,`' + elementID + '`' +')')
 
+
     //Append the clone to the canvas
     dropZone.appendChild(clone);
+    positionElement (clone);
 
-
-    console.log(clone); // DEBUG
+    if(debug == 1){
+        console.log(clone); // DEBUG
+    }
 
   }
 
