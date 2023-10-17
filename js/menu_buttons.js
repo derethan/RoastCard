@@ -38,13 +38,16 @@ function saveCanvas () {
     const canvasContainer = document.getElementById('canvas-container');
     let saveContents = canvasContainer.innerHTML;
 
+    //prompt the user to enter a file name
+    var fileName = prompt("Please enter a file name", "RoastCard");
+    
     //save the contents of saveContent to a file
     var blob = new Blob([saveContents], {type: "text/plain;charset=utf-8"});
 
     // Prompt the user before downloading the file
-    if (confirm("Do you want to download the RoadCard file?")) {
+    if (confirm("Do you want to download the RoastCard file?")) {
         // Save the Blob object as a file using the saveAs function from FileSaver.js
-        saveAs(blob, "roastcard.rlog");
+        saveAs(blob, fileName + ".rlog");
     }
 }
 
