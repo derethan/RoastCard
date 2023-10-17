@@ -8,6 +8,7 @@
     <link rel="icon" type="image/x-icon" href="img/favicon.ico">
 
     <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
 
     <title>Roast Card</title>
 
@@ -35,8 +36,10 @@
             </div>
 
             <div class="menu">
-                <div><button class="menu-button" id="save-button">Save</button></div>
-                <div><input type="button" class="menu-button" id="print-button" onclick="printCanvas ('canvas-container')" value="Print"></div>
+                <div><input type="button" class="menu-button" id="save-button" onclick="saveCanvas ()" value="Save"></div>
+                <div><input type="button" class="menu-button" id="load-button" onclick="loadCanvas ()" value="Load"></div>
+
+                <div><input type="button" class="menu-button" id="print-button" onclick="printCanvas ()" value="Print"></div>
                 <div><input type="button" class="menu-button" id="reset-button" onclick="resetCanvas ()" value="Reset"></div>
             </div>
         </div>

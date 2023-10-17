@@ -56,6 +56,7 @@ function editElement (canvasElementID, elementType){
     }
 }
 
+//function to load the modal window with the correct element type
 async function loadModal(elementType) {
   let data = await htmlContent[elementType];
   document.getElementById("edit-element").innerHTML = data;
