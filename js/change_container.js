@@ -8,7 +8,7 @@
 
 // Path: js\change_container.js
 
-const debug = 1; //Enable Debug Mode
+const debug = 0; //Enable Debug Mode
 
 
 document.addEventListener('DOMContentLoaded', function () {
