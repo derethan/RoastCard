@@ -10,7 +10,7 @@
 interact('.resizeCanvas')
   .resizable({
     // resize from all edges and corners
-    edges: { left: true, right: true, bottom: true, top: false },
+    edges: { left: false, right: false, bottom: true, top: false },
 
     listeners: {
       move (event) {
