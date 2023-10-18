@@ -1,28 +1,29 @@
-        <!-- Modal content container-->
-        <div class="modal-content">
-            <div class="modal-header"><p>Setup your Log Chart Below</p></div>
-            <div class="modal-body">
+    <!-- Modal content container-->
+<div class="modal-content">
+    <div class="modal-header"><p>Setup your Log Chart Below</p></div>
+    <div class="modal-body">
 
-    <div class="log-container">
+        <div class="log-container">
 
-        <div class="log">
-            <table class="modal-log-table" id="log-table"></table>
-
-            <div class="plus-munis-bttn">
-                <button class="minus-button" id="minus-button" onclick="removeColumn ()">-</button>
-                <button class="plus-button" id="plus-button" onclick="addColumn ()">+</button>
+            <div class="log">
+                <table class="modal-log-table" id="log-table"></table>
             </div>
-        </div>
 
-            <div class="plus-munis-bttn">
-                <button class="minus-button" id="minus-button" onclick="removeRow ()">-</button>
-                <button class="plus-button" id="plus-button" onclick="addRow ()">+</button>
+            <div class="log-button-container">
+                <div class="plus-munis-bttn">
+                    <button class="minus-button" id="minus-button" onclick="removeColumn ()">-</button>
+                    <button class="plus-button" id="plus-button" onclick="addColumn ()">+</button>
+                </div>
+                <div class="plus-munis-bttn">
+                    <button class="minus-button" id="minus-button" onclick="removeRow ()">-</button>
+                    <button class="plus-button" id="plus-button" onclick="addRow ()">+</button>
+                </div>
             </div>
         </div>
     </div>
 
-            <div class="modal-footer">
-                <input type="button" class="menu-buttons" id="closeButton" value="Close" onclick="closeModal ()">
-                <input type="button" class="menu-buttons" id="applyButton" value="Apply" onclick="updateRoastChart ()">
-            </div>
-        </div>
+    <div class="modal-footer">
+        <input type="button" class="modal-buttons" id="closeButton" value="Close" onclick="closeModal ()">
+        <input type="button" class="modal-buttons" id="applyButton" value="Apply" onclick="updateRoastChart ()">
+    </div>
+</div>
