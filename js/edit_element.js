@@ -56,21 +56,20 @@ function editElement (canvasElementID, elementType){
     }
 }
 
-//function to load the modal window with the correct element type
-async function loadModal(elementType) {
-  let data = await htmlContent[elementType];
-  document.getElementById("edit-element").innerHTML = data;
-
-  setModalData ();
-
-}
-
 
   /********************************************************************************
-  *   Updated the Modal window content when the Modal is opened
+  *   Update the Modal window content when the Modal is opened
   *     - Updated Elements that are populated with Javascript
   *     - Updated Selections with Current Element Info (Existing title's added to textfields, etc)
   *********************************************************************************/
+
+  //function to load the modal window with the correct element type
+async function loadModal(elementType) {
+  let data = await htmlContent[elementType];
+  document.getElementById("edit-element").innerHTML = data;
+  setModalData ();
+}
+
 function setModalData (){
 
   //get Session Data
@@ -83,7 +82,6 @@ function setModalData (){
   }
   else if (elementType === 'date-element'){
     const dateLabel = document.getElementById ('currentDateLabel');
-    console.log(dateLabel);
     dateLabel.textContent = getCurrentDate ();
   }
   else if (elementType === 'log-element'){
@@ -108,7 +106,6 @@ function setModalData (){
 function selectedDateItem () {
   // Get all the radio buttons with name 'dateOptions'
   let radios = document.getElementsByName('dateOptions');
-  
       for(let i = 0; i < radios.length; i++) {
           if(radios[i].checked) {
               return radios[i].value; // return the value of the selected radio button
@@ -183,11 +180,19 @@ function updateTitle () {
   canvasElement.getElementsByTagName('h1')[0].style.color = fontColor;
 
   switch (fontSize) {
+    case 'smallest': canvasElement.getElementsByTagName('h1')[0].style.fontSize = '12px'
+    break;
+    case 'smaller': canvasElement.getElementsByTagName('h1')[0].style.fontSize = '18px'
+    break;
     case 'small': canvasElement.getElementsByTagName('h1')[0].style.fontSize = '24px'
     break;
-    case 'medium': canvasElement.getElementsByTagName('h1')[0].style.fontSize = '32px'
+    case 'medium': canvasElement.getElementsByTagName('h1')[0].style.fontSize = '36px'
     break;
-    case "large": canvasElement.getElementsByTagName('h1')[0].style.fontSize = '38px'
+    case "large": canvasElement.getElementsByTagName('h1')[0].style.fontSize = '48px'
+    break;
+    case "larger": canvasElement.getElementsByTagName('h1')[0].style.fontSize = '60px'
+    break;
+    case "largest": canvasElement.getElementsByTagName('h1')[0].style.fontSize = '72px'
   }
 }
 

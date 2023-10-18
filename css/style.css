@@ -72,6 +72,9 @@ h1 {
 
   height: 100%;
 }
+.column {
+  flex-direction: column;
+}
 /*****************************************************************
   - Header Section
 ******************************************************************/
@@ -447,7 +450,6 @@ main {
   padding: 10px;
 
   width: 100%;
-  border: 1px solid #000000;
 
 }
 /* The modal footer buttons Button */
@@ -460,10 +462,12 @@ main {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  margin: 25px;
+  margin: 5px;
   -webkit-transition-duration: 0.4s; /* Safari */
   transition-duration: 0.4s;
   cursor: pointer;
+
+  border-radius: 5px;
 }
 
 .modal-buttons:hover {
@@ -478,6 +482,7 @@ main {
   .new-card-button {
     background-color: var(--burgundy);
     border: none;
+    border-radius: 5px;
     color: var(--cream);
     padding: 15px 32px;
     text-align: center;
@@ -502,7 +507,7 @@ main {
   .plus-button, .minus-button {
     display: inline-block;
     background-color: var(--coffee);
-    color: white;
+    color: var(--cream);
 
     border: none;
     border-radius: 30%;
@@ -518,6 +523,8 @@ main {
     
   }
   .plus-button:hover, .minus-button:hover {
+    background-color: var(--gold);
+    color: var(--espresso);
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
   }
 
@@ -549,32 +556,66 @@ main {
     color: var(--cream);
   
     width: 100%;
-    padding: 0px 20px;
+    padding: 0px 10px;
     margin: 8px 0;
     box-sizing: border-box;
     border: none;
   }
+  input[type=date] {
+    background-color: var(--cream);
+    color: var(--espresso);
+    font-size: 18px;
+    width: 100%;
+    box-sizing: border-box;
+    border: none;
+  }
+  input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    background-color: var(--espresso);
+    display: inline-block;
+    vertical-align: middle;
+ 
+  }
+  /* Style the radio button when it is checked */
+  input[type="radio"]:checked {
+    background-color: var(--burgundy);
+  }
+    /* Style the radio button when hovered */
+    input[type="radio"]:hover {
+      background-color: var(--gold);
+    }
   .log-container {
     display: flex;
     flex-direction: column;
-    
-    height: 100%;
+    gap: 24px;
+    max-height: 60vh;
     padding: 10px;
-
-    border: 1px solid #000000;
-  }
+    overflow: auto;
+    }
   .log {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
 
-    border: 1px solid #000000;
+    border: 1px solid var(--espresso);
   }
-
+  .log-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
   .plus-munis-bttn {
     display: flex;
     justify-content: center;
+  }
+  .plus-munis-bttn p {
+    padding-right: 10px;
   }
 
   table {
@@ -593,6 +634,9 @@ main {
   }
   
   tr:nth-child(even) {
-    background-color: #dddddd;
+    background-color: var(--cream);
+  }
+  tr:nth-child(odd) {
+    background-color:  beige;
   }
 
