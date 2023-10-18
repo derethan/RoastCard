@@ -45,7 +45,7 @@ function saveCanvas () {
     let blob = new Blob([saveContents], {type: "text/plain;charset=utf-8"});
 
     // Prompt the user before downloading the file
-    if (confirm("Do you want to download the RoastCard file?")) {
+    if (fileName) {
         // Save the Blob object as a file using the saveAs function from FileSaver.js
         saveAs(blob, fileName + ".rlog");
     }
