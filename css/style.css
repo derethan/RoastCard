@@ -12,7 +12,14 @@ This file is used to style the Roast Card Website.
   --gold: #d4af37; /*buttons or other important elements,  add a touch of luxury and warmth*/
 
   --espresso: #2c1e12; /*text and darker accents, provides contrast and elegance.*/
+  
+  --displayFont: 'Playfair Display', serif;
 
+  --scriptFont: 'pacifico', cursive;
+
+  --contemporaryFont: 'Open Sans', sans-serif;
+
+  --formalFont: 'Times New Roman', Times, serif;
 }
 
 /* Reset some default styles */
@@ -46,11 +53,7 @@ body {
     background-color: var(--cream);
     overflow-x: hidden; /* Disable horizontal scroll */
 }
-h1 {
-  margin-bottom: 10px;
-  letter-spacing: 5px;
-  text-wrap: wrap;
-}
+
 .fade-out {
   opacity: 0;
   transition: opacity 1s ease-in-out;
@@ -96,9 +99,11 @@ header {
   font-style: bold;
   font-family: Vina Sans;
 }
+
 .header-container h4 {
   margin: 0; /* Remove default margins to ensure consistent spacing */
   font-style: italic; /* Apply italic font style */
+  color: var(--gold);
 }
 
 .header-img, .header-img img {
@@ -109,6 +114,11 @@ max-width: 100px;
   display: flex;
   flex-direction: column;
   color: var(--cream);
+}
+.header-text h1 {
+  margin-bottom: 10px;
+  letter-spacing: 5px;
+  text-wrap: wrap;
 }
 .hide-header {
   transform: translateY(-100%);
@@ -321,8 +331,18 @@ main {
 
   max-width: 100%;
   height: 50px;
-
   margin: 5px;
+
+  border: 1px solid var(--espresso);
+  border-radius: 5px;
+
+  background-color: var(--burgundy);
+  color: var(--cream);
+}
+.origin-element:hover {
+  background-color: var(--espresso);
+  color: var(--gold);
+  
 }
 
 .canvas-element {
@@ -337,18 +357,16 @@ main {
   left: 30px;
 }
 
-.title-element {
-  color: #212121;
+.canvas-element.title-element {
+  color: var(--espresso);
   padding: 5px;
 }
-.date-element {
-  color: #212121;
+.canvas-element.date-element {
+  color: var(--coffee);
   padding: 5px;
 }
-.log-element {
-  color: blue;
+.canvas-element.log-element {
   padding: 5px;
-
 }
 .log-table {
   display: none;
@@ -363,7 +381,8 @@ main {
 .modal-log-table tr {
   text-align: left;
   padding: 5px;
-  border: 1px solid black;
+  border: 1px solid var(--espresso);
+  color: var(--cream);
 
   min-width: 75px;
   height: 32px;
@@ -457,7 +476,7 @@ main {
   background-color: var(--burgundy);
   border: none;
   color: var(--cream);
-  padding: 15px 32px;
+  padding: 0px 32px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -468,6 +487,7 @@ main {
   cursor: pointer;
 
   border-radius: 5px;
+
 }
 
 .modal-buttons:hover {
@@ -527,6 +547,13 @@ main {
     color: var(--espresso);
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
   }
+  .delete-button {
+    cursor: pointer;
+  }
+  .delete-button:hover {
+    content: url("../img/delete-dark.png");
+  }
+
 
 
 /*****************************************************************

@@ -18,7 +18,7 @@
     <header>
         <div class="header-container">
             
-            <div class="header-img"><a href="index.html"><img src="img/logo.png" alt="Roast Card Logo"></a></div>
+            <div class="header-img"><a href="index.html"><img src="img/logo-color.png" alt="Roast Card Logo"></a></div>
         
             <div class="header-text">
                 <h1>Roast Card</h1>
@@ -31,7 +31,7 @@
     <nav>
         <div class="menubar-container sticky-nav" id="menu-bar" style="display: none;">
             <div class="menubar-logo">
-                <a href="index.html"><img src="img/logo.png" alt="Roast Card Logo"></a> 
+                <a href="index.html"><img src="img/logo-color.png" alt="Roast Card Logo"></a> 
                 <h2>Roast Card</h2>
             </div>
 
@@ -119,6 +119,53 @@
 
         <!-- Modal for Editing Element -->
         <div id="edit-element" class="modal" style="display: none;"></div> 
+
+
+        <!-- Test Modal -->
+        <div id="modal-test" class="modal" style="display: none;">
+            <!-- Modal Content for Title Element -->
+        <div class="modal-content">
+            <div class="modal-header"><p> Change your text below</p></div>
+                <div class="modal-body">
+                    <div class="modal-title-content">
+
+                    <div class="centerContent"> 
+                        <label for="new-title" class="input-label">Enter your title Here:</label>
+                        <input type="text" id="new-title" name="title"  class="input-box" maxlength="16"> 
+                    </div>
+
+                    <div class="centerContent">
+                        <label for="font-size" class="input-label">Select a Text Size</label> <br />
+                        <select id="font-size" name="font-size" class="input-box">
+                            <option value="smallest" style="font-size:x-small;">Smallest</option>
+                            <option value="smaller" style="font-size:smaller;" >Smaller</option>
+                            <option value="small" style="font-size: small;">Small</option>
+                            <option value="medium" style="font-size: medium;">Medium</option>
+                            <option value="large" style="font-size: large;">Large</option>
+                            <option value="larger" style="font-size: larger;">Larger</option>
+                            <option value="largest" style="font-size: x-large;">Largest</option>
+                        </select>
+                    </div>
+                    <div class="centerContent">
+                        <label for="font-color" class="input-label">Select a text color</label><br />
+                        <input type="color" id="font-color" name="font-color" class="input-box">
+                    </div>
+                    </div>
+                </div>
+                
+            <div class="modal-footer">
+                <div class="img-container" style="width: 33%;">
+                    <img src="img/delete-cream.png" class="delete-button" alt="Click here to Delete" width="38px" height="50px" onclick="deleteElement ()">
+                </div>
+                <div class="button-container" style="width: 33%;">
+                <input type="button" class="modal-buttons" id="closeButton" value="Close" onclick="closeModal ()">
+                <input type="button" class="modal-buttons" id="applyButton" value="Apply" onclick="updateTitle ()">
+                </div>
+                <div class="spacer" style="width: 33%;"></div>
+            </div>
+        </div>
+    </div> 
+
 
     <footer>
         <div class="footer-container">

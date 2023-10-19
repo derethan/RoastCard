@@ -81,6 +81,16 @@ interact('.content-container').dropzone({
     }
 });
 
+interact('.element-bar').dropzone({
+
+    // only accept elements matching this CSS selector
+    accept: '.canvas-element',
+
+    ondrop: function (event) { 
+
+    }
+});
+
 function resetElement (element){
     const initialX = parseFloat(element.getAttribute('data-initial-x'));
     const initialY = parseFloat(element.getAttribute('data-initial-y'));
