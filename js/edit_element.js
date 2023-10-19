@@ -155,7 +155,16 @@ function selectedDateItem () {
 
   }
 
+function deleteElement () {
+  //get Session Data
+  let selectedElement = sessionStorage.getItem('selectedElement');
+  let canvasElement = document.getElementById(selectedElement);
 
+  // Remove the element from the canvas and close the modal window
+  canvasElement.remove();
+  closeModal ();
+
+}
 
 
 
