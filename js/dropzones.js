@@ -112,33 +112,13 @@ function cloneElement (element, dropZone){
     // Customize the Element
     customizeElement (clone);
 
+    let elementType = element.getAttribute('id');
+    let randomID = getID ();
+    let canvasElementID = randomID;
 
-    //Create unique ID For Clone
-  
-    //store element id in variable
-    let elementID = element.getAttribute('id');
-    let searchString = elementID;
-
-    //Get the number of canvas elements
-    const allElements = document.querySelectorAll('.canvas-element');
-
-    // Initialize a counter to keep track of matching elements
-    let canvasElementsLength = 0;
-
-    //search through all the canvas elements for the elementID
-    for (const element of allElements) {
-    const elementId = element.id;
-    
-    // Check if the element's ID contains the desired string
-    if (elementId && elementId.includes(searchString)) {canvasElementsLength++;}
-    }
-
-    //store the updated Element ID
-    let canvasElementID = elementID + '-' + canvasElementsLength;
-  
     //Set the ID of the clone
     clone.setAttribute('id', canvasElementID);
-    clone.setAttribute('ondblclick','editElement(`' + canvasElementID + '`,`' + elementID + '`' +')')
+    clone.setAttribute('ondblclick','editElement(`' + canvasElementID + '`,`' + elementType + '`' +')')
 
 
     //Append the clone to the canvas
@@ -151,6 +131,29 @@ function cloneElement (element, dropZone){
 
   }
 
+  function getID (){
+
+       //Get all the canvas elements
+       const allElements = document.querySelectorAll('.canvas-element');
+       let randomID = Math.floor(Math.random() * 9000) + 1000; //generate a random ID 4 Digits long
+
+       //if an element exists
+        if (allElements.length > 0) {
+            //search through all the canvas elements
+            for (const element of allElements) {
+                const canvasElementID = element.id;
+           
+                //if the random ID matches an existing element ID, generate a new ID
+                if (canvasElementID == randomID){
+                    getID ();
+                } else {
+                    return randomID;
+                }
+            }
+        } else {
+            return randomID;
+        }
+  }
 
   function customizeElement (clone){
 
