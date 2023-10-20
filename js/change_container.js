@@ -34,6 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
         canvasArea.style.width = '85%';
         canvasContainer.style.display = 'flex';
         resizableContainer.classList.add('resizeCanvas');
+        resizableContainer.setAttribute('data-canvas-bottom', 380);
         
         //Show the navigation bar
         menuBar.style.display = 'flex';
