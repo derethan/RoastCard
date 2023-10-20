@@ -224,7 +224,7 @@ function updateDate (){
   }
 }
 
-function updateRoastChart () {
+function updateLog () {
 
   //get Session Data
   let selectedElement = sessionStorage.getItem('selectedElement');

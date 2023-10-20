@@ -471,6 +471,18 @@ main {
   width: 100%;
 
 }
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+}
+.spacer {
+  width: 25%;
+} 
+.img-container {
+width: 25%;
+}
 /* The modal footer buttons Button */
 .modal-buttons {
   background-color: var(--burgundy);
@@ -489,7 +501,6 @@ main {
   border-radius: 5px;
 
 }
-
 .modal-buttons:hover {
   background-color: var(--espresso);
   color: var(--gold);
