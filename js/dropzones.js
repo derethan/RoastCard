@@ -155,6 +155,7 @@ function cloneElement (element, dropZone){
         }
   }
 
+  //ToDo: convert to use one function for all elements, instead of if statements
   function customizeElement (clone){
 
     if (clone.classList.contains('log-element')) {
