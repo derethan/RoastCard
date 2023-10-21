@@ -1,5 +1,5 @@
 # RoastCard
-Customizable Roast Card (AKA Logger) Application
+Customizable Roast Card (Coffee Roasting Log) Application
 
 ## What is RoastCard?
  Roast Card is an easy-to-use web interface that allows users to create their own custom coffee roasting log to suit their own style and needs. Templates can also be selected for reference or for those looking to start with a quick and easy log. Users may print or save a log to their computer and load it for future use or modifications.
