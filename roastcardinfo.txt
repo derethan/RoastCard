@@ -4,14 +4,6 @@ The idea is to create a sort of container for each of these with content inside 
 menu placeholder to the canvas and appear as the container of item(s).
 
 
-Equipment Details:
-Roaster
-Roast Type (Stovetop, Drum Machine, Burner, etc)
-Roaster Specific Details as per Roaster
-Gass Level
-Air
-
-
 Graphs/Data Analysis:
 Time over Temp Graphs (Temp - X, Time - Y), (Temp, Power, ROR (Change in Temp over time))
 Cupping Scores (make as creatable calculator)
@@ -25,7 +17,6 @@ Color Guide (Light to French with Number system)
 Component / Widget categories:
 
 Batch Details:
-    Title
     Roast ID
     Roasted By
     Date:
@@ -93,3 +84,11 @@ Roast Log Chart:
     Notes
 
 
+
+
+Equipment Details:
+Roaster
+Roast Type (Stovetop, Drum Machine, Burner, etc)
+Roaster Specific Details as per Roaster
+Gass Level
+Air

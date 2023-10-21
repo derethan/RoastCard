@@ -16,9 +16,12 @@ interact('.resizeCanvas')
       move (event) {
         let canvas = event.target;
         const canvasArea = document.getElementById('canvas-area');
+        const container = document.getElementById('content-container');
 
         // update the element's style
-        canvas.style.width = event.rect.width + 'px';
+        console.log(event.rect.height);
+        //container.style.height = event.rect.height + 500 + 'px';
+
         canvas.style.height = event.rect.height + 'px';
         canvasArea.style.height = event.rect.height + 50 + 'px';
         
@@ -38,7 +41,7 @@ interact('.resizeCanvas')
       })
     ],
     inertia: true,
-    autoScroll: false
+    autoScroll: true
   })
 
 

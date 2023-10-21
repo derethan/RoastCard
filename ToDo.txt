@@ -1,7 +1,7 @@
 ToDo List:
 
 
-Element Location Adjustments:
+Element Location Adjustments: Partially done
 
     -   Adjust elements to keep them aligned with bottom pages when page size is changed 
 
@@ -9,6 +9,17 @@ Element Location Adjustments:
         - When Page size is changed:
             - if any elements Y position is higher then the Y position of the bottom of the page
             - translate position of the element accordingly
+
+            Bug:  When the Canvas is larger then the window size it seems to
+                  shrink back to a smaller size to fast. Not sure whats causing it.
+
+                  Could be related to css scoll property
+
+                  Test Method: Make a Blank site with just a canvas Div and Resize script
+
+
+    - Might make more sence to have a fixed height and incoporate 
+    a function to add more pages rather then just resize through the API
 
 
 

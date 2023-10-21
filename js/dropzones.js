@@ -168,5 +168,15 @@ function cloneElement (element, dropZone){
         logTable.style.display = 'block';
         
     }
+    if (clone.classList.contains('note-element')) {
+
+        //remove element-title from the element
+        elementTitle = clone.querySelector('.element-title');
+        elementTitle.remove();
+
+        //Display the Note Text Area
+        notePad = clone.querySelector('.note-content');
+        notePad.style.display = 'block';
+    }
 
   }

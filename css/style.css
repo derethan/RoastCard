@@ -192,6 +192,7 @@ main {
   justify-content: flex-end;
   
   min-height: 70vh;
+  
 }
 .element-bar {
   display: flex;
@@ -357,6 +358,26 @@ main {
   left: 30px;
 }
 
+.element-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 36px;
+
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+
+  background-color: var(--burgundy);
+  color: var(--cream);
+}
+
+.element-content {
+  width: 100%;
+}
+
+
 .canvas-element.title-element {
   color: var(--espresso);
   padding: 5px;
@@ -368,6 +389,8 @@ main {
 .canvas-element.log-element {
   padding: 5px;
 }
+
+
 .log-table {
   display: none;
   height: 100%;
@@ -388,7 +411,18 @@ main {
   height: 32px;
 }
 
-
+.canvas-element.note-element {
+flex-direction: column;
+width: 300px;
+}
+.note-content {
+  display: none;
+  width: 100%;
+}
+.note-line {
+  height: 25px;
+  border-bottom: 1px dotted var(--espresso); /* or border-bottom: 1px solid black; */
+}
 /*****************************************************************
   - DropZone Styles
 ******************************************************************/

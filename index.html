@@ -65,7 +65,7 @@
 
                 <!--log Element-->
                 <div class="origin-element log-element draggable" id="log-element">         
-                    <p class="element-title">Log Chart</p>
+                    <h3 class="element-title">Log Chart</h3>
                     <table class="log-table">
                         <tr>
                             <th>Time</th>
@@ -77,13 +77,26 @@
                             <td></td>
                             <td></td>
                         </tr>
-        
                     </table>
                 </div>
-                
+
+                <!--Note Element-->
+                <div class="origin-element note-element draggable" id="note-element">         
+                    <h3 class="element-title">Notes</h3>
+                        <div class="note-content">
+                            <div class="element-header">
+                                <h3>Notes</h3>
+                            </div>
+                            
+                            <div class="element-content">
+                                <div class="note-line"></div>
+                                <div class="note-line"></div>
+                            </div>
+                        </div>
+                </div>
             </div>
 
-                        <!-- Contains a Container to center page contents, 
+                <!-- Contains a Container to center page contents, 
                 also adds the border effect with 2 overlapping containers. -->
             <div class="canvas-area" id="canvas-area">
 
@@ -109,7 +122,10 @@
                     </div>
 
                     <!-- Contains a Container for the Roast Card Canvas, Enables when user clicks the new-card button.-->
-                    <div class="canvas-container" id="canvas-container" style="display: none;"></div>
+                    <div class="canvas-container" id="canvas-container" style="display: none;">
+                    
+ 
+                    </div>
 
             </div>
 
