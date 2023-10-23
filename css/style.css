@@ -420,6 +420,7 @@ width: 300px;
   width: 100%;
 }
 .note-line {
+  background-color:  var(--cream);
   height: 25px;
   border-bottom: 1px dotted var(--espresso); /* or border-bottom: 1px solid black; */
 }
