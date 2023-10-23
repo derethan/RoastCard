@@ -10,7 +10,6 @@ let htmlContent = {};
 let sourcePath = 'https://raw.githubusercontent.com/derethan/RoastCard/main/html/';
 
 function preloadHTMLContent() {
-
   const originElements = document.querySelectorAll('.origin-element')
   const elementTypes = []; // Array of element types to preload
   for (element of originElements) {
@@ -28,6 +27,13 @@ function preloadHTMLContent() {
 
 // Call preloadHTMLContent() when the page loads
 window.addEventListener('load', preloadHTMLContent);
+
+
+/********************************************************************************
+*   Function to open and load the modal content for the selected element
+*     - editElement() opens the modal window and loads the content
+*     - loadModal() updates the content in the modal window
+*********************************************************************************/
 
 function editElement(canvasElementID, elementType) {
 
@@ -52,42 +58,24 @@ function editElement(canvasElementID, elementType) {
   }
 }
 
-/********************************************************************************
-*   Update the Modal window content when the Modal is opened
-*     - Updated Elements that are populated with Javascript
-*     - Updated Selections with Current Element Info (Existing title's added to textfields, etc)
-*********************************************************************************/
-
 //function to load the modal window with the correct element type
 async function loadModal(elementType) {
   let data = await htmlContent[elementType];
   document.getElementById("edit-element").innerHTML = data;
-  setModalData();
-}
 
-function setModalData() {
-
-  //get Session Data
-  let selectedElement = sessionStorage.getItem('selectedElement');
-  let elementType = sessionStorage.getItem('elementType');
-
-
-  //Replace with switch statement
-  if (elementType === 'title-element') {
-    let title = document.getElementById(selectedElement).getElementsByTagName('h1')[0].innerHTML;
-    document.getElementById('new-title').value = title;
-  } else if (elementType === 'date-element') {
-    const dateLabel = document.getElementById('currentDateLabel');
-    dateLabel.textContent = getCurrentDate();
-  } else if (elementType === 'log-element') {
-    getLogTableData();
-  } else if (elementType === 'note-element') {
-    getNoteData();
+  let functionName = 'get' + elementType + 'Data';
+  functionName = functionName.replace('-element', '');
+  
+  try {
+    window[functionName]();
+  }
+  catch (err) {
+    console.log('Function: ' + functionName + '() does not exist');
   }
 }
 
 /********************************************************************************
-*   Function to Close the modal Window
+*   Function to Close the modal Window and delete the element
 *********************************************************************************/
 function closeModal() {
   //get Session Data
@@ -95,34 +83,35 @@ function closeModal() {
   modalWindow.style.display = "none";
 }
 
+function deleteElement() {
+  //get Session Data
+  let selectedElement = sessionStorage.getItem('selectedElement');
+  let canvasElement = document.getElementById(selectedElement);
 
-/********************************************************************************
-* Function to get the selected date item
-*********************************************************************************/
-function selectedDateItem() {
-  // Get all the radio buttons with name 'dateOptions'
-  let radios = document.getElementsByName('dateOptions');
-  for (let i = 0; i < radios.length; i++) {
-    if (radios[i].checked) {
-      return radios[i].value; // return the value of the selected radio button
-    }
-  }
+  // Remove the element from the canvas and close the modal window
+  canvasElement.remove();
+  closeModal();
 }
 
 
 /********************************************************************************
-*   Function to Set the current date for the Edit Date element Modal
+*   GET FUNCTIONS:      
+      - Functions to update the modal window content based on the corresponding element
 *********************************************************************************/
-function getCurrentDate() {
-  let currentDate = new Date();
-  let dateString = currentDate.toDateString();
-  return dateString;
+function gettitleData() {
+  //get Session Data
+  let selectedElement = sessionStorage.getItem('selectedElement');
+
+  let title = document.getElementById(selectedElement).getElementsByTagName('h1')[0].innerHTML;
+  document.getElementById('new-title').value = title;
 }
 
-/********************************************************************************
-*   Function to get the log table data from the selected element and append it to the modal window
-*********************************************************************************/
-function getLogTableData() {
+function getdateData () {
+  const dateLabel = document.getElementById('currentDateLabel');
+  dateLabel.textContent = getCurrentDate();
+}
+
+function getlogData() {
   //get Session Data
   let selectedElement = sessionStorage.getItem('selectedElement');
   let canvasElement = document.getElementById(selectedElement);
@@ -150,18 +139,7 @@ function getLogTableData() {
   }
 }
 
-function deleteElement() {
-  //get Session Data
-  let selectedElement = sessionStorage.getItem('selectedElement');
-  let canvasElement = document.getElementById(selectedElement);
-
-  // Remove the element from the canvas and close the modal window
-  canvasElement.remove();
-  closeModal();
-
-}
-
-function getNoteData() {
+function getnoteData() {
   //get Session Data
   let selectedElement = sessionStorage.getItem('selectedElement');
   let canvasElement = document.getElementById(selectedElement);
@@ -175,7 +153,8 @@ function getNoteData() {
 }
 
 /********************************************************************************
-*             Functions for Updating Each element are Below
+*   UPDATE FUNCTIONS:    
+      - Functions for Updating Each element are Below
 *********************************************************************************/
 
 // This function is called when the user clicks the Apply Button
@@ -371,4 +350,25 @@ function removeLine() {
     // Remove the last line of the modalNoteBody
     modalNoteBody.removeChild(modalNoteBody.lastElementChild);
   }
+}
+
+
+/********************************************************************************
+* Function to get the selected date item from the radio buttons
+* Function to get the current date
+*********************************************************************************/
+function selectedDateItem() {
+  // Get all the radio buttons with name 'dateOptions'
+  let radios = document.getElementsByName('dateOptions');
+  for (let i = 0; i < radios.length; i++) {
+    if (radios[i].checked) {
+      return radios[i].value; // return the value of the selected radio button
+    }
+  }
+}
+
+function getCurrentDate() {
+  let currentDate = new Date();
+  let dateString = currentDate.toDateString();
+  return dateString;
 }
