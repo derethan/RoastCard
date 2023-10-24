@@ -78,6 +78,15 @@ body {
 .column {
   flex-direction: column;
 }
+.flexcontainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.hide {
+  display: none;
+}
 /*****************************************************************
   - Header Section
 ******************************************************************/
@@ -389,7 +398,10 @@ main {
 .canvas-element.log-element {
   padding: 5px;
 }
-
+.canvas-element.note-element {
+  flex-direction: column;
+  width: 300px;
+  }
 
 .log-table {
   display: none;
@@ -410,11 +422,6 @@ main {
   min-width: 75px;
   height: 32px;
 }
-
-.canvas-element.note-element {
-flex-direction: column;
-width: 300px;
-}
 .note-content {
   display: none;
   width: 100%;
@@ -422,7 +429,13 @@ width: 300px;
 .note-line {
   background-color:  var(--cream);
   height: 25px;
-  border-bottom: 1px dotted var(--espresso); /* or border-bottom: 1px solid black; */
+  border-bottom: 1px dotted var(--espresso); 
+}
+.element-line {
+  background-color: var(--cream);
+  border-bottom: 1px solid var(--espresso);
+
+  padding: 5px;
 }
 /*****************************************************************
   - DropZone Styles

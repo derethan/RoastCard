@@ -14,7 +14,7 @@
 
 </head>
 
-<body>
+<body>      
     <header>
         <div class="header-container">
             
@@ -54,12 +54,14 @@
             <div class="element-bar" id="element-bar" style="display: none;">
 
                 <!--Title Element-->
-                <div class="origin-element title-element draggable" id="title-element">         
+                <div class="origin-element title-element draggable" id="title-element">
+                    <h3 class="element-title"></h3>      
                         <h1>Title</h1>
                 </div>
 
                 <!--Date Element-->
-                <div class="origin-element date-element draggable" id="date-element">         
+                <div class="origin-element date-element draggable" id="date-element">  
+                    <h3 class="element-title"></h3>       
                         <h3>Date</h3>
                 </div>
 
@@ -94,7 +96,24 @@
                             </div>
                         </div>
                 </div>
-            </div>
+                
+                <!--Batch Details Element-->
+                <div class="origin-element batch-element draggable" id="batch-element">    
+                    <h3 class="element-title">Batch Info</h3>
+   
+                    <div class="flexcontainer hide" id="element">
+                        <div class="element-header">
+                            <h3>Batch Details</h3>
+                        </div>
+                        <div class="element-content">
+                            <div class="element-line"><p>Batch ID:</p></div>
+                            <div class="element-line"><p>Equipment: </p></div>
+                            <div class="element-line"><p>Roasted By: </p></div>
+                        </div>                    
+                    </div>
+                </div>
+            
+            </div> <!-- End of Element Bar -->
 
                 <!-- Contains a Container to center page contents, 
                 also adds the border effect with 2 overlapping containers. -->
@@ -121,9 +140,11 @@
                         </div>
                     </div>
 
-                    <!-- Contains a Container for the Roast Card Canvas, Enables when user clicks the new-card button.-->
+                    <!-- Contains a Container for the Roast Card Canvas, Enabled when user clicks the new-card button.-->
                     <div class="canvas-container" id="canvas-container" style="display: none;">
                     
+                                        <!--Batch Element-->
+
  
                     </div>
 

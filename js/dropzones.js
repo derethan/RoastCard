@@ -81,15 +81,7 @@ interact('.content-container').dropzone({
     }
 });
 
-interact('.element-bar').dropzone({
 
-    // only accept elements matching this CSS selector
-    accept: '.canvas-element',
-
-    ondrop: function (event) { 
-
-    }
-});
 
 function resetElement (element){
     const initialX = parseFloat(element.getAttribute('data-initial-x'));
@@ -109,12 +101,12 @@ function cloneElement (element, dropZone){
     clone.classList.remove('origin-element');
     clone.classList.add('canvas-element');
 
-    // Customize the Element
-    customizeElement (clone);
-
     let elementType = element.getAttribute('id');
     let randomID = getID ();
     let canvasElementID = randomID;
+
+    // Customize the Element
+    customizeElement (clone, elementType);
 
     //Set the ID of the clone
     clone.setAttribute('id', canvasElementID);
@@ -156,28 +148,23 @@ function cloneElement (element, dropZone){
   }
 
   //ToDo: convert to use one function for all elements, instead of if statements
-  function customizeElement (clone){
+  function customizeElement (clone, elementType){
+
+    //remove element-title from the element
+    elementTitle = clone.querySelector('.element-title');
+    elementTitle.remove();
 
     if (clone.classList.contains('log-element')) {
-
-        //remove element-title from the element
-        elementTitle = clone.querySelector('.element-title');
-        elementTitle.remove();
-
         //display the log Table
         logTable = clone.querySelector('.log-table');
         logTable.style.display = 'block';
         
     }
     if (clone.classList.contains('note-element')) {
-
-        //remove element-title from the element
-        elementTitle = clone.querySelector('.element-title');
-        elementTitle.remove();
-
         //Display the Note Text Area
         notePad = clone.querySelector('.note-content');
         notePad.style.display = 'block';
     }
+    
 
   }
