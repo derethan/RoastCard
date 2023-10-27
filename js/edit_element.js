@@ -162,8 +162,23 @@ function getbatchData () {
   let batchContent = canvasElement.querySelector('.mainElementContainer').innerHTML;
 
   // Insert Content into the modal window
-  modalBatch = document.getElementById('batch-content');
-  modalBatch.innerHTML = batchContent;
+  modelContent = document.getElementById('batch-content');
+  modelContent.style.display = 'block';
+  modelContent.innerHTML = batchContent;
+}
+
+function getbeanData () {
+  //get Session Data
+  let selectedElement = sessionStorage.getItem('selectedElement');
+  let canvasElement = document.getElementById(selectedElement);
+
+  // Load Content from the selectedElement
+  let beanContent = canvasElement.querySelector('.mainElementContainer').innerHTML;
+
+  // Insert Content into the modal window
+  modelContent = document.querySelector ('modal-body').querySelector('mainElementContainer');
+  modelContent.style.display = 'block';
+  modelContent.innerHTML = beanContent;
 }
 /********************************************************************************
 *   UPDATE FUNCTIONS:    
