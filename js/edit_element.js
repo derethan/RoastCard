@@ -70,9 +70,13 @@ async function loadModal(elementType) {
     window[functionName]();
   }
   catch (err) {
-    console.log('Function: ' + functionName + '() does not exist');
+    console.log('Error Loading Function: ' + functionName);
+    console.log(err);
   }
+
+  
 }
+
 
 /********************************************************************************
 *   Function to Close the modal Window and delete the element
@@ -162,7 +166,7 @@ function getbatchData () {
   let batchContent = canvasElement.querySelector('.mainElementContainer').innerHTML;
 
   // Insert Content into the modal window
-  modelContent = document.getElementById('batch-content');
+  modelContent = document.querySelector ('.modal-body').querySelector('.mainElementContainer');
   modelContent.style.display = 'block';
   modelContent.innerHTML = batchContent;
 }
@@ -176,10 +180,12 @@ function getbeanData () {
   let beanContent = canvasElement.querySelector('.mainElementContainer').innerHTML;
 
   // Insert Content into the modal window
-  modelContent = document.querySelector ('modal-body').querySelector('mainElementContainer');
+  modelContent = document.querySelector ('.modal-body').querySelector('.mainElementContainer');
   modelContent.style.display = 'block';
   modelContent.innerHTML = beanContent;
 }
+
+
 /********************************************************************************
 *   UPDATE FUNCTIONS:    
       - Functions for Updating Each element are Below
