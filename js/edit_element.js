@@ -58,7 +58,7 @@ function editElement(canvasElementID, elementType) {
   }
 }
 
-//function to load the modal window with the correct element type
+//function to load the modal window for the selected element type
 async function loadModal(elementType) {
   let data = await htmlContent[elementType];
   document.getElementById("edit-element").innerHTML = data;
@@ -73,10 +73,21 @@ async function loadModal(elementType) {
     console.log('Error Loading Function: ' + functionName);
     console.log(err);
   }
-
-  
 }
 
+function loadElementContent () {
+  //get Session Data
+  let selectedElement = sessionStorage.getItem('selectedElement');
+  let canvasElement = document.getElementById(selectedElement);
+
+  //load the note content for the modal window
+  let canvasNotePad = canvasElement.querySelector('.mainElementContainer').innerHTML;
+
+   // Insert Content into the modal window
+  modelContent = document.querySelector ('.modal-body').querySelector('.mainElementContainer');
+  modelContent.style.display = 'block';
+  modelContent.innerHTML = canvasNotePad;
+}
 
 /********************************************************************************
 *   Function to Close the modal Window and delete the element
@@ -143,52 +154,26 @@ function getlogData() {
   }
 }
 
-
 /******MAY REPLACE WITH SINGLE FUNCTION FOR STATIC CONTENT*******/
 function getnoteData() {
-  //get Session Data
-  let selectedElement = sessionStorage.getItem('selectedElement');
-  let canvasElement = document.getElementById(selectedElement);
-
-  //load the note content for the modal window
-  let canvasNotePad = canvasElement.querySelector('.mainElementContainer').innerHTML;
-
-   // Insert Content into the modal window
-  modelContent = document.querySelector ('.modal-body').querySelector('.mainElementContainer');
-  modelContent.style.display = 'block';
-  modelContent.innerHTML = canvasNotePad;
+  //loads the data from the canvas element into the modal window
+  loadElementContent ();
 }
 
-
 function getbatchData () {
-  //get Session Data
-  let selectedElement = sessionStorage.getItem('selectedElement');
-  let canvasElement = document.getElementById(selectedElement);
-
-  // Load Content from the selectedElement
-  let batchContent = canvasElement.querySelector('.mainElementContainer').innerHTML;
-
-  // Insert Content into the modal window
-  modelContent = document.querySelector ('.modal-body').querySelector('.mainElementContainer');
-  modelContent.style.display = 'block';
-  modelContent.innerHTML = batchContent;
+  //loads the data from the canvas element into the modal window
+  loadElementContent ();
 }
 
 function getbeanData () {
-  //get Session Data
-  let selectedElement = sessionStorage.getItem('selectedElement');
-  let canvasElement = document.getElementById(selectedElement);
-
-  // Load Content from the selectedElement
-  let beanContent = canvasElement.querySelector('.mainElementContainer').innerHTML;
-
-  // Insert Content into the modal window
-  modelContent = document.querySelector ('.modal-body').querySelector('.mainElementContainer');
-  modelContent.style.display = 'block';
-  modelContent.innerHTML = beanContent;
+  //loads the data from the canvas element into the modal window
+  loadElementContent ();
 }
 
-
+function getweightData () {
+  //loads the data from the canvas element into the modal window
+  loadElementContent ();
+}
 /********************************************************************************
 *   UPDATE FUNCTIONS:    
       - Functions for Updating Each element are Below

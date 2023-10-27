@@ -47,7 +47,7 @@
 
 
     <main>
-
+        <!-- Contains a Container for the Main Section of the page containing the element bar and the content area-->
         <div class="content-container" id="content-container">
 
             <!-- Contains a Container for the Origin Element Bar-->
@@ -113,7 +113,7 @@
                         </div>
                         <div class="element-content">
                             <div class="element-line"><p>Roast ID:</p></div>
-                            <div class="element-line"><p>Roaster Name:</p></div>
+                            <div class="element-line"><p>Roasted By:</p></div>
                             <div class="element-line"><p>Equipment Type:</p></div>
                             <div class="element-line"><p>Batch Size:</p></div>
                         </div>                    
@@ -139,7 +139,38 @@
                     </div>
                 </div>                
             
-            </div> <!-- End of Element Bar -->
+                <!--Weight Details Element-->
+                <div class="origin-element weight-element draggable" id="weight-element">    
+                    <h3 class="element-title">Weight</h3>
+   
+                    <div class="mainElementContainer">
+                        <div class="element-header">
+                            <h3>Weight Details</h3>
+                        </div>
+                        <div class="element-content">
+                            <div class="element-line"><p>Green Weight:</p></div>
+                            <div class="element-line"><p>Roast Weight:</p></div>
+                            <div class="element-line"><p>Reduction (%):</p></div>
+                        </div>                    
+                    </div>
+                </div>              
+
+                <!--blend Details Element-->
+                <div class="origin-element blend-element draggable" id="blend-element">    
+                    <h3 class="element-title">Create a Blend</h3>
+   
+                    <div class="mainElementContainer">
+                        <div class="element-header">
+                            <h3>Create a Blend</h3>
+                        </div>
+                        <div class="element-content">
+                            <div class="element-line"><p>Blend Name:</p></div>
+                            <div class="element-line"><p>Components:</p></div>
+                        </div>                    
+                    </div>
+                </div>     
+            </div> 
+            <!-- End of Element Bar -->
 
                 <!-- Contains a Container to center page contents, 
                 also adds the border effect with 2 overlapping containers. -->
@@ -169,8 +200,6 @@
                     <!-- Contains a Container for the Roast Card Canvas, Enabled when user clicks the new-card button.-->
                     <div class="canvas-container" id="canvas-container" style="display: none;">
                     
-                                        <!--Batch Element-->
-
  
                     </div>
 
