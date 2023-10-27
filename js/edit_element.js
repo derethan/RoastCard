@@ -143,6 +143,8 @@ function getlogData() {
   }
 }
 
+
+/******MAY REPLACE WITH SINGLE FUNCTION FOR STATIC CONTENT*******/
 function getnoteData() {
   //get Session Data
   let selectedElement = sessionStorage.getItem('selectedElement');
@@ -151,9 +153,10 @@ function getnoteData() {
   //load the note content for the modal window
   let canvasNotePad = canvasElement.querySelector('.mainElementContainer').innerHTML;
 
-  // Insert notePad into the modal window
-  modalNote = document.getElementById('note-content');
-  modalNote.innerHTML = canvasNotePad;
+   // Insert Content into the modal window
+  modelContent = document.querySelector ('.modal-body').querySelector('.mainElementContainer');
+  modelContent.style.display = 'block';
+  modelContent.innerHTML = canvasNotePad;
 }
 
 
