@@ -105,8 +105,11 @@ function cloneElement (element, dropZone){
     let randomID = getID ();
     let canvasElementID = randomID;
 
-    // Customize the Element
-    customizeElement (clone, elementType);
+    //Remove the title and display the content for the clone
+    elementTitle = clone.querySelector('.element-title');
+    elementTitle.remove();
+    elementContent = clone.querySelector('.mainElementContainer');
+    elementContent = elementContent.style.display = 'block';
 
     //Set the ID of the clone
     clone.setAttribute('id', canvasElementID);
@@ -145,26 +148,4 @@ function cloneElement (element, dropZone){
         } else {
             return randomID;
         }
-  }
-
-  //ToDo: convert to use one function for all elements, instead of if statements
-  function customizeElement (clone, elementType){
-
-    //remove element-title from the element
-    elementTitle = clone.querySelector('.element-title');
-    elementTitle.remove();
-
-    if (clone.classList.contains('log-element')) {
-        //display the log Table
-        logTable = clone.querySelector('.log-table');
-        logTable.style.display = 'block';
-        
-    }
-    if (clone.classList.contains('note-element')) {
-        //Display the Note Text Area
-        notePad = clone.querySelector('.note-content');
-        notePad.style.display = 'block';
-    }
-    
-
   }

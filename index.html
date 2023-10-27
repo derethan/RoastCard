@@ -55,37 +55,43 @@
 
                 <!--Title Element-->
                 <div class="origin-element title-element draggable" id="title-element">
-                    <h3 class="element-title"></h3>      
+                    <h3 class="element-title">Title</h3>   
+                    <div class="mainElementContainer">   
                         <h1>Title</h1>
+                    </div>
                 </div>
 
                 <!--Date Element-->
                 <div class="origin-element date-element draggable" id="date-element">  
-                    <h3 class="element-title"></h3>       
+                    <h3 class="element-title">Date</h3>  
+                    <div class = "mainElementContainer">     
                         <h3>Date</h3>
+                    </div>
                 </div>
 
                 <!--log Element-->
                 <div class="origin-element log-element draggable" id="log-element">         
                     <h3 class="element-title">Log Chart</h3>
-                    <table class="log-table">
-                        <tr>
-                            <th>Time</th>
-                            <th>Temperature</th>
-                            <th>Notes</th>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    </table>
+                    <div class="mainElementContainer">
+                        <table class="log-table">
+                            <tr>
+                                <th>Time</th>
+                                <th>Temperature</th>
+                                <th>Notes</th>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
 
                 <!--Note Element-->
                 <div class="origin-element note-element draggable" id="note-element">         
                     <h3 class="element-title">Notes</h3>
-                        <div class="note-content">
+                        <div class="mainElementContainer">
                             <div class="element-header">
                                 <h3>Notes</h3>
                             </div>
@@ -101,14 +107,17 @@
                 <div class="origin-element batch-element draggable" id="batch-element">    
                     <h3 class="element-title">Batch Info</h3>
    
-                    <div class="flexcontainer hide" id="element">
+                    <div class="mainElementContainer">
                         <div class="element-header">
                             <h3>Batch Details</h3>
                         </div>
                         <div class="element-content">
                             <div class="element-line"><p>Batch ID:</p></div>
-                            <div class="element-line"><p>Equipment: </p></div>
-                            <div class="element-line"><p>Roasted By: </p></div>
+                            <div class="element-line"><p>Batch Name:</p></div>
+                            <div class="element-line"><p>Batch Type:</p></div>
+                            <div class="element-line"><p>Batch Size:</p></div>
+                            <div class="element-line"><p>Batch Start Date:</p></div>
+                            <div class="element-line"><p>Batch End Date:</p></div>
                         </div>                    
                     </div>
                 </div>

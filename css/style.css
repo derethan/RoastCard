@@ -242,7 +242,7 @@ main {
 
   padding: 30px;
 
-  height: 300px;
+  height: 10.5in; /* Standard Paper size */
   min-height: 300px;
   max-height: 10.5in; /* Standard Paper size */
 
@@ -404,7 +404,6 @@ main {
   }
 
 .log-table {
-  display: none;
   height: 100%;
   table-layout: fixed;
 }
@@ -422,7 +421,7 @@ main {
   min-width: 75px;
   height: 32px;
 }
-.note-content {
+.mainElementContainer {
   display: none;
   width: 100%;
 }
@@ -436,6 +435,7 @@ main {
   border-bottom: 1px solid var(--espresso);
 
   padding: 5px;
+  min-width: 250px;
 }
 /*****************************************************************
   - DropZone Styles
@@ -531,7 +531,7 @@ main {
 .img-container {
 width: 25%;
 }
-/* The modal footer buttons Button */
+/* The modal footer buttons */
 .modal-buttons {
   background-color: var(--burgundy);
   border: none;

@@ -145,13 +145,26 @@ function getnoteData() {
   let canvasElement = document.getElementById(selectedElement);
 
   //load the note content for the modal window
-  let canvasNotePad = canvasElement.querySelector('.note-content').innerHTML;
+  let canvasNotePad = canvasElement.querySelector('.mainElementContainer').innerHTML;
 
   // Insert notePad into the modal window
   modalNote = document.getElementById('note-content');
   modalNote.innerHTML = canvasNotePad;
 }
 
+
+function getbatchData () {
+  //get Session Data
+  let selectedElement = sessionStorage.getItem('selectedElement');
+  let canvasElement = document.getElementById(selectedElement);
+
+  // Load Content from the selectedElement
+  let batchContent = canvasElement.querySelector('.mainElementContainer').innerHTML;
+
+  // Insert Content into the modal window
+  modalBatch = document.getElementById('batch-content');
+  modalBatch.innerHTML = batchContent;
+}
 /********************************************************************************
 *   UPDATE FUNCTIONS:    
       - Functions for Updating Each element are Below
@@ -248,11 +261,11 @@ function updateNote() {
 
   // Get the notePad from the modal window
   modalNote = document.getElementById('note-content');
-  canvasElement.querySelector('.note-content').innerHTML = modalNote.innerHTML;
+  canvasElement.querySelector('.mainElementContainer').innerHTML = modalNote.innerHTML;
 }
 
 /********************************************************************************
-*             Functions for the Modal editing options are Below
+*             Functions to add and remove content from the elements
 *********************************************************************************/
 
 
@@ -342,7 +355,6 @@ function removeLine() {
 
   // Determine how many lines there are
   let lineCount = modalNoteBody.childElementCount;
-  console.log(lineCount);
 
   // If there is more then one line, remove the last line
   if (lineCount > 1) {
