@@ -80,7 +80,7 @@ function loadElementContent () {
   let selectedElement = sessionStorage.getItem('selectedElement');
   let canvasElement = document.getElementById(selectedElement);
 
-  //load the note content for the modal window
+  //load the content for the modal window
   let canvasNotePad = canvasElement.querySelector('.mainElementContainer').innerHTML;
 
    // Insert Content into the modal window
@@ -174,6 +174,7 @@ function getweightData () {
   //loads the data from the canvas element into the modal window
   loadElementContent ();
 }
+
 /********************************************************************************
 *   UPDATE FUNCTIONS:    
       - Functions for Updating Each element are Below
@@ -273,6 +274,79 @@ function updateNote() {
   canvasElement.querySelector('.mainElementContainer').innerHTML = modalNote.innerHTML;
 }
 
+function updateBlend() {
+  //get Session Data
+  let selectedElement = sessionStorage.getItem('selectedElement');
+  let canvasElement = document.getElementById(selectedElement);
+
+  // Get the blend from the modal window
+  modalBlend = document.querySelector('.modal-body').querySelector('.mainElementContainer');
+
+  //Get the number of components in the blend
+  let componentCount = modalBlend.querySelectorAll('.component').length; 
+
+  //for each component, replacde the input boxes with divs
+  for (let i = 0; i < componentCount; i++) {
+
+    //Store the name, weight, and ratio of each component
+    let blendNames = modalBlend.querySelectorAll('.component') [i].getElementsByTagName('input')[0].value;
+    let blendWeight = modalBlend.querySelectorAll('.component') [i].getElementsByTagName('input')[1].value;
+    let blendRatio = modalBlend.querySelectorAll('.component') [i].getElementsByTagName('input')[2].value;
+
+
+    //Convert the input boxes to divs
+    modalBlend.querySelectorAll('.component') [i].childNodes[0].innerHTML = blendNames;
+    modalBlend.querySelectorAll('.component') [i].childNodes[0].classList.add ('input-box');
+    modalBlend.querySelectorAll('.component') [i].childNodes[1].innerHTML = blendWeight;
+    modalBlend.querySelectorAll('.component') [i].childNodes[1].classList.add ('input-box');
+    modalBlend.querySelectorAll('.component') [i].childNodes[2].innerHTML = blendRatio;
+    modalBlend.querySelectorAll('.component') [i].childNodes[2].classList.add ('input-box');
+  }
+
+  //Update the canvas element with the new blend
+  canvasElement.querySelector('.mainElementContainer').innerHTML = modalBlend.innerHTML;
+
+  closeModal();
+}
+
+
+function getblendData () {
+  //loads the data from the canvas element into the modal window
+  loadElementContent ();
+
+  //get Session Data
+  let selectedElement = sessionStorage.getItem('selectedElement');
+  let canvasElement = document.getElementById(selectedElement);
+
+  // Get the blend from the modal window
+  modalBlend = document.querySelector('.modal-body').querySelector('.mainElementContainer');
+
+  let componentCount = canvasElement.querySelectorAll('.component').length; 
+
+  //If there is a component, replace the divs with input boxes
+  if (componentCount > 0) {
+    for (let i = 0; i < componentCount; i++) {
+
+      //Store the name, weight, and ratio of each component
+      let blendNames = canvasElement.querySelectorAll('.component') [i].getElementsByTagName('div')[0].innerHTML;
+      console.log(blendNames);
+
+      let blendWeight = canvasElement.querySelectorAll('.component') [i].getElementsByTagName('div')[1].innerHTML;
+      let blendRatio = canvasElement.querySelectorAll('.component') [i].getElementsByTagName('div')[2].innerHTML;
+
+      //Convert the divs to input boxes
+      modalBlend.querySelectorAll('.component') [i].childNodes[0].innerHTML = '<input type="text" class="input-box" value="' + blendNames + '" maxlength="20">';
+      modalBlend.querySelectorAll('.component') [i].childNodes[0].classList.remove ('input-box');
+      modalBlend.querySelectorAll('.component') [i].childNodes[1].innerHTML = '<input type="number" class="input-box" value="' + blendWeight + '" max="9999">';
+      modalBlend.querySelectorAll('.component') [i].childNodes[1].classList.remove ('input-box');
+      modalBlend.querySelectorAll('.component') [i].childNodes[2].innerHTML = '<input type="number" class="input-box" value="' + blendRatio + '" min="0" max="100" step="1">';
+      modalBlend.querySelectorAll('.component') [i].childNodes[2].classList.remove ('input-box');
+    }
+  }
+
+}
+
+
 /********************************************************************************
 *             Functions to add and remove content from the elements
 *********************************************************************************/
@@ -370,6 +444,71 @@ function removeLine() {
 
     // Remove the last line of the modalNoteBody
     modalNoteBody.removeChild(modalNoteBody.lastElementChild);
+  }
+}
+
+function addComponent () {
+  //Get the component container
+  const componentContainer = document.querySelector('.modal-body').getElementsByClassName ('element-line') [2];
+
+  //Create a new component div
+  const newComponent = document.createElement('div');
+  newComponent.classList.add('component');
+
+  //add 3 div inside newComponent
+  const componentName = document.createElement('div');
+  componentName.style.width = '30%';
+  const componentWeight = document.createElement('div');
+  componentWeight.style.width = '30%';
+  const componentRatio = document.createElement('div');
+  componentRatio.style.width = '30%';
+
+  //Create the input fields for each div
+  const nameInput = document.createElement('input');
+  nameInput.type = 'text';
+  nameInput.placeholder = 'Bean name';
+  nameInput.maxLength = '20';
+  nameInput.classList.add('input-box');
+
+  const weightInput = document.createElement('input');
+  weightInput.type = 'number';
+  weightInput.placeholder = 'Bean Weight';
+  weightInput.max = '9999';
+  weightInput.classList.add('input-box');
+
+  const ratioInput = document.createElement('input');
+  ratioInput.type = 'number';
+  ratioInput.placeholder = 'Bean Ratio';
+  ratioInput.min = '0';
+  ratioInput.max = '100';
+  ratioInput.step = '1';
+  ratioInput.classList.add('input-box');
+
+  //Append the input fields to the divs
+  componentName.appendChild(nameInput);
+  componentWeight.appendChild(weightInput);
+  componentRatio.appendChild(ratioInput);
+
+  //Append the divs to the newComponent
+  newComponent.appendChild(componentName);
+  newComponent.appendChild(componentWeight);
+  newComponent.appendChild(componentRatio);
+
+
+  //Append the newComponent to the componentContainer 
+  componentContainer.appendChild(newComponent);
+}
+
+function removeComponent () {
+  //Get the component container
+  const componentContainer = document.querySelector('.modal-body').getElementsByClassName ('element-line') [2];
+
+  //Determine how many components there are
+  let componentCount = componentContainer.childElementCount;
+
+  //If there is more then one component, remove the last component
+  if (componentCount > 1) {
+    componentContainer.removeChild(componentContainer.lastElementChild);
   }
 }
 
