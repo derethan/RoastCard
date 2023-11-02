@@ -19,7 +19,6 @@ interact('.resizeCanvas')
         const container = document.getElementById('content-container');
 
         // update the element's style
-        console.log(event.rect.height);
         //container.style.height = event.rect.height + 500 + 'px';
 
         canvas.style.height = event.rect.height + 'px';

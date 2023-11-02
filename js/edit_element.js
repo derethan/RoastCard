@@ -175,6 +175,45 @@ function getweightData () {
   loadElementContent ();
 }
 
+function getblendData () {
+  //loads the data from the canvas element into the modal window
+  loadElementContent ();
+
+  //get Session Data
+  let selectedElement = sessionStorage.getItem('selectedElement');
+  let canvasElement = document.getElementById(selectedElement);
+
+  // Get the blend from the modal window
+  modalBlend = document.querySelector('.modal-body').querySelector('.mainElementContainer');
+
+  let componentCount = canvasElement.querySelectorAll('.component').length; 
+
+  //If there is a component, replace the divs with input boxes
+  if (componentCount > 0) {
+    for (let i = 0; i < componentCount; i++) {
+
+      //Store the name, weight, and ratio of each component
+      let blendNames = canvasElement.querySelectorAll('.component') [i].getElementsByTagName('div')[0].innerHTML;
+      console.log(blendNames);
+
+      let blendWeight = canvasElement.querySelectorAll('.component') [i].getElementsByTagName('div')[1].innerHTML;
+      let blendRatio = canvasElement.querySelectorAll('.component') [i].getElementsByTagName('div')[2].innerHTML;
+
+      //Convert the divs to input boxes
+      modalBlend.querySelectorAll('.component') [i].childNodes[0].innerHTML = '<input type="text" class="input-box" value="' + blendNames + '" maxlength="20">';
+      modalBlend.querySelectorAll('.component') [i].childNodes[0].classList.remove ('input-box');
+      modalBlend.querySelectorAll('.component') [i].childNodes[1].innerHTML = '<input type="number" class="input-box" value="' + blendWeight + '" max="9999">';
+      modalBlend.querySelectorAll('.component') [i].childNodes[1].classList.remove ('input-box');
+      modalBlend.querySelectorAll('.component') [i].childNodes[2].innerHTML = '<input type="number" class="input-box" value="' + blendRatio + '" min="0" max="100" step="1">';
+      modalBlend.querySelectorAll('.component') [i].childNodes[2].classList.remove ('input-box');
+    }
+  }
+}
+
+function gettempData () {
+  //loads the data from the canvas element into the modal window
+  loadElementContent ();
+}
 /********************************************************************************
 *   UPDATE FUNCTIONS:    
       - Functions for Updating Each element are Below
@@ -270,7 +309,7 @@ function updateNote() {
   let canvasElement = document.getElementById(selectedElement);
 
   // Get the notePad from the modal window
-  modalNote = document.getElementById('note-content');
+  modalNote = document.querySelector('.modal-body').querySelector('.mainElementContainer');
   canvasElement.querySelector('.mainElementContainer').innerHTML = modalNote.innerHTML;
 }
 
@@ -307,43 +346,6 @@ function updateBlend() {
   canvasElement.querySelector('.mainElementContainer').innerHTML = modalBlend.innerHTML;
 
   closeModal();
-}
-
-
-function getblendData () {
-  //loads the data from the canvas element into the modal window
-  loadElementContent ();
-
-  //get Session Data
-  let selectedElement = sessionStorage.getItem('selectedElement');
-  let canvasElement = document.getElementById(selectedElement);
-
-  // Get the blend from the modal window
-  modalBlend = document.querySelector('.modal-body').querySelector('.mainElementContainer');
-
-  let componentCount = canvasElement.querySelectorAll('.component').length; 
-
-  //If there is a component, replace the divs with input boxes
-  if (componentCount > 0) {
-    for (let i = 0; i < componentCount; i++) {
-
-      //Store the name, weight, and ratio of each component
-      let blendNames = canvasElement.querySelectorAll('.component') [i].getElementsByTagName('div')[0].innerHTML;
-      console.log(blendNames);
-
-      let blendWeight = canvasElement.querySelectorAll('.component') [i].getElementsByTagName('div')[1].innerHTML;
-      let blendRatio = canvasElement.querySelectorAll('.component') [i].getElementsByTagName('div')[2].innerHTML;
-
-      //Convert the divs to input boxes
-      modalBlend.querySelectorAll('.component') [i].childNodes[0].innerHTML = '<input type="text" class="input-box" value="' + blendNames + '" maxlength="20">';
-      modalBlend.querySelectorAll('.component') [i].childNodes[0].classList.remove ('input-box');
-      modalBlend.querySelectorAll('.component') [i].childNodes[1].innerHTML = '<input type="number" class="input-box" value="' + blendWeight + '" max="9999">';
-      modalBlend.querySelectorAll('.component') [i].childNodes[1].classList.remove ('input-box');
-      modalBlend.querySelectorAll('.component') [i].childNodes[2].innerHTML = '<input type="number" class="input-box" value="' + blendRatio + '" min="0" max="100" step="1">';
-      modalBlend.querySelectorAll('.component') [i].childNodes[2].classList.remove ('input-box');
-    }
-  }
-
 }
 
 
@@ -421,8 +423,10 @@ function removeRow() {
 
 //Add a new line to the notePad
 function addLine() {
+
   //get the Body of the Modal NotePad
-  modalNoteBody = document.getElementById('note-content').querySelector('.element-content');
+  modalNoteBody = document.querySelector('.modal-body').querySelector('.mainElementContainer');
+  modalNoteBody = modalNoteBody.querySelector('.element-content');
 
   // Create a new div element with the class "note-line"
   const newLine = document.createElement('div');
@@ -434,7 +438,9 @@ function addLine() {
 
 function removeLine() {
   //get the Body of the Modal NotePad
-  modalNoteBody = document.getElementById('note-content').querySelector('.element-content');
+  //get the Body of the Modal NotePad
+  modalNoteBody = document.querySelector('.modal-body').querySelector('.mainElementContainer');
+  modalNoteBody = modalNoteBody.querySelector('.element-content');
 
   // Determine how many lines there are
   let lineCount = modalNoteBody.childElementCount;

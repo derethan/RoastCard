@@ -94,6 +94,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 mainContent.classList.add('move-content'); 
                 mainContent.style.paddingBottom = '200px';
 
+                resizableContainer.style.height = '10.5in';
+
                 //Show the menu bar
                 elementMenu.style.display = 'flex';
           
@@ -107,7 +109,7 @@ document.addEventListener('DOMContentLoaded', function () {
      *  Events related to the template-card Button
     *********************************************************************************/
 
-    templateCardButton.addEventListener('click', function () {
-    });
+    //templateCardButton.addEventListener('click', function () {
+    //    alert('This feature is not available yet');});
 
 });
