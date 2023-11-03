@@ -204,24 +204,22 @@ main {
   
 }
 .element-bar {
-  display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: stretch;
-
-  flex-wrap: wrap;
-  
+  text-align: center;
   position: fixed;
+
   left: 0;
   top: 74px;
+  padding-bottom: 125px;
   
   min-width: 15%;
   max-width: 20%;
-  height: 95vh;
+
+  height: 100%;
 
   background-color: var(--cream);
   border-right: 1px solid var(--burgundy);
-
   box-shadow: 4px 0px 10px 0px var(--coffee);
 
   z-index: 1;
