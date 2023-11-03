@@ -23,12 +23,12 @@ document.addEventListener('DOMContentLoaded', function () {
     const elementMenu = document.getElementById('element-bar');
 
     const newCardButton = document.getElementById('new-card');
-    const templateCardButton = document.getElementById('template-card');
+    const toolsButton = document.getElementById('toolsButton');
 
     const header = document.querySelector('header');
 
     // Enable Debug Mode - Hide Initial Start Page
-    if (debug == 1){
+    if (debug == 0){
         startContainer.style.display = 'none';
         //Show the canvas container
         canvasArea.style.width = '85%';
@@ -77,8 +77,9 @@ document.addEventListener('DOMContentLoaded', function () {
             startContainer.style.display = 'none';
             startContainer.classList.remove('fade-out');    
 
-            //Show the canvas container
-            canvasArea.style.width = '85%';
+
+            resizableContainer.style.height = '10.5in';
+            resizableContainer.style.width = '9in';
             canvasContainer.style.display = 'flex';
 
         //add event listener to wait for the hide-header animation to end
@@ -94,10 +95,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 mainContent.classList.add('move-content'); 
                 mainContent.style.paddingBottom = '200px';
 
-                resizableContainer.style.height = '10.5in';
+                if (window.innerWidth > 768) {
 
-                //Show the menu bar
+                //Show the canvas container
+                canvasArea.style.width = '85%';
+                //Show the Widget Menu
                 elementMenu.style.display = 'flex';
+                }
           
             }, {once: true});
 

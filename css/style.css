@@ -2,6 +2,10 @@
 This file is used to style the Roast Card Website.
   - index.html
 ******************************************************************/
+
+
+
+
 :root {
   --coffee: #6f4e37; /*Base color, Representing essance and warmth of coffee*/
 
@@ -106,7 +110,6 @@ header {
 .header-container h1 {
   margin: 0; /* Remove default margins to ensure consistent spacing */
   font-style: bold;
-  font-family: Vina Sans;
 }
 
 .header-container h4 {
@@ -123,11 +126,13 @@ max-width: 100px;
   display: flex;
   flex-direction: column;
   color: var(--cream);
+  font-family: var(--scriptFont);
 }
 .header-text h1 {
   margin-bottom: 10px;
   letter-spacing: 5px;
   text-wrap: wrap;
+  font-family: var(--displayFont);
 }
 .hide-header {
   transform: translateY(-100%);
@@ -209,6 +214,7 @@ main {
   text-align: center;
   position: fixed;
 
+
   left: 0;
   top: 74px;
   padding-bottom: 125px;
@@ -224,6 +230,8 @@ main {
 
   z-index: 1;
 }
+
+
 .canvas-area {
   display: flex;
   justify-content: center;
@@ -239,12 +247,6 @@ main {
   position: relative;
 
   padding: 30px;
-
-  height: 300px;
-  max-height: 10.5in; /* Standard Paper size */
-
-  min-width: 9in; /* Standard Paper size */
-  max-width: 9in; /* Standard Paper size */
 
   z-index: 0;
 }
@@ -279,10 +281,10 @@ main {
   width: 90%;
   color: var(--coffee);
 }
-.button-container {
+.start-button-container {
   display: flex;
   justify-content: center;
-  width: 90%;
+  gap: 10px;
 }
 
 .canvas-container {
@@ -322,6 +324,8 @@ main {
   color: var(--cream);
   font-size: 15px;
   padding-left: 24px;
+  padding-right: 24px;
+
 }
 .footer-about:hover {
   color: var(--gold);
@@ -392,9 +396,7 @@ main {
   color: var(--coffee);
   padding: 5px;
 }
-.canvas-element.log-element {
-  padding: 5px;
-}
+
 .canvas-element.note-element {
   flex-direction: column;
   width: 300px;
@@ -421,7 +423,7 @@ main {
 .mainElementContainer {
   display: none;
   flex-direction: column;
- /* width: 100%;*/
+  width: 100%;
 }
 .note-line {
   background-color:  var(--cream);
@@ -594,15 +596,14 @@ width: 25%;
     border: none;
     border-radius: 5px;
     color: var(--cream);
-    padding: 15px 32px;
+    padding: 10px 15px;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
     font-size: 16px;
-    margin: 25px;
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
     cursor: pointer;
+    width: 50%;
   }  
   .new-card-button:hover {
     background-color: var(--espresso);
@@ -766,4 +767,28 @@ width: 25%;
   align-items: center;
   gap: 10px;
   min-width: 300px;
+}
+
+
+@media screen and (max-width: 768px) {
+  .element-bar {
+    display: none;
+  }
+  .footer-about {
+    font-size: 10px;
+  }
+  .header-text h1{
+    font-size: 24px;
+  }
+  .header-text h4{
+    font-size: 12px;
+  }
+  .start-title {
+    font-size: 12px;
+  }
+  .start-text {
+    font-size: 12px;
+  }
+.new-card-button {
+  font-size: small;}
 }

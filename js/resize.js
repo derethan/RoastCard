@@ -101,14 +101,14 @@ interact('.resizeCanvas')
 
   }
   
-/*
+
     // Initialize the behavior for the canvas elements
-    interact('.canvas-element')
+    interact('.resize-width')
     .resizable({
         edges: {
             left: false,
             right: true,
-            bottom: true,
+            bottom: false,
             top: false,
         },
         listeners: {
@@ -132,4 +132,4 @@ interact('.resizeCanvas')
           })
         ],
         inertia: true
-      })*/
+      })
