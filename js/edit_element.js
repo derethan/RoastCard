@@ -219,9 +219,21 @@ function getblendData () {
   }
 }
 
-function gettempData () {
-  //loads the data from the canvas element into the modal window
-  loadElementContent ();
+async function gettempData () {
+    //loads the data from the canvas element into the modal window
+    loadElementContent ();
+    getSelectionData();
+}
+
+async function gettimingData () {
+    //loads the data from the canvas element into the modal window
+    loadElementContent ();
+    getSelectionData();
+}
+
+function getSelectionData () {
+  //Get session Data
+  let selectedElement = sessionStorage.getItem('elementType');
 
   const selectionContainer = document.querySelector('.modal-body').querySelector('.selection-content');
   const mainElementContainer = document.querySelector('.modal-body').querySelector('.mainElementContainer').querySelector('.element-content');
@@ -240,10 +252,23 @@ function gettempData () {
 
   //Store an array of selectible temperatures
   const tempArray = ['Ambient Temp:', 'Humidity:',"Yellowing Temp:", "Browing Temp:", "First Crack Temp:", "Second Crack Temp:", "Drop Temp:"];
+  const timingArray = ['Roast Start Time:', 'Roast End Time:', 'Roast Duration:', 'Yellowing Start Time:', 'Brown Start Time:', 'Maillard reaction Start Time:',
+  'First Crack Start Time:', 'First Crack End Time:', 'First Crack Duration:','Second Crack Start Time:', 'Second Crack End Time:', 'Second Crack Duration:', 
+  'Development time:', 'Development Ratio:'];
 
-  //for each selectible temperature, create an option element
-  tempArray.forEach ((temp) => {
 
+  if (selectedElement === 'temp-element') {
+    tempArray.forEach((temp) => {
+      populateContent(temp);
+    })
+  } else if (selectedElement === 'timing-element') {
+    timingArray.forEach((temp) => {
+      populateContent(temp);
+    })
+  }
+
+  async function populateContent (temp) {
+    
     //Check to see if the Item in TempArray matches an item from selectedItems
     let itemExists = false;
     for (let i = 0; i < selectedItems.length; i++) {
@@ -251,6 +276,7 @@ function gettempData () {
         itemExists = true;
       }
     }
+
     //If the item does not exist, create a new item
     if (itemExists === false) {
 
@@ -272,32 +298,10 @@ function gettempData () {
 
     selectionContainer.appendChild(selectableItem);
     }
-
-  })
+  }
 }
 
-function updateTemp () {
-  //get Session Data
-  let selectedElement = sessionStorage.getItem('selectedElement');
-  let canvasElement = document.getElementById(selectedElement);
 
-  const mainElementContainer = document.querySelector('.modal-body').querySelector('.mainElementContainer').querySelector('.element-content');
-
-  //clear the canvas element
-  canvasElement.querySelector('.mainElementContainer').querySelector('.element-content').innerHTML = '';
-
-  //Store the names of the current items in the canvas element
-  const selectedItems = mainElementContainer.querySelectorAll('.element-line');
-
-  //for each item in the mainElementContainer, add it to the canvas element
-  selectedItems.forEach ((item) => {
-    tempItem = item.cloneNode(true);
-    tempItem.removeChild(tempItem.lastChild);
-
-    canvasElement.querySelector('.mainElementContainer').querySelector('.element-content').appendChild(tempItem);
-  })
-
-}
 /********************************************************************************
 *   UPDATE FUNCTIONS:    
       - Functions for Updating Each element are Below
@@ -432,7 +436,13 @@ function updateBlend() {
   closeModal();
 }
 
+function updateTemp () {
+  populateElement();
+}
 
+function updateTiming () {
+  populateElement();
+}
 /********************************************************************************
 *             Functions to add and remove content from the elements
 *********************************************************************************/
@@ -655,6 +665,27 @@ function removeItem (event) {
 }
 
 
+function populateElement () {
+  //get Session Data
+  let selectedElement = sessionStorage.getItem('selectedElement');
+  let canvasElement = document.getElementById(selectedElement);
+
+  const mainElementContainer = document.querySelector('.modal-body').querySelector('.mainElementContainer').querySelector('.element-content');
+
+  //clear the canvas element
+  canvasElement.querySelector('.mainElementContainer').querySelector('.element-content').innerHTML = '';
+
+  //Store the names of the current items in the canvas element
+  const selectedItems = mainElementContainer.querySelectorAll('.element-line');
+
+  //for each item in the mainElementContainer, add it to the canvas element
+  selectedItems.forEach ((item) => {
+    tempItem = item.cloneNode(true);
+    tempItem.removeChild(tempItem.lastChild);
+
+    canvasElement.querySelector('.mainElementContainer').querySelector('.element-content').appendChild(tempItem);
+  })
+}
 /********************************************************************************
 * Function to get the selected date item from the radio buttons
 * Function to get the current date
