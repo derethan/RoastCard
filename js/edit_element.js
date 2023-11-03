@@ -66,8 +66,18 @@ async function loadModal(elementType) {
   let functionName = 'get' + elementType + 'Data';
   functionName = functionName.replace('-element', '');
   
+  let elementTypeCapitalized = elementType.charAt(0).toUpperCase() + elementType.slice(1);
+  let updateFunction = 'update' + elementTypeCapitalized + '()';
+  updateFunction = updateFunction.replace('-element', '');
+
   try {
     window[functionName]();
+
+    const applyButton = document.getElementById('applyButton');
+
+    //remove the onclick atributte from the apply button
+    applyButton.removeAttribute('onclick');
+    applyButton.setAttribute('onclick', updateFunction);
   }
   catch (err) {
     console.log('Error Loading Function: ' + functionName);
@@ -75,18 +85,19 @@ async function loadModal(elementType) {
   }
 }
 
+//Loads the Canvas Element Content into the Modal Window
 function loadElementContent () {
   //get Session Data
   let selectedElement = sessionStorage.getItem('selectedElement');
   let canvasElement = document.getElementById(selectedElement);
 
   //load the content for the modal window
-  let canvasNotePad = canvasElement.querySelector('.mainElementContainer').innerHTML;
+  let elementContent = canvasElement.querySelector('.mainElementContainer').innerHTML;
 
    // Insert Content into the modal window
   modelContent = document.querySelector ('.modal-body').querySelector('.mainElementContainer');
   modelContent.style.display = 'block';
-  modelContent.innerHTML = canvasNotePad;
+  modelContent.innerHTML = elementContent;
 }
 
 /********************************************************************************
@@ -194,12 +205,10 @@ function getblendData () {
 
       //Store the name, weight, and ratio of each component
       let blendNames = canvasElement.querySelectorAll('.component') [i].getElementsByTagName('div')[0].innerHTML;
-      console.log(blendNames);
-
       let blendWeight = canvasElement.querySelectorAll('.component') [i].getElementsByTagName('div')[1].innerHTML;
       let blendRatio = canvasElement.querySelectorAll('.component') [i].getElementsByTagName('div')[2].innerHTML;
 
-      //Convert the divs to input boxes
+      //Convert the Component Names to input boxes in the Modal Window
       modalBlend.querySelectorAll('.component') [i].childNodes[0].innerHTML = '<input type="text" class="input-box" value="' + blendNames + '" maxlength="20">';
       modalBlend.querySelectorAll('.component') [i].childNodes[0].classList.remove ('input-box');
       modalBlend.querySelectorAll('.component') [i].childNodes[1].innerHTML = '<input type="number" class="input-box" value="' + blendWeight + '" max="9999">';
@@ -213,6 +222,81 @@ function getblendData () {
 function gettempData () {
   //loads the data from the canvas element into the modal window
   loadElementContent ();
+
+  const selectionContainer = document.querySelector('.modal-body').querySelector('.selection-content');
+  const mainElementContainer = document.querySelector('.modal-body').querySelector('.mainElementContainer').querySelector('.element-content');
+
+  //Store the names of the current items in the canvas element
+  const selectedItems = mainElementContainer.querySelectorAll('.element-line');
+
+    //add minus button to the mainElementContainer items
+    selectedItems.forEach ((item) => {
+      const minusButton = document.createElement ('button');
+      minusButton.classList.add('minus-button');
+      minusButton.innerHTML = '-';
+      minusButton.addEventListener('click', removeItem);  
+      item.appendChild(minusButton);
+    })
+
+  //Store an array of selectible temperatures
+  const tempArray = ['Ambient Temp:', 'Humidity:',"Yellowing Temp:", "Browing Temp:", "First Crack Temp:", "Second Crack Temp:", "Drop Temp:"];
+
+  //for each selectible temperature, create an option element
+  tempArray.forEach ((temp) => {
+
+    //Check to see if the Item in TempArray matches an item from selectedItems
+    let itemExists = false;
+    for (let i = 0; i < selectedItems.length; i++) {
+      if (temp === selectedItems[i].firstChild.innerHTML) {
+        itemExists = true;
+      }
+    }
+    //If the item does not exist, create a new item
+    if (itemExists === false) {
+
+    //Creates a new Div Element with the class "selection-line"
+    const selectableItem = document.createElement('div');
+    selectableItem.classList.add('selection-line');
+
+    // Adds the Text to the new Div Element
+    const text = document.createElement ('p');
+    text.innerHTML = temp;
+    selectableItem.appendChild(text);
+
+    //Adds the plus Button to the new Div Element
+    const plusButton = document.createElement ('button');
+    plusButton.classList.add('plus-button');
+    plusButton.innerHTML = '+';
+    plusButton.addEventListener('click', addItem);
+    selectableItem.appendChild(plusButton);
+
+    selectionContainer.appendChild(selectableItem);
+    }
+
+  })
+}
+
+function updateTemp () {
+  //get Session Data
+  let selectedElement = sessionStorage.getItem('selectedElement');
+  let canvasElement = document.getElementById(selectedElement);
+
+  const mainElementContainer = document.querySelector('.modal-body').querySelector('.mainElementContainer').querySelector('.element-content');
+
+  //clear the canvas element
+  canvasElement.querySelector('.mainElementContainer').querySelector('.element-content').innerHTML = '';
+
+  //Store the names of the current items in the canvas element
+  const selectedItems = mainElementContainer.querySelectorAll('.element-line');
+
+  //for each item in the mainElementContainer, add it to the canvas element
+  selectedItems.forEach ((item) => {
+    tempItem = item.cloneNode(true);
+    tempItem.removeChild(tempItem.lastChild);
+
+    canvasElement.querySelector('.mainElementContainer').querySelector('.element-content').appendChild(tempItem);
+  })
+
 }
 /********************************************************************************
 *   UPDATE FUNCTIONS:    
@@ -516,6 +600,58 @@ function removeComponent () {
   if (componentCount > 1) {
     componentContainer.removeChild(componentContainer.lastElementChild);
   }
+}
+
+function addItem (event) {
+
+  const selectedItem = event.target.parentElement;
+  const mainElementContainer = document.querySelector('.modal-body').querySelector('.mainElementContainer').querySelector('.element-content');
+
+  //Remove the selected Item from the selection container
+  event.target.parentElement.remove();
+
+  //Change the CSS Classes
+  selectedItem.classList.remove('selection-line');
+  selectedItem.classList.add('element-line');
+
+  //Remove the plus button from the new element line
+  selectedItem.removeChild(selectedItem.lastChild);
+
+  //Add the minus button to the new element line
+  const minusButton = document.createElement ('button');
+  minusButton.classList.add('minus-button');
+  minusButton.innerHTML = '-';
+  minusButton.addEventListener('click', removeItem);  
+  selectedItem.appendChild(minusButton);
+
+  //Add the new element line to the mainElementContainer
+  mainElementContainer.appendChild(selectedItem);
+}
+
+function removeItem (event) {
+
+  const deletedItem = event.target.parentElement;
+  const selectionContainer = document.querySelector('.modal-body').querySelector('.selection-content');
+
+  //remove the item from the mainElementContainer
+  event.target.parentElement.remove();
+
+  //Change the CSS classes
+  deletedItem.classList.remove('element-line');
+  deletedItem.classList.add('selection-line');
+
+  //remove the minus button from the item
+  deletedItem.removeChild(deletedItem.lastChild);
+
+  //add the plus button to the item
+  const plusButton = document.createElement ('button');
+  plusButton.classList.add('plus-button');
+  plusButton.innerHTML = '+';
+  plusButton.addEventListener('click', addItem);
+  deletedItem.appendChild(plusButton);
+  
+  //add the Item back to the selection container
+  selectionContainer.appendChild(deletedItem);
 }
 
 

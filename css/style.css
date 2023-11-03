@@ -429,10 +429,16 @@ main {
   background-color:  var(--cream);
   height: 25px;
   border-bottom: 1px dotted var(--espresso); 
+
+  min-width: 150px;
 }
 .element-line {
   background-color: var(--cream);
   border-bottom: 1px solid var(--espresso);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
   padding: 5px;
   min-width: 250px;
