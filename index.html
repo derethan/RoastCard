@@ -36,11 +36,17 @@
             </div>
 
             <div class="menu">
-                <div><input type="button" class="menu-button" id="save-button" onclick="saveCanvas ()" value="Save"></div>
-                <div><input type="button" class="menu-button" id="load-button" onclick="loadCanvas ()" value="Load"></div>
-
-                <div><input type="button" class="menu-button" id="print-button" onclick="printCanvas ()" value="Print"></div>
-                <div><input type="button" class="menu-button" id="reset-button" onclick="resetCanvas ()" value="Reset"></div>
+                <div class="menu-item"><input type="button" class="menu-button" id="save-button" onclick="saveCanvas ()" value="Save"></div>
+                <div class="menu-item"><input type="button" class="menu-button" id="load-button" onclick="loadCanvas ()" value="Load"></div>
+                <div class="menu-item"><input type="button" class="menu-button" id="print-button" onclick="printCanvas ()" value="Print"></div>
+                <div class="menu-item"><input type="button" class="menu-button" id="reset-button" onclick="resetCanvas ()" value="Reset"></div>
+           
+  
+            </div>
+            <div class="hamburger" onclick="mobileMenu ()">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
             </div>
         </div>
     </nav>

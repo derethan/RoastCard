@@ -3,7 +3,7 @@ This file is used to style the Roast Card Website.
   - index.html
 ******************************************************************/
 
-
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;1,400&display=swap');
 
 
 :root {
@@ -144,6 +144,7 @@ max-width: 100px;
 .menubar-container {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 10px 20px;
   background-color: var(--coffee);
   color: white;
@@ -769,6 +770,18 @@ width: 25%;
   min-width: 300px;
 }
 
+.hamburger {
+  display: none;
+}
+.bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  background-color: var(--cream);
+}
 
 @media screen and (max-width: 768px) {
   .element-bar {
@@ -790,5 +803,70 @@ width: 25%;
     font-size: 12px;
   }
 .new-card-button {
-  font-size: small;}
+  font-size: small;
+}
+
+.menu {
+  position: fixed;
+  left: -100%;
+  top: 5rem;
+  flex-direction: column;
+  gap: 10px;
+
+  padding: 10px;
+
+  background-color: var(--coffee);
+  border: 1px solid var(--espresso);
+  width: 90%;
+  border-radius: 10px;
+  text-align: center;
+  transition: 0.3s;
+  box-shadow:
+      0 10px 27px rgba(0, 0, 0, 0.05);
+}
+
+.menu.active {
+  left: 0;
+}
+
+.menu-item {
+  width: 80%;
+  padding: 10px;
+  background-color: var(--burgundy);
+  color: var(--cream);
+
+  border: 1px solid var(--espresso);
+  border-radius: 5px;
+}
+.menu-item:active {
+  background-color: var(--espresso);
+  color: var(--gold);
+}
+
+.menu-button {
+  width: 100%;
+  height: 100%;
+  background-color: var(--burgundy);
+  color: var(--cream);
+}
+.menu-button:active {
+  background-color: var(--espresso);
+  color: var(--gold);
+}
+.hamburger {
+  display: block;
+  cursor: pointer;
+}
+
+.hamburger.active .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active .bar:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.active .bar:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
 }

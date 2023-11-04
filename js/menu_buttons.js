@@ -16,6 +16,31 @@ loadButton.addEventListener("click", () => {
 fileInput.click();
 });
 
+
+
+function mobileMenu() {
+    const navLink = document.querySelectorAll(".menu-button");
+    navLink.forEach(n => n.addEventListener("click", closeMenu));
+
+    const hamburger = document.querySelector(".hamburger");
+    const navMenu = document.querySelector(".menu");
+
+    hamburger.classList.toggle("active");
+    navMenu.classList.toggle("active");
+    console.log("mobileMenu");
+}
+
+
+
+function closeMenu() {
+    const hamburger = document.querySelector(".hamburger");
+    const navMenu = document.querySelector(".menu");
+
+    hamburger.classList.remove("active");
+    navMenu.classList.remove("active");
+}
+
+
 function resetCanvas () {
     const canvasContainer = document.getElementById('canvas-container');
     canvasContainer.textContent = '';
@@ -24,14 +49,22 @@ function resetCanvas () {
 
 function printCanvas() {
     const canvasContainer = document.getElementById('canvas-container');
+    const hamburger = document.querySelector(".hamburger");
+    const navMenu = document.querySelector(".menu");
+
     let printContents = canvasContainer.innerHTML;
+
+    hamburger.classList.remove("active");
+    navMenu.classList.remove("active");
     let originalContents = document.body.innerHTML;
 
+    
     document.body.innerHTML = printContents;
 
     window.print();
 
     document.body.innerHTML = originalContents;
+
 }
 
 function saveCanvas () {

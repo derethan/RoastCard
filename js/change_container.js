@@ -116,4 +116,7 @@ document.addEventListener('DOMContentLoaded', function () {
     //templateCardButton.addEventListener('click', function () {
     //    alert('This feature is not available yet');});
 
+
 });
+
+
