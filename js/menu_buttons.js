@@ -1,8 +1,4 @@
-/******************************************************
- *  Controls the Menu Bar Buttons
- *  - Clears The Canvas
- *  - Prints the Canvas Area
-******************************************************/
+
 
 // Create an input element of type "file"
 const fileInput = document.createElement('input');
@@ -16,7 +12,9 @@ loadButton.addEventListener("click", () => {
 fileInput.click();
 });
 
-
+/******************************************************
+ *  Controls the Menu Button for Mobile Devices
+******************************************************/
 
 function mobileMenu() {
     const navLink = document.querySelectorAll(".menu-button");
@@ -29,8 +27,6 @@ function mobileMenu() {
     navMenu.classList.toggle("active");
 }
 
-
-
 function closeMenu() {
     const hamburger = document.querySelector(".hamburger");
     const navMenu = document.querySelector(".menu");
@@ -38,6 +34,43 @@ function closeMenu() {
     hamburger.classList.remove("active");
     navMenu.classList.remove("active");
 }
+
+
+/******************************************************
+ *  Controls the Widget Menu Button for Mobile Devices
+******************************************************/
+function windgetMenu() {
+    const originElement = document.querySelectorAll(".origin-element");
+    originElement.forEach(n => n.addEventListener("click", closewidgetMenu));
+
+    const buttonContainer = document.querySelector(".mobile-button-container");
+    const hamburger = document.querySelector(".widgetHamburger");
+    const widgetMenu = document.querySelector(".element-bar");
+
+    buttonContainer.classList.toggle("active");
+    hamburger.classList.toggle("active");
+    widgetMenu.classList.toggle("active");
+}
+
+function closewidgetMenu() {
+    const buttonContainer = document.querySelector(".mobile-button-container");
+    const hamburger = document.querySelector(".widgetHamburger");
+    const widgetMenu = document.querySelector(".element-bar");
+
+    buttonContainer.classList.remove("active");
+    hamburger.classList.remove("active");
+    widgetMenu.classList.remove("active");
+}
+
+
+
+/******************************************************
+ *  Controls the Menu Bar Buttons
+ *  - Clears The Canvas
+ *  - Prints the Canvas Area
+ * - Saves the Canvas Area
+ * - Loads a Canvas Area
+******************************************************/
 
 
 function resetCanvas () {

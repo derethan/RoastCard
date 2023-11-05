@@ -103,10 +103,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 //  canvasArea.style.width = '85%';
                
                 //Show the Widget Menu
-                elementMenu.classList.add('show-element-bar');
-                elementMenu.classList.add('hide-element-bar');
-
-                
+                elementMenu.classList.add('show-element-bar'); 
           
             }, {once: true});
 
