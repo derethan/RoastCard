@@ -27,7 +27,6 @@ function mobileMenu() {
 
     hamburger.classList.toggle("active");
     navMenu.classList.toggle("active");
-    console.log("mobileMenu");
 }
 
 

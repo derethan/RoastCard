@@ -210,6 +210,7 @@ main {
   
 }
 .element-bar {
+  display: none;
   flex-direction: column;
   justify-content: flex-start;
   text-align: center;
@@ -647,7 +648,9 @@ width: 25%;
   }
 
 
-
+  .show-element-bar {
+    display: flex;
+  }
 /*****************************************************************
   - Other Styles
 ******************************************************************/
@@ -783,28 +786,45 @@ width: 25%;
   background-color: var(--cream);
 }
 
-@media screen and (max-width: 768px) {
-  .element-bar {
-    display: none;
-  }
-  .footer-about {
-    font-size: 10px;
-  }
-  .header-text h1{
-    font-size: 24px;
-  }
-  .header-text h4{
-    font-size: 12px;
-  }
-  .start-title {
-    font-size: 12px;
-  }
-  .start-text {
-    font-size: 12px;
-  }
-.new-card-button {
-  font-size: small;
+.widgetHamburger {
+  display: none;
+  background-color: var(--burgundy);
+
+  width: 80%;
+
+  margin: auto;
+  position: relative;
+  top: 75px;
 }
+
+
+
+.canvas-width {
+  width: 85%;
+}
+
+@media screen and (max-width: 768px) {
+
+  .canvas-width {
+    width: 100%;
+  }
+
+  .hamburger {
+    display: block;
+    cursor: pointer;
+  }
+  
+  .hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .hamburger.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  
+  .hamburger.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
 
 .menu {
   position: fixed;
@@ -853,20 +873,46 @@ width: 25%;
   background-color: var(--espresso);
   color: var(--gold);
 }
-.hamburger {
-  display: block;
-  cursor: pointer;
+
+  .showWidgetHamburger {
+    display: block;
+    cursor: pointer;
+  }
+  
+  .widgetHamburger.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .widgetHamburger.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  
+  .widgetHamburger.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  .hide-element-bar {
+    display: none;
+  }
+
+.footer-about {
+  font-size: 10px;
+}
+.header-text h1{
+  font-size: 24px;
+}
+.header-text h4{
+  font-size: 12px;
+}
+.start-title {
+  font-size: 12px;
+}
+.start-text {
+  font-size: 12px;
+}
+.new-card-button {
+font-size: small;
 }
 
-.hamburger.active .bar:nth-child(2) {
-  opacity: 0;
-}
 
-.hamburger.active .bar:nth-child(1) {
-  transform: translateY(8px) rotate(45deg);
-}
-
-.hamburger.active .bar:nth-child(3) {
-  transform: translateY(-8px) rotate(-45deg);
-}
 }

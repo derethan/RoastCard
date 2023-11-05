@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const menuBar = document.getElementById ('menu-bar');
     const elementMenu = document.getElementById('element-bar');
+    const elementMenuHamburger = document.getElementById('widgetHamburger');
 
     const newCardButton = document.getElementById('new-card');
     const toolsButton = document.getElementById('toolsButton');
@@ -67,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     newCardButton.addEventListener('click', function () {
        //Make the main container resizable
-       resizableContainer.classList.add('resizeCanvas');
+    //    resizableContainer.classList.add('resizeCanvas');
 
         //add event listener to wait for the fade-out animation to end
         startContainer.classList.add('fade-out');
@@ -91,17 +92,21 @@ document.addEventListener('DOMContentLoaded', function () {
                 //Show the navigation bar
                 menuBar.style.display = 'flex';
                 
+                elementMenuHamburger.classList.add('showWidgetHamburger');
+
                 //Move the main content up
                 mainContent.classList.add('move-content'); 
                 mainContent.style.paddingBottom = '200px';
 
-                if (window.innerWidth > 768) {
-
-                //Show the canvas container
-                canvasArea.style.width = '85%';
+                 //Show the canvas container
+                 canvasArea.classList.add('canvas-width');
+                //  canvasArea.style.width = '85%';
+               
                 //Show the Widget Menu
-                elementMenu.style.display = 'flex';
-                }
+                elementMenu.classList.add('show-element-bar');
+                elementMenu.classList.add('hide-element-bar');
+
+                
           
             }, {once: true});
 

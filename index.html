@@ -40,8 +40,6 @@
                 <div class="menu-item"><input type="button" class="menu-button" id="load-button" onclick="loadCanvas ()" value="Load"></div>
                 <div class="menu-item"><input type="button" class="menu-button" id="print-button" onclick="printCanvas ()" value="Print"></div>
                 <div class="menu-item"><input type="button" class="menu-button" id="reset-button" onclick="resetCanvas ()" value="Reset"></div>
-           
-  
             </div>
             <div class="hamburger" onclick="mobileMenu ()">
                 <span class="bar"></span>
@@ -53,11 +51,18 @@
 
 
     <main>
+        
+        <div class="widgetHamburger" id="widgetHamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+
         <!-- Contains a Container for the Main Section of the page containing the element bar and the content area-->
         <div class="content-container" id="content-container">
 
             <!-- Contains a Container for the Origin Element Bar-->
-            <div class="element-bar" id="element-bar" style="display: none;">
+            <div class="element-bar" id="element-bar">
 
                 <!--Title Element-->
                 <div class="origin-element title-element draggable" id="title-element">
