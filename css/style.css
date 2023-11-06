@@ -91,6 +91,17 @@ body {
 .hide {
   display: none;
 }
+.title-desc {
+  color: var(--coffee);
+  font-family: var(--scriptFont);
+}
+.title-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+}
 /*****************************************************************
   - Header Section
 ******************************************************************/
@@ -279,14 +290,17 @@ main {
   color: var(--espresso);
 }
 .start-text {
-  text-align: center;
+  text-align: left;
   width: 90%;
   color: var(--coffee);
+  max-width: 600px;
 }
 .start-button-container {
   display: flex;
   justify-content: center;
-  gap: 10px;
+  gap: 25px;
+  color: var(--coffee);
+  font-family: var(--formalFont);
 }
 
 .canvas-container {
@@ -577,6 +591,7 @@ width: 25%;
 
   max-height: 300px;
   overflow-y: auto;
+  overflow-x: hidden;
 }
 .selection-line {
   background-color: var(--cream);
@@ -798,10 +813,63 @@ width: 25%;
   display: none;
 }
 
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+.tooltip img {
+  width: 40px;
+  height: 40px;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  background-color: var(--coffee);
+  color: var(--cream);
+  text-align: left;
+  border-radius: 6px;
+  padding: 10px;
+
+  /* Position the tooltip */
+  position: absolute;
+  top: -5px;
+  right: 105%; 
+  z-index: 1;
+
+  width: 40vw;
+  max-width: 400px;
+}
+.tooltip .tooltiptext p {
+font-size: 14px;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+.subtext {
+  font-size: 14px;
+  font-family: var(--scriptFont);
+  color: var(--espresso);
+  text-align: center;
+}
+
 @media screen and (max-width: 768px) {
 
   .canvas-width {
     width: 100%;
+  }
+
+  .tooltip .tooltiptext {
+    min-width: 225px;
+    width: 60vw;
+    top: -50px;
+}
+.tooltip .tooltiptext p {
+  font-size: 12px;
+  }
+  .tooltip img {
+    width: 30px;
+    height: 30px;
   }
 
   .mobile-button-container{

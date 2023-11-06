@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Vina+Sans">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
+
     <link rel="icon" type="image/x-icon" href="img/favicon.ico">
 
     <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
@@ -189,7 +191,7 @@
                         <div class="element-content">
                             <div class="element-line"><p>Blend Name:</p></div>
                             <div class="element-line" style="border: none;"><p>Components:</p></div>
-                            <div class="element-line"></div>
+                            <div class="element-line column"></div>
                         </div>                    
                     </div>
                 </div>     
@@ -234,15 +236,43 @@
                     
                     <!-- Contains a Container for the Welcome Page-->
                     <div class="start-container" id="start-container">
+                        
+                        <div class="title-container">
+                            <div class="start-title">                        
+                                <h1>Welcome to RoastCard</h1>
+                                <h4 class="title-desc">Your Personal Coffee Roasting Log Companion</h4>
+                            </div>
+                            <div class="tooltip">
+                                <img src="img/tooltip.png" alt="What is Roast Card?">
 
-                        <div class="start-title">                        
-                            <h1>Welcome to Roast Card.</h1>
+                                <span class="tooltiptext">
+                                    <h3 style="text-align: center;">What is RoastCard?</h3>
+                                    <br />
+                                    <p>RoastCard provides you with an intuitive web interface where you 
+                                    can effortlessly create your very own coffee roasting log tailored 
+                                    to your tastes and needs.</p>
+                                    <br />
+                                    <p>But that's not all! We also offer a range 
+                                    of templates for quick and easy reference, perfect for those eager to 
+                                    embark on their roasting adventure. </p>
+                                    <br />
+                                    <p>With RoastCard, you can easily print 
+                                    or save your logs on your computer, ensuring that your roasting 
+                                    knowledge is always at your fingertips for future use and modifications.</p>
+                                </span>
+
+                            </div>
                         </div>
 
                         <div class="start-text">                        
-                            <p>With RoastCard you can create a custom roast logging card to suit your needs. 
-                            <br /><br /> To get started select an option below.</p>
+                            <p>RoastCard is your gateway to a world of coffee roasting perfection. 
+                                Whether you're a seasoned coffee artisan or just getting started, 
+                                our customizable coffee roasting log application is here to cater 
+                                to your unique style and preferences. With RoastCard, you have the power 
+                                to design and document your coffee roasting journey like never before.</p>
                         </div>
+                        <div class="start-text subtext"><p>Unleash your inner coffee connoisseur and take control of your coffee roasting experience with RoastCard. 
+                            Start creating your coffee roasting masterpiece today!</p></div>
 
                         <div class="start-button-container">
                             <button class="new-card-button" id="new-card">Build your own Card</button>
