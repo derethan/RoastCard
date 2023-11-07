@@ -7,6 +7,24 @@
  *              event.relatedTarget = Item being dropped (draggableElement)
 ******************************************************/
 
+//  Handle dropping the element outside the dropzone, 
+//  retuns the element to its original position on the Element Panel
+
+// -------------MUST BE BEFORE THE CANVAS DROPZONE----------------
+
+interact('.content-container').dropzone({
+
+    // only accept elements matching this CSS selector
+    accept: '.origin-element',
+
+    ondrop: function (event) { 
+        //Sets the Item being Dragged and the initial X, Y Cordinates of the Item.
+        const draggableElement = event.relatedTarget; 
+        
+        resetElement (draggableElement);
+    }
+});
+
 // Handle Behaviour for the Canvas-container Drop Zone
 interact('.canvas-container')
     .dropzone({
@@ -65,23 +83,20 @@ interact('.canvas-container')
     }
 });
 
-//  Handle dropping the element outside the dropzone, 
-//  retuns the element to its original position on the Element Panel
-
-interact('.content-container').dropzone({
-
-    // only accept elements matching this CSS selector
-    accept: '.origin-element',
-
-    ondrop: function (event) { 
-        //Sets the Item being Dragged and the initial X, Y Cordinates of the Item.
-        const draggableElement = event.relatedTarget; 
-        
-        resetElement (draggableElement);
-    }
-});
 
 
+// function addElement (element) {
+//     //Get the clicked Element
+//     const originElement = element.target;
+
+//     console.log(originElement); // DEBUG
+//     //Get the dropzone
+//     const dropZone = document.querySelector('.canvas-container');
+
+//     //Clone the Element and add it to the canvas
+//      cloneElement (originElement, dropZone);
+    
+// }
 
 function resetElement (element){
     const initialX = parseFloat(element.getAttribute('data-initial-x'));
@@ -97,6 +112,9 @@ function resetElement (element){
 function cloneElement (element, dropZone){
     const clone = element.cloneNode(true);
 
+    // //Remove OnClick Event Listener ---------------IF ON MOBILE, REMOVE THIS LINE---------
+    // clone.removeAttribute('onclick');
+    
     // Set the cloned Element to a Canvas Element
     clone.classList.remove('origin-element');
     clone.classList.add('canvas-element');

@@ -54,8 +54,10 @@ function editElement(canvasElementID, elementType) {
 
       loadModal(elementType);
       modalWindow.style.display = "flex";
+
+      //Lock the body and html elements to prevent scrolling
       document.body.classList.add('modal-open');
-      document.documentElement.classList.add('modal-open'); // Add this line
+      document.documentElement.classList.add('modal-open');
 
     }
   }
@@ -113,9 +115,14 @@ function loadElementContent () {
 *   Function to Close the modal Window and delete the element
 *********************************************************************************/
 function closeModal() {
+  
   //get Session Data
   let modalWindow = document.getElementById(sessionStorage.getItem('modalWindow'));
+
+  // Close the modal window
   modalWindow.style.display = "none";
+
+  //Unlock the body and html elements to allow scrolling
   document.body.classList.remove('modal-open');
   document.documentElement.classList.remove('modal-open'); // Add this line
 }
