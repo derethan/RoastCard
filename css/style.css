@@ -170,6 +170,10 @@ max-width: 100px;
   max-height: 50px;
   max-width: 50px;
   }
+  .menubar-logo h2 {
+    font-family: var(--displayFont);
+  }
+
 .menu, .menu a {
   display: flex;
   align-items: center;
@@ -519,6 +523,13 @@ main {
   justify-content: center;  
   padding: 10px;
 }
+
+.modal-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
+
 .gap25 {
   gap: 25px;
 }

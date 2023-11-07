@@ -54,6 +54,9 @@ function editElement(canvasElementID, elementType) {
 
       loadModal(elementType);
       modalWindow.style.display = "flex";
+      document.body.classList.add('modal-open');
+      document.documentElement.classList.add('modal-open'); // Add this line
+
     }
   }
 }
@@ -69,6 +72,12 @@ async function loadModal(elementType) {
   let elementTypeCapitalized = elementType.charAt(0).toUpperCase() + elementType.slice(1);
   let updateFunction = 'update' + elementTypeCapitalized + '()';
   updateFunction = updateFunction.replace('-element', '');
+
+  // If the user is not on a mobile device (screen width more than 768px), make the modal window movable
+  if (window.innerWidth > 768) {
+    let modalContent = document.querySelector('.modal-content');
+    modalContent.classList.add('movable');
+  }
 
   try {
     window[functionName]();
@@ -107,6 +116,8 @@ function closeModal() {
   //get Session Data
   let modalWindow = document.getElementById(sessionStorage.getItem('modalWindow'));
   modalWindow.style.display = "none";
+  document.body.classList.remove('modal-open');
+  document.documentElement.classList.remove('modal-open'); // Add this line
 }
 
 function deleteElement() {
@@ -345,6 +356,8 @@ function updateTitle() {
     case "largest":
       canvasElement.getElementsByTagName('h1')[0].style.fontSize = '72px'
   }
+
+  closeModal();
 }
 
 
@@ -365,8 +378,10 @@ function updateDate() {
       break;
     case 'customDate':
       canvasElement.getElementsByTagName('h3')[0].innerHTML = 'Roast Date: ' + selectedDate;
-
   }
+
+  closeModal();
+
 }
 
 function updateLog() {
@@ -388,7 +403,7 @@ function updateLog() {
     columnHeaders.push(modalTable.rows[0].cells[i].getElementsByTagName('input')[0].value); //store the text of the TH
     canvasElement.querySelector('.log-table').rows[0].cells[i].innerHTML = columnHeaders[i];
   }
-
+  closeModal();
 }
 
 function updateNote() {
@@ -399,6 +414,8 @@ function updateNote() {
   // Get the notePad from the modal window
   modalNote = document.querySelector('.modal-body').querySelector('.mainElementContainer');
   canvasElement.querySelector('.mainElementContainer').innerHTML = modalNote.innerHTML;
+
+  closeModal();
 }
 
 function updateBlend() {
@@ -438,10 +455,12 @@ function updateBlend() {
 
 function updateTemp () {
   populateElement();
+  closeModal();
 }
 
 function updateTiming () {
   populateElement();
+  closeModal();
 }
 /********************************************************************************
 *             Functions to add and remove content from the elements

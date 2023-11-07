@@ -41,7 +41,7 @@ interact('.origin-element')
       })
       
 // Make the Modal Window movable
-interact('.modal-content')
+interact('.movable')
 .draggable({
     inertia: true,
     modifiers: [
