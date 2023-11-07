@@ -5,6 +5,9 @@
 // Make the Origin-elements draggable
 interact('.origin-element')
     .draggable({
+        onstart: function (event) {
+            closewidgetMenu();
+        },
         inertia: true,
         modifiers: [
             interact.modifiers.restrictRect({

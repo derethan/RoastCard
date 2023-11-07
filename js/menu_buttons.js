@@ -42,11 +42,14 @@ function closeMenu() {
 function windgetMenu() {
     const originElement = document.querySelectorAll(".origin-element");
     originElement.forEach(n => n.addEventListener("click", closewidgetMenu));
+    originElement.forEach(n => n.setAttribute('onclick', 'addElement("' + n.id + '")'));
 
     const buttonContainer = document.querySelector(".mobile-button-container");
     const hamburger = document.querySelector(".widgetHamburger");
     const widgetMenu = document.querySelector(".element-bar");
 
+
+    
     buttonContainer.classList.toggle("active");
     hamburger.classList.toggle("active");
     widgetMenu.classList.toggle("active");

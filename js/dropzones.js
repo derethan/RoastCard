@@ -49,7 +49,6 @@ interact('.canvas-container')
 
         // If Origin Element selected, Set Dropzone color
         //properties to green (Active drop is over a dropzone)
-
         if (draggableElement.classList.contains('origin-element')) {
             dropzoneElement.classList.add('drop-active-canDrop');
         }},
@@ -85,18 +84,18 @@ interact('.canvas-container')
 
 
 
-// function addElement (element) {
-//     //Get the clicked Element
-//     const originElement = element.target;
+function addElement (element) {
+    //Get the clicked Element
+    const originElement = document.getElementById(element);
 
-//     console.log(originElement); // DEBUG
-//     //Get the dropzone
-//     const dropZone = document.querySelector('.canvas-container');
+    // console.log(originElement); // DEBUG
+    //Get the dropzone
+    const dropZone = document.querySelector('.canvas-container');
 
-//     //Clone the Element and add it to the canvas
-//      cloneElement (originElement, dropZone);
+    //Clone the Element and add it to the canvas
+     cloneElement (originElement, dropZone);
     
-// }
+}
 
 function resetElement (element){
     const initialX = parseFloat(element.getAttribute('data-initial-x'));
@@ -113,7 +112,7 @@ function cloneElement (element, dropZone){
     const clone = element.cloneNode(true);
 
     // //Remove OnClick Event Listener ---------------IF ON MOBILE, REMOVE THIS LINE---------
-    // clone.removeAttribute('onclick');
+     clone.removeAttribute('onclick');
     
     // Set the cloned Element to a Canvas Element
     clone.classList.remove('origin-element');
