@@ -40,16 +40,18 @@ function closeMenu() {
  *  Controls the Widget Menu Button for Mobile Devices
 ******************************************************/
 function windgetMenu() {
+
+    //Add Event Listeners to the Origin Elements to close the Widget Menu and clone the element
     const originElement = document.querySelectorAll(".origin-element");
     originElement.forEach(n => n.addEventListener("click", closewidgetMenu));
-    originElement.forEach(n => n.setAttribute('onclick', 'addElement("' + n.id + '")'));
+    originElement.forEach(n => n.setAttribute('onclick', 'addElement(' + "'" + n.id + "'" +')'));
 
     const buttonContainer = document.querySelector(".mobile-button-container");
     const hamburger = document.querySelector(".widgetHamburger");
     const widgetMenu = document.querySelector(".element-bar");
 
 
-    
+    //Show the Widget Menu
     buttonContainer.classList.toggle("active");
     hamburger.classList.toggle("active");
     widgetMenu.classList.toggle("active");
@@ -59,10 +61,13 @@ function closewidgetMenu() {
     const buttonContainer = document.querySelector(".mobile-button-container");
     const hamburger = document.querySelector(".widgetHamburger");
     const widgetMenu = document.querySelector(".element-bar");
-
+    
+    //Hide the Widget Menu
     buttonContainer.classList.remove("active");
     hamburger.classList.remove("active");
     widgetMenu.classList.remove("active");
+
+    
 }
 
 

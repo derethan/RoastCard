@@ -94,7 +94,11 @@ function addElement (element) {
 
     //Clone the Element and add it to the canvas
      cloneElement (originElement, dropZone);
-    
+
+     
+    //Remove the onclick event listeners from the origin elements
+    const widgetElements = document.querySelectorAll(".origin-element");
+    widgetElements.forEach(n => n.removeAttribute('onclick')); 
 }
 
 function resetElement (element){

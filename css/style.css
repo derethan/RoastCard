@@ -21,7 +21,7 @@ This file is used to style the Roast Card Website.
 
   --scriptFont: 'pacifico', cursive;
 
-  --contemporaryFont: 'Open Sans', sans-serif;
+  --contemporaryFont: 'Signika Negative', sans-serif;
 
   --formalFont: 'Times New Roman', Times, serif;
 }
@@ -57,7 +57,6 @@ body {
     background-color: var(--cream);
     overflow-x: hidden; /* Disable horizontal scroll */
 }
-
 .fade-out {
   opacity: 0;
   transition: opacity 1s ease-in-out;
@@ -298,6 +297,7 @@ main {
   width: 90%;
   color: var(--coffee);
   max-width: 600px;
+  font-family: var(--contemporaryFont);
 }
 .start-button-container {
   display: flex;
@@ -852,6 +852,8 @@ width: 25%;
 }
 .tooltip .tooltiptext p {
 font-size: 14px;
+font-family: var(--contemporaryFont);
+color: var(--cream);
 }
 
 .tooltip:hover .tooltiptext {
