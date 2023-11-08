@@ -8,7 +8,7 @@
 
 // Path: js\change_container.js
 
-const debug = 1; //Enable Debug Mode
+const debug = 0; //Enable Debug Mode
 
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const header = document.querySelector('header');
 
     // Enable Debug Mode - Hide Initial Start Page
-    if (debug == 0){
+    if (debug == 1){
         startContainer.style.display = 'none';
         //Show the canvas container
         canvasArea.style.width = '85%';
@@ -100,7 +100,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
                  //Show the canvas container
                  canvasArea.classList.add('canvas-width');
-                //  canvasArea.style.width = '85%';
                
                 //Show the Widget Menu
                 elementMenu.classList.add('show-element-bar'); 

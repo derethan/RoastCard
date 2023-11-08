@@ -43,7 +43,6 @@ function windgetMenu() {
 
     //Add Event Listeners to the Origin Elements to close the Widget Menu and clone the element
     const originElement = document.querySelectorAll(".origin-element");
-    originElement.forEach(n => n.addEventListener("click", closewidgetMenu));
     originElement.forEach(n => n.setAttribute('onclick', 'addElement(' + "'" + n.id + "'" +')'));
 
     const buttonContainer = document.querySelector(".mobile-button-container");
@@ -61,13 +60,15 @@ function closewidgetMenu() {
     const buttonContainer = document.querySelector(".mobile-button-container");
     const hamburger = document.querySelector(".widgetHamburger");
     const widgetMenu = document.querySelector(".element-bar");
-    
+
+    //Remove the onclick event listeners from the origin elements
+    const widgetElements = document.querySelectorAll(".origin-element");
+    widgetElements.forEach(n => n.removeAttribute('onclick')); 
+
     //Hide the Widget Menu
     buttonContainer.classList.remove("active");
     hamburger.classList.remove("active");
     widgetMenu.classList.remove("active");
-
-    
 }
 
 

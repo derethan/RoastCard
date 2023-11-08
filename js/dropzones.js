@@ -92,13 +92,11 @@ function addElement (element) {
     //Get the dropzone
     const dropZone = document.querySelector('.canvas-container');
 
+    //close the widget menu
+    closewidgetMenu();
+    
     //Clone the Element and add it to the canvas
      cloneElement (originElement, dropZone);
-
-     
-    //Remove the onclick event listeners from the origin elements
-    const widgetElements = document.querySelectorAll(".origin-element");
-    widgetElements.forEach(n => n.removeAttribute('onclick')); 
 }
 
 function resetElement (element){

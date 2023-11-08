@@ -90,6 +90,7 @@ body {
 .hide {
   display: none;
 }
+
 .title-desc {
   color: var(--coffee);
   font-family: var(--scriptFont);
@@ -282,6 +283,7 @@ main {
   justify-content: space-evenly;
   align-items: center;
   width: 100%;
+  max-width: 600px;
 
   background-color: var(--cream);
 
@@ -296,8 +298,13 @@ main {
   text-align: left;
   width: 90%;
   color: var(--coffee);
-  max-width: 600px;
   font-family: var(--contemporaryFont);
+}
+.subtext {
+  font-size: 14px;
+  font-family: var(--scriptFont);
+  color: var(--espresso);
+  text-align: center;
 }
 .start-button-container {
   display: flex;
@@ -859,11 +866,32 @@ color: var(--cream);
 .tooltip:hover .tooltiptext {
   visibility: visible;
 }
-.subtext {
-  font-size: 14px;
+
+.tooltip .helpText {
+  visibility: hidden;
+  background-color: var(--coffee);
+  color: var(--cream);
   font-family: var(--scriptFont);
-  color: var(--espresso);
   text-align: center;
+  border-radius: 6px;
+  padding: 10px;
+
+  /* Position the tooltip */
+  position: absolute;
+  top: 75px;
+  left: -180px; 
+  z-index: 1;
+
+  width: 40vw;
+  max-width: 400px;
+}
+.tooltip .helpText p {
+  text-align: left;
+  font-family: var(--contemporaryFont);
+  color: var(--cream);
+}
+.tooltip:hover .helpText {
+  visibility: visible;
 }
 
 @media screen and (max-width: 768px) {
@@ -914,20 +942,23 @@ color: var(--cream);
 .menu {
   position: fixed;
   left: -100%;
-  top: 5rem;
+  top: 73px;
   flex-direction: column;
   gap: 10px;
 
+  width: 80%;
+
   padding: 10px;
 
-  background-color: var(--coffee);
-  border: 1px solid var(--espresso);
-  width: 90%;
-  border-radius: 10px;
+  background-color: var(--cream);
+  border-bottom: 1px solid var(--burgundy);
+  border-right: 1px solid var(--burgundy);
+
+  border-bottom-right-radius: 5px;
   text-align: center;
   transition: 0.3s;
-  box-shadow:
-      0 10px 27px rgba(0, 0, 0, 0.05);
+  box-shadow: 4px 0px 10px 0px var(--coffee);
+
 }
 
 .menu.active {
@@ -1004,26 +1035,26 @@ color: var(--cream);
 .widgetHamburgerText {
   color: var(--cream);
 }
-  .showWidgetHamburger {
-    display: flex;
-    cursor: pointer;
-  }
+.showWidgetHamburger {
+  display: flex;
+  cursor: pointer;
+}
 
-  .widgetHamburger.active .bar:nth-child(2) {
-    opacity: 0;
-  }
-  
-  .widgetHamburger.active .bar:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
-  }
-  
-  .widgetHamburger.active .bar:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
-  }
+.widgetHamburger.active .bar:nth-child(2) {
+  opacity: 0;
+}
 
-  .hide-element-bar {
-    display: none;
-  }
+.widgetHamburger.active .bar:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.widgetHamburger.active .bar:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+.hide-element-bar {
+  display: none;
+}
 
 .footer-about {
   font-size: 10px;
