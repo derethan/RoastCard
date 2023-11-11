@@ -72,7 +72,10 @@ function closewidgetMenu() {
 }
 
 
-
+function openHelpMenu () {
+    const helpMenu = document.querySelector(".helpmodal");
+    helpMenu.classList.toggle("active");
+}
 /******************************************************
  *  Controls the Menu Bar Buttons
  *  - Clears The Canvas

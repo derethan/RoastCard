@@ -29,7 +29,12 @@
                 <h4>Create a Custom Roast Logger</h4>
             </div>
 
+            <div class="helpmenu">
+                <img src="img/help_cream.png" alt="Not sure where to begin?" onclick="openHelpMenu ()">
+            </div>
+
         </div>
+
     </header>
     
     <nav>
@@ -39,13 +44,7 @@
                 <h2>Roast Card</h2>
             </div>
 
-            <div class="tooltip">
-                <img src="img/help_cream.png" alt="Not sure where to begin?">
 
-                <span class="helpText">
-                    <h3>Not Sure where to Begin?</h3>
-                </span>
-            </div>
 
             <div class="menu">
                 <div class="menu-item"><input type="button" class="menu-button" id="save-button" onclick="saveCanvas ()" value="Save"></div>
@@ -305,6 +304,100 @@
         <div id="edit-element" class="modal" style="display: none;"></div>
 
 
+                    <!-- -------------------------------HELP Memu Popup Conent Below-------------------------------- -->
+
+        <div class="helpmodal">
+
+            <div class="help-title">
+                <h3>Not Sure where to Begin?</h3>
+            </div>
+
+            <div class="card-container">
+                <div class="help-card">
+
+                    <div class="help-card-title">
+                        <h4>Step 1: Design Your Roasting Log</h4>
+                    </div>
+
+                    <div class="help-card-content">
+
+                        <div class="help-card-desc">
+                            <ul>
+                                <li class="cardTitleFont">1. <strong>Choose an Item:</strong>
+                                    <ul class="cardDescFont">
+                                        <li>Select an item from the widget bar on the left side of the screen.</li>
+                                        <li>Drag and drop the chosen item onto the canvas area on the right side of the screen.</li>
+                                    </ul>
+                                </li>
+                                <li class="cardTitleFont">2. <strong>Visual Guidance:</strong>
+                                    <ul class="cardDescFont">
+                                        <li>The canvas area will change color:</li>
+                                        <li style="color: green;">- Green indicates that the item can be dropped.</li>
+                                        <li style="color: red;">- Red signals that your pointer is outside of the drop area.</li>
+                                    </ul>
+                                </li>
+                                <li class="cardTitleFont">3. <strong>Free Movement:</strong>
+                                    <ul class="cardDescFont">
+                                        <li>Move items freely within the canvas area to customize your roasting log.</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="help-card">
+                    <div class="help-card-img">
+                        <img src="img/help1.gif" alt="Adding Items to your card">
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="card-container">
+                <div class="help-card">
+
+                    <div class="help-card-title">
+                        <h4>Step 2: Modifying your Items</h4>
+                    </div>
+
+                    <div class="help-card-content">
+
+                        <div class="help-card-desc">
+                            <ul>
+                                <li class="cardTitleFont">1. <strong>Choose an Item:</strong>
+                                    <ul class="cardDescFont">
+                                        <li>Select an item from your canvas and double-click it.</li>
+                                        <li>An editing window will appear with options for the selected item.</li>
+                                    </ul>
+                                </li>
+                                <li class="cardTitleFont">2. <strong>Edit Your Item:</strong>
+                                    <ul class="cardDescFont">
+                                        <li>Each item has its own customization choices.</li>
+                                        <li>Explore different options to tailor the item to your preferences.</li>
+                                        <li>Once you've finished customizing, click "Apply" to save your changes.</li>
+                                        <li>If you no longer want the item, select the trash bin icon to remove it from your Roast Log.</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <div class="help-card">
+                    <div class="help-card-img">
+                        <img src="img/help1.gif" alt="Adding Items to your card">
+                    </div>
+                </div>
+
+            </div>
+
+            
+        </div>
+
+        
     <footer>
         <div class="footer-container">
                 <div class="footer-about">

@@ -118,12 +118,12 @@ header {
   gap: 10px;
   padding: 10px;
 }
-.header-container h1 {
+.header-text h1 {
   margin: 0; /* Remove default margins to ensure consistent spacing */
   font-style: bold;
 }
 
-.header-container h4 {
+.header-text h4 {
   margin: 0; /* Remove default margins to ensure consistent spacing */
   font-style: italic; /* Apply italic font style */
   color: var(--gold);
@@ -142,7 +142,6 @@ max-width: 100px;
 .header-text h1 {
   margin-bottom: 10px;
   letter-spacing: 5px;
-  text-wrap: wrap;
   font-family: var(--displayFont);
 }
 .hide-header {
@@ -867,31 +866,112 @@ color: var(--cream);
   visibility: visible;
 }
 
-.tooltip .helpText {
-  visibility: hidden;
-  background-color: var(--coffee);
-  color: var(--cream);
-  font-family: var(--scriptFont);
-  text-align: center;
-  border-radius: 6px;
+
+
+/* ----------------------------HELP MODAL-------------------------------- */
+.helpmenu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.helpmenu img {
+  width: 40px;
+  height: 40px;
+}
+.helpmodal {
+  position: absolute;
+  left: -100%;
+  top: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  width: 60%;
+
   padding: 10px;
 
-  /* Position the tooltip */
-  position: absolute;
-  top: 75px;
-  left: -180px; 
-  z-index: 1;
+  background-color: var(--coffee);
 
-  width: 40vw;
-  max-width: 400px;
+  border-radius: 5px;
+
+  transition: 0.3s;
+  box-shadow: 4px 0px 10px 0px var(--coffee);
+  z-index: 2;
+
+  overflow-y: scroll;
 }
-.tooltip .helpText p {
-  text-align: left;
+.helpmodal.active {
+  left: 20%;
+}
+
+.card-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.help-title {
+  padding: 10px;
+}
+.help-title h3 {
+  text-align: center;
   font-family: var(--contemporaryFont);
   color: var(--cream);
 }
-.tooltip:hover .helpText {
-  visibility: visible;
+.help-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  width: 50%;
+  height: 100%;
+  padding: 10px;
+  
+  background-color: var(--cream);
+  color: var(--coffee);
+
+  border: 1px solid var(--espresso);
+  border-radius: 5px;
+  box-shadow: 4px 0px 10px 0px var(--espresso);
+}
+.help-card img {
+  width: 100%;
+  height: 100%;
+}
+.help-card-title {
+  padding: 10px;
+  color: var(--burgundy);
+}
+.help-card-content{
+  display: flex;
+  gap: 10px;
+
+  text-align: left;
+}
+
+.help-card-desc ul {
+  list-style: none;
+  padding: 0px;
+}
+.help-card-desc li {
+  margin-bottom: 10px;
+  margin-left: 18px;
+}
+
+.cardTitleFont {
+  font-family: var(--displayFont);
+  color: var(--coffee);
+}
+.cardDescFont {
+  font-family: var(--contemporaryFont);
+  color: var(--espresso);
+  font-size: small;
+}
+.cardDescFont li {
+list-style-type: disc;
 }
 
 @media screen and (max-width: 768px) {
@@ -1076,6 +1156,13 @@ font-size: small;
 }
 .justify-end {
   justify-content: flex-end;
+}
 
+.card-container{
+  flex-direction: column;
+}
+.help-card {
+  width: 100%;
+  height: 100%;
 }
 }
