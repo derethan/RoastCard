@@ -97,26 +97,21 @@ function resetCanvas () {
     canvasContainer.textContent = '';
 };
 
+function printCanvas(elementId) {
+    let printContent = document.getElementById(elementId).innerHTML;
+    let css = './css/style.css';
 
-function printCanvas() {
-    const canvasContainer = document.getElementById('canvas-container');
-    const hamburger = document.querySelector(".hamburger");
-    const navMenu = document.querySelector(".menu");
+    let newWin = window.open('', '_blank');
+    newWin.document.open();
+    newWin.document.write('<html><head><link rel="stylesheet" href="' + css + '"></head><body onload="window.print()">' + printContent + '</body></html>');
+    newWin.document.close();
 
-    let printContents = canvasContainer.innerHTML;
-
-    hamburger.classList.remove("active");
-    navMenu.classList.remove("active");
-    let originalContents = document.body.innerHTML;
-
-    
-    document.body.innerHTML = printContents;
-
-    window.print();
-
-    document.body.innerHTML = originalContents;
-
+    // Close the window after a delay
+    setTimeout(function() {
+        newWin.close();
+    }, 500);
 }
+
 
 function saveCanvas () {
     const canvasContainer = document.getElementById('canvas-container');
@@ -137,10 +132,11 @@ function saveCanvas () {
 
 
 function loadCanvas () {
-    const canvasContainer = document.getElementById('canvas-container');
         
     // Add an event listener to the input element to handle file selection
     fileInput.addEventListener('change', (event) => {
+    const canvasContainer = document.getElementById('canvas-container');
+
     const file = event.target.files[0];
     
     // Use the FileReader API to read the contents of the selected file
