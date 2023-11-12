@@ -104,6 +104,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 //Show the Widget Menu
                 elementMenu.classList.add('show-element-bar'); 
           
+                window.addEventListener('load', openHelpMenu ());
             }, {once: true});
 
         

@@ -441,7 +441,7 @@ main {
 .modal-log-table th,
 .modal-log-table td,
 .modal-log-table tr {
-  text-align: left;
+  text-align: center;
   padding: 5px;
   border: 1px solid var(--espresso);
   color: var(--cream);
@@ -877,6 +877,7 @@ color: var(--cream);
   justify-content: center;
   align-items: center;
   gap: 10px;
+  cursor: pointer;
 }
 
 .helpmenu img {
@@ -921,6 +922,7 @@ color: var(--cream);
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 10px;
   padding: 10px;
   background-color: var(--espresso);
   border-radius: 5px;

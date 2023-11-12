@@ -409,6 +409,10 @@ function updateLog() {
   for (let i = 0; i < columnCount; i++) {
     columnHeaders.push(modalTable.rows[0].cells[i].getElementsByTagName('input')[0].value); //store the text of the TH
     canvasElement.querySelector('.log-table').rows[0].cells[i].innerHTML = columnHeaders[i];
+
+    if (columnHeaders[i] === 'Notes' || columnHeaders[i] === 'notes') {
+      canvasElement.querySelector('.log-table').rows[0].cells[i].style.width = '150px';
+    }
   }
   closeModal();
 }
