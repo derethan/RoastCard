@@ -1,0 +1,121 @@
+<div class="title-element draggable canvas-element" id="5436" data-initial-x="0" data-initial-y="0" data-x="109.32498168945312" data-y="10" style="transform: translate(109.325px, 10px);" ondblclick="editElement(`5436`,`title-element`)">
+                       
+                    <div class="mainElementContainer" style="display: block;">   
+                        <h1 style="color: rgb(8, 95, 175); font-size: 60px;">Sample RoastCard</h1>
+                    </div>
+                </div><div class="date-element draggable canvas-element" id="1347" data-initial-x="0" data-initial-y="0" data-x="274.3249816894531" data-y="100.00001525878906" style="transform: translate(274.325px, 100px);" ondblclick="editElement(`1347`,`date-element`)">  
+                      
+                    <div class="mainElementContainer" style="display: block;">     
+                        <h3>Roast Date: Sat Nov 11 2023</h3>
+                    </div>
+                </div><div class="batch-element draggable canvas-element" id="3566" data-initial-x="0" data-initial-y="0" data-x="4.324981689453125" data-y="145" style="transform: translate(4.32498px, 145px);" ondblclick="editElement(`3566`,`batch-element`)">    
+                    
+   
+                    <div class="mainElementContainer" style="display: block;">
+                        <div class="element-header">
+                            <h3>Batch Details</h3>
+                        </div>
+                        <div class="element-content">
+                            <div class="element-line"><p>Roast ID:</p></div>
+                            <div class="element-line"><p>Roasted By:</p></div>
+                            <div class="element-line"><p>Equipment Type:</p></div>
+                            <div class="element-line"><p>Batch Size:</p></div>
+                        </div>                    
+                    </div>
+                </div><div class="log-element draggable canvas-element" id="4780" data-initial-x="0" data-initial-y="0" data-x="4.324981689453125" data-y="565" style="transform: translate(4.32498px, 565px);" ondblclick="editElement(`4780`,`log-element`)">         
+                    
+                    <div class="mainElementContainer" style="display: block;">
+                        <table class="log-table">
+                            <tbody><tr>
+                                <th>Time</th>
+                                <th>Temperature</th>
+                                
+                            <th>Air</th><th>Notes</th></tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                
+                            <td> </td><td> </td></tr>
+                        <tr><td> </td><td> </td><td> </td><td> </td></tr><tr><td> </td><td> </td><td> </td><td> </td></tr><tr><td> </td><td> </td><td> </td><td> </td></tr><tr><td> </td><td> </td><td> </td><td> </td></tr><tr><td> </td><td> </td><td> </td><td> </td></tr><tr><td> </td><td> </td><td> </td><td> </td></tr><tr><td> </td><td> </td><td> </td><td> </td></tr><tr><td> </td><td> </td><td> </td><td> </td></tr><tr><td> </td><td> </td><td> </td><td> </td></tr><tr><td> </td><td> </td><td> </td><td> </td></tr></tbody></table>
+                    </div>
+                </div><div class="note-element draggable canvas-element" id="1572" data-initial-x="0" data-initial-y="0" data-x="499.3249816894531" data-y="144.99999237060547" style="transform: translate(499.325px, 145px);" ondblclick="editElement(`1572`,`note-element`)">         
+                    
+                        <div class="mainElementContainer" style="display: block;">
+                            <div class="element-header">
+                                <h3>Notes</h3>
+                            </div>
+                            
+                            <div class="element-content">
+                                <div class="note-line"></div>
+                                <div class="note-line"></div>
+                            <div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div></div>
+                        </div>
+                </div><div class="bean-element draggable canvas-element" id="9383" data-initial-x="0" data-initial-y="0" data-x="4.32501220703125" data-y="340" style="transform: translate(4.32501px, 340px);" ondblclick="editElement(`9383`,`bean-element`)">    
+                    
+   
+                    <div class="mainElementContainer" style="display: block;">
+                        <div class="element-header">
+                            <h3>Bean Details</h3>
+                        </div>
+                        <div class="element-content">
+                            <div class="element-line"><p>Name:</p></div>
+                            <div class="element-line"><p>Origin:</p></div>
+                            <div class="element-line"><p>Variety:</p></div>
+                            <div class="element-line"><p>Process:</p></div>
+                            <div class="element-line"><p>Altitude:</p></div>
+                        </div>                    
+                    </div>
+                </div><div class="weight-element draggable canvas-element" id="8850" data-initial-x="0" data-initial-y="0" data-x="559.3249816894531" data-y="520" style="transform: translate(559.325px, 520px);" ondblclick="editElement(`8850`,`weight-element`)">    
+                    
+   
+                    <div class="mainElementContainer" style="display: block;">
+                        <div class="element-header">
+                            <h3>Weight Details</h3>
+                        </div>
+                        <div class="element-content">
+                            <div class="element-line"><p>Green Weight:</p></div>
+                            <div class="element-line"><p>Roast Weight:</p></div>
+                            <div class="element-line"><p>Reduction (%):</p></div>
+                        </div>                    
+                    </div>
+                </div><div class="temp-element draggable canvas-element" id="6977" data-initial-x="0" data-initial-y="0" data-x="559.3249816894531" data-y="850" style="transform: translate(559.325px, 850px);" ondblclick="editElement(`6977`,`temp-element`)">    
+                    
+   
+                    <div class="mainElementContainer" style="display: block;">
+                        <div class="element-header">
+                            <h3>Temperature</h3>
+                        </div>
+                        <div class="element-content">
+                            <div class="element-line"><p>Ambient Temp:</p></div>
+                            <div class="element-line"><p>Humidity:</p></div>
+
+                        </div>                    
+                    </div>
+                </div><div class="timing-element draggable canvas-element" id="7597" data-initial-x="0" data-initial-y="0" data-x="559.3249816894531" data-y="369.99998474121094" style="transform: translate(559.325px, 370px);" ondblclick="editElement(`7597`,`timing-element`)">    
+                    
+   
+                    <div class="mainElementContainer" style="display: block;">
+                        <div class="element-header">
+                            <h3>Time Log</h3>
+                        </div>
+                        <div class="element-content"><div class="element-line"><p>Roast Start Time:</p></div><div class="element-line"><p>Roast End Time:</p></div><div class="element-line"><p>Roast Duration:</p></div></div>                    
+                    </div>
+                </div><div class="timing-element draggable canvas-element" id="7865" data-initial-x="0" data-initial-y="0" data-x="559.3249816894531" data-y="670.0000305175781" style="transform: translate(559.325px, 670px);" ondblclick="editElement(`7865`,`timing-element`)">    
+                    
+   
+                    <div class="mainElementContainer" style="display: block;">
+                        <div class="element-header">
+                            <h3>Time Log</h3>
+                        </div>
+                        <div class="element-content"><div class="element-line"><p>Yellowing Start Time:</p></div><div class="element-line"><p>Brown Start Time:</p></div><div class="element-line"><p>First Crack Start Time:</p></div><div class="element-line"><p>Second Crack Start Time:</p></div></div>                    
+                    </div>
+                </div><div class="temp-element draggable canvas-element" id="2476" data-initial-x="0" data-initial-y="0" data-x="289.3249816894531" data-y="370" style="transform: translate(289.325px, 370px);" ondblclick="editElement(`2476`,`temp-element`)">    
+                    
+   
+                    <div class="mainElementContainer" style="display: block;">
+                        <div class="element-header">
+                            <h3>Temperature</h3>
+                        </div>
+                        <div class="element-content"><div class="element-line"><p>Yellowing Temp:</p></div><div class="element-line"><p>Browing Temp:</p></div><div class="element-line"><p>First Crack Temp:</p></div><div class="element-line"><p>Second Crack Temp:</p></div></div>                    
+                    </div>
+                </div>

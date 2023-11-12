@@ -28,11 +28,6 @@
                 <h1>Roast Card</h1>
                 <h4>Create a Custom Roast Logger</h4>
             </div>
-
-            <div class="helpmenu">
-                <img src="img/help_cream.png" alt="Not sure where to begin?" onclick="openHelpMenu ()">
-            </div>
-
         </div>
 
     </header>
@@ -44,7 +39,9 @@
                 <h2>Roast Card</h2>
             </div>
 
-
+            <div class="helpmenu">
+                <img src="img/help_cream.png" alt="Not sure where to begin?" onclick="openHelpMenu ()">
+            </div>
 
             <div class="menu">
                 <div class="menu-item"><input type="button" class="menu-button" id="save-button" onclick="saveCanvas ()" value="Save"></div>
@@ -291,36 +288,42 @@
 
                     <!-- Contains a Container for the Roast Card Canvas, Enabled when user clicks the new-card button.-->
                     <div class="canvas-container" id="canvas-container" style="display: none;"></div>
-                        <!-- End of  Canvas Area-->
-                </div>
+                </div> <!-- End of Resizable Container -->
 
-            </div>
+            </div> <!-- End of Canvas Area -->
 
-        </div>
+        </div> <!-- End of Main Content Container -->
 
     </main>
 
         <!-- Modal for Editing Element -->
         <div id="edit-element" class="modal" style="display: none;"></div>
 
-
+        
                     <!-- -------------------------------HELP Memu Popup Conent Below-------------------------------- -->
 
         <div class="helpmodal">
 
             <div class="help-title">
-                <h3>Not Sure where to Begin?</h3>
+                <div class="help-text">
+                    <h3>Get Started with RoastCard</h3>
+                    <p>Expert Guidance for Creating the Perfect Log</p>
+                </div>
+
+                <div class="closeHelp" onclick="openHelpMenu ()">
+                    <span class="closeHelp">X</span>
+                </div>
             </div>
 
+                    <!-- -------------------------------Container Step 1-------------------------------- -->            
             <div class="card-container">
                 <div class="help-card">
 
                     <div class="help-card-title">
-                        <h4>Step 1: Design Your Roasting Log</h4>
+                        <h4>Design Your Roasting Log</h4>
                     </div>
 
                     <div class="help-card-content">
-
                         <div class="help-card-desc">
                             <ul>
                                 <li class="cardTitleFont">1. <strong>Choose an Item:</strong>
@@ -332,8 +335,8 @@
                                 <li class="cardTitleFont">2. <strong>Visual Guidance:</strong>
                                     <ul class="cardDescFont">
                                         <li>The canvas area will change color:</li>
-                                        <li style="color: green;">- Green indicates that the item can be dropped.</li>
-                                        <li style="color: red;">- Red signals that your pointer is outside of the drop area.</li>
+                                        <li style="color: green;">Green indicates that the item can be dropped.</li>
+                                        <li style="color: red;">Red signals that your pointer is outside of the drop area.</li>
                                     </ul>
                                 </li>
                                 <li class="cardTitleFont">3. <strong>Free Movement:</strong>
@@ -351,15 +354,14 @@
                         <img src="img/help1.gif" alt="Adding Items to your card">
                     </div>
                 </div>
-
-
             </div>
 
+                    <!-- -------------------------------Container Step 2-------------------------------- -->
             <div class="card-container">
                 <div class="help-card">
 
                     <div class="help-card-title">
-                        <h4>Step 2: Modifying your Items</h4>
+                        <h4>Modifying your Items</h4>
                     </div>
 
                     <div class="help-card-content">
@@ -388,16 +390,94 @@
 
                 <div class="help-card">
                     <div class="help-card-img">
-                        <img src="img/help1.gif" alt="Adding Items to your card">
+                        <img src="img/help2_small.gif" alt="Modifying Your Roast Card">
                     </div>
                 </div>
+            </div>
+            
+                    <!-- -------------------------------Container Step 3-------------------------------- -->
+            <div class="card-container">
+                <div class="help-card">
 
+                    <div class="help-card-title">
+                        <h4>Manage Your RoastCard</h4>
+                    </div>
+                
+                    <div class="help-card-content">
+                
+                        <div class="help-card-desc">
+                            <ul>
+                                <li class="cardTitleFont">1. <strong>Saving</strong>
+                                    <ul class="cardDescFont">
+                                        <li>Click the "Save" button in the top right to save your RoastCard.</li>
+                                        <li>You will be prompted to enter a name for the card upon saving.</li>
+                                    </ul>
+                                </li>
+                                <li class="cardTitleFont">2. <strong>Loading</strong>
+                                    <ul class="cardDescFont">
+                                        <li>To load a previously saved RoastCard, click the "Load" button in the top right.</li>
+                                        <li>Select the RoastCard from your saved directory.</li>
+                                        <li>Click "Open," and your card will be loaded onto the canvas.</li>
+                                    </ul>
+                                </li>
+                                <li class="cardTitleFont">3. <strong>Printing</strong>
+                                    <ul class="cardDescFont">
+                                        <li>Select the "Print" button in the top right to open the print preview page for your card.</li>
+                                        <li>Click the "Print" button to print your RoastCard.</li>
+                                    </ul>
+                                </li>
+                                <li class="cardTitleFont">4. <strong>Reset Canvas</strong>
+                                    <ul class="cardDescFont">
+                                        <li>Select the "Reset" button in the top right to clear all items from your canvas.</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                
+                    </div>
+                </div>
+                
+
+                <div class="help-card">
+                    <div class="help-card-img">
+                        <img src="img/help3.gif" alt="Managing Your Roast card">
+                    </div>
+                </div>
+            </div>
+            
+                    <!-- -------------------------------Sample Cards-------------------------------- -->
+            <div class="help-title">
+                <div class="help-text">
+                <h3>Explore Sample RoastCards?</h3>
+                <p>Click on a sample to get an idea of where to start!</p>
+                </div>
+
+                <div class="closeHelp" onclick="openHelpMenu ()">
+                    <span class="closeHelp">X</span>
+                </div>
             </div>
 
-            
+            <div class="card-container">
+                <div class="help-card">
+                    <div class="help-card-img">
+                        <img src="img/sample1.png" alt="Simple Roast card Sample">
+                    </div>
+                </div>
+                <div class="help-card">
+                    <div class="help-card-img">
+                        <img src="img/sample2.png" alt="Simple Roast card Sample">
+                    </div>
+                </div>
+                <div class="help-card">
+                    <div class="help-card-img">
+                        <img src="img/sample3.png" alt="Simple Roast card Sample">
+                    </div>
+                </div>
+            </div>
         </div>
 
         
+                    <!-- -------------------------------Footer Conent Below-------------------------------- -->
     <footer>
         <div class="footer-container">
                 <div class="footer-about">
@@ -405,6 +485,7 @@
                 </div>                
         </div>
     </footer>
+
 
     <script src="js/change_container.js"></script>
     <script src="js/drag_listener.js"></script>
