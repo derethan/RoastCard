@@ -12,6 +12,7 @@ const debug = 0; //Enable Debug Mode
 
 
 document.addEventListener('DOMContentLoaded', function () {
+    
     const mainContent = document.getElementById('content-container');
     const resizableContainer = document.getElementById('resizable-container');
     const canvasArea = document.getElementById('canvas-area')
@@ -28,33 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const header = document.querySelector('header');
 
-    // Enable Debug Mode - Hide Initial Start Page
-    if (debug == 1){
-        startContainer.style.display = 'none';
-        //Show the canvas container
-        canvasArea.style.width = '85%';
-        canvasContainer.style.display = 'flex';
-        resizableContainer.classList.add('resizeCanvas');
-        resizableContainer.setAttribute('data-canvas-bottom', 380);
-        
-        //Show the navigation bar
-        menuBar.style.display = 'flex';
-        menuBar.classList.add('sticky-nav');
-        
-        header.style.display = 'none';
-        
-        //Show the navigation bar
-        menuBar.style.display = 'flex';
-        
-        //Move the main content up
-        mainContent.classList.add('move-content'); 
-        mainContent.style.paddingBottom = '200px';
-
-        //Show the menu bar
-        elementMenu.style.display = 'flex';
-    }
-
-
+    debug ();
     /********************************************************************************
      *  Events related to the newCard button:
      * - Make the main container resizable
@@ -67,8 +42,27 @@ document.addEventListener('DOMContentLoaded', function () {
     *********************************************************************************/
 
     newCardButton.addEventListener('click', function () {
+
+
+        // if ('orientation' in window.screen) {
+        //     // The Screen Orientation API is supported
+        //     console.log("Screen Orientation API is supported");
+            
+        //     try {
+        //         window.screen.orientation.lock('portrait');
+        //       }
+        //     catch (error) {
+        //         // handle error
+        //         console.log("Error: " + error);
+        //       }
+
+        //   } else {
+        //     // The Screen Orientation API is not supported
+        //     console.log("Screen Orientation API is not supported");
+        //   }
+
        //Make the main container resizable
-    //    resizableContainer.classList.add('resizeCanvas');
+       //resizableContainer.classList.add('resizeCanvas');
 
         //add event listener to wait for the fade-out animation to end
         startContainer.classList.add('fade-out');
@@ -115,10 +109,43 @@ document.addEventListener('DOMContentLoaded', function () {
      *  Events related to the template-card Button
     *********************************************************************************/
 
-    //templateCardButton.addEventListener('click', function () {
-    //    alert('This feature is not available yet');});
+    toolsButton.addEventListener('click', function () {
+
+        document.getElementById('toolsModal').style.display = 'flex';
+    });
 
 
+    
+
+function debug (){
+    
+    // Enable Debug Mode - Hide Initial Start Page
+    if (debug == 1){
+        startContainer.style.display = 'none';
+        //Show the canvas container
+        canvasArea.style.width = '85%';
+        canvasContainer.style.display = 'flex';
+        resizableContainer.classList.add('resizeCanvas');
+        resizableContainer.setAttribute('data-canvas-bottom', 380);
+        
+        //Show the navigation bar
+        menuBar.style.display = 'flex';
+        menuBar.classList.add('sticky-nav');
+        
+        header.style.display = 'none';
+        
+        //Show the navigation bar
+        menuBar.style.display = 'flex';
+        
+        //Move the main content up
+        mainContent.classList.add('move-content'); 
+        mainContent.style.paddingBottom = '200px';
+
+        //Show the menu bar
+        elementMenu.style.display = 'flex';
+    }
+
+}
 });
 
 

@@ -105,6 +105,15 @@ body {
 .cursor-pointer {
   cursor: pointer;
 }
+.text-center {
+  text-align: center;
+}
+.gap5{
+  gap: 5px;
+}
+.gap25 {
+  gap: 25px;
+}
 /*****************************************************************
   - Header Section
 ******************************************************************/
@@ -538,10 +547,6 @@ main {
   position: fixed;
   width: 100%;
 }
-
-.gap25 {
-  gap: 25px;
-}
 .selectionContainer {
   display: flex;
   flex-direction: column;
@@ -910,7 +915,29 @@ color: var(--cream);
 .helpmodal.active {
   left: 20%;
 }
+.toolsmodal {
+  position: fixed;
+  left: 20%;
+  top: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 
+  width: 60%;
+
+  padding: 10px;
+
+  background-color: var(--coffee);
+
+  border-radius: 5px;
+
+  transition: 0.3s;
+  box-shadow: 4px 0px 10px 0px var(--espresso);
+  z-index: 2;
+
+  overflow-y: auto;
+  max-height: 80vh;
+}
 .card-container {
   display: flex;
   justify-content: space-between;
@@ -1006,6 +1033,11 @@ color: var(--cream);
 list-style-type: disc;
 }
 
+.tool-card-title {
+  padding: 10px;
+  color: var(--cream);
+  background-color: var(--burgundy);
+}
 @media screen and (max-width: 768px) {
 
   .canvas-width {
