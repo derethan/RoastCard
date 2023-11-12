@@ -151,6 +151,9 @@ function loadCanvas () {
         canvasContainer.innerHTML = fileContents;
         };
     });
+
+    //clear the file input
+    fileInput.value = null;
 }
 
 function loadSample (sample) {
