@@ -147,12 +147,35 @@ function loadCanvas () {
     const reader = new FileReader();
     reader.readAsText(file);
     reader.onload = () => {
-    const fileContents = reader.result;
-    canvasContainer.innerHTML = fileContents;
-
+        const fileContents = reader.result;
+        canvasContainer.innerHTML = fileContents;
         };
     });
-
-
 }
 
+function loadSample (sample) {
+    const canvasContainer = document.getElementById('canvas-container');
+
+    switch (sample) {
+        case "1":
+            fileName = "RoastCard_Sample_Basic";
+            break;
+        case "2":
+            fileName = "RoastCard_sample_med";
+            break;
+        case "3":
+            fileName = "RoastCard_sample_full";
+    }
+
+    fetch (sourcePath + fileName + ".rlog")
+    .then(response => response.text())
+    .then(data => {
+        const sampleHTML = data;
+        canvasContainer.innerHTML = sampleHTML;
+    })
+    .catch(error => {
+        console.log(error);
+    });
+
+    openHelpMenu();
+}
