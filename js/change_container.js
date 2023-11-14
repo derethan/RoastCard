@@ -106,16 +106,40 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     /********************************************************************************
-     *  Events related to the template-card Button
+     *  Events related to the Tools Button
     *********************************************************************************/
-
+    
+    toolsModal = document.getElementById('toolsModal');
     toolsButton.addEventListener('click', function () {
-
-        document.getElementById('toolsModal').style.display = 'flex';
+        //Show the tools modal
+        toolsModal.classList.toggle('active');
     });
 
-
+    //handle clicking the close Button - Tools Modal
+    closeButton = document.getElementById('closeTools');
+    closeButton.addEventListener('click', function () {
+        //close the Tools modal
+        toolsModal.classList.toggle('active');
+    });
     
+
+    roastChart = document.getElementById('roastChartButton');
+    roastChartModal = document.getElementById('roastChart');
+
+    //Handle clicking the Roast Chart Tool options
+    roastChart.addEventListener('click', function () {
+        //close the Tools modal
+        toolsModal.classList.toggle('active');
+
+        //Show the Roast Chart Tool
+        roastChartModal.classList.toggle('active');
+    });
+      //handle clicking the close Button - Roast Chart Modal
+      closeButton = document.getElementById('closeChart');
+      closeButton.addEventListener('click', function () {
+          //close the Roast Chart modal
+          roastChartModal.classList.toggle('active');
+      });
 
 function debug (){
     

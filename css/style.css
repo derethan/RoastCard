@@ -3,8 +3,6 @@ This file is used to style the Roast Card Website.
   - index.html
 ******************************************************************/
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;1,400&display=swap');
-
 
 :root {
   --coffee: #6f4e37; /*Base color, Representing essance and warmth of coffee*/
@@ -12,6 +10,8 @@ This file is used to style the Roast Card Website.
   --burgundy: #8b0000; /*Highlight and Accents, Adds sophistication elegance*/
 
   --cream: #f5e6ca; /*backgrounds and text, contrast for comfort and balance*/
+
+  --cream-shaded: #d4c5a8;
 
   --gold: #d4af37; /*buttons or other important elements,  add a touch of luxury and warmth*/
 
@@ -113,6 +113,9 @@ body {
 }
 .gap25 {
   gap: 25px;
+}
+.fullwidth {
+  width: 100%;
 }
 /*****************************************************************
   - Header Section
@@ -512,6 +515,9 @@ main {
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.2); /* Black w/ opacity */
 }
+.modal.active {
+  display: flex;
+}
 
 /* Modal Content/Box */
 .modal-content {
@@ -691,8 +697,10 @@ width: 25%;
   .show-element-bar {
     display: flex;
   }
+
+
 /*****************************************************************
-  - Other Styles
+  - Input Element Styles
 ******************************************************************/
 
   .input-box {
@@ -716,7 +724,10 @@ width: 25%;
     color: var(--burgundy);
     padding: 5px;
   }
-
+  input[type=text] {
+    width: 100%;
+    height: 100%;
+  }
  th input[type=text] {
     background-color: var(--coffee);
     color: var(--cream);
@@ -725,6 +736,19 @@ width: 25%;
     padding: 0px 10px;
     margin: 8px 0;
     box-sizing: border-box;
+    border: none;
+  }
+  td input[type=text] {
+    background-color: var(--cream);
+    color: var(--espresso);
+    font-family: var(--scriptFont);
+    border: none;
+  }
+  td input[type=text]:active,
+  td input[type=text]:focus {
+    background-color: var(--cream-shaded);
+    color: var(--espresso);
+    font-family: var(--scriptFont);
     border: none;
   }
   input[type=date] {
@@ -746,14 +770,18 @@ width: 25%;
     vertical-align: middle;
  
   }
-  /* Style the radio button when it is checked */
   input[type="radio"]:checked {
     background-color: var(--burgundy);
   }
-    /* Style the radio button when hovered */
     input[type="radio"]:hover {
       background-color: var(--gold);
     }
+
+
+/*****************************************************************
+
+******************************************************************/
+
   .log-container {
     display: flex;
     flex-direction: column;
@@ -938,6 +966,11 @@ color: var(--cream);
   overflow-y: auto;
   max-height: 80vh;
 }
+.toolsmodal.active {
+  display: flex;
+}
+
+
 .card-container {
   display: flex;
   justify-content: space-between;
@@ -1019,6 +1052,14 @@ color: var(--cream);
   margin-bottom: 10px;
   margin-left: 18px;
 }
+.sample-desc {
+  font-size: 14px;
+  font-family: var(--scriptFont);
+  color: var(--espresso);
+  text-align: center;
+
+  padding-top: 5px;
+}
 
 .cardTitleFont {
   font-family: var(--displayFont);
@@ -1037,6 +1078,18 @@ list-style-type: disc;
   padding: 10px;
   color: var(--cream);
   background-color: var(--burgundy);
+}
+#roastChartButton {
+  cursor: pointer;
+}
+.data-table {
+  width: 100%;
+}
+.card-cell {
+  display: flex;
+  flex-direction: column;
+
+  width: 50%;
 }
 @media screen and (max-width: 768px) {
 
