@@ -13,6 +13,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
 
     <title>Roast Card</title>
 
@@ -337,7 +338,7 @@
 
               <!-- -------------------------------Roast Chart Content Below-------------------------------- -->
 
-              <div id="roastChart" class="modal" style="display: none;">
+              <div id="roastChart" class="modal" style="display: flex;">
         
                 <div class="toolsmodal">
                     <div class="help-title">
@@ -354,7 +355,7 @@
     
                     <div class="card-container">
                         <div class="card-cell">
-                            <div class="help-card gap5">  
+                            <div class="help-card gap5 fullwidth">  
                                 <div class="tool-card-title text-center">
                                     <h4>Data Container</h4>
                                 </div>
@@ -369,20 +370,46 @@
                                                 <th>Temperature</th>
                                                 <th>Notes</th>
                                             </tr>
-                                            <tr>
-                                                <td><input type="text" id="time" name="time"></td>
-                                                <td><input type="text" id="temp" name="time"></td>
-                                                <td><input type="text" id="note" name="time"></td>
-                                            </tr>
+
                                         </table>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="help-card">
+                            <div class="help-card fullwidth">
                                 <div class="tool-card-title text-center">
-                                    <h4>Data Container</h4>
-                            </div>
+                                    <h4>Tools</h4>
+                                </div>
+
+                                <div class="help-card-content" id="roastChart">
+                                    <div class="help-card-desc">
+
+                                        <div class="log-button-container column">
+                                            <div class="plus-munis-bttn">
+                                                <p>Columns: </p>
+                                                <button class="minus-button" id="minus-button" onclick="removeColumn ('roastChartLog')">-</button>
+                                                <button class="plus-button" id="plus-button" onclick="addColumn ('roastChartLog')">+</button>
+                                            </div>
+                                            <div class="plus-munis-bttn">
+                                                <p>Rows: </p>
+                                                <button class="minus-button" id="minus-button" onclick="removeRow ('roastChartLog')">-</button>
+                                                <button class="plus-button" id="plus-button" onclick="addRow ('roastChartLog')">+</button>
+                                             </div>
+
+                                             <div>
+                                                <label for="timeInterval">Time Interval:</label>
+                                                <input type="number" id="timeInterval" name="logTime" min="0" max="60" value="15" step="15">
+                                             </div>
+                                             <div>
+                                                <!-- Add a button to trigger the chart update -->
+                                                <button id="updateChartButton">Update Chart</button>
+                                             </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
 
                             </div>
                         </div>
@@ -394,6 +421,7 @@
     
                             <div class="help-card-content" id="roastChart">
                                 <div class="help-card-desc">
+                                    <div id="chart-container" class="chart-container"></div>
                                 </div>
                             </div>
                         </div>
@@ -602,6 +630,8 @@
     <script src="js/dropzones.js"></script>
     <script src="js/menu_buttons.js"></script>
     <script src="js/edit_element.js"></script>    
+    <script src="js/charts.js"></script>    
+
 
 </body>
 </html>

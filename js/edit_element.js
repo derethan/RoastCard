@@ -482,10 +482,10 @@ function updateTiming () {
 //      Update the Time cells (first cell of each column), 
 //      should be a timestamp  based on the user set time intervals (30s, 1min, etc)
 
-function addColumn() {
+function addColumn(tableName) {
 
   //Stores the Table Element
-  let logTable = document.getElementById('log-table');
+  let logTable = document.getElementById(tableName);
 
   //Stores the number of columns in the table
   let columnCount = logTable.rows[0].cells.length;
@@ -513,9 +513,9 @@ function addColumn() {
 
 }
 
-function removeColumn() {
+function removeColumn(tableName) {
   //Remove the last column from the table
-  let logTable = document.getElementById('log-table');
+  let logTable = document.getElementById(tableName);
   let columnCount = logTable.rows[0].cells.length;
 
   if (columnCount > 2) {
@@ -526,22 +526,77 @@ function removeColumn() {
 
 }
 
-function addRow() {
-  let table = document.getElementById("log-table");
+let newTime = 0;
+
+function addRow(tableName) {
+  let table = document.getElementById(tableName);
   let row = table.insertRow(-1);
 
+  const timeInterval = parseInt(document.getElementById('timeInterval').value);
+
+  //convert the time value  to minutes and seconds
+  let minutes = Math.floor(newTime / 60);
+  let seconds = newTime % 60;
+
+  //convert the minutes and seconds to a string
+  minutes = minutes.toString();
+  seconds = seconds.toString();
+
+  //add a 0 to the front of the seconds if it is less then 10
+  if (seconds.length === 1) {
+    seconds = '0' + seconds;
+  }
+
+  
   // Loop through each column and add a new cell
   for (let i = 0; i < table.rows[0].cells.length; i++) {
     const cell = row.insertCell(-1);
-    cell.innerHTML = " ";
+
+    //Handle Time Cell
+    if (i === 0) {
+      const time = document.createElement('h3');
+      time.innerHTML = minutes + ':' + seconds;
+      cell.innerHTML = time.outerHTML;
+    }
+     else if (i === 1) {     //Handle Temp Cell
+      const input = document.createElement('input');
+      input.type = 'number';
+      input.maxLength = '4';
+      input.min = '0';
+      input.max = '500';
+      input.step = '1';
+      input.value = '0';
+      input.classList.add('input-box');
+      cell.innerHTML = input.outerHTML;
+
+     } else {     //Handle other cells
+
+      //Create the Input Field
+      const input = document.createElement('input');
+      input.type = 'text';
+      input.maxLength = '100';
+      input.placeholder = '';
+      cell.innerHTML = input.outerHTML;
+
+     }
   }
+  //Update the newTime variable
+  newTime += timeInterval;
+
 }
 
-function removeRow() {
-  let table = document.getElementById("log-table");
+function removeRow(tableName) {
+  let table = document.getElementById(tableName);
+
+  const timeInterval = parseInt(document.getElementById('timeInterval').value);
+
 
   if (table.rows.length > 2) {
     table.deleteRow(-1);
+
+    //Update the newTime variable
+    newTime -= timeInterval;
+
   }
 }
 
