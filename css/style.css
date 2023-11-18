@@ -900,13 +900,13 @@ color: var(--cream);
 }
 .toolsmodal {
   position: fixed;
-  left: 20%;
+  left: 5%;
   top: 80px;
   display: flex;
   flex-direction: column;
   gap: 10px;
 
-  width: 60%;
+  width: 90%;
 
   padding: 10px;
 
@@ -1051,8 +1051,7 @@ list-style-type: disc;
 }
 #chart-container {
   width: 100%;  /* adjust as needed */
-  height: 100%; /* adjust as needed */
-  
+  height: 100%; /* adjust as needed */  
 }
 /*********************************************************************
   - 
