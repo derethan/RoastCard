@@ -1081,6 +1081,9 @@ list-style-type: disc;
 .column {
   flex-direction: column;
 }
+.row {
+  flex-direction: row;
+}
 .flexcontainer {
   display: flex;
   justify-content: center;
@@ -1306,4 +1309,9 @@ font-size: small;
 .helpmodal.active {
   left: 5%;
 }
+.card-cell {
+  width: 100%;
+}
+
+
 }
