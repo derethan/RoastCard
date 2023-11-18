@@ -376,13 +376,22 @@ main {
   border-top-left-radius: 5px;
 
   background-color: var(--burgundy);
-  color: var(--cream);
+}
+.element-header h3 {
+  color : var(--cream);
 }
 
 .element-content {
   width: 100%;
 }
-
+.element-title {
+  color: var(--cream);
+}
+.mainElementContainer {
+  display: none;
+  flex-direction: column;
+  width: 100%;
+}
 
 .canvas-element.title-element {
   color: var(--espresso);
@@ -416,11 +425,7 @@ main {
   min-width: 75px;
   height: 32px;
 }
-.mainElementContainer {
-  display: none;
-  flex-direction: column;
-  width: 100%;
-}
+
 .note-line {
   background-color:  var(--cream);
   height: 25px;
@@ -847,6 +852,9 @@ width: 25%;
   width: 40vw;
   max-width: 400px;
 }
+.tooltip .tooltiptext h3 {
+  color: var(--cream);
+}
 .tooltip .tooltiptext p {
 font-size: 14px;
 font-family: var(--contemporaryFont);
@@ -899,14 +907,12 @@ color: var(--cream);
   left: 20%;
 }
 .toolsmodal {
-  position: fixed;
-  left: 5%;
-  top: 80px;
   display: flex;
   flex-direction: column;
   gap: 10px;
 
-  width: 90%;
+  width: 98%;
+  max-height: 98%;
 
   padding: 10px;
 
@@ -919,7 +925,7 @@ color: var(--cream);
   z-index: 2;
 
   overflow-y: auto;
-  max-height: 80vh;
+  
 }
 .toolsmodal.active {
   display: flex;
@@ -1126,6 +1132,7 @@ list-style-type: disc;
 .tooltip .tooltiptext p {
   font-size: 12px;
   }
+
   .tooltip img {
     width: 30px;
     height: 30px;

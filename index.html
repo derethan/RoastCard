@@ -338,7 +338,7 @@
 
               <!-- -------------------------------Roast Chart Content Below-------------------------------- -->
 
-              <div id="roastChart" class="modal" style="display: flex;">
+              <div id="roastChart" class="modal">
         
                 <div class="toolsmodal">
                     <div class="help-title">
@@ -360,8 +360,8 @@
                                     <h4>Data Container</h4>
                                 </div>
         
-                                <div class="help-card-content" id="roastChart">
-                                    <div class="help-card-desc">
+                                <div class="help-card-content" style="max-height: 300px; overflow-y: auto;">
+                                    <div class="help-card-desc" >
                                         <table class="log-table" id="roastChartLogImport" style="display: none;"></table>
 
                                         <table class="log-table fullwidth" id="roastChartLog">
@@ -381,7 +381,7 @@
                                     <h4>Tools</h4>
                                 </div>
 
-                                <div class="help-card-content" id="roastChart">
+                                <div class="help-card-content">
                                     <div class="help-card-desc">
 
                                         <div class="log-button-container column">
@@ -407,12 +407,12 @@
                                                     <label for="timeInterval">Time Interval:</label>
                                                 </div>
                                                 <div>
-                                                    <input type="number" id="timeInterval" name="logTime" min="0" max="60" value="15" step="15">
+                                                    <input type="number" class="input-box" id="timeInterval" name="logTime" min="0" max="60" value="15" step="15">
                                                 </div>
                                              </div>
                                              <div>
                                                 <!-- Add a button to trigger the chart update -->
-                                                <button id="updateChartButton">Update Chart</button>
+                                                <button id="updateChartButton" class="modal-buttons" style="height: 40px;">Update Chart</button>
                                              </div>
                                         </div>
 
@@ -424,12 +424,12 @@
                             </div>
                         </div>
 
-                        <div class="help-card gap5">  
+                        <div class="help-card gap5" style="height: auto;">  
                             <div class="tool-card-title text-center">
                                 <h4>Graph Container</h4>
                             </div>
     
-                            <div class="help-card-content" id="roastChart">
+                            <div class="help-card-content">
                                 <div class="help-card-desc">
                                     <div id="chart-container" class="chart-container"></div>
                                 </div>

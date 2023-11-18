@@ -11,11 +11,12 @@ let sourcePath = 'https://raw.githubusercontent.com/derethan/RoastCard/main/html
 
 function preloadHTMLContent() {
   const originElements = document.querySelectorAll('.origin-element')
-  const elementTypes = []; // Array of element types to preload
+  const elementTypes = [];
   for (element of originElements) {
     elementTypes.push(element.id);
   }
 
+  //For each element type, fetch the html content and store it in the htmlContent object
   elementTypes.forEach((elementType) => {
     fetch(sourcePath + `${elementType}.html`)
       .then(response => response.text())
@@ -31,8 +32,11 @@ window.addEventListener('load', preloadHTMLContent);
 
 /********************************************************************************
 *   Function to open and load the modal content for the selected element
-*     - editElement() opens the modal window and loads the content
-*     - loadModal() updates the content in the modal window
+*     - editElement() is called when the user double clicks an element
+        - Determines what edit window to open based on the element type
+
+*     - loadModal() loads the html content for the selected element
+*     - loadElementContent() updates the content in the modal window
 *********************************************************************************/
 
 function editElement(canvasElementID, elementType) {
@@ -65,9 +69,12 @@ function editElement(canvasElementID, elementType) {
 
 //function to load the modal window for the selected element type
 async function loadModal(elementType) {
+
+  //get the html content for the selected element type
   let data = await htmlContent[elementType];
   document.getElementById("edit-element").innerHTML = data;
 
+  // Create the function name for the update function
   let functionName = 'get' + elementType + 'Data';
   functionName = functionName.replace('-element', '');
   
@@ -81,6 +88,7 @@ async function loadModal(elementType) {
     modalContent.classList.add('movable');
   }
 
+  //try to load the function for the selected element
   try {
     window[functionName]();
 
@@ -274,7 +282,6 @@ function getSelectionData () {
   'First Crack Start Time:', 'First Crack End Time:', 'First Crack Duration:','Second Crack Start Time:', 'Second Crack End Time:', 'Second Crack Duration:', 
   'Development time:', 'Development Ratio:'];
 
-
   if (selectedElement === 'temp-element') {
     tempArray.forEach((temp) => {
       populateContent(temp);
@@ -314,6 +321,7 @@ function getSelectionData () {
     plusButton.addEventListener('click', addItem);
     selectableItem.appendChild(plusButton);
 
+    //Append the new Element to the selectionContainer
     selectionContainer.appendChild(selectableItem);
     }
   }
@@ -477,11 +485,6 @@ function updateTiming () {
 *             Functions to add and remove content from the elements
 *********************************************************************************/
 
-
-// ToDo: Add Functionality to update the headings based on the user input
-//      Update the Time cells (first cell of each column), 
-//      should be a timestamp  based on the user set time intervals (30s, 1min, etc)
-
 function addColumn(tableName) {
 
   //Stores the Table Element
@@ -512,22 +515,23 @@ function addColumn(tableName) {
 
         if (columnCount === 2) 
         {
+          if (tableName === 'roastChartLog') {
           header.innerHTML = 'Notes';
+          } else {
+            input.value = 'Notes'; //set the default value of the input field
+            header.appendChild(input);
+          }
           logTable.rows[i].appendChild(header);
         } else {
           header.appendChild(input);
           logTable.rows[i].appendChild(header);
         }
-        
-                
-
       } else {
         const cell = logTable.rows[i].insertCell(-1);
         cell.innerHTML = " ";
       }
     }
   }
-
 }
 
 function removeColumn(tableName) {
@@ -540,80 +544,52 @@ function removeColumn(tableName) {
       logTable.rows[i].deleteCell(-1);
     }
   }
-
 }
-
-let newTime = 0;
 
 function addRow(tableName) {
   let table = document.getElementById(tableName);
   let row = table.insertRow(-1);
 
-  const timeInterval = parseInt(document.getElementById('timeInterval').value);
 
-  //convert the time value  to minutes and seconds
-  let minutes = Math.floor(newTime / 60);
-  let seconds = newTime % 60;
-
-  //convert the minutes and seconds to a string
-  minutes = minutes.toString();
-  seconds = seconds.toString();
-
-  //add a 0 to the front of the seconds if it is less then 10
-  if (seconds.length === 1) {
-    seconds = '0' + seconds;
-  }
-
-  
   // Loop through each column and add a new cell
   for (let i = 0; i < table.rows[0].cells.length; i++) {
     const cell = row.insertCell(-1);
 
-    //Handle Time Cell
-    if (i === 0) {
-      const time = document.createElement('h3');
-      time.innerHTML = minutes + ':' + seconds;
-      cell.innerHTML = time.outerHTML;
+      if (tableName === 'roastChartLog') {
+      //Handle Time Cell
+      if (i === 0) {
+        updateTime(tableName);
+      }
+      else if (i === 1) {     //Handle Temp Cell
+        const input = document.createElement('input');
+        input.type = 'number';
+        input.maxLength = '4';
+        input.min = '0';
+        input.max = '500';
+        input.step = '1';
+        input.value = '0';
+        input.classList.add('input-box');
+        cell.innerHTML = input.outerHTML;
+
+      } else {     //Handle other cells
+
+        //Create the Input Field
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.maxLength = '100';
+        input.placeholder = '';
+        cell.innerHTML = input.outerHTML;
+      }
     }
-     else if (i === 1) {     //Handle Temp Cell
-      const input = document.createElement('input');
-      input.type = 'number';
-      input.maxLength = '4';
-      input.min = '0';
-      input.max = '500';
-      input.step = '1';
-      input.value = '0';
-      input.classList.add('input-box');
-      cell.innerHTML = input.outerHTML;
-
-     } else {     //Handle other cells
-
-      //Create the Input Field
-      const input = document.createElement('input');
-      input.type = 'text';
-      input.maxLength = '100';
-      input.placeholder = '';
-      cell.innerHTML = input.outerHTML;
-
-     }
   }
-  //Update the newTime variable
-  newTime += timeInterval;
-
 }
 
 function removeRow(tableName) {
   let table = document.getElementById(tableName);
-
   const timeInterval = parseInt(document.getElementById('timeInterval').value);
-
 
   if (table.rows.length > 2) {
     table.deleteRow(-1);
-
-    //Update the newTime variable
-    newTime -= timeInterval;
-
   }
 }
 
@@ -633,7 +609,6 @@ function addLine() {
 }
 
 function removeLine() {
-  //get the Body of the Modal NotePad
   //get the Body of the Modal NotePad
   modalNoteBody = document.querySelector('.modal-body').querySelector('.mainElementContainer');
   modalNoteBody = modalNoteBody.querySelector('.element-content');
