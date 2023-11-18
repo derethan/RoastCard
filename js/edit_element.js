@@ -489,9 +489,16 @@ function addColumn(tableName) {
 
   //Stores the number of columns in the table
   let columnCount = logTable.rows[0].cells.length;
+  let allowedColumns = 0;
+
+  if (tableName === 'roastChartLog') {
+    allowedColumns = 3;
+  } else {
+    allowedColumns = 6;
+  }
 
   //If number of columns is not greater then X, add a column
-  if (columnCount < 8) {
+  if (columnCount < allowedColumns) {
 
     for (let i = 0; i < logTable.rows.length; i++) {
 
@@ -502,8 +509,18 @@ function addColumn(tableName) {
         input.type = 'text';
         input.maxLength = '10';
         input.placeholder = 'New Header';
-        header.appendChild(input);
-        logTable.rows[i].appendChild(header);
+
+        if (columnCount === 2) 
+        {
+          header.innerHTML = 'Notes';
+          logTable.rows[i].appendChild(header);
+        } else {
+          header.appendChild(input);
+          logTable.rows[i].appendChild(header);
+        }
+        
+                
+
       } else {
         const cell = logTable.rows[i].insertCell(-1);
         cell.innerHTML = " ";
