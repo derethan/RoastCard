@@ -25,6 +25,7 @@ If you're interested in coffee roasting but don't know where to begin, you can c
 * Premade logs for easy reference, ideas, or just a quick print.
 * Build your own roast card by positioning and customizing premade items on a canvas.
 * Print, save, and load your card for future tweaks.
+* Basic Roast Tools Such as Log Chart and cupping score.
 
 ## Motivation
 As a coffee enthusiast and craft roaster, I had always struggled to find a pre-made roasting log that I liked. Many of the available options required me to purchase a printed booklet. This often led me to hand-draw a card on paper or create something in Excel to suffice. When I embarked on my journey as a software developer with Get Coding, it provided an excellent opportunity to find a solution for a personal hobby and develop my first project simultaneously. Building the Roast Card web app was a fantastic experience that allowed me to strengthen my foundation in HTML, CSS, and JavaScript and prepared me to delve into the more advanced aspects of web development.
@@ -33,8 +34,9 @@ As a coffee enthusiast and craft roaster, I had always struggled to find a pre-m
 * RoastCard was built using HTML, CSS, and Javascript.
 
 ### Libraries:
-* Interact.js
-* FileSaver.js
+* Interact
+* FileSaver
+* HighCharts
 
 ### Check out the demo below:
 
