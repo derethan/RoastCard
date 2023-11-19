@@ -44,6 +44,7 @@ function windgetMenu() {
     //Add Event Listeners to the Origin Elements to close the Widget Menu and clone the element
     const originElement = document.querySelectorAll(".origin-element");
     originElement.forEach(n => n.setAttribute('onclick', 'addElement(' + "'" + n.id + "'" +')'));
+    originElement.forEach(n => n.classList.add("cursor-pointer"));
 
     const buttonContainer = document.querySelector(".mobile-button-container");
     const hamburger = document.querySelector(".widgetHamburger");

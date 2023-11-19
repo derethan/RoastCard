@@ -3,7 +3,7 @@
 ******************************************************/
 
 // Make the Origin-elements draggable
-interact('.origin-element')
+interact('.draggable')
     .draggable({
         onstart: function (event) {
             closewidgetMenu();

@@ -137,12 +137,13 @@ function cloneElement (element, dropZone){
 
     //Append the clone to the canvas
     dropZone.appendChild(clone);
-    positionElement (clone);
 
-    if(debug == 1){
-        console.log(clone); // DEBUG
+
+    // Set the position of the clone if not on a mobile device
+    if (window.innerWidth > 768){
+        positionElement (clone);
     }
-
+    
   }
 
   function getID (){

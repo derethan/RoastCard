@@ -512,7 +512,7 @@ main {
 .selectionContainer {
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: 100%;
 }
 .modal-title-content {
   display: flex;
@@ -1110,28 +1110,34 @@ list-style-type: disc;
 .fullwidth {
   width: 100%;
 }
+.justify-end {
+  justify-content: flex-end;
+}
 
 /*********************************************************************
   - media queries
 **********************************************************************/
 @media screen and (max-width: 768px) {
 
+  /* Generic Page Styles */
   .canvas-width {
     width: 100%;
   }
 
-  .tooltip .tooltiptext {
-    min-width: 225px;
-    width: 60vw;
-    top: -50px;
-}
-.tooltip .tooltiptext p {
-  font-size: 12px;
+  .footer-about {
+    font-size: 10px;
   }
-
-  .tooltip img {
-    width: 30px;
-    height: 30px;
+  .header-text h1{
+    font-size: 24px;
+  }
+  .header-text h4{
+    font-size: 12px;
+  }
+  .start-title {
+    font-size: 12px;
+  }
+  .start-text {
+    font-size: 12px;
   }
 
   .mobile-button-container{
@@ -1142,20 +1148,21 @@ list-style-type: disc;
     justify-content: flex-end;
     padding-right: 25px;
   }
+  .new-card-button {
+    font-size: small;
+    }
 
+/* Main Menu Hamburger Menu */
   .hamburger {
     display: block;
     cursor: pointer;
   }
-  
   .hamburger.active .bar:nth-child(2) {
     opacity: 0;
   }
-  
   .hamburger.active .bar:nth-child(1) {
     transform: translateY(8px) rotate(45deg);
   }
-  
   .hamburger.active .bar:nth-child(3) {
     transform: translateY(-8px) rotate(-45deg);
   }
@@ -1179,14 +1186,35 @@ list-style-type: disc;
   text-align: center;
   transition: 0.3s;
   box-shadow: 4px 0px 10px 0px var(--coffee);
-
 }
-
 .menu.active {
   left: 0;
 }
+.menu-item {
+  width: 80%;
+  padding: 10px;
+  background-color: var(--burgundy);
+  color: var(--cream);
 
+  border: 1px solid var(--espresso);
+  border-radius: 5px;
+}
+.menu-item:active {
+  background-color: var(--espresso);
+  color: var(--gold);
+}
+.menu-button {
+  width: 100%;
+  height: 100%;
+  background-color: var(--burgundy);
+  color: var(--cream);
+}
+.menu-button:active {
+  background-color: var(--espresso);
+  color: var(--gold);
+}
 
+/* Element Bar Hamburger Menu*/
 .element-bar {
   flex-direction: column;
   justify-content: flex-start;
@@ -1210,41 +1238,18 @@ list-style-type: disc;
 .element-bar.active {
   left: 0;
 }
-
-.menu-item {
-  width: 80%;
-  padding: 10px;
-  background-color: var(--burgundy);
-  color: var(--cream);
-
-  border: 1px solid var(--espresso);
-  border-radius: 5px;
-}
-.menu-item:active {
-  background-color: var(--espresso);
-  color: var(--gold);
+.hide-element-bar {
+  display: none;
 }
 
-.menu-button {
-  width: 100%;
-  height: 100%;
-  background-color: var(--burgundy);
-  color: var(--cream);
-}
-.menu-button:active {
-  background-color: var(--espresso);
-  color: var(--gold);
-}
-
+/* Element Bar Hamburger Icon*/
 .widgetHamburger{
   justify-content: center;
   align-items: center;
   gap: 15px;
 
-
   background-color: var(--burgundy);
   border-radius: 5px;
-
   box-shadow: 4px 0px 8px 0px var(--coffee);
 
   width: 40%;
@@ -1260,45 +1265,17 @@ list-style-type: disc;
   display: flex;
   cursor: pointer;
 }
-
 .widgetHamburger.active .bar:nth-child(2) {
   opacity: 0;
 }
-
 .widgetHamburger.active .bar:nth-child(1) {
   transform: translateY(8px) rotate(45deg);
 }
-
 .widgetHamburger.active .bar:nth-child(3) {
   transform: translateY(-8px) rotate(-45deg);
 }
 
-.hide-element-bar {
-  display: none;
-}
-
-.footer-about {
-  font-size: 10px;
-}
-.header-text h1{
-  font-size: 24px;
-}
-.header-text h4{
-  font-size: 12px;
-}
-.start-title {
-  font-size: 12px;
-}
-.start-text {
-  font-size: 12px;
-}
-.new-card-button {
-font-size: small;
-}
-.justify-end {
-  justify-content: flex-end;
-}
-
+/* Cards*/
 .card-container{
   flex-direction: column;
 }
@@ -1306,15 +1283,48 @@ font-size: small;
   width: 100%;
   height: 100%;
 }
+.card-cell {
+  width: 100%;
+}
+
+/* Modals */
+.modal-body {
+  flex-direction: column;
+}
+
 .helpmodal {
   width: 90%;
 }
 .helpmodal.active {
   left: 5%;
 }
-.card-cell {
-  width: 100%;
+
+/* Tooltip Styles */
+.tooltip .tooltiptext {
+  min-width: 225px;
+  width: 60vw;
+  top: -50px;
+}
+.tooltip .tooltiptext p {
+font-size: 12px;
 }
 
+.tooltip img {
+  width: 30px;
+  height: 30px;
+}
+
+/* Element Styles */
+
+.log-table {
+  width: 94%;
+}
+
+.canvas-element.note-element {
+  width: 88%;
+}
+.canvas-element {
+  width: 88%;
+}
 
 }

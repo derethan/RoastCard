@@ -29,23 +29,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
     newCardButton.addEventListener('click', function () {
 
+        //if not on a mobile device, make the main origin elements draggable
+        if (window.innerWidth > 768){
+            const originElements = document.querySelectorAll('.origin-element');
 
-        // if ('orientation' in window.screen) {
-        //     // The Screen Orientation API is supported
-        //     console.log("Screen Orientation API is supported");
-            
-        //     try {
-        //         window.screen.orientation.lock('portrait');
-        //       }
-        //     catch (error) {
-        //         // handle error
-        //         console.log("Error: " + error);
-        //       }
-
-        //   } else {
-        //     // The Screen Orientation API is not supported
-        //     console.log("Screen Orientation API is not supported");
-        //   }
+            for (const originElement of originElements) {
+                originElement.classList.add('draggable');
+            }
+        }
 
        //Make the main container resizable
        //resizableContainer.classList.add('resizeCanvas');
