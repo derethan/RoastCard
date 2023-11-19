@@ -1,12 +1,12 @@
-/**
+/********************************************************************************
+ *  Source: ../JS/resize.js
  * 
- *  This file is used to controll the resizable canvas
- * 
- * 
-**/
+ *        Controls the resize events for the canvas, and the elements on the canvas
+*           - updateElementPos() is used to update the position of the elements when the canvas is resized
+*********************************************************************************/
 
 
-// Make the Container for the Canvas Resizable
+// interact.js resize behavior for the canvas
 interact('.resizeCanvas')
   .resizable({
     // resize from all edges and corners
@@ -45,16 +45,10 @@ interact('.resizeCanvas')
 
 
 
-/***************************************
- *  This function is used to update the Elements position when the canvas is resized
- *    - Get the canvas bottom position and Origin position and determine the difference
- *    - Get each element on the canvas, and for each element:
- *       - Get element position
- *       - Check to see if the elements bottom is below the canvas bottom
- *       - Move the element based of the difference and update the position attributes
- *    - update the Origin position attribute (data-canvas-bottom)
- * 
- *******************************************/
+
+    /********************************************************************************
+     *  Function to update the position of the elements when the canvas is resized
+    *********************************************************************************/
 
   function updateElementPos (canvas) {
     // Get the canvas bottom position
@@ -94,16 +88,20 @@ interact('.resizeCanvas')
       element.setAttribute('data-x', x);
       element.setAttribute('data-y', y);
       }
-      
     }
     // update the canvas bottom attribute
     CanvasElement.setAttribute('data-canvas-bottom', canvasBottom);
-
   }
   
 
-    // Initialize the behavior for the canvas elements
-    interact('.resize-width')
+  
+    /********************************************************************************
+     *  interact.js resize behavior for the elements on the canvas
+    *********************************************************************************/
+
+    //if user is not on a mobile device
+    if (window.innerWidth > 768){
+    interact('.canvas-element')
     .resizable({
         edges: {
             left: false,
@@ -115,9 +113,15 @@ interact('.resizeCanvas')
           move (event) {
             const draggableElement = event.target
 
+            if (draggableElement.classList.contains('title-element' || 'date-element' || 'log-element')) {
+                return;
+            } else {
             // update the element's style
             draggableElement.style.width = event.rect.width + 'px'
             draggableElement.style.height = event.rect.height + 'px'
+            }
+
+
           }
         },
         modifiers: [
@@ -126,10 +130,12 @@ interact('.resizeCanvas')
             outer: 'parent'
           }),
     
-          // minimum size
+          // size
           interact.modifiers.restrictSize({
-            min: { width: 100, height: 100 }
+            min: { width: 250},
+            max: { width: 600}
           })
         ],
         inertia: true
       })
+    }

@@ -134,6 +134,7 @@ function cloneElement (element, dropZone){
     clone.setAttribute('id', canvasElementID);
     clone.setAttribute('ondblclick','editElement(`' + canvasElementID + '`,`' + elementType + '`' +')')
 
+    clone.classList.remove('draggable');
 
     //Append the clone to the canvas
     dropZone.appendChild(clone);
@@ -141,6 +142,7 @@ function cloneElement (element, dropZone){
 
     // Set the position of the clone if not on a mobile device
     if (window.innerWidth > 768){
+        clone.classList.add('resize');
         positionElement (clone);
     }
     
