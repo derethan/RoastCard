@@ -1,15 +1,9 @@
-/**
+/********************************************************************************
+ *  Source: ../JS/CHANGE_CONTAINER.JS
  * 
- *  This file is used to change the container of the page
- * 
- * 
-**/
-
-
-// Path: js\change_container.js
-
-const debug = 0; //Enable Debug Mode
-
+ *        CONTROLLS page transitions from the start page to canvas
+ *          - event listener for the newCard button and the tools button
+*********************************************************************************/
 
 document.addEventListener('DOMContentLoaded', function () {
     
@@ -29,16 +23,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const header = document.querySelector('header');
 
-    debug ();
     /********************************************************************************
      *  Events related to the newCard button:
-     * - Make the main container resizable
-     * - Hide the start container
-     * - Show the canvas container
-     * - Hide the header
-     * - Show the navigation bar
-     * - Show the menu bar
-     * - Move the main content up
     *********************************************************************************/
 
     newCardButton.addEventListener('click', function () {
@@ -140,36 +126,6 @@ document.addEventListener('DOMContentLoaded', function () {
           //close the Roast Chart modal
           roastChartModal.classList.toggle('active');
       });
-
-function debug (){
-    
-    // Enable Debug Mode - Hide Initial Start Page
-    if (debug == 1){
-        startContainer.style.display = 'none';
-        //Show the canvas container
-        canvasArea.style.width = '85%';
-        canvasContainer.style.display = 'flex';
-        resizableContainer.classList.add('resizeCanvas');
-        resizableContainer.setAttribute('data-canvas-bottom', 380);
-        
-        //Show the navigation bar
-        menuBar.style.display = 'flex';
-        menuBar.classList.add('sticky-nav');
-        
-        header.style.display = 'none';
-        
-        //Show the navigation bar
-        menuBar.style.display = 'flex';
-        
-        //Move the main content up
-        mainContent.classList.add('move-content'); 
-        mainContent.style.paddingBottom = '200px';
-
-        //Show the menu bar
-        elementMenu.style.display = 'flex';
-    }
-
-}
 });
 
 

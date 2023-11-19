@@ -46,9 +46,6 @@ This file is used to style the Roast Card Website.
   border-radius: 5px;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background-color: var(--gold);
-}
 /*****************************************************************
   - Generic Page Styles
 ******************************************************************/
@@ -90,7 +87,6 @@ header {
 }
 .header-text h1 {
   margin: 0; /* Remove default margins to ensure consistent spacing */
-  font-style: bold;
 }
 
 .header-text h4 {
