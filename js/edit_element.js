@@ -187,7 +187,7 @@ function getlogData() {
 
   //replace the text of the TH with an input field
   for (let i = 0; i < columnCount; i++) {
-    modalTable.rows[0].cells[i].innerHTML = '<input type="text" value="' + columnHeaders[i] + '" maxlength="10">';
+    modalTable.rows[0].cells[i].innerHTML = '<input type="text" value="' + columnHeaders[i] + '" maxlength="10" name="Header">';
   }
 }
 
@@ -500,23 +500,24 @@ function addColumn(tableName) {
     allowedColumns = 6;
   }
 
-  //If number of columns is not greater then X, add a column
+  //If number of columns is not greater then allowed, add a column
   if (columnCount < allowedColumns) {
 
-    for (let i = 0; i < logTable.rows.length; i++) {
+    for (let i = 0; i < logTable.rows.length; i++) { //for each row in the table
 
       //if its the first row add a table Header
       if (i === 0) {
         const header = document.createElement('th');
         const input = document.createElement('input');
         input.type = 'text';
+        input.name = 'header';
         input.maxLength = '10';
         input.placeholder = 'New Header';
 
-        if (columnCount === 2) 
+        if (columnCount === 2) //if there are only 2 columns, set the 3rd header to 'Notes'
         {
           if (tableName === 'roastChartLog') {
-          header.innerHTML = 'Notes';
+            header.innerHTML = 'Notes';
           } else {
             input.value = 'Notes'; //set the default value of the input field
             header.appendChild(input);
@@ -527,8 +528,23 @@ function addColumn(tableName) {
           logTable.rows[i].appendChild(header);
         }
       } else {
-        const cell = logTable.rows[i].insertCell(-1);
-        cell.innerHTML = " ";
+          
+        if (tableName === 'roastChartLog') {
+          const cell = logTable.rows[i].insertCell(-1);
+
+          const input = document.createElement('input');
+          input.type = 'text';
+          input.name = 'notes';
+          input.maxLength = '25';
+          input.placeholder = 'Notes';
+
+          cell.appendChild(input);
+
+
+        } else {
+          const cell = logTable.rows[i].insertCell(-1);
+          cell.innerHTML = " ";
+        }
       }
     }
   }
@@ -556,31 +572,33 @@ function addRow(tableName) {
     const cell = row.insertCell(-1);
 
       if (tableName === 'roastChartLog') {
-      //Handle Time Cell
-      if (i === 0) {
-        updateTime(tableName);
-      }
-      else if (i === 1) {     //Handle Temp Cell
-        const input = document.createElement('input');
-        input.type = 'number';
-        input.maxLength = '4';
-        input.min = '0';
-        input.max = '500';
-        input.step = '1';
-        input.value = '0';
-        input.classList.add('input-box');
-        cell.innerHTML = input.outerHTML;
+        //Handle Time Cell
+        if (i === 0) {
+          updateTime(tableName);
+        }
+        else if (i === 1) {     //Handle Temp Cell
+          const input = document.createElement('input');
+          input.type = 'number';
+          input.name = 'temperature';
+          input.maxLength = '4';
+          input.min = '0';
+          input.max = '500';
+          input.step = '1';
+          input.value = '0';
+          input.classList.add('input-box');
+          cell.innerHTML = input.outerHTML;
 
-      } else {     //Handle other cells
+        } else {     //Handle other cells
 
-        //Create the Input Field
-        const input = document.createElement('input');
-        input.type = 'text';
-        input.maxLength = '100';
-        input.placeholder = '';
-        cell.innerHTML = input.outerHTML;
+          //Create the Input Field
+          const input = document.createElement('input');
+          input.type = 'text';
+          input.maxLength = '100';
+          input.placeholder = 'Notes';
+          input.name = 'notes';
+          cell.innerHTML = input.outerHTML;
+        }
       }
-    }
   }
 }
 
@@ -643,18 +661,21 @@ function addComponent () {
   //Create the input fields for each div
   const nameInput = document.createElement('input');
   nameInput.type = 'text';
+  nameInput.name = 'beanName';
   nameInput.placeholder = 'Bean name';
   nameInput.maxLength = '20';
   nameInput.classList.add('input-box');
 
   const weightInput = document.createElement('input');
   weightInput.type = 'number';
+  weightInput.name = 'beanWeight';
   weightInput.placeholder = 'Bean Weight';
   weightInput.max = '9999';
   weightInput.classList.add('input-box');
 
   const ratioInput = document.createElement('input');
   ratioInput.type = 'number';
+  ratioInput.name = 'beanRatio';
   ratioInput.placeholder = 'Bean Ratio';
   ratioInput.min = '0';
   ratioInput.max = '100';
