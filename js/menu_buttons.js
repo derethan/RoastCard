@@ -104,7 +104,7 @@ function printCanvas(elementId) {
 
     let newWin = window.open('', '_blank');
     newWin.document.open();
-    newWin.document.write('<html><head><link rel="stylesheet" href="' + css + '"></head><body onload="window.print()">' + printContent + '</body></html>');
+    newWin.document.write('<!DOCTYPE html><head><link rel="stylesheet" href="' + css + '"></head><body onload="window.print()">' + printContent + '</body></html>');
     newWin.document.close();
 
     // Close the window after a delay
