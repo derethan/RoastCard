@@ -2,22 +2,7 @@
  *  Controlls the Dragable properties of the Origin and Canvas Elements
 ******************************************************/
 
-// Make the Origin-elements draggable
-interact('.draggable')
-    .draggable({
-        onstart: function (event) {
-            closewidgetMenu();
-        },
-        inertia: true,
-        modifiers: [
-            interact.modifiers.restrictRect({
-                restriction: '.content-container',
-                endOnly: true
-            })
-        ],
-        autoScroll: true,
-        listeners: { move: dragMoveListener }
-    })
+
     
 // Make the cnvas-elements draggable to a grid
     interact('.canvas-element')
@@ -43,6 +28,24 @@ interact('.draggable')
         listeners: { move: dragMoveListener }
       })
       
+
+      // Make the Origin-elements draggable
+interact('.draggable')
+    .draggable({
+        onstart: function (event) {
+            closewidgetMenu();
+        },
+        inertia: true,
+        modifiers: [
+            interact.modifiers.restrictRect({
+                restriction: '.content-container',
+                endOnly: true
+            })
+        ],
+        autoScroll: true,
+        listeners: { move: dragMoveListener }
+    })
+    
 // Make the Modal Window movable
 interact('.movable')
 .draggable({

@@ -134,7 +134,7 @@ function cloneElement (element, dropZone){
     clone.setAttribute('id', canvasElementID);
     clone.setAttribute('ondblclick','editElement(`' + canvasElementID + '`,`' + elementType + '`' +')')
 
-    clone.classList.remove('draggable');
+    clone.classList.add('draggable');
 
     //Append the clone to the canvas
     dropZone.appendChild(clone);

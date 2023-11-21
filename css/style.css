@@ -988,7 +988,7 @@ color: var(--cream);
 }
 .help-card img {
   width: 100%;
-  height: 100%;
+  height: 300px;
 }
 .help-card-title {
   padding: 10px;
@@ -1320,10 +1320,16 @@ font-size: 12px;
   width: 94%;
 }
 
-.canvas-element.note-element {
+.canvas-element {
   width: 88%;
 }
-.canvas-element {
+.canvas-element.title-element {
+  width: auto;
+} 
+.canvas-element.date-element {
+  width: auto;
+}
+.canvas-element.note-element {
   width: 88%;
 }
 

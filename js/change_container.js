@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function () {
      *  Events related to the Tools Button
     *********************************************************************************/
     
-    toolsModal = document.getElementById('toolsModal');
+    const toolsModal = document.getElementById('toolsModal');
     toolsButton.addEventListener('click', function () {
         //Show the tools modal
         toolsModal.classList.toggle('active');
@@ -100,22 +100,43 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     
 
-    roastChart = document.getElementById('roastChartButton');
-    roastChartModal = document.getElementById('roastChart');
+    const roastChartButton = document.getElementById('roastChartButton');
+    const roastChartModal = document.getElementById('roastChart');
 
     //Handle clicking the Roast Chart Tool options
-    roastChart.addEventListener('click', function () {
+    roastChartButton.addEventListener('click', function () {
         //close the Tools modal
         toolsModal.classList.toggle('active');
 
         //Show the Roast Chart Tool
         roastChartModal.classList.toggle('active');
     });
+
       //handle clicking the close Button - Roast Chart Modal
-      closeButton = document.getElementById('closeChart');
-      closeButton.addEventListener('click', function () {
+      const closeChartButton = document.getElementById('closeChart');
+      closeChartButton.addEventListener('click', function () {
           //close the Roast Chart modal
           roastChartModal.classList.toggle('active');
+      });
+
+      //Store the Cupping Score Tool
+      const cuppingScoreButton = document.getElementById('cuppingScoreButton');
+      const cuppingScoreModal = document.getElementById('cuppingScore');
+
+        //Handle clicking the Cupping Score Tool options
+        cuppingScoreButton.addEventListener('click', function () {
+            //close the Tools modal
+            toolsModal.classList.toggle('active');
+
+            //Show the Cupping Score Tool
+            cuppingScoreModal.classList.toggle('active');
+        });
+
+              //handle clicking the close Button - Roast Chart Modal
+      const closeCuppingScoreButton = document.getElementById('closeCuppingScore');
+      closeCuppingScoreButton.addEventListener('click', function () {
+          //close the Roast Chart modal
+          cuppingScoreModal.classList.toggle('active');
       });
 });
 
