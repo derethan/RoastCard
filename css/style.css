@@ -908,6 +908,7 @@ color: var(--cream);
   gap: 10px;
 
   width: 98%;
+  max-width: 1000px;
   max-height: 98%;
 
   padding: 10px;
@@ -988,7 +989,7 @@ color: var(--cream);
 }
 .help-card img {
   width: 100%;
-  height: 300px;
+  max-height: 300px;
 }
 .help-card-title {
   padding: 10px;
@@ -1120,6 +1121,18 @@ list-style-type: disc;
 @media screen and (max-width: 768px) {
 
   /* Generic Page Styles */
+  .canvas-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    height: 100%;
+    background-color: var(--cream);
+    transition: background-color 0.3s;
+    z-index: 1;
+  }
+
   .canvas-width {
     width: 100%;
   }
@@ -1322,6 +1335,7 @@ font-size: 12px;
 
 .canvas-element {
   width: 88%;
+  position: static;
 }
 .canvas-element.title-element {
   width: auto;
