@@ -1,9 +1,16 @@
 /******************************************************
  *  Controlls the Dragable properties of the Origin and Canvas Elements
 ******************************************************/
+//If the user is not on a mobile device
+if (window.innerWidth > 768){
+    // Make the Origin-elements draggable
+    dragMenuItems('.origin-element');
+    dragCanvasItems ('.canvas-element');
+}
 
+function dragCanvasItems (element){
 // Make the canvas-elements draggable to a grid
-interact('.canvas-element')
+interact(element)
 .draggable({
     inertia: true,
     modifiers: [
@@ -14,7 +21,7 @@ interact('.canvas-element')
             }),
 
         interact.modifiers.snap({
-            targets: [
+            targets: [  
             interact.snappers.grid({ x: 15, y: 15 }) // Snap to size
             ],
             range: Infinity,
@@ -22,15 +29,27 @@ interact('.canvas-element')
         })
 
     ],
+    onstart: function(event){
+        const canvasElements = document.querySelectorAll('.canvas-element');
+
+        //Get the position of each canvas element
+        for (const element of canvasElements) {
+            let canvasElementX = parseInt (element.getAttribute('data-x'));
+            let canvasElementY =parseInt (element.getAttribute('data-y'));
+
+            //Push the positions to the snapTargets array
+            // snapTargets.push({ x: canvasElementX, y: canvasElementY, range: 50 });
+        }
+    },
+    onend: function(event){
+        // snapTargets = [];
+    },
+
     autoScroll: true,
     listeners: { move: dragMoveListener }
+    // startAxis: 'y',
+    // lockAxis: 'y'
     })
-      
-
-//If the user is not on a mobile device
-if (window.innerWidth > 768){
-    // Make the Origin-elements draggable
-    dragMenuItems('.origin-element');
 }
 
 function dragMenuItems (element) {
