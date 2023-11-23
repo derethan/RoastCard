@@ -1,19 +1,46 @@
-<div class="log-container">
-
+        <div class="log-container">
             <div class="log">
                 <table class="modal-log-table" id="log-table"></table>
             </div>
         </div>
 
-        <div class="log-button-container">
-            <div class="plus-munis-bttn">
-                <p>Columns: </p>
-                <button class="minus-button" id="minus-button" onclick="removeColumn ('log-table')">-</button>
-                <button class="plus-button" id="plus-button" onclick="addColumn ('log-table')">+</button>
+        <div class="fullwidth">
+            <div class="tool-card-title text-center">
+                <h4>Options</h4>
             </div>
-            <div class="plus-munis-bttn">
-                <p>Rows: </p>
-                <button class="minus-button" id="minus-button" onclick="removeRow ('log-table')">-</button>
-                <button class="plus-button" id="plus-button" onclick="addRow ('log-table')">+</button>
-             </div>
-</div>
+
+            <div class="help-card-content">
+                <div class="help-card-desc">
+
+                    <div class="log-button-container column">
+                        <div class="plus-munis-bttn" style="justify-content: space-between; width: 80%;">
+                            <div class="tool-label">
+                                <p>Columns: </p>
+                            </div>
+                            <div class="tool-options">
+                                <button class="minus-button" id="minus-button" onclick="removeColumn ('log-table')">-</button>
+                                <button class="plus-button" id="plus-button" onclick="addColumn ('log-table')">+</button>
+                            </div>
+                        </div>
+                        <div class="plus-munis-bttn" style="justify-content: space-between; width: 80%;">
+                            <div><p>Rows: </p></div>
+                            <div>
+                                <button class="minus-button" id="minus-button" onclick="removeRow ('log-table')">-</button>
+                                <button class="plus-button" id="plus-button" onclick="addRow ('log-table')">+</button>
+                            </div>
+                         </div>
+
+                         <div class="plus-munis-bttn" style="justify-content: space-between; width: 80%;">
+                            <div>
+                                <label for="timeInterval">Time Interval:</label>
+                            </div>
+                            <div>
+                                <input type="number" class="input-box" id="timeInterval" name="logTime" min="0" max="60" value="15" step="15">
+                            </div>
+                         </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
