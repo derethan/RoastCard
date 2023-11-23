@@ -167,8 +167,44 @@ function gettitleData() {
   let canvasElement = document.getElementById(selectedElement);
 
   let title = canvasElement.getElementsByTagName('h1')[0].innerHTML;
-  
   document.getElementById('new-title').value = title;
+
+
+  let fontSize = canvasElement.getElementsByTagName('h1')[0].style.fontSize;  
+  switch (fontSize) {
+    case '12px':
+      document.getElementById('font-size').selectedIndex = '0';
+      break;
+    case '18px':
+      document.getElementById('font-size').selectedIndex = '1';
+      break;
+    case '24px':
+      document.getElementById('font-size').selectedIndex = '2';
+      break;
+    case '36px':
+      document.getElementById('font-size').selectedIndex = '3';
+      break;
+    case "48px":
+      document.getElementById('font-size').selectedIndex = '4';
+      break;
+    case "60px":
+      document.getElementById('font-size').selectedIndex = '5';
+      break;
+    case "72px":
+      document.getElementById('font-size').selectedIndex = '6';
+  }
+
+  //Get the font color and convert to a Hex value
+  let fontColor = canvasElement.getElementsByTagName('h1')[0].style.color;
+  fontColor = fontColor.replace('rgb(', '');
+  fontColor = fontColor.replace(')', '');
+  fontColor = fontColor.split(', ');
+
+  // Convert RGB to Hex
+  fontColor = rgbToHex(parseInt(fontColor[0]), parseInt(fontColor[1]), parseInt(fontColor[2]));
+
+  //Set the value of the font color input field
+  document.getElementById('font-color').value = fontColor;
 }
 
 function getdateData () {
@@ -875,4 +911,17 @@ function getCurrentDate() {
   let currentDate = new Date();
   let dateString = currentDate.toDateString();
   return dateString;
+}
+
+// Function to convert RGB to Hex
+function rgbToHex(r, g, b) {
+  r = r.toString(16);
+  g = g.toString(16);
+  b = b.toString(16);
+
+  if (r.length == 1) r = "0" + r;
+  if (g.length == 1) g = "0" + g;
+  if (b.length == 1) b = "0" + b;
+
+  return "#" + r + g + b;
 }
