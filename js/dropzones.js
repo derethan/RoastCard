@@ -144,8 +144,10 @@ function cloneElement (element, dropZone){
     if (window.innerWidth > 768){
         clone.classList.add('resize');
         positionElement (clone);
+        dragCanvasItems (clone);
     }
-    
+
+
   }
 
   function getID (){
