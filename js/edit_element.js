@@ -77,6 +77,8 @@ async function loadModal(elementType) {
   let modalContent = document.querySelector('.modal-body');
   modalContent.innerHTML = data;
 
+  const modalTitle = document.getElementById('modalTitle');
+
   // Create the function name for the update function
   let functionName = 'get' + elementType + 'Data';
   functionName = functionName.replace('-element', '');
@@ -84,6 +86,9 @@ async function loadModal(elementType) {
   let elementTypeCapitalized = elementType.charAt(0).toUpperCase() + elementType.slice(1);
   let updateFunction = 'update' + elementTypeCapitalized + '()';
   updateFunction = updateFunction.replace('-element', '');
+
+  let title = elementTypeCapitalized.replace('-element', '');
+  modalTitle.innerHTML = 'Update your ' + title;
 
   // If the user is not on a mobile device (screen width more than 768px), make the modal window movable
   if (window.innerWidth > 768) {
@@ -209,6 +214,19 @@ function getlogData() {
         modalTable.rows[row].cells[cell].innerHTML = '<input type="text" class="input-box" value="' + value + '" maxlength="25" name="other">';
       }
     }
+  }
+
+  //If Rowcount is greater then 1
+  if (rowCount > 2) {
+    //Get the value of the first cell in row 2 and convert it to an integer
+    let timeString = canvasElement.querySelector('.log-table').rows[2].cells[0].firstChild.innerHTML;
+    let timeParts = timeString.split(':');
+    let hours = parseInt(timeParts[0]);
+    let minutes = parseInt(timeParts[1]);
+    let timeInterval = (hours * 60) + minutes;
+
+    //Set the value of the time interval input field
+    document.getElementById('timeInterval').value = timeInterval;
   }
 }
 
@@ -426,6 +444,9 @@ function updateLog() {
   let selectedElement = sessionStorage.getItem('selectedElement');
   let canvasElement = document.getElementById(selectedElement);
 
+    //update time intervals
+    updateTime ('log-table')
+
   // Get the log-Table from the modal window
   let modalTable = document.getElementById('log-table');
   canvasElement.querySelector('.log-table').innerHTML = modalTable.innerHTML;
@@ -456,6 +477,7 @@ function updateLog() {
       canvasElement.querySelector('.log-table').rows[row].cells[cell].innerHTML = value;
     }
   }
+  
   closeModal();
 }
 
