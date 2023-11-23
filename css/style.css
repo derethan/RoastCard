@@ -488,7 +488,7 @@ color: var(--espresso);
   border-radius: 5px;
   box-shadow: #000000 0px 0px 10px 0px;
 
-  min-width: 30%; /* Could be more or less, depending on screen size */
+  min-width: 50%; /* Could be more or less, depending on screen size */
   max-width: 80%;
 }
 .modal-header {
@@ -515,6 +515,7 @@ color: var(--espresso);
   justify-content: center;
 
   height: 100%;
+  max-height: 60vh;
 
   padding: 10px;
   margin: 10px;
