@@ -110,6 +110,7 @@ function dragMenuItems (element) {
 // Make the Modal Window movable
 interact('.movable')
 .draggable({
+    allowFrom: '.modal-header',
     inertia: true,
     modifiers: [
         interact.modifiers.restrictRect({

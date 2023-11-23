@@ -164,8 +164,10 @@ function deleteElement() {
 function gettitleData() {
   //get Session Data
   let selectedElement = sessionStorage.getItem('selectedElement');
+  let canvasElement = document.getElementById(selectedElement);
 
-  let title = document.getElementById(selectedElement).getElementsByTagName('h1')[0].innerHTML;
+  let title = canvasElement.getElementsByTagName('h1')[0].innerHTML;
+  
   document.getElementById('new-title').value = title;
 }
 
