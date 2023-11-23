@@ -90,8 +90,8 @@ async function loadModal(elementType) {
     let modalContent = document.querySelector('.modal-content');
     modalContent.classList.add('movable');
   } else {
-    let spacer = document.querySelector('.spacer');
-    spacer.style.width = 'auto';
+    // let spacer = document.querySelector('.spacer');
+    // spacer.style.width = 'auto';
   }
 
   //try to load the function for the selected element

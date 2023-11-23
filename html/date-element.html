@@ -1,33 +1,16 @@
-    <!-- Modal content for the Date Element-->
-    <div class="modal-content">
-        <div class="modal-header"><p>Select an option below</p></div>
-        <div class="modal-body">
-            <form>
-                <div class="form-option">
-                    <input type="radio" id="defaultDate" name="dateOptions" value="defaultDate">
-                    <label for="defaultDate">Roast Date:</label>
-                </div>
-
-                <div class="form-option">
-                        <input type="radio" id="currentDate" name="dateOptions" value="currentDate">
-                        <label for="currentDate" id="currentDateLabel">Current Date Placeholder</label>
-                </div>
-
-                <div class="form-option">
-                    <input type="radio" id="customDate" name="dateOptions" value="customDate">
-                    <input type="date" id="dateSelector" name="dateOptions">
-                </div>
-            </form>
-
-        </div>
-        <div class="modal-footer">
-            <div class="img-container">
-                <img src="img/delete-cream.png" class="delete-button" alt="Click here to Delete" width="38px" height="50px" onclick="deleteElement ()">
-            </div>
-            <div class="button-container">
-            <input type="button" class="modal-buttons" id="closeButton" value="Close" onclick="closeModal ()">
-            <input type="button" class="modal-buttons" id="applyButton" value="Apply" onclick="updateDate ()">
-            </div>
-            <div class="spacer"></div>
-        </div>
+<form>
+    <div class="form-option">
+        <input type="radio" id="defaultDate" name="dateOptions" value="defaultDate">
+        <label for="defaultDate">Roast Date:</label>
     </div>
+
+    <div class="form-option">
+            <input type="radio" id="currentDate" name="dateOptions" value="currentDate">
+            <label for="currentDate" id="currentDateLabel">Current Date Placeholder</label>
+    </div>
+
+    <div class="form-option">
+        <input type="radio" id="customDate" name="dateOptions" value="customDate">
+        <input type="date" id="dateSelector" name="dateOptions">
+    </div>
+</form>

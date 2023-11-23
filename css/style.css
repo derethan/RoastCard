@@ -483,9 +483,9 @@ color: var(--espresso);
   display: flex;
   flex-direction: column;
 
-  background-color: var(--cream);
+  background-color: var(--coffee);
   
-  border-radius: 15px;
+  border-radius: 5px;
   box-shadow: #000000 0px 0px 10px 0px;
 
   min-width: 30%; /* Could be more or less, depending on screen size */
@@ -493,18 +493,38 @@ color: var(--espresso);
 }
 .modal-header {
   display: flex;
-  justify-content: center;
-
-  padding: 20px;
-  border-radius: 15px 15px 0 0; /* Apply border radius only to top left and right corners */
-
-  background-color: var(--coffee);
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  margin: 10px;
+  background-color: var(--espresso);
+  border-radius: 5px;
+}
+.modal-header h3 {
+  font-family: var(--contemporaryFont);
+  color: var(--gold);
+}
+.modal-header p {
+  font-family: var(--contemporaryFont);
   color: var(--cream);
 }
 .modal-body {
   display: flex;
-  justify-content: center;  
+  flex-direction: column;
+  justify-content: center;
+
+  height: 100%;
+
   padding: 10px;
+  margin: 10px;
+  
+  background-color: var(--cream);
+  color: var(--coffee);
+
+  border: 1px solid var(--espresso);
+  border-radius: 5px;
+  box-shadow: 4px 0px 10px 0px var(--espresso);
 }
 
 .modal-open {
@@ -526,9 +546,19 @@ color: var(--espresso);
 
 .modal-footer {
   display: flex;
-  justify-content:center;
-  gap: 25px;
-  padding: 15px;
+  justify-content: flex-start;
+
+  height: 100%;
+
+  padding: 10px;
+  margin: 10px;
+  
+  background-color: var(--cream);
+  color: var(--coffee);
+
+  border: 1px solid var(--espresso);
+  border-radius: 5px;
+  box-shadow: 4px 0px 10px 0px var(--espresso);
 }
 .form-option {
   display: flex;
