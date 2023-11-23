@@ -1301,10 +1301,12 @@ list-style-type: disc;
 }
 
 /* Modals */
+.modal-content {
+  width: 100%;
+}
 .modal-body {
   flex-direction: column;
 }
-
 .helpmodal {
   width: 90%;
 }

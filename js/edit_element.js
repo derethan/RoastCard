@@ -67,7 +67,7 @@ function editElement(canvasElementID, elementType) {
   }
 }
 
-//function to load the modal window for the selected element type
+//function to load the modal Data for the selected element type
 async function loadModal(elementType) {
 
   //get the html content for the selected element type
@@ -86,6 +86,9 @@ async function loadModal(elementType) {
   if (window.innerWidth > 768) {
     let modalContent = document.querySelector('.modal-content');
     modalContent.classList.add('movable');
+  } else {
+    let spacer = document.querySelector('.spacer');
+    spacer.style.width = 'auto';
   }
 
   //try to load the function for the selected element
@@ -469,6 +472,16 @@ function updateBlend() {
   //Update the canvas element with the new blend
   canvasElement.querySelector('.mainElementContainer').innerHTML = modalBlend.innerHTML;
 
+  closeModal();
+}
+
+function updateWeight () {
+  closeModal();
+}
+function updateBean () {
+  closeModal();
+}
+function updateBatch () {
   closeModal();
 }
 
