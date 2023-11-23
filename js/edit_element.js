@@ -72,7 +72,10 @@ async function loadModal(elementType) {
 
   //get the html content for the selected element type
   let data = await htmlContent[elementType];
-  document.getElementById("edit-element").innerHTML = data;
+
+  // Insert Content into the modal window
+  let modalContent = document.querySelector('.modal-body');
+  modalContent.innerHTML = data;
 
   // Create the function name for the update function
   let functionName = 'get' + elementType + 'Data';
