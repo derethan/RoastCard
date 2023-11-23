@@ -1259,13 +1259,13 @@ list-style-type: disc;
 .widgetHamburger{
   justify-content: center;
   align-items: center;
-  gap: 15px;
+  gap: 25px;
 
   background-color: var(--burgundy);
   border-radius: 5px;
   box-shadow: 4px 0px 8px 0px var(--coffee);
 
-  width: 40%;
+  width: 30%;
 
   margin-top: 10px;
   position: relative;
@@ -1278,14 +1278,27 @@ list-style-type: disc;
   display: flex;
   cursor: pointer;
 }
-.widgetHamburger.active .bar:nth-child(2) {
-  opacity: 0;
+.widgetHamburgerIcon {
+  display: flex;
+  gap: 5px;
 }
-.widgetHamburger.active .bar:nth-child(1) {
-  transform: translateY(8px) rotate(45deg);
+.widgetBar {
+  display: block;
+  width: 3px;
+  height: 25px;
+  margin: 5px auto;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  background-color: var(--cream);
 }
-.widgetHamburger.active .bar:nth-child(3) {
-  transform: translateY(-8px) rotate(-45deg);
+
+.widgetHamburger .widgetBar:nth-child(1) {
+  transform: translateX(8px) rotate(90deg);
+}
+.widgetHamburger.active .widgetBar:nth-child(1) {
+opacity: 0;}
+.widgetHamburger.active .widgetBar:nth-child(2) {
+  transform: rotate(90deg);
 }
 
 /* Cards*/
@@ -1332,7 +1345,7 @@ font-size: 12px;
 /* Element Styles */
 
 .log-table {
-  width: 94%;
+  width: 100%;
 }
 
 .canvas-element {
