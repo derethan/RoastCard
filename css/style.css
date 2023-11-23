@@ -421,7 +421,10 @@ main {
   min-width: 75px;
   height: 32px;
 }
-
+.log-table td,
+.modal-log-table td {
+color: var(--espresso);
+}
 .note-line {
   background-color:  var(--cream);
   height: 25px;
@@ -908,6 +911,7 @@ color: var(--cream);
   gap: 10px;
 
   width: 98%;
+  max-width: 1000px;
   max-height: 98%;
 
   padding: 10px;
@@ -988,7 +992,7 @@ color: var(--cream);
 }
 .help-card img {
   width: 100%;
-  height: 100%;
+  max-height: 300px;
 }
 .help-card-title {
   padding: 10px;
@@ -1120,6 +1124,18 @@ list-style-type: disc;
 @media screen and (max-width: 768px) {
 
   /* Generic Page Styles */
+  .canvas-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    height: 100%;
+    background-color: var(--cream);
+    transition: background-color 0.3s;
+    z-index: 1;
+  }
+
   .canvas-width {
     width: 100%;
   }
@@ -1246,13 +1262,13 @@ list-style-type: disc;
 .widgetHamburger{
   justify-content: center;
   align-items: center;
-  gap: 15px;
+  gap: 25px;
 
   background-color: var(--burgundy);
   border-radius: 5px;
   box-shadow: 4px 0px 8px 0px var(--coffee);
 
-  width: 40%;
+  width: 30%;
 
   margin-top: 10px;
   position: relative;
@@ -1265,14 +1281,27 @@ list-style-type: disc;
   display: flex;
   cursor: pointer;
 }
-.widgetHamburger.active .bar:nth-child(2) {
-  opacity: 0;
+.widgetHamburgerIcon {
+  display: flex;
+  gap: 5px;
 }
-.widgetHamburger.active .bar:nth-child(1) {
-  transform: translateY(8px) rotate(45deg);
+.widgetBar {
+  display: block;
+  width: 3px;
+  height: 25px;
+  margin: 5px auto;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  background-color: var(--cream);
 }
-.widgetHamburger.active .bar:nth-child(3) {
-  transform: translateY(-8px) rotate(-45deg);
+
+.widgetHamburger .widgetBar:nth-child(1) {
+  transform: translateX(8px) rotate(90deg);
+}
+.widgetHamburger.active .widgetBar:nth-child(1) {
+opacity: 0;}
+.widgetHamburger.active .widgetBar:nth-child(2) {
+  transform: rotate(90deg);
 }
 
 /* Cards*/
@@ -1288,10 +1317,12 @@ list-style-type: disc;
 }
 
 /* Modals */
+.modal-content {
+  width: 100%;
+}
 .modal-body {
   flex-direction: column;
 }
-
 .helpmodal {
   width: 90%;
 }
@@ -1317,13 +1348,20 @@ font-size: 12px;
 /* Element Styles */
 
 .log-table {
-  width: 94%;
+  width: 100%;
 }
 
-.canvas-element.note-element {
-  width: 88%;
-}
 .canvas-element {
+  width: 88%;
+  position: static;
+}
+.canvas-element.title-element {
+  width: auto;
+} 
+.canvas-element.date-element {
+  width: auto;
+}
+.canvas-element.note-element {
   width: 88%;
 }
 

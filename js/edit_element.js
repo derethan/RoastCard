@@ -67,12 +67,15 @@ function editElement(canvasElementID, elementType) {
   }
 }
 
-//function to load the modal window for the selected element type
+//function to load the modal Data for the selected element type
 async function loadModal(elementType) {
 
   //get the html content for the selected element type
   let data = await htmlContent[elementType];
-  document.getElementById("edit-element").innerHTML = data;
+
+  // Insert Content into the modal window
+  let modalContent = document.querySelector('.modal-body');
+  modalContent.innerHTML = data;
 
   // Create the function name for the update function
   let functionName = 'get' + elementType + 'Data';
@@ -86,6 +89,9 @@ async function loadModal(elementType) {
   if (window.innerWidth > 768) {
     let modalContent = document.querySelector('.modal-content');
     modalContent.classList.add('movable');
+  } else {
+    let spacer = document.querySelector('.spacer');
+    spacer.style.width = 'auto';
   }
 
   //try to load the function for the selected element
@@ -183,11 +189,26 @@ function getlogData() {
   let columnHeaders = [];
   for (let i = 0; i < columnCount; i++) {
     columnHeaders.push(modalTable.rows[0].cells[i].innerHTML); //store the text of the TH
+    modalTable.rows[0].cells[i].innerHTML = '<input type="text" value="' + columnHeaders[i] + '" maxlength="10" name="Header">';
   }
 
-  //replace the text of the TH with an input field
-  for (let i = 0; i < columnCount; i++) {
-    modalTable.rows[0].cells[i].innerHTML = '<input type="text" value="' + columnHeaders[i] + '" maxlength="10" name="Header">';
+  //for each row in the table, store the value of the input fields in the cells
+  let rowCount = modalTable.rows.length;
+
+  for (let row = 1; row < rowCount; row++) {
+    let cellCount = modalTable.rows[row].cells.length;
+
+    for (let cell = 1; cell < cellCount; cell++) {
+      let value = logTable.rows[row].cells[cell].innerHTML;
+
+      if (cell === 1) {
+        modalTable.rows[row].cells[cell].innerHTML = '<input type="number" class="input-box" value="' + value + '" maxlength="4" name="Temp">';
+      } else if (cell === 2) {
+        modalTable.rows[row].cells[cell].innerHTML = '<input type="text" class="input-box" value="' + value + '" maxlength="100" name="Notes">';
+      } else {
+        modalTable.rows[row].cells[cell].innerHTML = '<input type="text" class="input-box" value="' + value + '" maxlength="25" name="other">';
+      }
+    }
   }
 }
 
@@ -411,6 +432,7 @@ function updateLog() {
 
   // Get the number of TH elements in the table
   let columnCount = modalTable.rows[0].cells.length;
+  let rowCount = modalTable.rows.length;
 
   // for each TH Element, store the content of the TH input field
   let columnHeaders = [];
@@ -420,6 +442,18 @@ function updateLog() {
 
     if (columnHeaders[i] === 'Notes' || columnHeaders[i] === 'notes') {
       canvasElement.querySelector('.log-table').rows[0].cells[i].style.width = '150px';
+    }
+  }
+
+
+  // for each row in the table, store the value of the input fields in the cells
+  for (let row = 1; row < rowCount; row++) {
+    let cellCount = modalTable.rows[row].cells.length;
+
+    for (let cell = 1; cell < cellCount; cell++) {
+      let value = modalTable.rows[row].cells[cell].getElementsByTagName('input')[0].value;
+
+      canvasElement.querySelector('.log-table').rows[row].cells[cell].innerHTML = value;
     }
   }
   closeModal();
@@ -472,6 +506,16 @@ function updateBlend() {
   closeModal();
 }
 
+function updateWeight () {
+  closeModal();
+}
+function updateBean () {
+  closeModal();
+}
+function updateBatch () {
+  closeModal();
+}
+
 function updateTemp () {
   populateElement();
   closeModal();
@@ -497,7 +541,7 @@ function addColumn(tableName) {
   if (tableName === 'roastChartLog') {
     allowedColumns = 3;
   } else {
-    allowedColumns = 6;
+    allowedColumns = 3;
   }
 
   //If number of columns is not greater then allowed, add a column
@@ -519,7 +563,7 @@ function addColumn(tableName) {
           if (tableName === 'roastChartLog') {
             header.innerHTML = 'Notes';
           } else {
-            input.value = 'Notes'; //set the default value of the input field
+            input.value = 'Notes'; 
             header.appendChild(input);
           }
           logTable.rows[i].appendChild(header);
@@ -543,8 +587,13 @@ function addColumn(tableName) {
 
         } else {
           const cell = logTable.rows[i].insertCell(-1);
-          cell.innerHTML = " ";
-        }
+          const input = document.createElement('input');
+          input.type = 'text';
+          input.name = 'notes';
+          input.maxLength = '25';
+          input.placeholder = 'Notes';
+
+          cell.appendChild(input);        }
       }
     }
   }
@@ -571,7 +620,7 @@ function addRow(tableName) {
   for (let i = 0; i < table.rows[0].cells.length; i++) {
     const cell = row.insertCell(-1);
 
-      if (tableName === 'roastChartLog') {
+      if (tableName === 'roastChartLog' || tableName === 'log-table') {
         //Handle Time Cell
         if (i === 0) {
           updateTime(tableName);

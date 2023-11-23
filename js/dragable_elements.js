@@ -1,48 +1,112 @@
 /******************************************************
  *  Controlls the Dragable properties of the Origin and Canvas Elements
 ******************************************************/
+//If the user is not on a mobile device
+if (window.innerWidth > 768){
+    // Make the Origin-elements draggable
+    dragMenuItems('.origin-element');
+    // dragCanvasItems ('.canvas-element');
+}
 
-// Make the Origin-elements draggable
-interact('.draggable')
-    .draggable({
-        onstart: function (event) {
-            closewidgetMenu();
-        },
-        inertia: true,
-        modifiers: [
-            interact.modifiers.restrictRect({
-                restriction: '.content-container',
-                endOnly: true
-            })
-        ],
-        autoScroll: true,
-        listeners: { move: dragMoveListener }
+
+  function getItems() {
+    const canvasElements = document.querySelectorAll('.canvas-element');
+    let positions = [];
+
+    // Get the position of each canvas element
+    for (const element of canvasElements) {
+
+        let rect = element.getBoundingClientRect();
+
+        let canvasElementX = rect.left;
+        let canvasElementY = rect.top;
+
+        // Push the positions to the positions array
+        positions.push({ x: canvasElementX, y: canvasElementY, range: 50 });
+    }
+
+    return positions;
+}
+
+
+function dragCanvasItems (element){
+    // let snapTargets = getItems();
+// Make the canvas-elements draggable to a grid
+interact('.canvas-element')
+.draggable({
+    inertia: true,
+    modifiers: [
+        interact.modifiers.restrict({
+            restriction: 'parent',
+            elementRect: { top: 0, left: 0, bottom: 1, right: 1 }, //cover entire element
+            endOnly: true
+            }),
+
+        interact.modifiers.snap({
+            targets: [  //...snapTargets,
+            interact.snappers.grid({ x: 15, y: 15 }) // Snap to size
+            ],
+            range: Infinity,
+            relativePoints: [ { x: 0, y: 0 } ] // Snap relative to the top-left of the element
+        })
+
+    ],
+    // onend: function (event) {updateSnapTargets ();},
+    autoScroll: true,
+    listeners: { move: dragMoveListener }
+    // startAxis: 'y',
+    // lockAxis: 'y'
     })
-    
-// Make the cnvas-elements draggable to a grid
-    interact('.canvas-element')
+}
+
+
+function updateSnapTargets (){
+    let snapTargets = getItems();
+// Make the canvas-elements draggable to a grid
+interact('.canvas-element')
+.draggable({
+    inertia: true,
+    modifiers: [
+        interact.modifiers.restrict({
+            restriction: 'parent',
+            elementRect: { top: 0, left: 0, bottom: 1, right: 1 }, //cover entire element
+            endOnly: true
+            }),
+
+        interact.modifiers.snap({
+            targets: [  ...snapTargets,
+            // interact.snappers.grid({ x: 15, y: 15 }) // Snap to size
+            ],
+            range: Infinity,
+            relativePoints: [ { x: 0, y: 0 } ] // Snap relative to the top-left of the element
+        })
+
+    ],
+    autoScroll: true,
+    listeners: { move: dragMoveListener }
+    // startAxis: 'y',
+    // lockAxis: 'y'
+    })
+}
+
+
+function dragMenuItems (element) {
+    interact(element)
     .draggable({
         inertia: true,
         modifiers: [
             interact.modifiers.restrict({
-                restriction: 'parent',
+                restriction: '.content-container',
                 elementRect: { top: 0, left: 0, bottom: 1, right: 1 }, //cover entire element
                 endOnly: true
-              }),
-
-            interact.modifiers.snap({
-                targets: [
-                interact.snappers.grid({ x: 15, y: 15 }) // Snap to size
-                ],
-                range: Infinity,
-                relativePoints: [ { x: 0, y: 0 } ] // Snap relative to the top-left of the element
-            })
-
+                })
         ],
         autoScroll: true,
         listeners: { move: dragMoveListener }
-      })
-      
+    })
+}
+
+
 // Make the Modal Window movable
 interact('.movable')
 .draggable({

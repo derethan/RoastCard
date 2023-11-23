@@ -29,15 +29,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     newCardButton.addEventListener('click', function () {
 
-        //if not on a mobile device, make the main origin elements draggable
-        if (window.innerWidth > 768){
-            const originElements = document.querySelectorAll('.origin-element');
-
-            for (const originElement of originElements) {
-                originElement.classList.add('draggable');
-            }
-        }
-
        //Make the main container resizable
        //resizableContainer.classList.add('resizeCanvas');
 
@@ -50,8 +41,15 @@ document.addEventListener('DOMContentLoaded', function () {
             startContainer.classList.remove('fade-out');    
 
 
+            // if on mobile, set the canvas to the size of the screen
+            if (window.innerWidth < 768){
+                resizableContainer.style.height = '100%';
+                resizableContainer.style.width = '100vw';
+            } else {
             resizableContainer.style.height = '10.5in';
             resizableContainer.style.width = '9in';
+            }
+
             canvasContainer.style.display = 'flex';
 
         //add event listener to wait for the hide-header animation to end
@@ -86,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function () {
      *  Events related to the Tools Button
     *********************************************************************************/
     
-    toolsModal = document.getElementById('toolsModal');
+    const toolsModal = document.getElementById('toolsModal');
     toolsButton.addEventListener('click', function () {
         //Show the tools modal
         toolsModal.classList.toggle('active');
@@ -100,22 +98,43 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     
 
-    roastChart = document.getElementById('roastChartButton');
-    roastChartModal = document.getElementById('roastChart');
+    const roastChartButton = document.getElementById('roastChartButton');
+    const roastChartModal = document.getElementById('roastChart');
 
     //Handle clicking the Roast Chart Tool options
-    roastChart.addEventListener('click', function () {
+    roastChartButton.addEventListener('click', function () {
         //close the Tools modal
         toolsModal.classList.toggle('active');
 
         //Show the Roast Chart Tool
         roastChartModal.classList.toggle('active');
     });
+
       //handle clicking the close Button - Roast Chart Modal
-      closeButton = document.getElementById('closeChart');
-      closeButton.addEventListener('click', function () {
+      const closeChartButton = document.getElementById('closeChart');
+      closeChartButton.addEventListener('click', function () {
           //close the Roast Chart modal
           roastChartModal.classList.toggle('active');
+      });
+
+      //Store the Cupping Score Tool
+      const cuppingScoreButton = document.getElementById('cuppingScoreButton');
+      const cuppingScoreModal = document.getElementById('cuppingScore');
+
+        //Handle clicking the Cupping Score Tool options
+        cuppingScoreButton.addEventListener('click', function () {
+            //close the Tools modal
+            toolsModal.classList.toggle('active');
+
+            //Show the Cupping Score Tool
+            cuppingScoreModal.classList.toggle('active');
+        });
+
+              //handle clicking the close Button - Roast Chart Modal
+      const closeCuppingScoreButton = document.getElementById('closeCuppingScore');
+      closeCuppingScoreButton.addEventListener('click', function () {
+          //close the Roast Chart modal
+          cuppingScoreModal.classList.toggle('active');
       });
 });
 
