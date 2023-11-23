@@ -421,7 +421,10 @@ main {
   min-width: 75px;
   height: 32px;
 }
-
+.log-table td,
+.modal-log-table td {
+color: var(--espresso);
+}
 .note-line {
   background-color:  var(--cream);
   height: 25px;

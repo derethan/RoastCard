@@ -29,15 +29,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     newCardButton.addEventListener('click', function () {
 
-        // //if not on a mobile device, make the main origin elements draggable
-        // if (window.innerWidth > 768){
-        //     const originElements = document.querySelectorAll('.origin-element');
-
-        //     for (const originElement of originElements) {
-        //         // originElement.classList.add('draggable');
-        //     }
-        // }
-
        //Make the main container resizable
        //resizableContainer.classList.add('resizeCanvas');
 
@@ -50,8 +41,15 @@ document.addEventListener('DOMContentLoaded', function () {
             startContainer.classList.remove('fade-out');    
 
 
+            // if on mobile, set the canvas to the size of the screen
+            if (window.innerWidth < 768){
+                resizableContainer.style.height = '100%';
+                resizableContainer.style.width = '100vw';
+            } else {
             resizableContainer.style.height = '10.5in';
             resizableContainer.style.width = '9in';
+            }
+
             canvasContainer.style.display = 'flex';
 
         //add event listener to wait for the hide-header animation to end
