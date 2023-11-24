@@ -387,6 +387,9 @@ main {
   display: none;
   flex-direction: column;
   width: 100%;
+
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .canvas-element.title-element {
@@ -783,10 +786,8 @@ width: 25%;
   .log {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-
-    border: 1px solid var(--espresso);
   }
   .log-button-container {
     display: flex;
@@ -794,6 +795,7 @@ width: 25%;
     align-items: center;
     gap: 10px;
   }
+
   .plus-munis-bttn {
     display: flex;
     justify-content: center;

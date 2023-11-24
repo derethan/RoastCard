@@ -163,8 +163,8 @@ function deleteElement() {
 *********************************************************************************/
 function gettitleData() {
   //get Session Data
-  let selectedElement = sessionStorage.getItem('selectedElement');
-  let canvasElement = document.getElementById(selectedElement);
+  const selectedElement = sessionStorage.getItem('selectedElement');
+  const canvasElement = document.getElementById(selectedElement);
 
   let title = canvasElement.getElementsByTagName('h1')[0].innerHTML;
   document.getElementById('new-title').value = title;
@@ -268,10 +268,28 @@ function getlogData() {
   }
 }
 
-/******MAY REPLACE WITH SINGLE FUNCTION FOR STATIC CONTENT*******/
 function getnoteData() {
   //loads the data from the canvas element into the modal window
   loadElementContent ();
+
+  const mainElementContainer = document.querySelector('.modal-body').querySelector('.mainElementContainer');
+  const contentArea = mainElementContainer.querySelector('.element-content');
+
+
+  // Create a text area for the notes
+  const textArea = document.createElement('textarea');
+  textArea.maxLength = '1000';
+  textArea.placeholder = 'Notes';
+  textArea.name = 'notePad';
+  textArea.classList.add('input-box');
+  textArea.style.minWidthidth = '96%';
+  textArea.style.maxWidth = '96%';
+  textArea.style.minHeight = '150px';
+  
+
+  contentArea.innerHTML = '';
+  contentArea.appendChild(textArea);
+
 }
 
 function getbatchData () {

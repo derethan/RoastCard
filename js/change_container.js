@@ -130,12 +130,12 @@ document.addEventListener('DOMContentLoaded', function () {
             cuppingScoreModal.classList.toggle('active');
         });
 
-              //handle clicking the close Button - Roast Chart Modal
-      const closeCuppingScoreButton = document.getElementById('closeCuppingScore');
-      closeCuppingScoreButton.addEventListener('click', function () {
-          //close the Roast Chart modal
-          cuppingScoreModal.classList.toggle('active');
-      });
+    //           //handle clicking the close Button - Roast Chart Modal
+    //   const closeCuppingScoreButton = document.getElementById('closeCuppingScore');
+    //   closeCuppingScoreButton.addEventListener('click', function () {
+    //       //close the Roast Chart modal
+    //       cuppingScoreModal.classList.toggle('active');
+    //   });
 });
 
 
