@@ -310,6 +310,10 @@ function getnoteData() {
 }
 
 function getbatchData () {
+  //Get session Data
+  let selectedElement = sessionStorage.getItem('selectedElement');
+  let canvasElement = document.getElementById(selectedElement);
+
   //loads the data from the canvas element into the modal window
   loadElementContent ();
 }
@@ -332,13 +336,37 @@ function getblendData () {
   let selectedElement = sessionStorage.getItem('selectedElement');
   let canvasElement = document.getElementById(selectedElement);
 
-  // Get the blend from the modal window
-  modalBlend = document.querySelector('.modal-body').querySelector('.mainElementContainer');
-
+  //Get the number of components in the canvas element
   let componentCount = canvasElement.querySelectorAll('.component').length; 
 
+  //Get the blend name from the canvas element
+  let blendName = canvasElement.querySelector('.blend-name').childNodes[1].innerHTML;
+
+  // Get the blend from the modal window
+  let modalContent = document.querySelector('.modal-body').querySelector('.mainElementContainer');
+
+  //Create a input box for the blend name
+  let blendNameInput = document.createElement('input');
+  blendNameInput.type = 'text';
+  blendNameInput.name = 'blendName';
+  blendNameInput.placeholder = 'Blend Name';
+  blendNameInput.maxLength = '20';
+  blendNameInput.classList.add('input-box');
+  blendNameInput.style.maxWidth = '60%';
+  blendNameInput.value = blendName;
+
+
+  let nameContainer = modalContent.querySelector('.blend-name');
+
+  //remove the second child of the blend name container and add the input box
+  nameContainer.removeChild(nameContainer.childNodes[1]);
+  nameContainer.appendChild(blendNameInput);  
+
+      
   //If there is a component, replace the divs with input boxes
   if (componentCount > 0) {
+
+    //For each Blend Component in the canvas element, replace the divs with input boxes
     for (let i = 0; i < componentCount; i++) {
 
       //Store the name, weight, and ratio of each component
@@ -347,12 +375,12 @@ function getblendData () {
       let blendRatio = canvasElement.querySelectorAll('.component') [i].getElementsByTagName('div')[2].innerHTML;
 
       //Convert the Component Names to input boxes in the Modal Window
-      modalBlend.querySelectorAll('.component') [i].childNodes[0].innerHTML = '<input type="text" class="input-box" value="' + blendNames + '" maxlength="20">';
-      modalBlend.querySelectorAll('.component') [i].childNodes[0].classList.remove ('input-box');
-      modalBlend.querySelectorAll('.component') [i].childNodes[1].innerHTML = '<input type="number" class="input-box" value="' + blendWeight + '" max="9999">';
-      modalBlend.querySelectorAll('.component') [i].childNodes[1].classList.remove ('input-box');
-      modalBlend.querySelectorAll('.component') [i].childNodes[2].innerHTML = '<input type="number" class="input-box" value="' + blendRatio + '" min="0" max="100" step="1">';
-      modalBlend.querySelectorAll('.component') [i].childNodes[2].classList.remove ('input-box');
+      modalContent.querySelectorAll('.component') [i].childNodes[0].innerHTML = '<input type="text" class="input-box" value="' + blendNames + '" maxlength="20">';
+      modalContent.querySelectorAll('.component') [i].childNodes[0].classList.remove ('input-box');
+      modalContent.querySelectorAll('.component') [i].childNodes[1].innerHTML = '<input type="number" class="input-box" value="' + blendWeight + '" max="9999">';
+      modalContent.querySelectorAll('.component') [i].childNodes[1].classList.remove ('input-box');
+      modalContent.querySelectorAll('.component') [i].childNodes[2].innerHTML = '<input type="number" class="input-box" value="' + blendRatio + '" min="0" max="100" step="1">';
+      modalContent.querySelectorAll('.component') [i].childNodes[2].classList.remove ('input-box');
     }
   }
 }
