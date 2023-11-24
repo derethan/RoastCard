@@ -269,9 +269,19 @@ function getlogData() {
 }
 
 function getnoteData() {
+  //get Session Data
+  let selectedElement = sessionStorage.getItem('selectedElement');
+  let canvasElement = document.getElementById(selectedElement);
+
+
   //loads the data from the canvas element into the modal window
   loadElementContent ();
 
+
+  //modal Content area
+  const buttonContainer = document.querySelector('.modal-body').querySelector('.log-button-container');
+  buttonContainer.style.display = 'none';
+  
   const mainElementContainer = document.querySelector('.modal-body').querySelector('.mainElementContainer');
   const contentArea = mainElementContainer.querySelector('.element-content');
 
@@ -286,6 +296,13 @@ function getnoteData() {
   textArea.style.maxWidth = '96%';
   textArea.style.minHeight = '150px';
   
+
+  //if a pre element exists
+  if (canvasElement.querySelector('.mainElementContainer').querySelector('pre') != null) {
+    //Get the text in the text area
+    let noteText = canvasElement.querySelector('.mainElementContainer').querySelector('pre').textContent;
+    textArea.value = noteText;
+  }
 
   contentArea.innerHTML = '';
   contentArea.appendChild(textArea);
@@ -544,7 +561,30 @@ function updateNote() {
 
   // Get the notePad from the modal window
   modalNote = document.querySelector('.modal-body').querySelector('.mainElementContainer');
-  canvasElement.querySelector('.mainElementContainer').innerHTML = modalNote.innerHTML;
+
+  //Get the content from the textarea, maintianing the formatting
+  let preElement = document.createElement('pre');
+  preElement.textContent = modalNote.querySelector('textarea').value;
+
+  canvasElement.querySelector('.mainElementContainer').querySelector('.element-content').innerHTML = '';
+
+  //if the notePad is empty, add 3 note lines
+  if (preElement.textContent === '') {
+    for (let i = 0; i < 3; i++) {
+      const newLine = document.createElement('div');
+      newLine.classList.add('note-line');
+
+      //update the canvas element
+      canvasElement.querySelector('.mainElementContainer').querySelector('.element-content').appendChild(newLine);
+    }
+
+  } else {
+  //Update the canvas element with the new note, maintaining the formatting
+  canvasElement.querySelector('.mainElementContainer').querySelector('.element-content').appendChild(preElement);
+  }
+
+
+  // canvasElement.querySelector('.mainElementContainer').innerHTML = modalNote.innerHTML;
 
   closeModal();
 }

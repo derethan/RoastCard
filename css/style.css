@@ -766,9 +766,17 @@ width: 25%;
   input[type="radio"]:checked {
     background-color: var(--burgundy);
   }
-    input[type="radio"]:hover {
-      background-color: var(--gold);
-    }
+  input[type="radio"]:hover {
+    background-color: var(--gold);
+  }
+  pre {
+    font-size: 18px;
+    font-family: var(--scriptFont);
+    color: var(--espresso);
+    position: relative;
+    border-bottom: 1px dotted;
+}
+
 
 
 /*****************************************************************
