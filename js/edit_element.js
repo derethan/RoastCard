@@ -403,14 +403,42 @@ function getSelectionData () {
   //Get session Data
   let selectedElement = sessionStorage.getItem('elementType');
 
+  document.querySelector('.modal-body').classList.add('row');
+  document.querySelector('.modal-body').classList.add('gap5');
+
+
+  /******* Handle the Main Element Container********/
   const selectionContainer = document.querySelector('.modal-body').querySelector('.selection-content');
   const mainElementContainer = document.querySelector('.modal-body').querySelector('.mainElementContainer').querySelector('.element-content');
 
-  //Store the names of the current items in the canvas element
+  //Store the items in the element container
   const selectedItems = mainElementContainer.querySelectorAll('.element-line');
 
-    //add minus button to the mainElementContainer items
+    //for each item in the mainElementContainer
     selectedItems.forEach ((item) => {
+  
+      //Get the data from the item
+      let value;
+      if (item.querySelector('p') != null) {
+      value = item.querySelector('p').innerHTML;
+
+      //remove the text element
+      item.removeChild(item.lastChild);
+      }
+      else {
+        value = '';
+      }
+      //add an input box to the item
+      const input = document.createElement('input');
+      input.type = 'text';
+      input.maxLength = '20';
+      input.name = 'item';
+      input.classList.add('input-box');
+      input.value = value;
+      item.appendChild(input);
+
+
+      //Add a minus button to the item
       const minusButton = document.createElement ('button');
       minusButton.classList.add('minus-button');
       minusButton.innerHTML = '-';
@@ -983,14 +1011,26 @@ function populateElement () {
   //clear the canvas element
   canvasElement.querySelector('.mainElementContainer').querySelector('.element-content').innerHTML = '';
 
-  //Store the names of the current items in the canvas element
+  //Store the the current selected items
   const selectedItems = mainElementContainer.querySelectorAll('.element-line');
 
   //for each item in the mainElementContainer, add it to the canvas element
   selectedItems.forEach ((item) => {
     tempItem = item.cloneNode(true);
+
+    //get the value of the input box
+    let value = tempItem.querySelector('input').value;
+
+    //remove the input box and the minus button from the tempItem
+    tempItem.removeChild(tempItem.lastChild);
     tempItem.removeChild(tempItem.lastChild);
 
+    //Create a text element for the user content and add to the tempItem
+    let text = document.createElement('p');
+    text.innerHTML = value;
+    tempItem.appendChild(text);
+
+    //update the canvas element
     canvasElement.querySelector('.mainElementContainer').querySelector('.element-content').appendChild(tempItem);
   })
 }

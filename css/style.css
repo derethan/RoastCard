@@ -751,7 +751,6 @@ width: 25%;
     background-color: var(--cream);
     color: var(--espresso);
     font-size: 18px;
-    width: 100%;
     box-sizing: border-box;
     border: none;
   }
@@ -1371,7 +1370,9 @@ opacity: 0;}
 .helpmodal.active {
   left: 5%;
 }
-
+.selection-content {
+  max-height: 150px;
+}
 /* Tooltip Styles */
 .tooltip .tooltiptext {
   min-width: 225px;
