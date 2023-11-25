@@ -636,8 +636,6 @@ function updateBlend() {
   modalContent.querySelector('.blend-name').appendChild(nameElement);
 
 
-
-
   //for each component, replacde the input boxes with divs
   for (let i = 0; i < componentCount; i++) {
 
@@ -650,10 +648,15 @@ function updateBlend() {
     //Convert the input boxes to divs
     modalContent.querySelectorAll('.component') [i].childNodes[0].innerHTML = blendNames;
     modalContent.querySelectorAll('.component') [i].childNodes[0].classList.add ('input-box');
-    modalContent.querySelectorAll('.component') [i].childNodes[1].innerHTML = blendWeight;
+
+    modalContent.querySelectorAll('.component') [i].childNodes[1].innerHTML = blendWeight + 'g';
     modalContent.querySelectorAll('.component') [i].childNodes[1].classList.add ('input-box');
-    modalContent.querySelectorAll('.component') [i].childNodes[2].innerHTML = blendRatio;
+    modalContent.querySelectorAll('.component') [i].childNodes[1].classList.add ('text-center');
+
+    
+    modalContent.querySelectorAll('.component') [i].childNodes[2].innerHTML = blendRatio + '%';
     modalContent.querySelectorAll('.component') [i].childNodes[2].classList.add ('input-box');
+    modalContent.querySelectorAll('.component') [i].childNodes[2].classList.add ('text-center');
   }
 
   //Update the canvas element with the new blend
