@@ -380,6 +380,9 @@ main {
 .element-content {
   width: 100%;
 }
+.element-content p {
+  font-family: var(--scriptFont);
+}
 .element-title {
   color: var(--cream);
 }
@@ -776,8 +779,6 @@ width: 25%;
     position: relative;
     border-bottom: 1px dotted;
 }
-
-
 
 /*****************************************************************
 

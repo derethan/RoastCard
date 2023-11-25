@@ -623,31 +623,41 @@ function updateBlend() {
   let canvasElement = document.getElementById(selectedElement);
 
   // Get the blend from the modal window
-  modalBlend = document.querySelector('.modal-body').querySelector('.mainElementContainer');
+  modalContent = document.querySelector('.modal-body').querySelector('.mainElementContainer');
 
   //Get the number of components in the blend
-  let componentCount = modalBlend.querySelectorAll('.component').length; 
+  let componentCount = modalContent.querySelectorAll('.component').length; 
+
+  //replace blend name input box with a text element
+  let nameElement = document.createElement('p');
+  nameElement.innerHTML = modalContent.querySelector('.blend-name').querySelector('input').value;
+
+  modalContent.querySelector('.blend-name').querySelector('input').remove();
+  modalContent.querySelector('.blend-name').appendChild(nameElement);
+
+
+
 
   //for each component, replacde the input boxes with divs
   for (let i = 0; i < componentCount; i++) {
 
     //Store the name, weight, and ratio of each component
-    let blendNames = modalBlend.querySelectorAll('.component') [i].getElementsByTagName('input')[0].value;
-    let blendWeight = modalBlend.querySelectorAll('.component') [i].getElementsByTagName('input')[1].value;
-    let blendRatio = modalBlend.querySelectorAll('.component') [i].getElementsByTagName('input')[2].value;
+    let blendNames = modalContent.querySelectorAll('.component') [i].getElementsByTagName('input')[0].value;
+    let blendWeight = modalContent.querySelectorAll('.component') [i].getElementsByTagName('input')[1].value;
+    let blendRatio = modalContent.querySelectorAll('.component') [i].getElementsByTagName('input')[2].value;
 
 
     //Convert the input boxes to divs
-    modalBlend.querySelectorAll('.component') [i].childNodes[0].innerHTML = blendNames;
-    modalBlend.querySelectorAll('.component') [i].childNodes[0].classList.add ('input-box');
-    modalBlend.querySelectorAll('.component') [i].childNodes[1].innerHTML = blendWeight;
-    modalBlend.querySelectorAll('.component') [i].childNodes[1].classList.add ('input-box');
-    modalBlend.querySelectorAll('.component') [i].childNodes[2].innerHTML = blendRatio;
-    modalBlend.querySelectorAll('.component') [i].childNodes[2].classList.add ('input-box');
+    modalContent.querySelectorAll('.component') [i].childNodes[0].innerHTML = blendNames;
+    modalContent.querySelectorAll('.component') [i].childNodes[0].classList.add ('input-box');
+    modalContent.querySelectorAll('.component') [i].childNodes[1].innerHTML = blendWeight;
+    modalContent.querySelectorAll('.component') [i].childNodes[1].classList.add ('input-box');
+    modalContent.querySelectorAll('.component') [i].childNodes[2].innerHTML = blendRatio;
+    modalContent.querySelectorAll('.component') [i].childNodes[2].classList.add ('input-box');
   }
 
   //Update the canvas element with the new blend
-  canvasElement.querySelector('.mainElementContainer').innerHTML = modalBlend.innerHTML;
+  canvasElement.querySelector('.mainElementContainer').innerHTML = modalContent.innerHTML;
 
   closeModal();
 }
