@@ -372,7 +372,9 @@ function getblendData () {
       //Store the name, weight, and ratio of each component
       let blendNames = canvasElement.querySelectorAll('.component') [i].getElementsByTagName('div')[0].innerHTML;
       let blendWeight = canvasElement.querySelectorAll('.component') [i].getElementsByTagName('div')[1].innerHTML;
+      blendWeight = blendWeight.replace('g', '');
       let blendRatio = canvasElement.querySelectorAll('.component') [i].getElementsByTagName('div')[2].innerHTML;
+      blendRatio = blendRatio.replace('%', '');
 
       //Convert the Component Names to input boxes in the Modal Window
       modalContent.querySelectorAll('.component') [i].childNodes[0].innerHTML = '<input type="text" class="input-box" value="' + blendNames + '" maxlength="20">';
