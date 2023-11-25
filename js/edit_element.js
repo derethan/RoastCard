@@ -355,7 +355,7 @@ function getblendData () {
   blendNameInput.style.maxWidth = '60%';
   blendNameInput.value = blendName;
 
-
+  //Get the blend name container
   let nameContainer = modalContent.querySelector('.blend-name');
 
   //remove the second child of the blend name container and add the input box
@@ -437,7 +437,6 @@ function getSelectionData () {
       input.value = value;
       item.appendChild(input);
 
-
       //Add a minus button to the item
       const minusButton = document.createElement ('button');
       minusButton.classList.add('minus-button');
@@ -445,6 +444,9 @@ function getSelectionData () {
       minusButton.addEventListener('click', removeItem);  
       item.appendChild(minusButton);
     })
+
+
+      /******* Handle the selection items Container********/
 
   //Store an array of selectible temperatures
   const tempArray = ['Ambient Temp:', 'Humidity:',"Yellowing Temp:", "Browing Temp:", "First Crack Temp:", "Second Crack Temp:", "Drop Temp:"];
@@ -454,15 +456,15 @@ function getSelectionData () {
 
   if (selectedElement === 'temp-element') {
     tempArray.forEach((temp) => {
-      populateContent(temp);
+      addSelectionItem(temp);
     })
   } else if (selectedElement === 'timing-element') {
     timingArray.forEach((temp) => {
-      populateContent(temp);
+      addSelectionItem(temp);
     })
   }
 
-  async function populateContent (temp) {
+  function addSelectionItem (temp) {
     
     //Check to see if the Item in TempArray matches an item from selectedItems
     let itemExists = false;
@@ -480,7 +482,7 @@ function getSelectionData () {
     selectableItem.classList.add('selection-line');
 
     // Adds the Text to the new Div Element
-    const text = document.createElement ('p');
+    const text = document.createElement ('h4');
     text.innerHTML = temp;
     selectableItem.appendChild(text);
 
@@ -718,6 +720,9 @@ function updateTiming () {
 *             Functions to add and remove content from the elements
 *********************************************************************************/
 
+
+  /******* Function to add a column to a table - Call tablename in paramenter********/
+
 function addColumn(tableName) {
 
   //Stores the Table Element
@@ -727,6 +732,7 @@ function addColumn(tableName) {
   let columnCount = logTable.rows[0].cells.length;
   let allowedColumns = 0;
 
+  //Determine the number of columns allowed
   if (tableName === 'roastChartLog') {
     allowedColumns = 3;
   } else {
@@ -749,6 +755,7 @@ function addColumn(tableName) {
 
         if (columnCount === 2) //if there are only 2 columns, set the 3rd header to 'Notes'
         {
+          //if the table is the roastChartLog, set the header to a text element 'Notes'
           if (tableName === 'roastChartLog') {
             header.innerHTML = 'Notes';
           } else {
@@ -760,6 +767,7 @@ function addColumn(tableName) {
           header.appendChild(input);
           logTable.rows[i].appendChild(header);
         }
+
       } else {
           
         if (tableName === 'roastChartLog') {
@@ -782,17 +790,21 @@ function addColumn(tableName) {
           input.maxLength = '25';
           input.placeholder = 'Notes';
 
-          cell.appendChild(input);        }
+          cell.appendChild(input);        
+        }
       }
     }
   }
 }
+
+  /******* Function to remove a column from a table - Call tablename in paramenter********/
 
 function removeColumn(tableName) {
   //Remove the last column from the table
   let logTable = document.getElementById(tableName);
   let columnCount = logTable.rows[0].cells.length;
 
+  //If there are more then 2 columns, remove the last column
   if (columnCount > 2) {
     for (let i = 0; i < logTable.rows.length; i++) {
       logTable.rows[i].deleteCell(-1);
@@ -800,7 +812,11 @@ function removeColumn(tableName) {
   }
 }
 
+
+  /******* Function to add a row to a table - Call tablename in paramenter********/
+
 function addRow(tableName) {
+  //Stores the Table Element
   let table = document.getElementById(tableName);
   let row = table.insertRow(-1);
 
@@ -840,6 +856,8 @@ function addRow(tableName) {
   }
 }
 
+  /******* Function to remove a row from a table - Call tablename in paramenter********/
+
 function removeRow(tableName) {
   let table = document.getElementById(tableName);
   const timeInterval = parseInt(document.getElementById('timeInterval').value);
@@ -849,8 +867,8 @@ function removeRow(tableName) {
   }
 }
 
-//Add a new line to the notePad
-function addLine() {
+  /******* Function to add a line to the notepad********/
+  function addLine() {
 
   //get the Body of the Modal NotePad
   modalNoteBody = document.querySelector('.modal-body').querySelector('.mainElementContainer');
@@ -864,6 +882,7 @@ function addLine() {
   modalNoteBody.appendChild(newLine);
 }
 
+  /******* Function to remove a line to the notepad********/
 function removeLine() {
   //get the Body of the Modal NotePad
   modalNoteBody = document.querySelector('.modal-body').querySelector('.mainElementContainer');
@@ -874,12 +893,12 @@ function removeLine() {
 
   // If there is more then one line, remove the last line
   if (lineCount > 1) {
-
     // Remove the last line of the modalNoteBody
     modalNoteBody.removeChild(modalNoteBody.lastElementChild);
   }
 }
 
+  /******* Function to create a new Blend Component********/
 function addComponent () {
   //Get the component container
   const componentContainer = document.querySelector('.modal-body').getElementsByClassName ('element-line') [2];
@@ -935,6 +954,7 @@ function addComponent () {
   componentContainer.appendChild(newComponent);
 }
 
+  /******* Function to remove a Blend Component********/
 function removeComponent () {
   //Get the component container
   const componentContainer = document.querySelector('.modal-body').getElementsByClassName ('element-line') [2];
@@ -948,8 +968,11 @@ function removeComponent () {
   }
 }
 
+  /******* Function to add an item to the selected items Container for List elements********/
+  /******* Called when the user clicks the plus button on an item in the selection container********/
 function addItem (event) {
 
+  //Get the selected item (the parent of the plus button)
   const selectedItem = event.target.parentElement;
   const mainElementContainer = document.querySelector('.modal-body').querySelector('.mainElementContainer').querySelector('.element-content');
 
@@ -963,6 +986,14 @@ function addItem (event) {
   //Remove the plus button from the new element line
   selectedItem.removeChild(selectedItem.lastChild);
 
+  //Add an input box to the new element line
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.maxLength = '20';
+  input.name = 'item';
+  input.classList.add('input-box');
+  selectedItem.appendChild(input);
+
   //Add the minus button to the new element line
   const minusButton = document.createElement ('button');
   minusButton.classList.add('minus-button');
@@ -974,9 +1005,15 @@ function addItem (event) {
   mainElementContainer.appendChild(selectedItem);
 }
 
+
+
+  /******* Function to remove an item from the Element container and add it to the selectable Items List ********/
+  /******* Called when the user clicks the Minus button on an item in the selection container********/
 function removeItem (event) {
 
+  //Get the item to be deleted
   const deletedItem = event.target.parentElement;
+  //Get the selection list container
   const selectionContainer = document.querySelector('.modal-body').querySelector('.selection-content');
 
   //remove the item from the mainElementContainer
@@ -987,6 +1024,8 @@ function removeItem (event) {
   deletedItem.classList.add('selection-line');
 
   //remove the minus button from the item
+  deletedItem.removeChild(deletedItem.lastChild);
+  //remove the input box from the item
   deletedItem.removeChild(deletedItem.lastChild);
 
   //add the plus button to the item
