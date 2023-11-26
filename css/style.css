@@ -1032,7 +1032,7 @@ color: var(--cream);
   box-shadow: 4px 0px 10px 0px var(--espresso);
 }
 .help-card img {
-  width: 100%;
+  max-width: 100%;
   max-height: 300px;
 }
 .help-card-title {
