@@ -308,15 +308,6 @@ function getnoteData() {
   contentArea.appendChild(textArea);
 }
 
-function getbatchData () {
-  //Get session Data
-  let selectedElement = sessionStorage.getItem('selectedElement');
-  let canvasElement = document.getElementById(selectedElement);
-
-  //loads the data from the canvas element into the modal window
-  loadElementContent ();
-}
-
 function getblendData () {
   //loads the data from the canvas element into the modal window
   loadElementContent ();
@@ -376,6 +367,15 @@ function getblendData () {
   }
 }
 
+function getbatchData () {
+  //Get session Data
+  let selectedElement = sessionStorage.getItem('selectedElement');
+  let canvasElement = document.getElementById(selectedElement);
+
+  //loads the data from the canvas element into the modal window
+  loadElementContent ();
+}
+
 function getbeanData () {
   const selectionItems = ['Origin:', 'Farm:', 'Variety:', 'Process:', 'Elevation:', 'Harvest Year:', 'Roast Level:',
    'Green Weight:', 'Roast Weight:', 'Reduction (%):'];
@@ -406,18 +406,15 @@ function gettimingData () {
 }
 
 function getSelectionData (selectionItems) {
-  //Get session Data
-  let selectedElement = sessionStorage.getItem('elementType');
 
   document.querySelector('.modal-body').classList.add('row');
   document.querySelector('.modal-body').classList.add('gap5');
 
 
   /******* Handle the Main Element Container********/
-  const selectionContainer = document.querySelector('.modal-body').querySelector('.selection-content');
-  const mainElementContainer = document.querySelector('.modal-body').querySelector('.mainElementContainer').querySelector('.element-content');
 
   //Store the items in the element container
+  const mainElementContainer = document.querySelector('.modal-body').querySelector('.mainElementContainer').querySelector('.element-content');
   const selectedItems = mainElementContainer.querySelectorAll('.element-line');
 
     //for each item in the mainElementContainer
@@ -459,42 +456,47 @@ function getSelectionData (selectionItems) {
       addSelectionItem(item);
     })
 
-  function addSelectionItem (item) {
-    
-    //Check to see if the Item in TempArray matches an item from selectedItems
-    let itemExists = false;
-    for (let i = 0; i < selectedItems.length; i++) {
-      if (item === selectedItems[i].firstChild.innerHTML) {
-        itemExists = true;
-      }
-    }
-
-    //If the item does not exist, create a new item
-    if (itemExists === false) {
-
-    //Creates a new Div Element with the class "selection-line"
-    const selectableItem = document.createElement('div');
-    selectableItem.classList.add('selection-line');
-
-    // Adds the Text to the new Div Element
-    const text = document.createElement ('h4');
-    text.innerHTML = item;
-    selectableItem.appendChild(text);
-
-    //Adds the plus Button to the new Div Element
-    const plusButton = document.createElement ('button');
-    plusButton.classList.add('plus-button');
-    plusButton.innerHTML = '+';
-    plusButton.addEventListener('click', addItem);
-    selectableItem.appendChild(plusButton);
-
-    //Append the new Element to the selectionContainer
-    selectionContainer.appendChild(selectableItem);
-    }
-  }
+  
 }
 
+function addSelectionItem (item) {
+  
+  //Store the items in the element container
+  const mainElementContainer = document.querySelector('.modal-body').querySelector('.mainElementContainer').querySelector('.element-content');
+  const selectedItems = mainElementContainer.querySelectorAll('.element-line');
+  const selectionContainer = document.querySelector('.modal-body').querySelector('.selection-content');
 
+  //Check to see if the Item in TempArray matches an item from selectedItems
+  let itemExists = false;
+  for (let i = 0; i < selectedItems.length; i++) {
+    if (item === selectedItems[i].firstChild.innerHTML) {
+      itemExists = true;
+    }
+  }
+
+  //If the item does not exist, create a new item
+  if (itemExists === false) {
+
+  //Creates a new Div Element with the class "selection-line"
+  const selectableItem = document.createElement('div');
+  selectableItem.classList.add('selection-line');
+
+  // Adds the Text to the new Div Element
+  const text = document.createElement ('h4');
+  text.innerHTML = item;
+  selectableItem.appendChild(text);
+
+  //Adds the plus Button to the new Div Element
+  const plusButton = document.createElement ('button');
+  plusButton.classList.add('plus-button');
+  plusButton.innerHTML = '+';
+  plusButton.addEventListener('click', addItem);
+  selectableItem.appendChild(plusButton);
+
+  //Append the new Element to the selectionContainer
+  selectionContainer.appendChild(selectableItem);
+  }
+}
 /********************************************************************************
 *   UPDATE FUNCTIONS:    
       - Functions for Updating Each element are Below
@@ -563,7 +565,6 @@ function updateDate() {
   }
 
   closeModal();
-
 }
 
 function updateLog() {
@@ -572,8 +573,8 @@ function updateLog() {
   let selectedElement = sessionStorage.getItem('selectedElement');
   let canvasElement = document.getElementById(selectedElement);
 
-    //update time intervals
-    updateTime ('log-table')
+  //update time intervals
+  updateTime ('log-table')
 
   // Get the log-Table from the modal window
   let modalTable = document.getElementById('log-table');
@@ -593,7 +594,6 @@ function updateLog() {
       canvasElement.querySelector('.log-table').rows[0].cells[i].style.width = '150px';
     }
   }
-
 
   // for each row in the table, store the value of the input fields in the cells
   for (let row = 1; row < rowCount; row++) {
@@ -632,15 +632,10 @@ function updateNote() {
       //update the canvas element
       canvasElement.querySelector('.mainElementContainer').querySelector('.element-content').appendChild(newLine);
     }
-
   } else {
   //Update the canvas element with the new note, maintaining the formatting
   canvasElement.querySelector('.mainElementContainer').querySelector('.element-content').appendChild(preElement);
   }
-
-
-  // canvasElement.querySelector('.mainElementContainer').innerHTML = modalNote.innerHTML;
-
   closeModal();
 }
 
@@ -692,21 +687,18 @@ function updateBlend() {
   closeModal();
 }
 
-function updateWeight () {
-  closeModal();
-}
-function updateBean () {
-  closeModal();
-}
 function updateBatch () {
   closeModal();
 }
 
+function updateBean () {
+  closeModal();
+  populateElement();
+}
 function updateTemp () {
   populateElement();
   closeModal();
 }
-
 function updateTiming () {
   populateElement();
   closeModal();
