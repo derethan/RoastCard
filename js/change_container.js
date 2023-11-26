@@ -117,18 +117,18 @@ document.addEventListener('DOMContentLoaded', function () {
           roastChartModal.classList.toggle('active');
       });
 
-      //Store the Cupping Score Tool
-      const cuppingScoreButton = document.getElementById('cuppingScoreButton');
-      const cuppingScoreModal = document.getElementById('cuppingScore');
+    //   //Store the Cupping Score Tool
+    //   const cuppingScoreButton = document.getElementById('cuppingScoreButton');
+    //   const cuppingScoreModal = document.getElementById('cuppingScore');
 
-        //Handle clicking the Cupping Score Tool options
-        cuppingScoreButton.addEventListener('click', function () {
-            //close the Tools modal
-            toolsModal.classList.toggle('active');
+    //     //Handle clicking the Cupping Score Tool options
+    //     cuppingScoreButton.addEventListener('click', function () {
+    //         //close the Tools modal
+    //         toolsModal.classList.toggle('active');
 
-            //Show the Cupping Score Tool
-            cuppingScoreModal.classList.toggle('active');
-        });
+    //         //Show the Cupping Score Tool
+    //         cuppingScoreModal.classList.toggle('active');
+    //     });
 
     //           //handle clicking the close Button - Roast Chart Modal
     //   const closeCuppingScoreButton = document.getElementById('closeCuppingScore');

@@ -398,6 +398,7 @@ main {
 .canvas-element.title-element {
   color: var(--espresso);
   padding: 5px;
+  text-align: center;
 }
 .canvas-element.date-element {
   color: var(--coffee);
@@ -1101,7 +1102,7 @@ list-style-type: disc;
   height: 100%; /* adjust as needed */  
 }
 /*********************************************************************
-  - 
+  -  Generic Styles
 **********************************************************************/
 
 .fade-out {
@@ -1359,7 +1360,8 @@ opacity: 0;}
 
 /* Modals */
 .modal-content {
-  width: 100%;
+  width: 98%;
+  max-width: 98%;
 }
 .modal-body {
   flex-direction: column;

@@ -663,6 +663,8 @@ function updateNote() {
 
       //remove overflow from the placeholder notePad
       canvasElement.querySelector('.mainElementContainer').style.overflowX = 'unset';
+      canvasElement.querySelector('.mainElementContainer').style.overflowY = 'unset';
+
   } else {
   //Update the canvas element with the new note, maintaining the formatting
   canvasElement.querySelector('.mainElementContainer').querySelector('.element-content').appendChild(preElement);
