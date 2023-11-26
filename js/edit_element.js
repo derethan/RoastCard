@@ -368,12 +368,37 @@ function getblendData () {
 }
 
 function getbatchData () {
-  //Get session Data
-  let selectedElement = sessionStorage.getItem('selectedElement');
-  let canvasElement = document.getElementById(selectedElement);
-
   //loads the data from the canvas element into the modal window
   loadElementContent ();
+
+  //Get the element Content from the edit window
+  let modalContent = document.querySelector('.modal-body').querySelector('.mainElementContainer').querySelector('.element-content');
+  let items = modalContent.querySelectorAll('.element-line');
+
+  //For each Item in the element content, add an input box
+  items.forEach((item) => {
+
+    //Get the data from the item, store it and remove the text element
+    let value;
+    if (item.querySelector('p') != null) {
+    value = item.querySelector('p').innerHTML;
+    item.removeChild(item.lastChild);
+    } else {value = '';}
+
+    //Create an input box
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.maxLength = '20';
+    input.name = 'item';
+    input.classList.add('input-box');
+    input.style.maxWidth = '50%';
+    input.value = value;
+
+    //Add the input box to the item
+    item.appendChild(input);
+  });
+
+
 }
 
 function getbeanData () {
@@ -688,6 +713,31 @@ function updateBlend() {
 }
 
 function updateBatch () {
+  //get Session Data
+  let selectedElement = sessionStorage.getItem('selectedElement');
+  let canvasElement = document.getElementById(selectedElement);
+  let elementContent = canvasElement.querySelector('.mainElementContainer').querySelector('.element-content');
+
+  // Get the element Content from the edit window
+  let modalContent = document.querySelector('.modal-body').querySelector('.mainElementContainer').querySelector('.element-content');
+  
+  //Get the items from the modal window
+  let items = modalContent.querySelectorAll('.element-line');
+  
+  //for each item in the modal window, update the canvas element
+  items.forEach((item) => { 
+    let value = item.querySelector('input').value;
+
+    let textElement = document.createElement('p');
+    textElement.innerHTML = value;
+
+    item.removeChild(item.querySelector('input'));
+    item.appendChild(textElement);
+  });
+
+  //Update the canvas element with the new batch
+  elementContent.innerHTML = modalContent.innerHTML;
+
   closeModal();
 }
 
@@ -703,10 +753,11 @@ function updateTiming () {
   populateElement();
   closeModal();
 }
+
+
 /********************************************************************************
 *             Functions to add and remove content from the elements
 *********************************************************************************/
-
 
   /******* Function to add a column to a table - Call tablename in paramenter********/
 
