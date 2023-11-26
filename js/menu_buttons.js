@@ -133,11 +133,10 @@ function saveCanvas () {
 
 
 function loadCanvas () {
-        
-    // Add an event listener to the input element to handle file selection
-    fileInput.addEventListener('change', (event) => {
     const canvasContainer = document.getElementById('canvas-container');
 
+    // Add an event listener to the input element to handle file selection
+    fileInput.addEventListener('change', (event) => {
     const file = event.target.files[0];
     
     // Use the FileReader API to read the contents of the selected file
@@ -145,12 +144,52 @@ function loadCanvas () {
     reader.readAsText(file);
     reader.onload = () => {
         const fileContents = reader.result;
+
+        //if the user is on a mobile device, convert the file contents to mobile
+        if (window.innerWidth < 768) {
+        canvasContainer.innerHTML = convertToMobile(fileContents);
+        }
+        //if the user is on a desktop, load the file contents as is
+        else {
         canvasContainer.innerHTML = fileContents;
+        }
         };
+
     });
 
     //clear the file input
     fileInput.value = null;
+}
+
+function convertToMobile (fileContents) {
+
+    //Convert the file contents to dom objects
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(fileContents, "text/html");
+
+    //Get the canvas elements
+    const canvasElements = doc.querySelectorAll(".canvas-element");
+
+        // For each element remove the transform style
+        canvasElements.forEach(element => {
+
+            //remove the draggable and resize classes
+            element.classList.remove("draggable");
+            element.classList.remove("resize");
+            
+            //remove any width and height styles
+            element.style.width = "88%";
+            element.style.height = "auto";
+
+            //add pointer cursor
+            element.classList.add ('cursor-pointer');
+
+            //remove the transform style
+            element.style.transform = "none";
+            console.log(element);
+        });
+
+        return doc.documentElement.innerHTML;
 }
 
 function loadSample (sample) {
@@ -171,7 +210,15 @@ function loadSample (sample) {
     .then(response => response.text())
     .then(data => {
         const sampleHTML = data;
-        canvasContainer.innerHTML = sampleHTML;
+
+        //if the user is on a mobile device, convert the file contents to mobile
+        if (window.innerWidth < 768) {
+        canvasContainer.innerHTML = convertToMobile(sampleHTML);
+        }
+        //if the user is on a desktop, load the file contents as is
+        else {
+            canvasContainer.innerHTML = sampleHTML;
+        }
     })
     .catch(error => {
         console.log(error);
