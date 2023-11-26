@@ -306,7 +306,6 @@ function getnoteData() {
 
   contentArea.innerHTML = '';
   contentArea.appendChild(textArea);
-
 }
 
 function getbatchData () {
@@ -314,16 +313,6 @@ function getbatchData () {
   let selectedElement = sessionStorage.getItem('selectedElement');
   let canvasElement = document.getElementById(selectedElement);
 
-  //loads the data from the canvas element into the modal window
-  loadElementContent ();
-}
-
-function getbeanData () {
-  //loads the data from the canvas element into the modal window
-  loadElementContent ();
-}
-
-function getweightData () {
   //loads the data from the canvas element into the modal window
   loadElementContent ();
 }
@@ -387,19 +376,36 @@ function getblendData () {
   }
 }
 
-async function gettempData () {
+function getbeanData () {
+  const selectionItems = ['Origin:', 'Farm:', 'Variety:', 'Process:', 'Elevation:', 'Harvest Year:', 'Roast Level:',
+   'Green Weight:', 'Roast Weight:', 'Reduction (%):'];
+
     //loads the data from the canvas element into the modal window
     loadElementContent ();
-    getSelectionData();
+    getSelectionData(selectionItems);
 }
 
-async function gettimingData () {
+function gettempData () {
+    //Store an array of temperature related items
+    const selectionItems = ['Ambient Temp:', 'Humidity:',"Yellowing Temp:", "Browing Temp:", "First Crack Temp:", "Second Crack Temp:", "Drop Temp:"];
+
     //loads the data from the canvas element into the modal window
     loadElementContent ();
-    getSelectionData();
+    getSelectionData(selectionItems);
 }
 
-function getSelectionData () {
+function gettimingData () {
+    //Store an array of timing related items
+  const selectionItems = ['Roast Start Time:', 'Roast End Time:', 'Roast Duration:', 'Yellowing Start Time:', 'Brown Start Time:', 'Maillard reaction Start Time:',
+  'First Crack Start Time:', 'First Crack End Time:', 'First Crack Duration:','Second Crack Start Time:', 'Second Crack End Time:', 'Second Crack Duration:', 
+  'Development time:', 'Development Ratio:'];
+
+    //loads the data from the canvas element into the modal window
+    loadElementContent ();
+    getSelectionData(selectionItems);
+}
+
+function getSelectionData (selectionItems) {
   //Get session Data
   let selectedElement = sessionStorage.getItem('elementType');
 
@@ -435,6 +441,7 @@ function getSelectionData () {
       input.name = 'item';
       input.classList.add('input-box');
       input.value = value;
+      input.style.maxWidth = '50%';
       item.appendChild(input);
 
       //Add a minus button to the item
@@ -448,28 +455,16 @@ function getSelectionData () {
 
       /******* Handle the selection items Container********/
 
-  //Store an array of selectible temperatures
-  const tempArray = ['Ambient Temp:', 'Humidity:',"Yellowing Temp:", "Browing Temp:", "First Crack Temp:", "Second Crack Temp:", "Drop Temp:"];
-  const timingArray = ['Roast Start Time:', 'Roast End Time:', 'Roast Duration:', 'Yellowing Start Time:', 'Brown Start Time:', 'Maillard reaction Start Time:',
-  'First Crack Start Time:', 'First Crack End Time:', 'First Crack Duration:','Second Crack Start Time:', 'Second Crack End Time:', 'Second Crack Duration:', 
-  'Development time:', 'Development Ratio:'];
-
-  if (selectedElement === 'temp-element') {
-    tempArray.forEach((temp) => {
-      addSelectionItem(temp);
+    selectionItems.forEach((item) => {
+      addSelectionItem(item);
     })
-  } else if (selectedElement === 'timing-element') {
-    timingArray.forEach((temp) => {
-      addSelectionItem(temp);
-    })
-  }
 
-  function addSelectionItem (temp) {
+  function addSelectionItem (item) {
     
     //Check to see if the Item in TempArray matches an item from selectedItems
     let itemExists = false;
     for (let i = 0; i < selectedItems.length; i++) {
-      if (temp === selectedItems[i].firstChild.innerHTML) {
+      if (item === selectedItems[i].firstChild.innerHTML) {
         itemExists = true;
       }
     }
@@ -483,7 +478,7 @@ function getSelectionData () {
 
     // Adds the Text to the new Div Element
     const text = document.createElement ('h4');
-    text.innerHTML = temp;
+    text.innerHTML = item;
     selectableItem.appendChild(text);
 
     //Adds the plus Button to the new Div Element
@@ -992,6 +987,7 @@ function addItem (event) {
   input.maxLength = '20';
   input.name = 'item';
   input.classList.add('input-box');
+  input.style.maxWidth = '50%';
   selectedItem.appendChild(input);
 
   //Add the minus button to the new element line
