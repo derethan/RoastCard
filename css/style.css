@@ -1066,7 +1066,9 @@ color: var(--cream);
 
   padding-top: 5px;
 }
-
+.help-mobile {
+  display: none;
+}
 .cardTitleFont {
   font-family: var(--displayFont);
   color: var(--coffee);
@@ -1371,6 +1373,12 @@ opacity: 0;}
 }
 .helpmodal.active {
   left: 5%;
+}
+.help-mobile {
+  display: block;
+}
+.help-desktop {
+  display: none;
 }
 .selection-content {
   max-height: 150px;
