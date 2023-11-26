@@ -217,6 +217,9 @@ function getlogData() {
   let selectedElement = sessionStorage.getItem('selectedElement');
   let canvasElement = document.getElementById(selectedElement);
 
+  let modalBody = document.querySelector('.modal-body');
+  modalBody.classList.remove('row');
+
   // Load Table Content from the selectedElement Log Table
   let logTable = canvasElement.querySelector('.log-table');
 
