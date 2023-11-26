@@ -380,6 +380,9 @@ main {
 .element-content {
   width: 100%;
 }
+.element-content p {
+  font-family: var(--scriptFont);
+}
 .element-title {
   color: var(--cream);
 }
@@ -387,6 +390,9 @@ main {
   display: none;
   flex-direction: column;
   width: 100%;
+
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .canvas-element.title-element {
@@ -745,7 +751,6 @@ width: 25%;
     background-color: var(--cream);
     color: var(--espresso);
     font-size: 18px;
-    width: 100%;
     box-sizing: border-box;
     border: none;
   }
@@ -763,10 +768,16 @@ width: 25%;
   input[type="radio"]:checked {
     background-color: var(--burgundy);
   }
-    input[type="radio"]:hover {
-      background-color: var(--gold);
-    }
-
+  input[type="radio"]:hover {
+    background-color: var(--gold);
+  }
+  pre {
+    font-size: 18px;
+    font-family: var(--scriptFont);
+    color: var(--espresso);
+    position: relative;
+    border-bottom: 1px dotted;
+}
 
 /*****************************************************************
 
@@ -783,10 +794,8 @@ width: 25%;
   .log {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-
-    border: 1px solid var(--espresso);
   }
   .log-button-container {
     display: flex;
@@ -794,6 +803,7 @@ width: 25%;
     align-items: center;
     gap: 10px;
   }
+
   .plus-munis-bttn {
     display: flex;
     justify-content: center;
@@ -1360,7 +1370,9 @@ opacity: 0;}
 .helpmodal.active {
   left: 5%;
 }
-
+.selection-content {
+  max-height: 150px;
+}
 /* Tooltip Styles */
 .tooltip .tooltiptext {
   min-width: 225px;

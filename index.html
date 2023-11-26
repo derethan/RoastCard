@@ -83,7 +83,7 @@
             <!-- Contains a Container for the Origin Element Bar-->
             <div class="element-bar" id="element-bar">
 
-                <!--Title Element-->
+                <!--Text Element-->
                 <div class="origin-element title-element" id="title-element">
                     <h3 class="element-title">Text</h3>   
                     <div class="mainElementContainer">   
@@ -99,6 +99,84 @@
                     </div>
                 </div>
 
+                <!--Batch Details Element-->
+                <div class="origin-element batch-element" id="batch-element">    
+                    <h3 class="element-title">Batch Info</h3>
+   
+                    <div class="mainElementContainer">
+                        <div class="element-header">
+                            <h3>Batch Details</h3>
+                        </div>
+                        <div class="element-content">
+                            <div class="element-line"><h4>Roast ID:</h4></div>
+                            <div class="element-line"><h4>Roasted By:</h4></div>
+                            <div class="element-line"><h4>Equipment Type:</h4></div>
+                            <div class="element-line"><h4>Batch Size:</h4></div>
+                        </div>                    
+                    </div>
+                </div>  
+
+                <!--Bean Details Element-->
+                <div class="origin-element bean-element" id="bean-element">    
+                    <h3 class="element-title">Bean Info</h3>
+    
+                    <div class="mainElementContainer">
+                        <div class="element-header">
+                            <h3>Bean Details</h3>
+                        </div>
+                        <div class="element-content">
+                            <div class="element-line"><h4>Name:</h4></div>
+                        </div>                    
+                    </div>
+                </div>  
+                
+                <!--blend Details Element-->
+                <div class="origin-element blend-element" id="blend-element">    
+                    <h3 class="element-title">Create a Blend</h3>
+   
+                    <div class="mainElementContainer">
+                        <div class="element-header">
+                            <h3>Custom Blend</h3>
+                        </div>
+                        <div class="element-content">
+                            <div class="element-line blend-name"><h4>Blend Name:</h4><p></p></div>
+                            <div class="element-line" style="border: none;"><h4>Components:</h4></div>
+                            <div class="element-line column"></div>
+                        </div>                    
+                    </div>
+                </div>    
+
+
+                <!--Temp Widget Element-->
+                <div class="origin-element temp-element" id="temp-element">    
+                    <h3 class="element-title">Temperatures</h3>
+   
+                    <div class="mainElementContainer">
+                        <div class="element-header">
+                            <h3>Temperature</h3>
+                        </div>
+                        <div class="element-content">
+                            <div class="element-line"><h4>Ambient Temp:</h4></div>
+                            <div class="element-line"><h4>Humidity:</h4></div>
+
+                        </div>                    
+                    </div>
+                </div>     
+
+                <!--Timing Widget Element-->
+                <div class="origin-element timing-element" id="timing-element">    
+                    <h3 class="element-title">Timings</h3>
+   
+                    <div class="mainElementContainer">
+                        <div class="element-header">
+                            <h3>Time Log</h3>
+                        </div>
+                        <div class="element-content">
+                            <div class="element-line"><h4>Roast Start Time:</h4></div>
+                        </div>                    
+                    </div>
+                </div>  
+                
                 <!--log Element-->
                 <div class="origin-element log-element" id="log-element">         
                     <h3 class="element-title">Log Chart</h3>
@@ -128,103 +206,7 @@
                         </div>
                 </div>
                 
-                <!--Batch Details Element-->
-                <div class="origin-element batch-element" id="batch-element">    
-                    <h3 class="element-title">Batch Info</h3>
-   
-                    <div class="mainElementContainer">
-                        <div class="element-header">
-                            <h3>Batch Details</h3>
-                        </div>
-                        <div class="element-content">
-                            <div class="element-line"><p>Roast ID:</p></div>
-                            <div class="element-line"><p>Roasted By:</p></div>
-                            <div class="element-line"><p>Equipment Type:</p></div>
-                            <div class="element-line"><p>Batch Size:</p></div>
-                        </div>                    
-                    </div>
-                </div>
-
-
-                <!--Bean Details Element-->
-                <div class="origin-element bean-element" id="bean-element">    
-                    <h3 class="element-title">Bean Info</h3>
-   
-                    <div class="mainElementContainer">
-                        <div class="element-header">
-                            <h3>Bean Details</h3>
-                        </div>
-                        <div class="element-content">
-                            <div class="element-line"><p>Name:</p></div>
-                            <div class="element-line"><p>Origin:</p></div>
-                            <div class="element-line"><p>Variety:</p></div>
-                            <div class="element-line"><p>Process:</p></div>
-                            <div class="element-line"><p>Altitude:</p></div>
-                        </div>                    
-                    </div>
-                </div>                
-            
-                <!--Weight Details Element-->
-                <div class="origin-element weight-element" id="weight-element">    
-                    <h3 class="element-title">Weight</h3>
-   
-                    <div class="mainElementContainer">
-                        <div class="element-header">
-                            <h3>Weight Details</h3>
-                        </div>
-                        <div class="element-content">
-                            <div class="element-line"><p>Green Weight:</p></div>
-                            <div class="element-line"><p>Roast Weight:</p></div>
-                            <div class="element-line"><p>Reduction (%):</p></div>
-                        </div>                    
-                    </div>
-                </div>              
-
-                <!--blend Details Element-->
-                <div class="origin-element blend-element" id="blend-element">    
-                    <h3 class="element-title">Create a Blend</h3>
-   
-                    <div class="mainElementContainer">
-                        <div class="element-header">
-                            <h3>Custom Blend</h3>
-                        </div>
-                        <div class="element-content">
-                            <div class="element-line"><p>Blend Name:</p></div>
-                            <div class="element-line" style="border: none;"><p>Components:</p></div>
-                            <div class="element-line column"></div>
-                        </div>                    
-                    </div>
-                </div>     
-
-                <!--Temp Widget Element-->
-                <div class="origin-element temp-element" id="temp-element">    
-                    <h3 class="element-title">Temperatures</h3>
-   
-                    <div class="mainElementContainer">
-                        <div class="element-header">
-                            <h3>Temperature</h3>
-                        </div>
-                        <div class="element-content">
-                            <div class="element-line"><p>Ambient Temp:</p></div>
-                            <div class="element-line"><p>Humidity:</p></div>
-
-                        </div>                    
-                    </div>
-                </div>     
-
-                <!--Timing Widget Element-->
-                <div class="origin-element timing-element" id="timing-element">    
-                    <h3 class="element-title">Timings</h3>
-   
-                    <div class="mainElementContainer">
-                        <div class="element-header">
-                            <h3>Time Log</h3>
-                        </div>
-                        <div class="element-content">
-                            <div class="element-line"><p>Roast Start Time:</p></div>
-                        </div>                    
-                    </div>
-                </div>  
+                       
             </div>             <!-- End of Element Bar -->
 
                 <!-- Contains a Container to center page contents, 
@@ -314,7 +296,7 @@
                     </div>
                     <div class="button-container">
                         <input type="button" class="modal-buttons" id="closeButton" value="Close" onclick="closeModal ()">
-                        <input type="button" class="modal-buttons" id="applyButton" value="Apply" onclick="updateLog ()">
+                        <input type="button" class="modal-buttons" id="applyButton" value="Apply">
                     </div>
                 </div>
             </div>
@@ -352,22 +334,22 @@
                         </div>
                     </div>
 
-                    <div class="help-card gap5">  
+                    <!-- <div class="help-card gap5">  
                         <div class="tool-card-title text-center">
                             <h4>Cupping Score</h4>
                         </div>
 
                         <div class="help-card-content cursor-pointer" id="roastChartButton">
-                            <div class="help-card-desc">
+                            <div class="help-card-desc" id="cuppingScoreButton">
                                
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
-                </div>
+                </div> <!-- End of Card Container -->
                 
-            </div> 
-        </div>
+            </div> <!-- End of Tools Modal -->
+        </div> <!-- End of Background Modal -->
 
               <!-- -------------------------------Roast Chart Content Below-------------------------------- -->
 
