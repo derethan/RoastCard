@@ -1,14 +1,14 @@
-<div class="title-element draggable canvas-element" id="5436" data-initial-x="0" data-initial-y="0" data-x="109.32498168945312" data-y="10" style="transform: translate(109.325px, 10px);" ondblclick="editElement(`5436`,`title-element`)">
+<div class="title-element canvas-element draggable resize" id="2167" style="transform: translate(102.983px, 10px);" data-initial-x="0" data-initial-y="0" data-x="102.98333740234375" data-y="10" ondblclick="editElement(`2167`,`title-element`)">
                        
                     <div class="mainElementContainer" style="display: block;">   
-                        <h1 style="color: rgb(8, 95, 175); font-size: 60px;">Sample RoastCard</h1>
+                        <h1 style="color: rgb(0, 104, 208); font-size: 60px;">Sample Roast Card</h1>
                     </div>
-                </div><div class="date-element draggable canvas-element" id="1347" data-initial-x="0" data-initial-y="0" data-x="274.3249816894531" data-y="100.00001525878906" style="transform: translate(274.325px, 100px);" ondblclick="editElement(`1347`,`date-element`)">  
+                </div><div class="date-element canvas-element draggable resize" id="8275" style="transform: translate(252.983px, 85px);" data-initial-x="0" data-initial-y="0" data-x="252.98333740234375" data-y="85" ondblclick="editElement(`8275`,`date-element`)">  
                       
                     <div class="mainElementContainer" style="display: block;">     
-                        <h3>Roast Date: Sat Nov 11 2023</h3>
+                        <h3>Roast Date: Sun Nov 26 2023</h3>
                     </div>
-                </div><div class="batch-element draggable canvas-element" id="3566" data-initial-x="0" data-initial-y="0" data-x="4.324981689453125" data-y="235" style="transform: translate(4.32498px, 235px);" ondblclick="editElement(`3566`,`batch-element`)">    
+                </div><div class="batch-element canvas-element draggable resize" id="5062" style="transform: translate(27.9833px, 160px);" data-initial-x="0" data-initial-y="0" data-x="27.98333740234375" data-y="160" ondblclick="editElement(`5062`,`batch-element`)">    
                     
    
                     <div class="mainElementContainer" style="display: block;">
@@ -16,56 +16,42 @@
                             <h3>Batch Details</h3>
                         </div>
                         <div class="element-content">
-                            <div class="element-line"><p>Roast ID:</p></div>
-                            <div class="element-line"><p>Roasted By:</p></div>
-                            <div class="element-line"><p>Equipment Type:</p></div>
-                            <div class="element-line"><p>Batch Size:</p></div>
+                            <div class="element-line"><h4>Roast ID:</h4></div>
+                            <div class="element-line"><h4>Roasted By:</h4></div>
+                            <div class="element-line"><h4>Equipment Type:</h4></div>
+                            <div class="element-line"><h4>Batch Size:</h4></div>
                         </div>                    
                     </div>
-                </div><div class="log-element draggable canvas-element" id="4780" data-initial-x="0" data-initial-y="0" data-x="439.3249816894531" data-y="235.0000114440918" style="transform: translate(439.325px, 235px);" ondblclick="editElement(`4780`,`log-element`)">         
-                    
-                    <div class="mainElementContainer" style="display: block;">
-                        <table class="log-table">
-                            <tbody><tr>
-                                <th>Time</th>
-                                <th>Temperature</th>
-                                
-                            <th>Air</th><th>Notes</th></tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                
-                            <td> </td><td> </td></tr>
-                        <tr><td> </td><td> </td><td> </td><td> </td></tr><tr><td> </td><td> </td><td> </td><td> </td></tr><tr><td> </td><td> </td><td> </td><td> </td></tr><tr><td> </td><td> </td><td> </td><td> </td></tr><tr><td> </td><td> </td><td> </td><td> </td></tr><tr><td> </td><td> </td><td> </td><td> </td></tr><tr><td> </td><td> </td><td> </td><td> </td></tr><tr><td> </td><td> </td><td> </td><td> </td></tr><tr><td> </td><td> </td><td> </td><td> </td></tr><tr><td> </td><td> </td><td> </td><td> </td></tr></tbody></table>
-                    </div>
-                </div><div class="note-element draggable canvas-element" id="1572" data-initial-x="0" data-initial-y="0" data-x="499.3249816894531" data-y="760" style="transform: translate(499.325px, 760px);" ondblclick="editElement(`1572`,`note-element`)">         
+                </div><div class="note-element canvas-element draggable resize" id="8824" style="transform: translate(27.9833px, 550px); width: 251px; height: 86px;" data-initial-x="0" data-initial-y="0" data-x="27.98333740234375" data-y="550" ondblclick="editElement(`8824`,`note-element`)">         
                     
                         <div class="mainElementContainer" style="display: block;">
                             <div class="element-header">
                                 <h3>Notes</h3>
                             </div>
                             
-                            <div class="element-content">
-                                <div class="note-line"></div>
-                                <div class="note-line"></div>
-                            <div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div></div>
+                            <div class="element-content"><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div></div>
                         </div>
-                </div><div class="bean-element draggable canvas-element" id="9383" data-initial-x="0" data-initial-y="0" data-x="4.32501220703125" data-y="400" style="transform: translate(4.32501px, 400px);" ondblclick="editElement(`9383`,`bean-element`)">    
+                </div><div class="log-element canvas-element draggable resize" id="2008" style="transform: translate(492.983px, 160px);" data-initial-x="0" data-initial-y="0" data-x="492.98333740234375" data-y="160" ondblclick="editElement(`2008`,`log-element`)">         
                     
-   
+                    <div class="mainElementContainer" style="display: block;">
+                        <table class="log-table">
+                            <tbody><tr>
+                                <th>Time</th>
+                                <th>Temp</th>
+                                
+                            <th style="width: 150px;">Notes</th></tr>
+                        <tr><td><h3>0:00</h3></td><td></td><td></td></tr><tr><td><h3>1:00</h3></td><td></td><td></td></tr><tr><td><h3>2:00</h3></td><td></td><td></td></tr><tr><td><h3>3:00</h3></td><td></td><td></td></tr><tr><td><h3>4:00</h3></td><td></td><td></td></tr><tr><td><h3>5:00</h3></td><td></td><td></td></tr><tr><td><h3>6:00</h3></td><td></td><td></td></tr><tr><td><h3>7:00</h3></td><td></td><td></td></tr><tr><td><h3>8:00</h3></td><td></td><td></td></tr></tbody></table>
+                    </div>
+                </div><div class="bean-element canvas-element draggable resize" id="1595" style="transform: translate(27.9833px, 340px);" data-initial-x="0" data-initial-y="0" data-x="27.98333740234375" data-y="340" ondblclick="editElement(`1595`,`bean-element`)">    
+                    
+    
                     <div class="mainElementContainer" style="display: block;">
                         <div class="element-header">
                             <h3>Bean Details</h3>
                         </div>
-                        <div class="element-content">
-                            <div class="element-line"><p>Name:</p></div>
-                            <div class="element-line"><p>Origin:</p></div>
-                            <div class="element-line"><p>Variety:</p></div>
-                            <div class="element-line"><p>Process:</p></div>
-                            <div class="element-line"><p>Altitude:</p></div>
-                        </div>                    
+                        <div class="element-content"><div class="element-line"><h4>Name:</h4><p></p></div><div class="element-line"><h4>Origin:</h4><p></p></div><div class="element-line"><h4>Process:</h4><p></p></div><div class="element-line"><h4>Green Weight:</h4><p></p></div></div>                    
                     </div>
-                </div><div class="blend-element draggable canvas-element" id="6345" data-initial-x="0" data-initial-y="0" data-x="4.324981689453125" data-y="730" style="transform: translate(4.32498px, 730px);" ondblclick="editElement(`6345`,`blend-element`)">    
+                </div><div class="blend-element canvas-element draggable resize" id="7316" style="transform: translate(27.9833px, 700px);" data-initial-x="0" data-initial-y="0" data-x="27.98333740234375" data-y="700.0000305175781" ondblclick="editElement(`7316`,`blend-element`)">    
                     
    
                     <div class="mainElementContainer" style="display: block;">
@@ -73,12 +59,12 @@
                             <h3>Custom Blend</h3>
                         </div>
                         <div class="element-content">
-                            <div class="element-line"><p>Blend Name:</p></div>
-                            <div class="element-line" style="border: none;"><p>Components:</p></div>
-                            <div class="element-line column"><div class="component"><div class="input-box" style="width: 30%;">Monsoon Malabar</div><div class="input-box" style="width: 30%;">225</div><div class="input-box" style="width: 30%;">50</div></div><div class="component"><div class="input-box" style="width: 30%;">Tanzania Peaberry</div><div class="input-box" style="width: 30%;">225</div><div class="input-box" style="width: 30%;">50</div></div></div>
+                            <div class="element-line blend-name"><h4>Blend Name:</h4><p></p></div>
+                            <div class="element-line" style="border: none;"><h4>Components:</h4></div>
+                            <div class="element-line column"></div>
                         </div>                    
                     </div>
-                </div><div class="note-element draggable canvas-element" id="7556" data-initial-x="0" data-initial-y="0" data-x="4.324981689453125" data-y="625.0000152587891" style="transform: translate(4.32498px, 625px);" ondblclick="editElement(`7556`,`note-element`)">         
+                </div><div class="note-element canvas-element draggable resize" id="2062" style="transform: translate(492.983px, 820px);" data-initial-x="0" data-initial-y="0" data-x="492.98333740234375" data-y="820.0000152587891" ondblclick="editElement(`2062`,`note-element`)">         
                     
                         <div class="mainElementContainer" style="display: block;">
                             <div class="element-header">
