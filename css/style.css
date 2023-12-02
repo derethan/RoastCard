@@ -186,8 +186,6 @@ main {
   display: flex;
   justify-content: flex-end;
   
-  min-height: 70vh;
-  
 }
 .element-bar {
   display: none;
@@ -978,7 +976,7 @@ color: var(--cream);
 
 .card-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   gap: 10px;
 }

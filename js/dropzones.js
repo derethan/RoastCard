@@ -133,7 +133,16 @@ function cloneElement (element, dropZone){
     //Set the ID of the clone
     clone.setAttribute('id', canvasElementID);
     clone.setAttribute('ondblclick','editElement(`' + canvasElementID + '`,`' + elementType + '`' +')')
-    clone.setAttribute('ontouchend','editElement(`' + canvasElementID + '`,`' + elementType + '`' +')')
+
+    let lastTouchTime = 0;
+    clone.addEventListener('touchstart', function (event) {
+        const currentTime = new Date().getTime();
+        const tapLength = currentTime - lastTouchTime;
+        lastTouchTime = currentTime;
+        if (tapLength < 500 && tapLength > 0) {
+            editElement(canvasElementID, elementType);
+        }
+    });
 
 
     clone.classList.add('draggable');
