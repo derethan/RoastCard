@@ -113,7 +113,7 @@ function resetElement (element){
 function cloneElement (element, dropZone){
     const clone = element.cloneNode(true);
 
-    // //Remove OnClick Event Listener ---------------IF ON MOBILE, REMOVE THIS LINE---------
+    //Remove OnClick Event Listener from the clone
      clone.removeAttribute('onclick');
     
     // Set the cloned Element to a Canvas Element
@@ -133,6 +133,8 @@ function cloneElement (element, dropZone){
     //Set the ID of the clone
     clone.setAttribute('id', canvasElementID);
     clone.setAttribute('ondblclick','editElement(`' + canvasElementID + '`,`' + elementType + '`' +')')
+    clone.setAttribute('ontouchend','editElement(`' + canvasElementID + '`,`' + elementType + '`' +')')
+
 
     clone.classList.add('draggable');
 
