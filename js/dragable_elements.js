@@ -26,7 +26,7 @@
 function dragCanvasItems (element){
     // let snapTargets = getItems();
 // Make the canvas-elements draggable to a grid
-interact('.canvas-element')
+interact(element)
 .draggable({
     inertia: true,
     modifiers: [
@@ -100,6 +100,10 @@ function dragMenuItems (element) {
     })
 }
 
+//Remove interact from an Element
+function removeInteractFromElement(element) {
+    interact(element).unset();
+}
 
 // Make the Modal Window movable
 interact('.movable')

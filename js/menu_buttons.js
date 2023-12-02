@@ -60,9 +60,11 @@ function windgetMenu() {
         if (document.querySelector(".element-bar").classList.contains("active")) {
             menuItem.setAttribute('onclick', 'addElement(' + "'" + menuItem.id + "'" +')');
             menuItem.classList.add("cursor-pointer");
+            removeInteractFromElement('.origin-element');
         } else {
             menuItem.removeAttribute('onclick');
             menuItem.classList.remove("cursor-pointer");
+            dragMenuItems('.origin-element');
         }
     });
 }
@@ -74,12 +76,13 @@ function closewidgetMenu() {
 
     //Remove the onclick event listeners from the origin elements
     const originElement = document.querySelectorAll(".origin-element");
-    originElement.forEach(n => n.removeAttribute('onclick')); 
+    originElement.forEach(menuItem => menuItem.removeAttribute('onclick')); 
 
     //Hide the Widget Menu
     buttonContainer.classList.remove("active");
     hamburger.classList.remove("active");
     widgetMenu.classList.remove("active");
+    dragMenuItems('.origin-element');
 }
 
 

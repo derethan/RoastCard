@@ -145,7 +145,6 @@ function cloneElement (element, dropZone){
     });
 
 
-    clone.classList.add('draggable');
 
     //Append the clone to the canvas
     dropZone.appendChild(clone);
@@ -153,9 +152,11 @@ function cloneElement (element, dropZone){
 
     // Set the position of the clone if not on a mobile device
     if (window.innerWidth > screenSize){
+        clone.classList.add('draggable');
         clone.classList.add('resize');
         positionElement (clone);
         dragCanvasItems (clone);
+        
     }
 
 
