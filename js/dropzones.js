@@ -141,7 +141,7 @@ function cloneElement (element, dropZone){
 
 
     // Set the position of the clone if not on a mobile device
-    if (window.innerWidth > 768){
+    if (window.innerWidth > screenSize){
         clone.classList.add('resize');
         positionElement (clone);
         dragCanvasItems (clone);

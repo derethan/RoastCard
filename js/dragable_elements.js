@@ -1,12 +1,6 @@
 /******************************************************
  *  Controlls the Dragable properties of the Origin and Canvas Elements
 ******************************************************/
-//If the user is not on a mobile device
-if (window.innerWidth > 768){
-    // Make the Origin-elements draggable
-    dragMenuItems('.origin-element');
-    // dragCanvasItems ('.canvas-element');
-}
 
 
   function getItems() {
