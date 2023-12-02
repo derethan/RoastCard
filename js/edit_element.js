@@ -90,13 +90,10 @@ async function loadModal(elementType) {
   let title = elementTypeCapitalized.replace('-element', '');
   modalTitle.innerHTML = 'Update your ' + title;
 
-  // If the user is not on a mobile device (screen width more than 768px), make the modal window movable
-  if (window.innerWidth > 768) {
+  // If the user is not on a mobile device, make the modal window movable
+  if (window.innerWidth > screenSize) {
     let modalContent = document.querySelector('.modal-content');
     modalContent.classList.add('movable');
-  } else {
-    // let spacer = document.querySelector('.spacer');
-    // spacer.style.width = 'auto';
   }
 
   //try to load the function for the selected element

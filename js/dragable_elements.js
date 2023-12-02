@@ -1,12 +1,6 @@
 /******************************************************
  *  Controlls the Dragable properties of the Origin and Canvas Elements
 ******************************************************/
-//If the user is not on a mobile device
-if (window.innerWidth > 768){
-    // Make the Origin-elements draggable
-    dragMenuItems('.origin-element');
-    // dragCanvasItems ('.canvas-element');
-}
 
 
   function getItems() {
@@ -32,7 +26,7 @@ if (window.innerWidth > 768){
 function dragCanvasItems (element){
     // let snapTargets = getItems();
 // Make the canvas-elements draggable to a grid
-interact('.canvas-element')
+interact(element)
 .draggable({
     inertia: true,
     modifiers: [
@@ -106,6 +100,10 @@ function dragMenuItems (element) {
     })
 }
 
+//Remove interact from an Element
+function removeInteractFromElement(element) {
+    interact(element).unset();
+}
 
 // Make the Modal Window movable
 interact('.movable')

@@ -5,6 +5,9 @@
  *          - event listener for the newCard button and the tools button
 *********************************************************************************/
 
+//Global Variables
+const screenSize = 1100;
+
 document.addEventListener('DOMContentLoaded', function () {
     
     const mainContent = document.getElementById('content-container');
@@ -42,12 +45,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
             // if on mobile, set the canvas to the size of the screen
-            if (window.innerWidth < 768){
+            if (window.innerWidth < screenSize){
                 resizableContainer.style.height = '100%';
                 resizableContainer.style.width = '100vw';
             } else {
             resizableContainer.style.height = '10.5in';
             resizableContainer.style.width = '9in';
+            dragMenuItems('.origin-element');
+
             }
 
             canvasContainer.style.display = 'flex';

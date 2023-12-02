@@ -113,7 +113,7 @@ function resetElement (element){
 function cloneElement (element, dropZone){
     const clone = element.cloneNode(true);
 
-    // //Remove OnClick Event Listener ---------------IF ON MOBILE, REMOVE THIS LINE---------
+    //Remove OnClick Event Listener from the clone
      clone.removeAttribute('onclick');
     
     // Set the cloned Element to a Canvas Element
@@ -134,17 +134,29 @@ function cloneElement (element, dropZone){
     clone.setAttribute('id', canvasElementID);
     clone.setAttribute('ondblclick','editElement(`' + canvasElementID + '`,`' + elementType + '`' +')')
 
-    clone.classList.add('draggable');
+    let lastTouchTime = 0;
+    clone.addEventListener('touchstart', function (event) {
+        const currentTime = new Date().getTime();
+        const tapLength = currentTime - lastTouchTime;
+        lastTouchTime = currentTime;
+        if (tapLength < 500 && tapLength > 0) {
+            editElement(canvasElementID, elementType);
+        }
+    });
+
+
 
     //Append the clone to the canvas
     dropZone.appendChild(clone);
 
 
     // Set the position of the clone if not on a mobile device
-    if (window.innerWidth > 768){
+    if (window.innerWidth > screenSize){
+        clone.classList.add('draggable');
         clone.classList.add('resize');
         positionElement (clone);
         dragCanvasItems (clone);
+        
     }
 
 
