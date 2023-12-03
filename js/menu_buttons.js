@@ -88,12 +88,15 @@ function closewidgetMenu() {
 
 function openHelpMenu () {
     const helpMenu = document.querySelector(".helpmodal");
+    const helpMenuIcon = document.querySelector(".helpmenu");
     helpMenu.classList.toggle("active");
 
-    if (document.body.style.overflow === "hidden") {
-        document.body.style.overflow = "auto";
-    } else {
+    if (helpMenu.classList.contains("active")) {
         document.body.style.overflow = "hidden";
+        helpMenuIcon.classList.remove ("growShrink");
+    } else {
+        helpMenuIcon.classList.add ("growShrink");
+        document.body.style.overflow = "auto";
     }
 
 }
