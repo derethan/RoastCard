@@ -141,6 +141,9 @@ function closeModal() {
   //Unlock the body and html elements to allow scrolling
   document.body.classList.remove('modal-open');
   document.documentElement.classList.remove('modal-open'); // Add this line
+
+  //Update the canvas session
+  updateCanvasSession();
 }
 
 function deleteElement() {
