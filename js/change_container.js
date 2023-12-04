@@ -78,7 +78,17 @@ document.addEventListener('DOMContentLoaded', function () {
                 //Show the Widget Menu
                 elementMenu.classList.add('show-element-bar'); 
           
+                // Show the Help menu if there if a session storage item is not set 
+                // (If previously opened within the same session)
+                if (sessionStorage.getItem('helpMenu') !== 'true'){
                 window.addEventListener('load', openHelpMenu ());
+                }
+
+                //If a session Storage exists for canvas elements, load them
+                if (sessionStorage.getItem('canvasContent') !== null){
+                    loadCanvasElements ();
+                }
+
             }, {once: true});
 
         

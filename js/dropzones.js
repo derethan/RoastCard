@@ -159,7 +159,7 @@ function cloneElement (element, dropZone){
         
     }
 
-
+    updateCanvasSession ();
   }
 
   function getID (){
@@ -185,3 +185,33 @@ function cloneElement (element, dropZone){
             return randomID;
         }
   }
+
+
+  function updateCanvasSession () {
+
+    // Store the canvas are acontent in a session variable
+    const canvasContent = document.querySelector('.canvas-container').innerHTML;
+
+    sessionStorage.setItem('canvasContent', canvasContent);
+  }
+
+  function loadCanvasElements () {
+    // Get the Session Storage Item
+    const canvasContent = sessionStorage.getItem('canvasContent');
+
+    // Get the Canvas Container
+    const canvasContainer = document.querySelector('.canvas-container');
+    canvasContainer.innerHTML = canvasContent;
+
+
+        //if the user is on a mobile device, convert the file contents to mobile
+        if (window.innerWidth > screenSize) {
+
+            //Get the canvas Elements and enable Drag function
+            const canvasElements = document.querySelectorAll(".canvas-element");
+            canvasElements.forEach(element => {
+                // Enable the drag functionality
+                dragCanvasItems (element);
+            });
+        }
+      }

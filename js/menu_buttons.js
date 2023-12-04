@@ -99,6 +99,8 @@ function openHelpMenu () {
         document.body.style.overflow = "auto";
     }
 
+    //Create a session to indicate the Help Menu was viewed
+    sessionStorage.setItem('helpMenu', 'true');
 }
 /******************************************************
  *  Controls the Menu Bar Buttons
@@ -112,6 +114,9 @@ function openHelpMenu () {
 function resetCanvas () {
     const canvasContainer = document.getElementById('canvas-container');
     canvasContainer.textContent = '';
+
+    //Remove the session storage Data
+    sessionStorage.removeItem('canvasContent');
 };
 
 function printCanvas(elementId) {
@@ -162,13 +167,23 @@ function loadCanvas () {
         const fileContents = reader.result;
 
         //if the user is on a mobile device, convert the file contents to mobile
-        if (window.innerWidth < 768) {
-        canvasContainer.innerHTML = convertToMobile(fileContents);
+        if (window.innerWidth < screenSize) {
+            canvasContainer.innerHTML = convertToMobile(fileContents);
         }
         //if the user is on a desktop, load the file contents as is
         else {
-        canvasContainer.innerHTML = fileContents;
+            canvasContainer.innerHTML = fileContents;
+
+            //Get the canvas Elements and enable Drag function
+            const canvasElements = document.querySelectorAll(".canvas-element");
+            canvasElements.forEach(element => {
+                // Enable the drag functionality
+                dragCanvasItems (element);
+            });
         }
+
+            //Update the session storage for the canvas content
+            updateCanvasSession ();
         };
 
     });
@@ -228,17 +243,29 @@ function loadSample (sample) {
         const sampleHTML = data;
 
         //if the user is on a mobile device, convert the file contents to mobile
-        if (window.innerWidth < 768) {
+        if (window.innerWidth < screenSize) {
         canvasContainer.innerHTML = convertToMobile(sampleHTML);
         }
         //if the user is on a desktop, load the file contents as is
         else {
             canvasContainer.innerHTML = sampleHTML;
+
+            //Get the canvas Elements and enable Drag function
+            const canvasElements = document.querySelectorAll(".canvas-element");
+            canvasElements.forEach(element => {
+                // Enable the drag functionality
+                dragCanvasItems (element);
+            });
         }
+
+        updateCanvasSession ();
+
+        
     })
     .catch(error => {
         console.log(error);
     });
 
+    //Update the session storage for the canvas content
     openHelpMenu();
 }
