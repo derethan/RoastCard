@@ -16,8 +16,6 @@ Customizable Roast Card (Coffee Roasting Log) Application
 **For mobile users:**
 * Items may be added by selecting the Item menu above the canvas area. A menu of items will appear, and you may select an item to append it to your mobile log.
 * Items can be modified by double-taping them.
-* Items can be moved around the canvas.
-
   
 If you're interested in coffee roasting but don't know where to begin, you can check out a variety of online resources to get you started.
 
@@ -25,7 +23,7 @@ If you're interested in coffee roasting but don't know where to begin, you can c
 * Premade logs for easy reference, ideas, or just a quick print.
 * Build your own roast card by positioning and customizing premade items on a canvas.
 * Print, save, and load your card for future tweaks.
-* Basic Roast Tools Such as Log Chart and cupping score.
+* Basic Roast Tools Such as Log Chart. (more to come...)
 
 ## Motivation
 As a coffee enthusiast and craft roaster, I had always struggled to find a pre-made roasting log that I liked. Many of the available options required me to purchase a printed booklet. This often led me to hand-draw a card on paper or create something in Excel to suffice. When I embarked on my journey as a software developer with Get Coding, it provided an excellent opportunity to find a solution for a personal hobby and develop my first project simultaneously. Building the Roast Card web app was a fantastic experience that allowed me to strengthen my foundation in HTML, CSS, and JavaScript and prepared me to delve into the more advanced aspects of web development.
