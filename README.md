@@ -16,7 +16,7 @@ Customizable Roast Card (Coffee Roasting Log) Application
 **For mobile users:**
 * Items may be added by selecting the Item menu above the canvas area. A menu of items will appear, and you may select an item to append it to your mobile log.
 * Items can be modified by double-taping them.
-* Items can be moved around the canvas.
+
 
   
 If you're interested in coffee roasting but don't know where to begin, you can check out a variety of online resources to get you started.

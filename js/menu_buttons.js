@@ -131,7 +131,7 @@ function printCanvas(elementId) {
     // Close the window after a delay
     setTimeout(function() {
         newWin.close();
-    }, 500);
+    }, 5000);
 }
 
 
