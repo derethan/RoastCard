@@ -415,7 +415,7 @@ function getbeanData () {
 
 function gettempData () {
     //Store an array of temperature related items
-    const selectionItems = ['Ambient Temp:', 'Humidity:',"Yellowing Temp:", "Browing Temp:", "First Crack Temp:", "Second Crack Temp:", "Drop Temp:"];
+    const selectionItems = ['Ambient Temp:', 'Humidity:','Charge Temp',"Yellowing Temp:", "Browing Temp:", "First Crack Temp:", "Second Crack Temp:", "Drop Temp:"];
 
     //loads the data from the canvas element into the modal window
     loadElementContent ();
