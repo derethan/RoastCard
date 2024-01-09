@@ -2,6 +2,14 @@
 
 Customizable Roast Card (Coffee Roasting Log) Application
 
+
+### Check out the demo below:
+
+**Please Note:** The application, while functional, is still in ongoing development.
+
+**Live Preview:** https://derethan.github.io/RoastCard/
+
+
 ## What is RoastCard?
  Roast Card is an easy-to-use web interface that allows users to create their own custom coffee roasting log to suit their own style and needs. Templates can also be selected for reference or for those looking to start with a quick and easy log. Users may print or save a log to their computer and load it for future use or modifications.
 
@@ -35,14 +43,3 @@ As a coffee enthusiast and craft roaster, I had always struggled to find a pre-m
 * Interact
 * FileSaver
 * HighCharts
-
-### Check out the demo below:
-
-**Please Note:** The application, while functional, is still in ongoing development.
-
-**Live Preview:** https://derethan.github.io/RoastCard/
-
-
-### Features currently in-development:
-* More items for your canvas
-* Roast Tools, such as Charts, Flavour Wheel, Star Ratings, etc
